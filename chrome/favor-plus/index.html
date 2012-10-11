@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="core.js"></script>
+        <script src="base.js?ssD"></script>
+        <script src="json2.js"></script>
+        <style>
+            body,html{
+                background:#eee;
+                padding:0;
+                margin:0;
+                font-family: Georgia,"微软雅黑","黑体";
+                font-size:12px;
+                color:#404040;
+            }
+            a,a:visited{
+                color:#0E8CEE;
+            }
+            a,img{
+                border:none;
+            }
+            #content{
+
+            }
+            #header{
+                height:80px;
+                background: #555;
+                border-bottom:5px solid #9ED859;
+            }
+            h1{
+                margin:0;
+
+            }
+            #header h1{
+                color:#fff;
+                padding-top:25px;
+                padding-left:50px;
+                float:left;
+                font-size:35px;
+            }
+            #header .description{
+                margin-top:29px;
+                padding-left:50px;
+                color:#eee;
+                font-size:18px;
+                float:left;
+                padding-top:10px;
+            }
+            #header .description span{
+                font-size:14px;
+                color:#D6ECBC;
+                font-weight: normal;
+
+            }
+
+            .note{
+                min-height:35px;
+                margin:10px;
+                background: #fff;
+                border-radius:5px;
+                line-height:35px;
+                padding-left:10px;
+            }
+            em{
+                font-style: normal;
+                font-size:12px;
+            }
+            em.title{
+                color:#72B522;
+                padding:0 2px;
+                font-weight: bold;
+            }
+            em.num{
+                color:#ff6700;
+                padding:0 2px;
+            }
+            em.name{
+                color:#666;
+                padding:0 2px;
+            }
+            em.white{
+                color:#fff;
+                padding:0 2px;
+                font-size:14px;
+            }
+            em.gray{
+                color:#999;
+            }
+            .line{
+                height:3px;
+
+                font-size:0px;
+                line-height: 0px;
+                overflow:hidden;
+                background:#9ED859;
+                margin:10px;
+            }
+            .main-container{
+                margin:10px;
+            }
+            ul,li{
+                list-style: none;
+                padding:0;
+                margin:0;
+
+            }
+            .main-container li{
+                width:23%;
+                background:#fff;
+                border-radius:5px;
+                height:240px;
+
+                float:left;
+                display: inline;
+                margin-right:2.1%;
+                overflow: hidden;
+                margin-bottom:20px;
+            }
+            .main-container li .bd{
+                overflow: auto;
+                height:200px;
+                padding:5px;
+            }
+            .main-container li .item{
+                height:25px;
+                border-radius:3px;
+                background:#f7f7f7;
+                line-height:25px;
+                padding-left:10px;
+                margin-bottom:5px;
+            }
+            .main-container li .hd{
+                height:30px;
+                line-height:30px;
+                padding-left:10px;
+                background: #C1EC8F;
+                font-weight:bold;
+            }
+            body{
+                width:310px;
+            }
+            .index{
+                display: inline-block;
+                width:40px;
+                text-align: right;
+                padding-right:20px;
+            }
+            #title{
+                height:15px;
+                width:190px;
+            }
+            #folder{
+                width:195px;
+                height:22px;
+            }
+            .allstar {
+                display: inline-block;
+                width: 128px;
+                height: 11px;
+                position: relative;
+                margin-right: 5px;
+                background: url(star.gif);
+                overflow: hidden;
+                white-space: nowrap;
+                z-index: 1;
+            }
+            .allstar em {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: inline-block;
+                height: 11px;
+                background: url(star.gif) 0 -11px;
+            }
+            .allstar b {
+                position: relative;
+                display: inline-block;
+                width: 13px;
+                height: 11px;
+                cursor: pointer;
+                cursor: hand;
+                z-index: 1;
+            }
+            #help{
+                display: inline-block;
+                width:20px;
+                float:right;
+                height:20px;
+                padding-top:3px;
+            }
+            button{
+                float:right;
+                width:80px;
+                height:30px;
+                margin-right:10px;
+                margin-top:3px;
+            }
+            #help_layer{
+                display:none;
+            }
+            #update{
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="note">
+            <div><label class="index">名称:</label><input type="text" value="" id="title"/></div>
+            <div><label class="index">文件夹:</label><select id="folder"></select></div>
+        </div>
+        <div class="note"><label class="index">打分:</label><span id="grade" class="allstar"><em id="score" style="width: 0%; "></em><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span><span id="score_text">请打分</span><span id="help"><img src="help.png" width="16" height="16"/></span></div>
+        <input type="hidden" id="score_result" value="0"/>
+        <div class="note" id="help_layer">help!</div>
+        <div class="note"><button id="update">更 新</button><button id="add">添 加</button><button id="rescore">重新打分</button></div>
+    </body>
+</html>
+<script>
+    var $=MJ,D=$.Dom,E=$.Event
+
+    var FavorPlus=function(){
+        var listFolderCount=-1
+        var fillCount=function(charactor,count){
+            var re=""
+            for(var i =0;i<count;i++){
+                re+=charactor
+            }
+            return re
+        }
+        var now
+        return {
+            tree:null,
+            existID:-1,
+            parentID:-1,
+            title:"",
+            url:"",
+            score:0,
+            score_enable:false,
+            help_show:false,
+            score_name:"store",
+            scoreStore:{},//存储所有收藏的分数的对象,存储和更新由getStore和setStore控制
+            isStoring:false, //正在进行存储操作,此时离开页面可能引起错误
+            //搜索url是否已经在tree中,如果在,就把id值赋给existID
+            searchUrl:function(tree,url){
+               
+                for(var i =0;i<tree.length;i++){
+                    if(tree[i].children){
+                        this.searchUrl(tree[i].children,url)
+                    }else{
+                        if(tree[i].url==url){
+                            this.existID=tree[i].id
+                            this.parentID=tree[i].parentId
+                        }
+                    }
+                }
+            },
+            //列出folder
+            listFolder:function(tree){
+                listFolderCount++
+                for(var i =0;i<tree.length;i++){
+                    if(tree[i].children){
+                        var option=document.createElement("option");
+                        option.innerHTML=fillCount("---",listFolderCount)+"|"+tree[i].title
+                        option.value=tree[i].id
+                        D.get("#folder").appendChild(option)
+                        this.listFolder(tree[i].children)
+                    }
+                }
+                listFolderCount--
+            },
+            init:function(){
+                now=this
+                this.searchUrl(this.tree,this.url)
+                this.scoreStore=this.getStore(this.score_name)
+                console.log(this.scoreStore)
+                this.createHtml();
+                if(this.existID!=-1){
+                    this.initExist();
+                }
+
+                this.enableScore();
+                this.bindEvent();
+                this.listFolder(this.tree)
+            },
+            createHtml:function(){
+                $.Dom.get("#title").value=this.title;
+                if(this.existID!=-1){
+                    D.get("#add").style.display="none"
+                    D.get("#update").style.display="block"
+                }
+            },
+            bindEvent:function(){
+                E.on(D.get("#grade"),"click",function(e){
+                    D.get("#score_result").value=now.score
+                    D.get("#score_text").innerHTML="已评分:"+now.score+"分"
+                    E.off(D.get("#grade"),"mousemove","$_dafen")
+                    now.score_enable=false
+                })
+                E.on(D.get("#rescore"),"click",function(){
+                    now.enableScore()
+                    now.score=0;
+                    D.get("#score").style.width="0%"
+                    D.get("#score_text").innerHTML="请打分"
+                })
+                E.on(D.get("#help"),"click",function(){
+                    D.get("#help_layer").style.display=now.help_show?"none":"block"
+                    now.help_show=!now.help_show
+                })
+                E.on(D.get("#add"),"click",function(){
+                    now.add()
+                })
+                E.on(D.get("#update"),"click",function(){
+
+                    now.update()
+                })
+            },
+            enableScore:function(){
+                if(this.score_enable) return
+                E.on(D.get("#grade"),"mousemove",function(e){
+                    var mousePos=D.getMousePos(e)
+                    var percent=Math.round(((mousePos.x-D._getXY(this).x)*100/64)/20)
+                    D.get("#score").style.width=percent*10+"%"
+                    now.score=percent
+                    D.get("#score_text").innerHTML=percent+" 分"
+                },"$_dafen")
+                this.score_enable=true
+            },
+            add:function(){
+                chrome.bookmarks.create({'parentId': D.get("#folder").value,
+                    'title': this.title,
+                    'url': this.url},function(){
+                    console.log(now.url)
+                    now.scoreStore[now.url]=now.score
+                    now.setStore(now.score_name,now.scoreStore)
+                    //    window.close();
+                });
+            },
+            update:function(){
+            console.log(this.parentID)
+                if(this.parentID*1!=D.get("#folder").value*1){
+                    chrome.bookmarks.move(this.existID,{parentId:D.get("#folder").value}, function(){
+                        now.scoreStore[now.url]=now.score
+                        now.setStore(now.score_name,now.scoreStore)
+                    })
+                }else{
+                    chrome.bookmarks.update(this.existID,{
+                        'title':this.title,
+                        "url":this.url
+                    }, function(){
+                        now.scoreStore[now.url]=now.score
+                        now.setStore(now.score_name,now.scoreStore)
+                    })
+                }
+              
+            },
+            initExist:function(){
+                this.score=now.scoreStore[this.url]||0
+
+                D.get("#score").style.width=this.score*10+"%"
+                D.get("#score_text").innerHTML="已评分:"+this.score+"分"
+                this.score_enable=true
+                chrome.bookmarks.get(this.existID, function(node){
+         
+                    $.Dom.get("#folder").value=node[0].parentId
+                })
+            },
+            //从本地存储获取对象
+            getStore:function(key){
+                if(localStorage[key]){
+                    return JSON.parse(localStorage[key]);
+                }else{
+                    return {}
+                }
+              
+            },
+            //把对象存回到本地存储
+            setStore:function(key,obj){
+                this.isStoring=true;
+               
+                localStorage[key]=JSON.stringify(obj)
+                this.isStoring=false;
+            }
+        }
+    }();
+    chrome.bookmarks.getTree(function(tree){
+        FavorPlus.tree=tree
+        chrome.tabs.getSelected(undefined, function(tab){
+            
+            FavorPlus.title=tab.title
+            FavorPlus.url=tab.url
+            FavorPlus.init();
+        })
+    })
+
+
+
+</script>

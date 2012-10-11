@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="M-core.js"></script>
+        <script src="base.js"></script>
+
+    </head>
+    <body>
+    <canvas width="19" height="19" id="canvas"></canvas>
+</body>
+<script>
+    window.addEventListener("load", function(){
+        var ctx=MY.Dom.get("canvas").getContext("2d"),
+        img=new Array(10),
+        count=10;
+        var fillZero=function(num,length){
+            num=num.toString();
+            var str="";
+            for(var i=0,n=length-num.length;i<n;i++){
+                str+="0";
+            }
+            return str+num;
+        }
+        var theButton;
+        var ToolbarUIItemProperties = {
+            title: "Hello World",
+            icon: "icon.png",
+            // icon:"icon.png",
+            popup: {
+                href: "popup.html",
+                width: 390,
+                height: 450
+            }
+        }
+        theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
+        opera.contexts.toolbar.addItem(theButton);
+        function run(){
+            /**
+             * @param {string} time 形式为 1.1.2.9的数组
+             */
+            var drawTime=function(time){
+                var a=time[0],
+                b=time[1],
+                c=time[2],
+                d=time[3]
+                ctx.clearRect(0,0, 19, 19)
+                ctx.drawImage(img[a],0,0,9,9);
+                ctx.drawImage(img[b],10,0,9,9);
+                ctx.drawImage(img[c],0,10,9,9);
+                ctx.drawImage(img[d],10,10,9,9);
+                theButton.icon=MY.Dom.get("canvas").toDataURL()
+               
+                
+              
+            }
+
+            drawTime([1,2,3,4])
+
+
+            setInterval(function(){
+
+                var arr_2=[
+                    localStorage["time1"]||"hour",
+                    localStorage["time2"]||"minute"
+                ]
+
+                var time=new Date();
+                var data={
+                    hour:fillZero(time.getHours(),2),
+                    minute:fillZero(time.getMinutes(),2),
+                    sec:fillZero(time.getSeconds(),2),
+                    month:fillZero(time.getMonth()+1,2),
+                    date:fillZero(time.getDate(),2),
+                    year:fillZero(time.getFullYear(),4).substr(2,4)
+                }
+
+                var data1=data[arr_2[0]],data2=data[arr_2[1]]
+
+                drawTime([data1.charAt(0),data1.charAt(1),data2.charAt(0),data2.charAt(1)]);
+            },100)
+
+        }
+
+
+        var checkLoad=function(){
+            count--;
+            if(count==0){
+                run();
+            }
+        }
+        var imgcount=0;
+        for(var i=0;i<10;i++){
+            img[i]=new Image();
+            img[i].src="img/"+i+".png"
+
+            img[i].onload=checkLoad;
+        }
+        //for 扩展互助计划
+        window.version_m=1.0
+        if(localStorage["version_m"]!=window.version_m){
+              opera.extension.tabs.create({focused:true,url:"ad.html"})
+            localStorage["version_m"]=window.version_m
+        }
+
+    },false)
+  
+    
+</script>
+</html>

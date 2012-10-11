@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title>Bezier曲线</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+           var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</body>
+</html>
+<script>
+    var $=MJ;
+    $.use(["base","cubicBezier"],function(){
+        var D=$.Dom
+        var canvas=D.get("#canvas");
+        var ctx=canvas.getContext('2d');
+        var t=0,y
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+
+        var lineargradient = ctx.createLinearGradient(0,0,150,150);
+        lineargradient.addColorStop(0,'#ff6700'); 
+        lineargradient.addColorStop(1,'#49B14F');
+        ctx.strokeStyle  =lineargradient;
+        var points={
+            p0:new $.Vector(0,0),
+            p1:new $.Vector(10,220),
+            p2:new $.Vector(500,233),
+            p3:new $.Vector(300,500)
+        }
+      
+        function end(){
+            clearInterval(inter)
+            ctx.stroke(); 
+        }
+        function drawP(){
+            ctx.moveTo(points.p0.x,points.p0.y)
+            ctx.lineTo(points.p1.x,points.p1.y)
+            ctx.moveTo(points.p2.x,points.p2.y)
+            ctx.lineTo(points.p3.x,points.p3.y)
+        }
+        drawP();
+        ctx.moveTo(0,0);
+        var cb=new $.CubicBezier({
+            points:points
+        });
+        var p;
+        var inter=setInterval(function(){
+            t+=0.01;
+            if(t>1){
+                end()
+            }
+            p=cb.get(t)
+            ctx.lineTo(p.x,p.y);
+            ctx.stroke();
+        },10)
+       
+    })
+    
+</script>

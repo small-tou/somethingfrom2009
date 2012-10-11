@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/).*?\/.*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+        <style>
+            #con{
+                width:100%;
+                background: #f7f7f7;
+                border:#ddd 1px solid ;
+                height:100px;
+            }
+            #rgn{
+                width:30px;
+                height:30px;
+                border:1px solid #aaa;
+                background:#ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="con">
+            <div id="rgn"></div>
+        </div>
+    </body>
+</html>
+<script>
+    var $=MJ;
+    $.use("ui-anim",function(){
+        var anim=new $.Anim.UI();
+        anim.animate({marginLeft:{to:500}})
+    })
+
+</script>

@@ -1,0 +1,412 @@
+/*
+    Document   : M-UI
+    Created on : 2010-2-28, 14:16:37
+    Author     : sunxinyu.pt
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li, form, label,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    font-family: 宋体,'Courier New',Courier,monospace;
+    font-size:12px;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: none;
+}
+
+/* 元素获得焦点时的样式! */
+:focus {
+    outline: 0;
+}
+
+/* 特殊文本的样式! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* 细线表格样式 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.hide{
+    display: none;
+}
+.float-clear{
+    clear: both;
+    font-size: 0;
+    height:0;
+}
+
+/*全局的通用样式*/
+input {
+    background:url(img/input-bg.gif) no-repeat -1px -1px;
+    border:1px solid #A4BAEC;
+    height:24px;
+    padding:0;
+}
+textarea{
+     background:url(img/input-bg.gif) no-repeat -1px -1px;
+    border:1px solid #A4BAEC;
+    height:24px;
+    padding:0;
+}
+body{
+    background: #EBEFF9;
+}
+.adapt{
+    width:100%;
+    height:100%;
+}
+.center{
+    text-align: center;
+    margin:auto auto;
+}
+.top10{
+    margin-top:10px;
+}
+/*窗口组件的css(window)*/
+.m-window{
+    display: block;
+    width:500px;height:200px;
+    position: relative;
+    padding-right:6px;
+    padding-bottom: 6px;
+    padding-bottom:5px\9;
+}
+.m-window{
+    background: url(img/win-shadow.png) bottom right;
+    _background:none;
+}
+
+.m-window .wrap{
+    border-bottom:1px solid #A4BAEC;
+    height:100%;
+    overflow:hidden;
+    padding:0;
+    position:relative;
+
+}
+.m-window .hd{
+    height:29px;
+    position:relative;
+
+}
+.m-window .hd .l{
+    width:5px;
+    height:29px;
+    position:absolute;
+    left:-1px;top:0;
+    background:url(img/win-hd-left.gif) no-repeat 0 0px;
+}
+.m-window .hd .r{
+    width:5px;
+    height:29px;
+    position:absolute;
+    right:-1px;top:0;
+    background:url(img/win-hd-right.gif) no-repeat 0 0px;
+}
+
+.m-window .hd .m{
+    height:29px;
+    position:relative;
+    right:0;top:0;
+    margin:0 4px;
+    background:url(img/win-hd-m.gif) repeat-x 0 0px;
+}
+.m-window .hd .icon{
+    position:absolute;
+    width:16px;
+    height:16px;
+    top:8px;left:5px;
+}
+.m-window .hd .title{
+    font-size: 12px;
+    color:#006EAD;
+    font-weight: bold;
+    position:absolute;
+    top:12px;
+    left:30px;
+}
+.m-window .hd .control-box{
+    float: right;
+    margin-top:5px;
+}
+.m-window .hd .sizeable{
+
+}
+.m-window .hd .sizeable a{
+    margin-left:3px;
+cursor: pointer;
+    display: block;
+    float:left;
+    height:19px;
+    background: url(img/m-control-box.gif) no-repeat;
+}
+.m-window .hd .sizeable .min{
+    width:19px;
+    background-position: -21px 0px;
+}
+.m-window .hd .sizeable .min:hover{
+    background-position:-21px -21px;
+}
+.m-window .hd .sizeable .max{
+    width:19px;
+    background-position: -42px 0px;
+}
+.m-window .hd .sizeable .max:hover{
+    background-position:-42px -21px;
+}
+.m-window .hd .sizeable .resize{
+    width:19px;
+    background-position: 0px 0px;
+}
+.m-window .hd .sizeable .resize:hover{
+    width:19px;
+    background-position: 0px -21px;
+}
+.m-window .hd .sizeable .close{
+    width:19px;
+    background-position: -63px 0px;
+}
+.m-window .hd .sizeable .close:hover{
+    background-position:-63px -21px;
+}
+.m-window .hd .nosize .close{
+    margin-top:0px;
+    width:19px;
+
+}
+.m-window .hd .nosize .close{
+    width:19px;
+    height:19px;
+    display: inline-block;
+    background: url(img/m-control-box.gif) no-repeat;
+    background-position: -63px -0px;
+    cursor:pointer;
+}
+.m-window .hd .nosize a:hover{
+    background-position: -63px -21px;
+}
+.m-window .bd{
+    border:1px solid #A4BAEC;
+    border-top:none;
+    height:100%;
+    background: #fff;
+    position:relative;
+}
+.m-window .bd .m{
+    background: #fff;
+}
+
+/*窗口组件css结束*/
+/*普通按钮组件*/
+.m-button{
+    width:100px;
+    height:30px;
+    position: relative;
+    display: block;
+}
+.m-button .btn-inner{
+    margin:0px 4px;
+    background: url(img/button-bg.gif);
+    cursor:pointer;
+    font-size: 12px;
+    color:#000;
+    height:30px;
+    overflow:hidden;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+}
+.m-button .l{
+    position: absolute;left:0;
+    width:4px;height:30px;font-size:0;
+    background: url(img/button-left.gif) no-repeat;
+}
+.m-button .r{
+    position: absolute;right:0;top:0;
+    width:4px;height:30px;font-size:0;
+    background: url(img/button-right.gif) no-repeat ;
+}
+.m-button-disable .btn-inner{
+    background: url(img/button-bg-dis.gif);
+    color:#A9A8A8;
+}
+.m-button-disable .l{
+    background: url(img/button-left-dis.gif) no-repeat;
+}
+.m-button-disable .r{
+     background: url(img/button-right-dis.gif) no-repeat ;
+}
+/*平板式的button*/
+.m-label-button{
+    display: inline-block;
+}
+.m-label-button{
+    display: inline-block;
+    overflow: hidden;
+    padding:0 8px;
+    line-height:25px;
+    height:25px;
+    border:1px solid #A4BAEC;
+    background: #DEE6F9;
+    font-size:12px;
+    color:#666;
+    text-decoration: none;
+}
+.m-label-button:hover{
+     background: #ddd;
+    color:#999;
+    border:1px solid #bbb;
+}
+.m-label-button.disable{
+    background: #eee;
+    color:#ddd;
+    border:1px solid #ccc;
+
+}
+.m-label-button.selected{
+    background: #444;
+    color:#fff;
+    border:1px solid #bbb;
+}
+/*end 平板按钮*/
+/*表格*/
+.m-table{
+    font-size:12px;
+    font-weight: normal;
+}
+.m-table th{
+    background: url(img/table-th.png) repeat-x 0% 0% ;
+    font-weight: normal;
+}
+.m-table td,.m-table th{
+    border:1px solid #ddd;
+    height:24px;
+    line-height:24px;
+    padding:0 10px;
+}
+.m-table th{
+    padding:0px;
+}
+.m-table-th{
+    position:relative;
+    padding:0 20px;
+    height:100%;
+}
+.m-table .sort{
+    position:absolute;
+    background: url(img/table-sort.gif) no-repeat 0 0;
+    -webkit-transition: -webkit-transform 0.2s ease-in;
+    width:21px;
+    height:4px;
+    top:10px;
+    right:0px;
+    cursor:pointer;
+}
+/*spinner*/
+.m-spinner{
+    position:relative;
+    margin:20px;
+}
+.m-spinner input{
+    width:60px;
+    line-height:24px;
+    height:26px\9;
+}
+.m-spinner .up,.m-spinner .down{
+    width:19px;
+    height:14px;
+    display:block;
+    background:url(img/spinner.gif) no-repeat;
+    cursor:pointer;
+    position:absolute;
+    left:37px;top:0;
+    top:1px\9;
+}
+.m-spinner .down{
+    background-position:0 -14px;
+    outline:none;
+    top:14px;
+    top:15px\9;
+}
+.m-spinner .up:hover{
+    background-position:-19px 0;
+}
+.m-spinner .down:hover{
+    background-position:-19px -14px;
+    outline:none;
+}
+.m-spinner .choose{
+    width:16px;
+    height:24px;
+    height:26px\9;
+    border:1px solid #8FB9D0;
+    display:block;
+    cursor:pointer;
+    background:url(img/commen-bg.gif) no-repeat 0 -50px ;
+    position:absolute;
+    left:54px;top:0;
+    top:1px\9;
+}
+.m-spinner .choose:hover{
+    background-position:0px 0px;
+}
+/*tip类的panel*/
+.m-tip-panel{
+    width:100px;
+    height:100px;
+    background:#dfdfdf;
+    margin:20px;
+}
+.m-tip-panel .inner{
+    border:1px solid #9BC0E0;
+    position:relative;
+    top:-2px;
+    top:-2px\9;
+    left:-3px;
+    left:-1px\9;
+    background:#fff;
+    width:100%;
+    height:100%;
+}
+.m-tip-panel .wrap{
+    padding:10px;
+}
+.m-panel{
+   
+    border:1px solid #A4BAEC;
+    background: #fff;
+}

@@ -1,0 +1,17 @@
+{
+   "background_page": "check.html",
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "index.html",
+      "default_title": ""
+   },
+   "description": "\u5C06\u5E38\u7528\u4E0B\u8F7D\u7F51\u7AD9\u4E2D\u7684\u771F\u5B9E\u4E0B\u8F7D\u94FE\u63A5\u653E\u5927\u5E76\u663E\u793A\u5728\u9192\u76EE\u7684\u5730\u65B9",
+   "icons": {
+      "128": "icon.png",
+      "48": "icon.png"
+   },
+   "name": "\u4E0B\u8F7D\u94FE\u63A5\u53D8\u5927\u5427!",
+   "permissions": [ "tabs", "http://*/", "https://*/" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "2.5"
+}

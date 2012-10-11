@@ -1,0 +1,46 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/jquery.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/point.js"></script>
+        <script src="js/math.js"></script>
+        <script src="js/util.js"></script>
+
+    </head>
+    <body>
+        TODO write content
+    <canvas id="canvas" width="1000" height="600"></canvas>
+    <input type="range" max="30" min="4" id="light" step="2" value="10">
+    <script>
+        
+        var ctx=$("#canvas")[0].getContext("2d");
+var ps=SCD.util.brokenCubicBezier(new SCD.Point(0,0), new SCD.Point(100,620), new SCD.Point(1000,33), new SCD.Point(800,600),10)
+            ctx.clearRect(0,0,1000,600)
+            ctx.beginPath();
+            ctx.moveTo(0,0)
+            $.each(ps,function(i,n){
+                ctx.lineTo(n.x,n.y)
+
+            })
+            ctx.stroke();
+        $("#light").change(function(){
+            var ps=SCD.util.brokenCubicBezier(new SCD.Point(0,0), new SCD.Point(100,620), new SCD.Point(1000,33), new SCD.Point(800,600),this.value)
+            ctx.clearRect(0,0,1000,600)
+            ctx.beginPath();
+            ctx.moveTo(0,0)
+            $.each(ps,function(i,n){
+                ctx.lineTo(n.x,n.y)
+                
+            })
+            ctx.stroke();
+        })
+    </script>
+</body>
+</html>

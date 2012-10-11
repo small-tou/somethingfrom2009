@@ -1,0 +1,163 @@
+/*
+ Copyright 2010, KISSY UI Library v1.0.4
+ MIT Licensed
+ build: 480 Mar 11 14:06
+ */
+/* 全局 reset */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    font: 12px / 1.5 tahoma, arial, "Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑;
+    color:#1e1e1e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, cite, dfn, em, var {
+    font-style: normal;
+}
+
+code, kbd, pre, samp {
+    font-family: courier new, courier, monospace;
+}
+
+small {
+    font-size: 12px;
+}
+
+ul, ol {
+    list-style: none;
+}
+s{
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#page, #header, #content, #footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.w950 {
+    width: 950px;
+}
+
+.col-main {
+    float: left;
+    width: 100%;
+    min-height: 1px;
+}
+
+.col-sub, .col-extra {
+    float: left;
+}
+
+.layout:after, .main-wrap:after, .col-sub:after, .col-extra:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.layout, .main-wrap, .col-sub, .col-extra {
+    zoom: 1;
+}
+.hidden{display:none;}.clearfix{*zoom:1;}.clearfix:after{content:'\20';display:block;height:0;clear:both;}
+/*
+    修复IE6在window.onload或domready时重复下载Sprites图片的Bug
+    ref: http://ued.taobao.com/blog/2010/05/17/ie6-duplicate-load-bug/
+*/
+html {
+    zoom: expression(function(ele){
+        ele.style.zoom = "1";
+        document.execCommand("BackgroundImageCache", false, true);
+    }(this));
+}
+
+#page{
+    width:100%;
+    
+}
+#content,#footer{
+    width:980px;
+    margin:0 auto;
+    
+}
+
+a:link,a:visited{
+    color:#871f25;
+    
+}
+a:hover{
+    color:#871f25;
+}
+
+html,body,#page{
+    height:100%;
+}
+
+
+
+.pj-window{
+    min-width:20px;
+    min-height:50px;
+    box-shadow:2px 2px 3px #ccc;
+    border-radius: 3px;
+    border: 1px solid #5382bc;
+}
+.pj-window .hd{
+    
+    height:30px;
+    background: #6d93c1; /* 为较旧的或者不支持的浏览器设置备用属性 */
+    background: -moz-linear-gradient(top, #6d93c1, #7b9ec9);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d93c1), to(#7b9ec9));
+    color:#fff;
+    line-height:30px;
+    cursor:move;
+    -moz-user-select: none;  
+-webkit-user-select: none;  
+-ms-user-select: none;  
+}
+.pj-window .hd *{
+    cursor:move;
+}
+.pj-window .hd .title{
+    padding-left:10px;
+}
+

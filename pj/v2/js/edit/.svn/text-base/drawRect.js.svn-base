@@ -1,0 +1,71 @@
+(function(){
+    var p=SCD.Point;
+    SCD.DrawRect=SCD.extend(SCD.EditGO);
+    SCD.ap(SCD.DrawRect,{
+        _init:function(){
+            this.controls=[
+            new p(0,0)
+            ];
+            this.isCreateEnd=true;
+            this.rightClickExit=false;
+        },
+        //从某处开始画线
+        begin:function(pos){
+            this.isCreateEnd=false;
+            this.controls[0]=pos;
+        },
+        end:function(){
+            this.isCreateEnd=true;
+            this.context.clearSub();
+            this.draw();
+            this.context.addGO(this)
+
+        },
+        lButtonDown:function(pos){
+            this.controls.push(pos)
+             this.end();
+        },
+        moving:function(pos){
+          
+        },
+        placing:function(pos){
+ this.context.switchCtx("sub")
+            var ctx=this.context.ctx;
+            var canvas=this.context.sub_canvas;
+            var c=this.controls;
+            this.context.clearSub();
+            ctx.fillRect(c[0].x,c[0].y,pos.x-c[0].x,pos.y-c[0].y)
+            ctx.strokeRect(c[0].x,c[0].y,pos.x-c[0].x,pos.y-c[0].y)
+
+        },
+        rButtonDown:function(){
+                this.destroy();
+        },
+        active:function(){
+
+        },
+        draw:function(){
+            this.context.switchCtx("main")
+            var ctx=this.context.ctx;
+            var canvas=this.context.canvas;
+            var c=this.controls;
+            ctx.fillRect(c[0].x,c[0].y,c[1].x-c[0].x,c[1].y-c[0].y)
+            ctx.strokeRect(c[0].x,c[0].y,c[1].x-c[0].x,c[1].y-c[0].y)
+        },
+        destroy:function(){
+            this.isCreateEnd=true;
+            this.context.clearSub();
+        //   this.end()
+        },
+        getCompress:function(){
+            var str="L:"
+            $.each(this.controls,function(i,n){
+                str+=n.x+","+n.y+" "
+            })
+            str+="|"+this.context.strokeStyle+"|"+this.context.strokeWidth
+            this.compressStr=str
+            return str;
+        }
+    });
+})();
+

@@ -1,0 +1,22 @@
+{
+  "name": "高级收藏夹",
+  "version": "1.0",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "",
+  "page_action": {
+    "default_icon": "rss.png",
+    "default_title":"运行中",
+    "default_popup":"index.html"
+  },
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus","bookmarks" ],
+  "background_page":"background.html",
+  "options_page": "admin.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/","https://*/","https://*/*","http://*/*"],
+      "js": ["myscript.js"],
+      "run_at":"document_start"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:c="http://www.w3.org/1999/xlink">
+<g c_origin="100,100">
+<g  c_partid="part_annotation" c_origin="0,0" id="ggname" c_shapetype="group" ><text c_note="note_name" x="60" y="100" font-family="Times New Roman" font-size="9pt" fill="#000080" text-anchor="start" dominant-baseline="central">OpAMP</text></g>
+<g  c_partid="part_annotation" c_origin="0,0" id="ggpre" c_shapetype="group"><text  c_note="note_pre" x="20" y="20" font-family="Times New Roman" font-size="9pt" fill="#000080" text-anchor="start" dominant-baseline="central">OP?</text></g>
+                <polyline points="80,60 80,70" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="64,70 70,70" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="60,60 100,80" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="67,87 67,93" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="60,60 60,100" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="64,90 70,90" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="80,90 80,100" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+		<polyline points="60,100 100,80" stroke="#0000FF" stroke-width="1" stroke-linecap="round"  c_shapetype="line"/>
+	 <g c_partid="part_pin" c_origin="60,60"  id="gge9" c_rotation="0" c_shapetype="group" c_etype="pinpart"><circle c_pindot="true" class="pindot" cx="120" cy="80" r="1" fill="#4F4F4F" stroke="none"/><path d="M100,80 h20" fill="none" stroke="#800" stroke-width="1"/>   </g>
+
+	 <g c_partid="part_pin" c_origin="60,60" id="gge10" c_rotation="90" c_shapetype="group" c_etype="pinpart"><circle c_pindot="true" class="pindot" cx="80" cy="40" r="1" fill="#4F4F4F" stroke="none"/><path d="M80,60 v-20" fill="none" stroke="#800" stroke-width="1"/>				</g> 
+	 <g c_partid="part_pin" c_origin="60,60" id="gge11" c_rotation="180" c_shapetype="group" c_etype="pinpart"> <circle c_pindot="true" class="pindot" cx="40" cy="90" r="1" fill="#4F4F4F" stroke="none"/> <path d="M60,90 h-20" fill="none" stroke="#800" stroke-width="1"/>   </g> 
+	 <g c_partid="part_pin" c_origin="60,60" id="gge12" c_rotation="180" c_shapetype="group" c_etype="pinpart"> <circle c_pindot="true" class="pindot" cx="40" cy="70" r="1" fill="#4F4F4F" stroke="none"/> <path d="M60,70 h-20" fill="none" stroke="#800" stroke-width="1"/>   </g>
+	 <g c_partid="part_pin" c_origin="60,60" id="gge13" c_rotation="270" c_shapetype="group" c_etype="pinpart"> <circle c_pindot="true" class="pindot" cx="80" cy="120" r="1" fill="#4F4F4F" stroke="none"/><path d="M80,100 v20" fill="none" stroke="#800" stroke-width="1"/> </g>
+
+    </g>
+	 
+</svg>

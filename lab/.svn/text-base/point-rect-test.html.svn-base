@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title>判断点在多边形内</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <style>
+            html,body{
+                padding:0;margin:0;
+            }
+            body{
+                background:#eee;
+                font-size:12px;
+            }
+            .progress{
+                font-size:0px;
+                line-height:0px;
+                height:10px;
+                border:1px solid #aaa;
+                background: #fff;
+                width:1000px;
+            }
+            .progress-inner{
+                width:0px;
+                background:#68E96C;
+                height:8px;
+                margin:1px;
+            }
+            .box{
+                margin:10px;
+                border:1px dotted  #ddd;
+                border-radius:5px;
+                padding:10px;
+            }
+            #loading{
+                background: url(loading.gif) no-repeat center center;
+height:100px;
+}
+        </style>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+        <div id="loading" class="box">脚本初始化中.....</div>
+    <canvas id="canvas" width="800" height="400" style="display:none;">你的浏览器不支持canvas,请使用chrome,firefox或者opera浏览器</canvas>
+    <div class="box">
+        当前鼠标是否在多边形内:<span style="color:#ff6700;font-weight: bold;" id="isIn">false</span>
+    </div>
+</body>
+<script>
+
+    /*
+     * 如果两线段相交，则两线段必然相互跨立对方。若P1P2跨立Q1Q2   ，则矢量   (   P1   -   Q1   )   和(   P2   -   Q1   )位于矢量(   Q2   -   Q1   )   的两侧，即(   P1   -   Q1   )   ×   (   Q2   -   Q1   )   *   (   P2   -   Q1   )   ×   (   Q2   -   Q1   )   <   0。上式可改写成(   P1   -   Q1   )   ×   (   Q2   -   Q1   )   *   (   Q2   -   Q1   )   ×   (   P2   -   Q1   )   >   0。当   (   P1   -   Q1   )   ×   (   Q2   -   Q1   )   =   0   时，说明   (   P1   -   Q1   )   和   (   Q2   -   Q1   )共线，但是因为已经通过快速排斥试验，所以   P1   一定在线段   Q1Q2上；同理，(   Q2   -   Q1   )   ×(P2   -   Q1   )   =   0   说明   P2   一定在线段   Q1Q2上。所以判断P1P2跨立Q1Q2的依据是：(   P1   -   Q1   )   ×   (   Q2   -   Q1   )   *   (   Q2   -   Q1   )   ×   (   P2   -   Q1   )   > =   0。同理判断Q1Q2跨立P1P2的依据是：(   Q1   -   P1   )   ×   (   P2   -   P1   )   *   (   P2   -   P1   )   ×   (   Q2   -   P1   )   > =   0。
+     *
+     */
+    var canvas=document.getElementById("canvas")
+    var ctx=canvas.getContext('2d');
+    
+    ctx.lineWidth = 1;
+    ctx.fillStyle="#77B8F5"
+    
+
+
+    
+    var crossMul=function(v1,v2){
+        return   v1.x*v2.y-v1.y*v2.x;
+    }
+    var checkCross=function(p1,p2,p3,p4){
+        var v1={x:p1.x-p3.x,y:p1.y-p3.y},
+        v2={x:p2.x-p3.x,y:p2.y-p3.y},
+        v3={x:p4.x-p3.x,y:p4.y-p3.y},
+        v=crossMul(v1,v3)*crossMul(v2,v3)
+        v1={x:p3.x-p1.x,y:p3.y-p1.y}
+        v2={x:p4.x-p1.x,y:p4.y-p1.y}
+        v3={x:p2.x-p1.x,y:p2.y-p1.y}
+        return (v<=0&&crossMul(v1,v3)*crossMul(v2,v3)<=0)?true:false
+    }
+    var  checkPP=function(point,polygon){
+        var p1,p2,p3,p4
+        p1=point
+        p2={x:-100,y:point.y}
+        var count=0
+        for(var i=0;i<polygon.length-1;i++){
+            p3=polygon[i]
+            p4=polygon[i+1]
+            if(checkCross(p1,p2,p3,p4)==true){
+                count++
+                ctx.strokeStyle ="#ff6700"
+                ctx.lineWidth=3
+                ctx.beginPath();
+                ctx.moveTo(p3.x,p3.y)
+                ctx.lineTo(p4.x,p4.y)
+                ctx.stroke();
+            }
+        }
+        p3=polygon[polygon.length-1]
+        p4=polygon[0]
+        if(checkCross(p1,p2,p3,p4)==true){
+            count++
+            ctx.strokeStyle ="#ff6700"
+            ctx.lineWidth=3
+            ctx.beginPath();
+            ctx.moveTo(p3.x,p3.y)
+            ctx.lineTo(p4.x,p4.y)
+            ctx.stroke();
+        }
+        //  console.log(count)
+        return (count%2==0)?false:true
+    }
+    var polygon=[
+        {x:100,y:100},
+        {x:200,y:150},
+        {x:450,y:200},
+        {x:550,y:340},
+        {x:220,y:370},
+        {x:100,y:200},
+    ]
+    
+    var $=MJ;
+    $.use("base",function(){
+        $("#loading").setCss("display","none")
+        $("#canvas").setCss("display","block")
+        window.onmousemove=function(e){
+            var pos=$.Dom.getMousePos(e);
+            
+            ctx.clearRect(0,0,800,800)
+            ctx.strokeStyle ="#000"
+            ctx.lineWidth=1
+            ctx.beginPath();
+            ctx.moveTo(polygon[0].x,polygon[0].y)
+            for(var i =1;i<polygon.length;i++){
+                ctx.lineTo(polygon[i].x,polygon[i].y)
+            }
+            ctx.lineTo(polygon[0].x,polygon[0].y)
+            ctx.stroke();
+            ctx.fill();
+            $("#isIn").html(checkPP(pos,polygon))
+            ctx.strokeStyle ="#000"
+            ctx.lineWidth=1
+            ctx.beginPath();
+
+            ctx.moveTo(-100,pos.y)
+            ctx.lineTo(pos.x,pos.y)
+            ctx.stroke();
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "html size counter",
+  "version": "1.2",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "Quick Stats html content inside the element size(快速统计html元素的里面内容的大小)",
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html",
+  "content_scripts": [
+    {
+      "matches": ["http://*/","https://*/","https://*/*","http://*/*"],
+      "css": ["style.css"],
+
+      "run_at":"document_start"
+    }
+  ]
+}

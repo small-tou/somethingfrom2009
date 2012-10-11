@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>
+错误页面_IT168.COM
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+</head>
+<script>
+//<--
+function add(k, v){url += "&" + k + "=" + v;}
+function isTop(){try{if(window.top == window){return true;}else{return false;}}catch(e){return flase;}}
+var url = "http://stat.it168.com/errorhandler/?url=" + encodeURIComponent(document.location.href);
+add("referrer", encodeURIComponent(document.referrer));
+add("code", 404);
+add("matchcase", 0);
+add("istop", isTop() ? 1 : 0);
+document.write("<frameset rows=\"*\"><frame src=\"" + url + "\" name=\"main\" frameborder=\"0\" /><frameset>");
+//-->
+</script>
+<div style="display:none">
+IT168（www.IT168.com），中国影响力第一的IT网络媒体。
+成立于1999年，是国内唯一针对用户购买行为整合网络多种资源，内容强调专业性及从用户需求出发，形成从舆论引导到用户口碑运营、从品牌产品渗透到交易促进的有效网络传播媒体，同时也是澳信传媒集团的旗舰级核心媒体。从个人与家庭消费、商务办公直至企业计算与信息化，IT168涉及的领域最完整，覆盖的用户群体最广泛，因而成为中国IT行业最具影响力、最商业价值的IT主流资讯与互动媒体。IT168旗下网站还有ITPUB论坛、ChinaUnix论坛、IXPUB论坛、本友会、渠道168。
+</div>
+</html>

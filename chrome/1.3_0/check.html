@@ -1,0 +1,73 @@
+<!--
+@author mier
+@time 2010-5-4 0:00:22
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href=" "/>
+        <script src="M-base.js"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        TODO write content
+    </body>
+</html>
+<script>
+    var resultCount=0,
+    interval,
+    interCount=0
+    chrome.browserAction.setBadgeText({text:"0"})
+    if(localStorage["emails"]) var emails=(localStorage["emails"]).split(",")
+    else var emails=[]
+    resultCount=emails.length
+    chrome.browserAction.setBadgeText({text:resultCount.toString()})
+    chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if(request.isSearching){
+            interCount=0
+            interval=setInterval(function(){
+                switch(interCount%4){
+                    case 0:  chrome.browserAction.setBadgeText({text:"·    "});break;
+                    case 1:  chrome.browserAction.setBadgeText({text:" ·   "});break;
+                    case 2:  chrome.browserAction.setBadgeText({text:"  ·  "});break;
+                    case 3:  chrome.browserAction.setBadgeText({text:"   · "});break;
+                    case 4:  chrome.browserAction.setBadgeText({text:"    ·"});break;
+                }
+                interCount++
+                if(interCount>100){
+                    clearInterval(interval);
+                    if(localStorage["emails"]) var emails=(localStorage["emails"]).split(",")
+                    else var emails=[]
+                    resultCount=emails.length
+                    chrome.browserAction.setBadgeText({text:resultCount.toString()})
+                }
+            },100)
+        }else{
+            if(localStorage["emails"]) var emails=(localStorage["emails"]).split(",")
+            else var emails=[]
+            M.Array.each(request.emails,function(i){
+                if(!M.Array.has(emails,i)){
+                    emails.push(i)
+                }
+            })
+            resultCount=emails.length
+            emails=emails.join(",")
+            localStorage["emails"]=emails
+            interval&&clearInterval(interval)
+            chrome.browserAction.setBadgeText({text:resultCount.toString()})
+        }
+        
+            
+    });
+    //for 扩展互助计划
+    window.version_m=1.3
+    if(localStorage["version_m"]!=window.version_m){
+	chrome.tabs.create({selected:true,url:"ad.html"})
+	localStorage["version_m"]=window.version_m
+    }
+</script>

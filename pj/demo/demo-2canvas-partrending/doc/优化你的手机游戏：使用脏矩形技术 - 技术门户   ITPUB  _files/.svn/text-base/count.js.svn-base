@@ -1,0 +1,1 @@
+document.write("<script language='javascript'>document.write('<img width=1 height=1 src=http://logcount.it168.com/counter.gif?id=92&url='+escape(top.document.URL)+'&refer='+escape(top.document.referrer)+' border=0>'); </script>")

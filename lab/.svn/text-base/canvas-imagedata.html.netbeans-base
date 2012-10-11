@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            console.log(getHref())
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+</html>
+<script>
+    var $=MJ
+    $.use("base",function(){
+        
+        var canvas=$("#canvas").getEle()[0];
+        var ctx=canvas.getContext('2d');
+        alert(ctx)
+        var image1=document.createElement("img")
+        var image2=document.createElement("img")
+        document.body.appendChild(image1)
+        document.body.appendChild(image2)
+        var data1,data2
+        image1.src="http://www.html-js.com/wp-content/uploads/2010/11/%E5%9B%BE%E5%83%8F-3.png"
+        
+        image1.onload=function(){
+            image2.src="http://www.html-js.com/wp-content/uploads/2010/11/%E5%9B%BE%E5%83%8F-1.png"
+            image2.onload=function(){
+                ctx.drawImage(image1,0,0)
+                data1=ctx.createImageData(canvas.width, canvas.height)
+                ctx.drawImage(image2,0,0)
+                data2=ctx.createImageData(canvas.width, canvas.height)
+                for (var x = 0; x < data2.width; x++)  {
+                    for (var y = 0; y < data2.height; y++)  {
+                     //   var r = data2.data[idx + 0];
+                    //    var g = data2.data[idx + 1];
+                    //    var b = data2.data[idx + 2];
+                     //   var a = data2.data[idx + 3];
+                    }
+                }
+                ctx.putImageData(data1, 0, 0)
+            }
+        }
+    })
+</script>

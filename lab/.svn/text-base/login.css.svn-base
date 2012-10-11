@@ -1,0 +1,49 @@
+#header{
+    height:80px;
+    background: #990D1B;
+    width:100%;
+    margin-bottom: 0px;
+}
+#header-inner{
+    width:990px;
+    margin:0 auto;
+}
+#content{
+    width:990px;
+    margin:0 auto;
+    border:1px solid #aaa;
+}
+body{
+    background: none;
+}
+#header .logo{
+    padding-top:18px;
+    margin-left:72px;
+}
+#content{
+    padding-top:50px;
+}
+#content .pic{
+    
+    width:508px;
+    float:left;
+    display:inline;
+    height:275px;
+}
+#content .pic img{
+    float:right;
+    border:1px solid #aaa;
+}
+#content .form{
+    float:left;
+    diplay:inline;
+    width:324px;
+    
+    overflow:hidden;
+}
+#content .form iframe{
+    border:1px solid #CACACA;
+    height:272px;
+    width:324px;
+    
+}

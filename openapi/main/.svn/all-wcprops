@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/90/trunk/version1.0.3/openapi/main
+END
+api.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/main/api.php
+END
+init.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/55/trunk/version1.0.3/openapi/main/init.php
+END
+config.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/86/trunk/version1.0.3/openapi/main/config.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/main/index.php
+END
+demo.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/68/trunk/version1.0.3/openapi/main/demo.php
+END

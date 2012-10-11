@@ -1,0 +1,87 @@
+<!--
+@author mier
+@time 2010-5-4 3:43:34
+@使用NetBeans创建
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="M-base.js"></script>
+        <script src="M-ajax.js"></script>
+        <style>
+            html,body{
+                padding:10px;
+            }
+            .summary{
+                width:600px;
+                padding:10px;
+                line-height: 18px;
+                margin-bottom:10px;
+            }
+            textarea{
+                width:600px;
+                height:300px;
+                margin-top:10px;
+                padding:10px;
+            }
+            .m-button{
+                float:left;
+                margin-left:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="m-panel summary">
+            <div class="wrap">
+                <h1>说明:</h1>
+                <div class="con">
+                    这里显示的是你浏览过的网页中所有出现的不重复的email地址<br/>
+                </div>
+                <h1>作者博客:</h1>
+                <div class="con">
+                    <a href="http://www.html-js.com/" target="_blank">hello,javascript!</a><br/>
+                    <a href="http://www.beiju123.cn/share/" target="_blank">hello,world!</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-button" id="clear">
+            <div class="l"></div>
+            <div class="btn-inner">彻底清空记录</div>
+            <div class="r"></div>
+        </div>
+        <div class="m-button" id="clipboard">
+            <div class="l"></div>
+            <div class="btn-inner">复制到剪贴板</div>
+            <div class="r"></div>
+        </div>
+         <div class="m-button" id="seesee" style="width:250px;">
+            <div class="l"></div>
+            <div class="btn-inner">查看别人抓取过的email地址超过50的链接</div>
+            <div class="r"></div>
+        </div>
+        <textarea id="emails"></textarea>
+    </body>
+</html>
+<script>
+    var $=M.dom.get;
+    if(localStorage["emails"]==undefined||localStorage["emails"]=="") $("emails").value="没有捕获任何email地址"
+    else $("emails").value=localStorage["emails"]
+    $("clear").onclick=function(){
+        localStorage["emails"]="";
+        $("emails").value=""
+        chrome.browserAction.setBadgeText({text:"0"})
+    }
+    $("clipboard").onclick=function(){
+        var range=$("emails").setSelectionRange(0,$("emails").value.length)
+        $("emails").focus();
+        document.execCommand("Copy");
+        alert("已经复制到剪贴板!")
+    }
+    $("seesee").onclick=function(){
+        chrome.tabs.create({url:"http://www.html-js.com/test/list.php"})
+    }
+</script>

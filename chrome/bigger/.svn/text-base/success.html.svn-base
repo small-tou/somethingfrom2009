@@ -1,0 +1,46 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="M-UI.css"/>
+        <style>
+            body{
+                font-size:30px;
+                font-family: 微软雅黑;
+                text-align: center;
+                padding-top:200px;
+}
+div{
+    color:#ff6700;
+    font-size:20px;
+    margin-top: 50px;
+}
+em{
+    font-size:20px;
+    font-weight: bold;
+}
+        </style>
+    </head>
+    <body>
+        提交成功,谢谢您的关注,稍后我们将处理您提交的数据
+        <div>页面将于 <em id="num">5</em> 秒后关闭</div>
+
+    </body>
+</html>
+<script>
+    setInterval(function(){
+        var numele=document.getElementById('num');
+        var num=numele.innerHTML*1;
+        num--;
+        if(num==0) window.close();
+        else numele.innerHTML=num
+    },1000)
+    setTimeout(function(){
+    //    window.close()
+    },1000)
+</script>

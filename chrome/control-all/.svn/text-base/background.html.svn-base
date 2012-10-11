@@ -1,0 +1,55 @@
+﻿
+<script>
+ 
+    //for ��չ����ƻ�
+    window.version_m=2.0
+    if(localStorage["version_m"]!=window.version_m){
+        chrome.tabs.create({selected:true,url:"ad.html"})
+        localStorage["version_m"]=window.version_m
+    }
+    var memList=[
+       
+    ]
+    var enable=true
+    chrome.browserAction.setBadgeBackgroundColor({
+        color:[6,125,76,255]
+    })
+    chrome.browserAction.setBadgeText({
+                    text:"yeah"
+                })
+    chrome.browserAction.onClicked.addListener(function( tab) {
+        chrome.management.getAll(function(allExt){
+            if(enable==true){
+                memList=[]
+                for(var i in allExt){
+                    if(allExt[i].enabled==true&&allExt[i].name!="一键控制所有扩展"){
+                        memList.push(allExt[i].id)
+                    }
+                }
+                var memLocal=""
+                for(var i in memList){
+                    chrome.management.setEnabled(memList[i],false)
+                    memLocal+=memList[i]+"$$$"
+                }
+                console.log(memLocal.substr(0,memLocal.length-3))
+                localStorage["mem"]=memLocal.substr(0,memLocal.length-3)
+                enable=false
+                chrome.browserAction.setBadgeText({
+                    text:"omg"
+                })
+            }else{
+                var ids=localStorage["mem"].split("$$$")
+                for(var i in ids){
+                    chrome.management.setEnabled(memList[i],true)
+                }
+                enable=true
+                chrome.browserAction.setBadgeText({
+                    text:"yeah"
+                })
+            }
+          
+        })
+    });
+   
+    
+</script>

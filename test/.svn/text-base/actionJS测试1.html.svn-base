@@ -1,0 +1,43 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    TODO write content
+  </body>
+</html>
+<script src="http://localhost/mj/lib/actionJS.js"></script>
+<script>
+    ACTJS.init({
+
+    })
+    var test1=ACTJS.create({
+        name:"",
+        description:""
+    });
+    test1
+    .begin()
+    .hasElements({
+        "顶部输入框":"#head input",
+        "楼层2":"#floor2"
+    })
+    .click()
+    .wait()
+    .hasElement()
+    .size()
+    .offset()
+    .hasClass()
+    .hasAttr()
+    .howMuch()
+    .fillHtml()
+    .fillText()
+    .end()
+
+    
+</script>

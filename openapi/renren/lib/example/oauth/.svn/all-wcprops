@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/lib/example/oauth
+END
+3_accesstoken.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/lib/example/oauth/3_accesstoken.php
+END
+1_authorize.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/lib/example/oauth/1_authorize.php
+END
+2_callback.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/lib/example/oauth/2_callback.php
+END
+4_sessionkey.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/lib/example/oauth/4_sessionkey.php
+END

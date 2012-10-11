@@ -1,0 +1,61 @@
+﻿你的代码我暂时看不懂,但是你的方法我认为是 "目前我们能找到的最佳方法".
+现在有这么几个技术细节你考虑一下,当然你觉得没有必要Demo就可以不做.思路走得通即可.
+1 怎么实现那种可以调整的圆 椭圆 多边形 正方形 长方形线段,圆弧,巴塞尔曲线(就是四边有几个控制点,调整可以改变大小,上次你做了一个长方形的)?
+2 怎么实现放大 缩小,对齐? 通过修改canvas的scale显然是不太好的?
+3 怎么实现Edit操作(拷贝,粘贴,截切 redo,undo)?
+4 怎么实现引脚的自动吸附? 
+5 怎么绘制电线?(就是那种橡皮筋形似的线,从一个引脚到另外一个引脚) 导线它是需要做网格捕获(导线它是需要在网格的边框上走,也就是说电线一般是直线,很少是斜线.
+6 怎么绘制自定义 芯片lib? 就是那种电阻 它是由引脚 与其它基本图元组成.最后封装成一个整体放置在电路图纸中.
+7 旋转,镜像 操作
+8 组选
+9 Drag Move (为了提升移动的速率 在缓存canvas中只显示被移动物体的样式 或者轮廓,暂时不考虑用栅格系统,处理栅格的效率可能不高,可以考虑局部刷新在链表中直接搜索矩形的交集合
+找到所有对象的最大包围圈,然后把这些对象用红色重新绘制,在缓存canvas上绘制这些图形,移动Canvas的位置(假如效果不好,或者为了显示飞线效果,可以用全部刷新绘制的方法,甚至可以考虑用SVG来处理,Proteus演示效果不错的)
+10 1像素的线条
+11 网络标号
+12 电气规则检测
+13 网络表
+14 如何显示多Part
+15 UI模仿http://www.diptrace.com/,这个设计要简单的多 ( eagle 好像也不能移动 但是起ref 与part name 不可以移动,假如这个处理起来很复杂,那么可以去掉) 
+16 打印
+17 html5的考虑
+18 Doc 与 View摸索
+19 invalidateRect();
+20 坐标变换
+21 每个基本单元都有自己的Save Load
+22 怎么拾取(可以用最大包围矩形来确定
+23 怎么拖动 去掉导线在新Canvas上拖动(用改变canvas的位置来拖动,能够减少CPU)
+24 怎么绘制导线等基本图形 可以用SVG 也可以用新的Canvas)
+25 是否需要重载Point的操作符(+ - == != 对象不具备这样的属性)
+26 tinycad的XML文件非常适合演示
+27 怎么绘制symbol ? 它封装的图元怎么处理?
+   Multiple Parts Per Package
+28 怎么绘制苗条的线条
+29 
+
+    以上你可以仔细体验一下protel.(以上你先思考,然后在下面的参考资料中找到答案)
+  1 SVG-edit (http://code.google.com/p/svg-edit/) (演示 http://svg-edit.googlecode.com/svn/trunk/editor/svg-editor.html )(代码下载 http://code.google.com/p/svg-edit/downloads/list)
+    它的Js代码风格与设计模式很值得学习.
+  2 C++版的TinyCAD (包括了我们首先要实现的电路图绘制的所有功能,它的算法与设计思路值得参考. 跟我们唯一的区别就是C++用异或来动态绘制,我们用双缓存+局部刷新来处理)
+     http://sourceforge.net/projects/tinycad/ 应用程序下载
+     http://sourceforge.net/scm/?type=svn&group_id=47763 源代码下载
+     C++版需要用VS2010编译 参考 http://shenzhoulong.blog.51cto.com/blog/1191789/315139
+  我周六或者周日来杭州,其它事情我们见面谈.你现在要考虑的是怎么实现,大概要多久实现.
+  
+  https://www.lucidchart.com/documents/edit#4e3c8252-3540-404b-abf1-116b0ade6613?demo=on&branch=5f7d17af-6bb9-40f7-b4af-2e5643f889f3
+   http://hakim.se/experiments/html5/sketch/#39602459 居然能绘制0.5的像素
+   
+   
+ #define PIXELSPERMM			5					// How many pixels in each milimetre
+#define NormalGrid			100					// The normal grid spacing (in pixels)
+#define FineGrid			50					// The fine grid spacing (in pixels)
+
+需要带的资料
+EPS源代码
+source insight
+TinyCad 软件 (XML格式值得学习) 
+Svg-edit的代码
+Diptrace软件
+老版绘图压缩文件版软件
+数据格式压缩.txt
+op.svg
+css88 14575767411

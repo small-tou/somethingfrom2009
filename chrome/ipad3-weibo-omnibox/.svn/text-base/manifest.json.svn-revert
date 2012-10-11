@@ -1,0 +1,10 @@
+{
+  "name": "新浪围脖地址栏发布工具",
+  "version": "2.8",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "",
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html",
+  "omnibox": { "keyword" : "weibo" }
+}

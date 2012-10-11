@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="test-lib.js"></script>
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+        <div id="get1"></div>
+        <div class="get2"></div>
+        <div id="get3"></div>
+    </body>
+</html>
+<script>
+    var $=MJ
+    
+    
+    $.use("base",function(){
+        var D=$.Dom
+        var DTest={
+            /**
+             * Dom.create方法
+             */
+            createElement:function(){
+                var C=D.create
+                C("div",{
+                    a:{
+                        attr1:"value1",
+                        attr2:"value2"
+                    },
+                    c:"wrap",
+                    s:{
+                        width:"100px",
+                        height:"100px"
+                    },
+                    p:document.body
+                },[
+                    C("div",{
+                        i:"item1"
+                    },[
+                        C("SPan",{i:"span"})
+                    ]),
+                    C("div",{
+                        i:"item2"
+                    }),
+                ])
+            
+                Test.ln("D.create down!")
+            },
+            get:function(){
+                Test.ln(D.get("#get1"))
+                Test.ln(D.get(".get2"))
+                Test.ln(D.get("div"))
+                Test.ln(D.get("div span"))
+                Test.ln(D.get(".wrap span"))
+                Test.ln(D.get(".sdfsdf"))
+                Test.ln("D.get down!")
+            },
+            query:function(){
+                Test.ln(D.query("#get1"))
+                Test.ln(D.query(".get2"))
+                Test.ln(D.query("div"))
+                Test.ln(D.query("div span",D.get(".wrap")))
+                Test.ln(D.query(".wrap span"))
+                Test.ln(D.query(".sdfsdf"))
+                Test.ln("D.query down!")
+            },
+            insertAfter:function(){
+                D.insertAfter(D.create("newdiv",{i:"new element"}),D.get("#get3"))
+                D.insertAfter(D.create("newdiv",{i:"new element"}),D.get(".wrap span"))
+                Test.ln("D.insertAfter down!")
+            },
+            replace:function(){
+                D.replace(D.create("newdiv",{i:"new element"}),D.get("#get3"))
+                D.replace(D.create("newdiv",{i:"new element"}),D.get(".wrap span"))
+                Test.ln("D.replace down!")
+            },
+            getCursorPos:function(){
+                
+            },
+            hasClass:function(){
+                Test.ln(D.hasClass(D.get(".wrap"),"wrap"))
+                Test.ln(D.hasClass("wrap sdfsdf  sdfsdf","wrap"))
+                Test.ln(D.hasClass("sdfsdf wrap  sdfsdf","wrap"))
+                Test.ln("D.hasClass down!")
+            },
+            addClass:function(){
+                D.addClass(D.get(".wrap"),"oulalalala");
+                 Test.ln("D.addClass down!")
+            },
+            removeClass:function(){
+                 D.removeClass(D.get(".wrap"),"oulalalala");
+                 Test.ln("D.removeClass down!")
+            },
+            getAllClass:function(){
+                D.addClass(D.get(".wrap"),"oulalalala");
+                D.addClass(D.get(".wrap"),"oullala");
+                Test.ln(D.getAllClass(D.get(".wrap")))
+            }
+        }
+        for(var i in DTest){
+            DTest[i].call()
+        }
+
+
+
+
+
+
+
+
+    })
+</script>

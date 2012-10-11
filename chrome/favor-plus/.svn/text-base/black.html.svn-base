@@ -1,0 +1,124 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="core.js"></script>
+        <script src="base.js"></script>
+        <style>
+            body{
+                width:300px;
+            }
+            *{
+                font-size:12px;
+            }
+            fieldset{
+                margin-top:10px;
+                border-radius:5px;
+                border: 1px solid #ddd;
+            }
+            .checkbox_label{
+                vertical-align:1px;
+                padding-left:3px;
+            }
+            .gray{
+                color:#aaa;
+            }
+            .black{
+                color:#333;
+            }
+            #info{
+                color:#ff6600;
+            }
+            button{
+                border:1px solid #bbb;
+                border-radius:3px;
+                height:30px;
+                background: -webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0, rgb(239,239,239)),
+                    color-stop(1, rgb(247,247,247))
+                    );
+                color:#444;
+                cursor: pointer;
+                padding:0 10px;
+            }
+            button:hover{
+                border:1px solid #0886f5;
+                background: -webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0,#0886f5),
+                    color-stop(1, #41a4fa)
+                    );
+                color:#fff;
+            }
+            input{
+                height:18px;
+            }
+            .black_list{
+                padding:10px;
+            }
+            .black_list #see_black{
+                margin-left:20px;
+            }
+            #add{
+                height:25px;
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <legend>强制所有页面显示某字体</legend>
+            <div>
+                <p><input type="checkbox" id="enforce_font"/><label for="enforce_font" class="checkbox_label">是否启用</label></p>
+                <p>
+                    <label>选择字体</label>
+                    <select id="select_font"></select>
+                </p>
+                <p style="color:#999;">
+                    您也可以在浏览器的右键菜单里改变某个页面的字体
+                </p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>自行添加字体</legend>
+            <div>
+                <p id="info"></p>
+                <p>
+                    <input type="text" id="text" value="字体名称" class="gray"/>
+                    <button id="add">添加</button>
+                </p>
+            </div>
+        </fieldset>
+        <fieldset class="black_list">
+            <legend>将此页加入黑名单</legend>
+            <div>
+                <button type="button" id="add_black">以后不再改变此页字体</button><button type="button" id="see_black">查看黑名单</button>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>作者的博客</legend>
+            <div>
+                <a href="http://www.html-js.com" target="_blank">http://www.html-js.com</a>
+            </div>
+        </fieldset>
+    </body>
+</html>
+<script>
+
+    var $=MJ
+    var black_list=localStorage["b_list"].split("$$$")
+    black_list.each(function(i){
+        
+    })
+
+</script>

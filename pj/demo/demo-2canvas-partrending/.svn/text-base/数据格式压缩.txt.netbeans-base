@@ -1,0 +1,45 @@
+﻿ 
+ part部分
+ 
+ L:points|stroke|stroke-width  // polyline 可以用这个表示 PL:404,330 410,330|0000FF|1
+ G:points|stroke|stroke-width|fill //Polygon
+ E:cx|cy|rx|ry|stroke|stroke-width|fill//Ellipse
+ R:cx|cy|width|height|stroke|stroke-width|fill//rect
+ T:text|color|font-family|font-size|font-weight|font-style|text-anchor|baseline|rotate //text    rotate旋转角度0,1,2,3 0 90 180 270
+ P:dot|clk|Electric|showname|shownum|width|length|x|y|rotate|stroke|name|num //pin 假如name的坐标,旋转能够计算出来,name,num就是个文本,我认为能计算处理.这样的话压缩可能会高点
+ S:x|y|type                                                         // IEEE tools type 用0,1,n来表示 暂时不考虑
+ I:x|y|url|rotate                                                   // image  暂时不考虑
+A:x|y|r|startAngle|endAngle
+B:points|stroke|stroke-width //贝塞尔曲线
+                    
+ 注:1 这里的#:|都是有点风险 因为文本中可能含有这些
+    2 这里不用json(width:x ),直接解析文本.否则的话压缩效果不明显,而且不便缓存
+    
+ 
+ sch部分
+ sch{
+  Canvas:{
+ },
+ part:{
+   PL:points|stroke|stroke-width  // polyline 可以用这个表示 PL:404,330 410,330|0000FF|1
+ PG:d|stroke|stroke-width|fill //Polygon
+ E:cx|cy|rx|ry|stroke|stroke-width|fill//Ellipse
+ R:cx|cy|width|height|stroke|stroke-width|fill//rect
+ T:text|color|font-family|font-size|font-weight|font-style|text-anchor|baseline|rotate //text    rotate旋转角度0,1,2,3 0 90 180 270
+ P:dot|clk|Electric|showname|shownum|width|length|x|y|rotate|stroke|name|num //pin 假如name的坐标,旋转能够计算出来,name,num就是个文本,我认为能计算处理.这样的话压缩可能会高点
+ },
+ PL:{},
+ PG:{},
+ E:{},
+ A:{},
+ PT:{},
+ T:{},
+ I:{},
+ W:{}//wire
+ B:{} //bus
+ BE:{}// bus entry
+ J:{} //Junction 
+ }
+ 
+ 可以参考tinycad的xml格式
+ 

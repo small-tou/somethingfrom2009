@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/test/discovery
+END
+xrds-magnolia.xrds
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/test/discovery/xrds-magnolia.xrds
+END
+xrds-getsatisfaction.xrds
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/test/discovery/xrds-getsatisfaction.xrds
+END
+xrds-fireeagle.xrds
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/test/discovery/xrds-fireeagle.xrds
+END

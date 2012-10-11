@@ -1,0 +1,179 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">\
+        <style>
+            #get_file{
+                background: url(http://img03.taobaocdn.com/tps/i3/T1mC5dXipgXXXXXXXX-145-55.png) no-repeat;
+                width:145px;
+                height:55px;
+                position:absolute;
+                top:0;
+                left:0;
+                border:none;
+                z-index:0;
+                outline:none;
+            }
+            #file_con{
+                position:relative;
+                height:50px;
+            }
+            #file_input{
+                width:145px;
+                height:55px;
+                position:absolute;
+                top:0;
+                left:0;
+                z-index:1;
+                opacity:0;
+
+            }
+            #img_con{
+                width:800px;
+                height:400px;
+                border:2px solid #ddd;
+                margin:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="file_con">
+            <input type="file" id="file_input" name="file_input" size="6">
+            <label for="file_input"><button id="get_file"></button></label>
+        </div>
+        <div id="img_con">
+            <canvas id="canvas" width="800" height="400">
+
+            </canvas>
+        </div>
+    </body>
+</html>
+<script>
+    var $=function(el){
+        return document.getElementById(el)
+    }
+    var mix=function(target,prototypes){
+        for(var i in prototypes){
+            target[i]=prototypes[i];
+        }
+    }
+    var getXY=function(el){
+        if (document.documentElement.getBoundingClientRect) { // IE,FF3.0+,Opera9.5+
+            var box = el.getBoundingClientRect();
+            return {x:box.left+document.body.scrollLeft,
+                y:box.top+document.body.scrollTop }
+        } else {
+
+            var pos = [el.offsetLeft, el.offsetTop];
+            var op = el.offsetParent;
+            if (op != el) {
+                while (op) {
+                    pos[0] += op.offsetLeft + parseInt(op.style.borderLeftWidth) || 0;
+                    pos[1] += op.offsetTop + parseInt(op.style.borderTopWidth) || 0;
+                    op = op.offsetParent;
+                }
+            }
+            return {x:pos[0],y:pos[1]}
+        }
+    }
+    var can=$("canvas");
+    var ctx=can.getContext('2d');
+    $("file_input").addEventListener("change", handleFiles, false);
+
+    function handleFiles(){
+        var files = this.files;
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var imageType = /image.*/;
+            console.log(file)
+            if (!file.type.match(imageType)) {
+                continue;
+            }
+            var img = document.createElement("img");
+            img.onload=function(){
+                $("img_con").style.width=can.width=this.clientWidth
+                $("img_con").style.height=can.height=this.clientHeight
+                ctx.clearRect(0,0,can.width,can.height)
+                ctx.drawImage(this,0,0)
+                ctx.lineWidth=r;
+                ctx.lineCap="round"
+                ctx.lineJoin ="round"
+                ctx.miterLimit =10;
+                ctx.beginPath();
+            }
+            img.style.opacity='0'
+            document.body.appendChild(img)
+            var reader = new FileReader();
+            reader.onload = (function(aImg){
+                return function(e){
+                    aImg.src = e.target.result;
+                };
+            })(img);
+            reader.readAsDataURL(file);
+        }
+    }
+    var mousePos={
+        x:0,
+        y:0
+    };
+    var r=10;
+    var freeDraw=false;
+    ctx.lineWidth=r;
+    ctx.lineCap="round"
+    ctx.lineJoin ="round"
+    ctx.miterLimit =10;
+    ctx.beginPath();
+    var lastPos={
+        x:0,
+        y:0
+    }
+    var mouseSpeed=0; //当前鼠标移动速度
+    var smooth=[0,0,0,0] //缓存前几个计算出的鼠标速度,最后取平均用作真实鼠标速度,可以生成更真实的速度
+    setInterval(function(){
+        if(freeDraw){
+            //
+//鼠标速度等于现在鼠标位置减去上次计算时鼠标的位置
+                    mouseSpeed=mousePos.x-lastPos.x;
+                    //将速度缓存到数组中
+                    smooth.push(mouseSpeed)
+                    //保持缓存数组元素数量
+                    smooth.shift();
+                    //下面的计算是用前面缓存的速度取平均值作为现在的真实速度,调节缓存数组的长度可以改进平滑度
+                    mouseSpeed=0
+                    for(var i=0;i<smooth.length;i++){
+                        mouseSpeed+=smooth[i]
+                    }
+                    mouseSpeed=mouseSpeed/smooth.length;
+            ctx.lineWidth=(100-mouseSpeed)*0.2
+            ctx.beginPath();
+            ctx.moveTo(lastPos.x,lastPos.y)
+            ctx.lineTo(mousePos.x,mousePos.y)
+            lastPos.x=mousePos.x
+            lastPos.y=mousePos.y
+            ctx.stroke();
+            //   ctx.closePath()
+
+        }
+    },10)
+    document.body.onmousedown=function(e){
+        freeDraw=true
+        var pos=getXY($("canvas"))
+        mousePos.x=e.pageX-pos.x;
+        mousePos.y=e.pageY-pos.y;
+        ctx.moveTo(mousePos.x,mousePos.y)
+    }
+    document.body.onmouseup=function(){
+        freeDraw=false
+    }
+    document.body.onmousemove=function(e){
+        var e=window.event||e;
+        var pos=getXY($("canvas"))
+        mousePos.x=e.pageX-pos.x;
+        mousePos.y=e.pageY-pos.y;
+    }
+</script>

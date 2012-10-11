@@ -1,0 +1,109 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="M-core.js"></script>
+        <script src="base.js"></script>
+        <style>
+            body{
+                width:350px;
+                padding:10px;
+                font-family: arial,sans-serif;
+                font-size:12px;
+            }
+            label{
+                vertical-align: 10px;
+                padding-left:5px;
+            }
+            div{
+                margin-top:10px;
+                line-height: 18px;
+}
+ul li{
+    display:inline-block;
+    width:120px;
+}
+.m-panel{
+    padding:0px;
+    color:#333;
+}
+        </style>
+    </head>
+    <body>
+        <div class="m-panel">tip:Time display in the plug-in icon column, divided into upper and lower parts, you can set the time to display items, the default shown above minutes, the following shows the number of seconds<div>author's blog:<a href="http://www.html-js.com" target="_blank">http://www.html-js.com</a></div></div>
+
+        <div id="time"></div>
+
+        <fieldset id="option" style="margin-top:20px;">
+            <legend>Select icon displayed on the half time of entry</legend>
+            <ul>
+                <li><input type="radio" class="group" id="year" name="time1"/><label for="year">year</label></li>
+                <li><input type="radio" class="group" id="month" name="time1"/><label for="month">months</label></li>
+                <li><input type="radio" class="group" id="date" name="time1"/><label for="date">date</label></li>
+                <li><input type="radio" class="group" id="hour" name="time1" checked="true"/><label for="hour">hours</label></li>
+                <li><input type="radio" class="group" id="minute" name="time1" /><label for="minute">minutes</label></li>
+                <li><input type="radio" class="group" id="sec" name="time1" /><label for="sec">second</label></li>
+            </ul>
+        </fieldset>
+        <fieldset id="option" style="margin-top:20px;">
+            <legend>Select icon displayed in the lower half of the time entry</legend>
+            <ul>
+                <li><input type="radio" class="group" id="year" name="time2"/><label for="year">year</label></li>
+                <li><input type="radio" class="group" id="month" name="time2"/><label for="month">months</label></li>
+                <li><input type="radio" class="group" id="date" name="time2"/><label for="date">date</label></li>
+                <li><input type="radio" class="group" id="hour" name="time2" /><label for="hour">hours</label></li>
+                <li><input type="radio" class="group" id="minute" name="time2" checked="true"/><label for="minute">minutes</label></li>
+                <li><input type="radio" class="group" id="sec" name="time2" /><label for="sec">second</label></li>
+            </ul>
+
+        </fieldset>
+    </body>
+</html>
+<script>
+    var fillZero=function(num,length){
+        num=num.toString();
+        var str="";
+        for(var i=0,n=length-num.length;i<n;i++){
+            str+="0";
+        }
+        return str+num;
+    }
+
+    setInterval(function(){
+        var time=new Date();
+        MY.Dom.get("time").innerHTML="time now:"+
+            fillZero(time.getFullYear(),4)+"-"+
+            fillZero(time.getMonth()+1,2)+"-"+
+            fillZero(time.getDate(),2)+"-"+
+            fillZero(time.getHours(),2)+"-"+
+            fillZero(time.getMinutes(),2)+"-"+
+            fillZero(time.getSeconds(),2)+""
+    },100)
+    var radio1=Array.prototype.slice.call(document.getElementsByName("time1"))
+    var radio2=Array.prototype.slice.call(document.getElementsByName("time2"))
+    
+    radio1.each(function(i){
+        if( localStorage["time1"]==i.id){
+            i.checked=true;
+        }
+        i.onclick=function(){
+            localStorage["time1"]=this.id
+        }
+    })
+    radio2.each(function(i){
+        if( localStorage["time2"]==i.id){
+            i.checked=true;
+        }
+        i.onclick=function(){
+            localStorage["time2"]=this.id
+        }
+    })
+
+
+</script>

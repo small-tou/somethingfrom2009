@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        TODO write content
+    </body>
+</html>
+<script>
+    var  pickDomain=function(len){
+        var arr=location.hostname.split(".")
+        return arr.splice((arr.length-len)>0?arr.length-len:0).join(".")
+    }
+    alert(pickDomain(3))
+</script>

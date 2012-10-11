@@ -1,0 +1,3272 @@
+/* Override */
+
+/*add by yansong for cart bug: scroll in safari and chrome at 2010/10/12*/
+html{
+    overflow-y: auto;/*bug happen in tbra/2.0/tbsp.css for html{ overflow-y: scroll}, this is for cover it*/
+}
+/*end add by yansong*/
+#content {
+    /*width: auto !important;  ada@taobao.com 2011-01-07 02:53:09  */
+    text-align: left !important;
+}
+
+#Head {
+    width: 960px;
+}
+
+.hidden, .none {
+    display: none;
+}
+
+input.text,
+textarea.text {
+    color: #404040;
+    font-size: 12px;
+    background: white url(http://a.tbcdn.cn/app/tc/img/input-bg.png) 0 0 no-repeat;
+    margin: 0 0 0 5px;
+    padding: 3px 2px 0 3px;
+    border: 1px solid #a7a6aa;
+}
+
+input.text {
+    height: 16px;
+}
+
+legend {
+    display: none;
+}
+
+/* 按钮 */
+#cart .skin-gray .thin {
+    font-weight: 400;
+}
+
+/*
+#cart .btn { width:78px; height:25px; background:url(http://a.tbcdn.cn/app/tc/img/btn.png) no-repeat; border:0; cursor:pointer; }
+#cart .btn-cancel {
+    color:black !important;
+    background-position:-78px 0;
+    font-weight:normal;
+}
+#cart .btn-confirm {
+    color:white;
+    font-weight:bold;
+    float: right;
+}
+#cart .go .long-btn {
+    font-weight: normal;
+}
+#cart .go .btn-gotobuy {
+    float: right;
+}
+#cart .go .btn-delsel {
+    float: left;
+}
+#cart .btn-cancel:hover {
+    color:black;
+}
+    .btn-cancel:hover { background-position:-78px -25px; }
+    .btn-confirm:hover { background-position:0 -25px; }
+#cart .order-table .btn {
+    font-size:12px;
+}
+*/
+
+/* 优惠|实惠 */
+.boon {
+    display: -moz-display-box;
+    display: inline-block;
+    height: 13px;
+    background: url(http://a.tbcdn.cn/app/tc/img/boon.png) no-repeat 0 -999em;
+    vertical-align: middle;
+}
+
+.boon span, .icon span {
+    display: none;
+}
+
+.boon-vip {
+    width: 20px;
+    background-position: 0 0;
+}
+
+.boon-3 {
+    width: 46px;
+    background-position: 0 -13px;
+}
+
+.boon-5 {
+    width: 46px;
+    background-position: 0 -27px;
+}
+
+.boon-10 {
+    width: 48px;
+    background-position: 0 -41px;
+}
+
+.boon-20 {
+    width: 51px;
+    background-position: 0 -55px;
+}
+
+.boon-other {
+    width: 43px;
+    background-position: 0 -69px;
+}
+
+.boon-double {
+    width: 44px;
+    background-position: 0 -83px;
+}
+
+.icon {
+    display: -moz-display-box;
+    display: inline-block;
+    width: 28px;
+    height: 17px;
+    background: url(http://a.tbcdn.cn/app/tc/img/mall_icon.png) no-repeat 0 -999em;
+    vertical-align: middle;
+}
+
+.icon-store {
+    background-position: 0 0;
+}
+
+.xcard-icon {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    background: url(http://a.tbcdn.cn/sys/common/icon/trade/xcard.png) no-repeat 0 50%;
+}
+
+/* 您的位置 */
+#crumbs {
+    overflow: hidden;
+    zoom: 1;
+    color: black;
+    margin: 20px 0 10px 0;
+}
+
+#crumbs strong {
+    float: left;
+    font-weight: normal;
+}
+
+#crumbs span.cart-tip {
+    float: right;
+    color: #808080
+}
+
+.crumbs {
+    float: left;
+    margin-left: -5px;
+}
+
+.crumbs li {
+    float: left;
+    padding: 0 0 0 5px; /* background:url(img/crumbs.gif) no-repeat right center; */
+}
+
+.crumbs .current {
+    background: none;
+}
+
+.crumbs li a {
+    /* margin:0 10px 0 0; */
+}
+
+/* 购物车步骤 */
+#ladder {
+}
+
+#ladder ol {
+    overflow: hidden;
+    zoom: 1;
+    background: url(http://a.tbcdn.cn/app/tc/img/ladder.png) no-repeat right -69px #e9e9e9;
+    width: 792px;
+}
+
+#ladder li {
+    float: left;
+    width: 138px;
+    padding-left: 20px;
+    height: 23px;
+    background: url(http://a.tbcdn.cn/app/tc/img/ladder.png) no-repeat;
+    font: bold 14px / 23px arial;
+    font-weight: bold;
+    color: #999;
+}
+
+#ladder li em {
+    font: bold 12px / 23px tahoma;
+    margin-right: 3px;
+}
+
+#ladder li.s1 {
+    background-position: 0 -69px;
+    padding-left: 8px;
+    width: 150px;
+}
+
+/* 第一步 */
+#ladder .ladder-1 li.s1 {
+    background-position: 0 -92px;
+    background-color: #f60;
+    color: white;
+}
+
+#ladder .ladder-1 li.s2 {
+    background-color: #f60;
+}
+
+/* 第二步 */
+#ladder .ladder-2 li.s1 {
+    background-position: 0 -115px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-2 li.s2 {
+    background-position: 0 -23px;
+    background-color: #fefacd;
+    color: white;
+}
+
+#ladder .ladder-2 li.s3 {
+    background-color: #f60;
+}
+
+/* 第三步 */
+#ladder .ladder-3 li.s1 {
+    background-position: 0 -115px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-3 li.s2 {
+    background-position: 0 -46px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-3 li.s3 {
+    background-position: 0 -23px;
+    background-color: #fefacd;
+    color: white;
+}
+
+#ladder .ladder-3 li.s4 {
+    background-color: #f60;
+}
+
+/* 第四步 */
+#ladder .ladder-4 li.s1 {
+    background-position: 0 -115px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-4 li.s2, #ladder .ladder-4 li.s3 {
+    background-position: 0 -46px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-4 li.s4 {
+    background-position: 0 -23px;
+    background-color: #fefacd;
+    color: white;
+}
+
+#ladder .ladder-4 li.s5 {
+    background-color: #f60;
+}
+
+/* 第五步 */
+#ladder .ladder-5 li.s1 {
+    background-position: 0 -115px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-5 li.s2, #ladder .ladder-5 li.s3, #ladder .ladder-5 li.s4 {
+    background-position: 0 -46px;
+    background-color: #fefacd;
+    color: #ffb940;
+}
+
+#ladder .ladder-5 li.s5 {
+    background-position: 0 -23px;
+    background-color: #fefacd;
+    color: white;
+}
+
+#ladder .ladder-5 {
+    background-position: right -92px;
+}
+
+/* 购物车表格 */
+#cart {
+    margin-top: 55px;
+    padding: 0 0 20px 0;
+}
+
+.order-table {
+    width: 100%;
+}
+
+
+.order-table thead th {
+    text-align: center;
+    color: #404040;
+    padding: 3px 0 0;
+    border-left:2px solid #fff;
+}
+.order-table thead th hr{
+    height: 3px;
+background-color: #B2D1FF;
+color: #B2D1FF;
+}
+
+.order-table thead th.s-chk input {
+    margin: 0 3px -2px 0;
+}
+/* add by yansong */
+.order-table thead th.s-point{
+    white-space: nowrap;
+    *width: 72px; /* 由于增加了“商城”二字，也就是把以前的积分变成商城积分，导致在IE6&7下通过设置white-space: nowrap行不通的解决办法，多增加了2px */
+}
+/* end add by yansong */
+.order-table thead th.s-charge a.q,
+.order-table thead th.s-point a.q {
+    display: -moz-display-box;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    background: transparent url(http://a.tbcdn.cn/app/tc/img/q.png) no-repeat 0 0;
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+.order-table thead th.s-ship a.q {
+    display: -moz-display-box;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    background: url(http://a.tbcdn.cn/sys/common/img/header_bg.png) no-repeat -288px -100px;
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+.order-table thead th.s-charge a.q span,
+.order-table thead th.s-point a.q span {
+    display: none;
+}
+
+.order-table thead th.s-point em {
+    position: absolute;
+    margin: -30px 0 0 -118px;
+    *margin-top: -31px;
+    width: 228px;
+    height: 29px;
+    background: url(http://a.tbcdn.cn/app/tc/img/point_intro_2.png) no-repeat;
+    text-indent: 4px;
+    text-align: left;
+    line-height: 22px;
+}
+
+.order-table thead th.s-point em a {
+    position: absolute;
+    right: 7px;
+    top: 4px;
+    width: 13px;
+    height: 13px;
+    overflow: hidden;
+    text-indent: -999em;
+}
+
+.order-table thead .tip-pop {
+    /* change by youjiao project = COD*/
+    position: absolute;
+    margin: -30px 0 0 -85px;
+    *margin-top: -31px;
+    line-height: 1.5;
+    padding: 0 25px 0 10px;
+    border: 1px #fbecb2 solid;
+    background: #fef7dc; /*	background:url(http://a.tbcdn.cn/app/tc/img/point_intro.png) no-repeat; remove by youjiao project = COD*/
+}
+
+.order-table thead .tip-pop a {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    overflow: hidden;
+    text-indent: -999em; /*change by youjiao project = COD*/
+    background: url(http://a.tbcdn.cn/img/app/album/close.png) no-repeat 0 100%;
+}
+
+.order-table thead .tip-pop a:hover {
+    /*add by youjiao project = COD*/
+    background-position: 0 0;
+}
+
+.order-table thead .tip-pop .normalink {
+    position: static;
+    overflow: hidden;
+    text-indent: 0;
+    background: transparent none;
+}
+
+.order-table thead .tip-pop span {
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    margin-left: -6px;
+    display: block;
+    width: 12px;
+    height: 8px;
+    background: url(http://a.tbcdn.cn/app/tc/img/tip_btm_arrow.png) no-repeat 0 100%;
+}
+
+.order-table thead .s-charge .tip-pop {
+    width: 170px;
+    margin: -77px 0 0 -108px;
+    *margin: -62px 0 0 -195px;
+    text-align: left;
+}
+
+.order-table thead .s-charge .tip-pop span {
+    left: 175px;
+}
+
+.order-table tbody tr {
+    background: #FBFCFF;
+}
+
+.order-table tbody tr.hover, .order-table tbody tr:hover {
+    /*background: #e8f6ff;*/
+}
+
+.order-table tbody tr.selected {
+    background: #e2f2ff;
+}
+
+.order-table tbody td {
+    border-bottom: 1px solid #d1ebff;
+    border-top: 1px solid #d1ebff;
+    border-left: 1px solid white;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.order-table tbody tr.disable {
+    background-color:#EDEDED;
+}
+
+.order-table tbody tr.disable td {
+    border: 1px solid #DDD;
+    border-right: none;
+}
+
+.order-table tbody td .help-img {
+    display:block;
+    background: url(http://a.tbcdn.cn/app/tc/img/q.png) no-repeat scroll 0 0;
+    width:12px;
+    height:12px;
+    margin-left:24px;
+    *margin-left: 0;
+}
+.order-table tbody td.s-chk {
+    border-left: 0;
+}
+
+.order-table tbody td.s-title {
+    width: 280px;
+    text-align: left;
+    padding-left: 70px;
+    padding-right: 6px;
+}
+
+.order-table tbody td.s-title img {
+    margin-left: -60px;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e9e9e9;
+}
+
+.order-table tbody td.s-title .itempic {
+    margin-left: -60px;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e9e9e9;
+}
+
+.order-table tbody td.s-title .itemicon {
+    margin-left: 0;
+    float: none;
+    width: auto;
+    height: auto;
+    border: 0;
+}
+
+.order-table tbody td.s-title span {
+    margin-right: 10px;
+    color: #808080;
+    margin-top: 2px;
+}
+
+.order-table tbody td.s-title .misc span span {
+    margin-right: 4px;
+    font-size: 14px;
+    font-family: 'simsun';
+    font-weight: bold;
+}
+
+.order-table tbody td.s-point em {
+    font-weight: bold;
+}
+
+.order-table tbody td.s-amount {
+    padding-right: 0;
+    padding-left: 0;
+    -moz-user-select: -moz-none;
+    text-align: center !important;
+}
+
+.order-table tbody td.s-amount input {
+    ime-mode: disabled;
+}
+
+.order-table tbody td.s-amount a {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    line-height: 9px;
+    text-align: center;
+    background: white;
+    font-family: arial;
+    overflow: hidden;
+    color: #555;
+    border: 1px solid #dbdbdb;
+    margin: 5px 0 0;
+}
+
+.order-table tbody td.s-amount a.minus {
+    text-indent: 1px;
+    margin-right: 3px;
+    margin-left: 0px;
+}
+
+.order-table tbody td.s-amount .less-tip {
+    margin-bottom: 5px;
+}
+.order-table tbody td.s-amount .less-tip span{
+    color: white;
+    background-color: #ff5000;
+    display: inline-block;
+    zoom: 1;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.order-table tbody td.s-amount a.plus {
+    margin-left: 5px;
+}
+
+.order-table tbody td.s-amount a:hover, .order-table tbody td.s-amount a:active {
+    border-color: #f60;
+}
+
+.order-table tbody td.s-amount .text {
+    display: inline-block;
+    width: 22px;
+    padding: 1px 3px;
+    text-align: right;
+    color: #666;
+}
+
+.order-table tbody td.s-amount em {
+    clear: both;
+    display: block;
+    color: #f60;
+    border: 1px solid #f60;
+    padding: 2px;
+    background: white;
+    position: relative;
+    top: 6px;
+    margin: 0 10px 0;
+    zoom: 1;
+    line-height: 16px;
+}
+
+.order-table tbody td.s-amount em.tips {
+    background: #e5f5ff;
+    border: 1px solid #41b3ff;
+    color: #333;
+}
+
+.order-table tbody td.s-agio {
+    color: #404040;
+    width: 181px;
+}
+
+.order-table tbody td.s-agio select {
+    width: 149px;
+}
+.order-table tbody td.s-agio .hidden {
+    display:none;
+}
+.order-table tbody td.s-agio select,
+.order-table tbody td.s-agio img {
+    vertical-align: middle;
+}
+.order-table .msg-bundle {
+    margin-left:3px;
+    display:inline-block;
+    width:12px;
+    height:10px;
+    background:transparent url(http://img02.taobaocdn.com/tps/i2/T1aupnXeFfXXXXXXXX-12-10.png) no-repeat scroll 0 0;
+    vertical-align:middle;
+    overflow:hidden;
+    cursor:pointer;
+}
+.order-table .hidden {
+    display:none !important;
+}
+.order-table tbody td.s-total em {
+    color: #f60;
+    font: bold 12px tahoma;
+}
+
+.order-table tbody td.s-del a {
+    text-decoration: underline;
+}
+
+.order-table tbody td.s-freight,
+.cod-table tbody td.s-freight {
+    min-width: 120px;
+}
+
+.cod-table tbody td.s-freight .cod-bias {
+    display: inline-block;
+    *zoom:1;
+}
+.order-table tbody .shop, .order-table tbody .shop:hover {
+    background-color: #fff !important; /*background:url(http://a.tbcdn.cn/app/tc/img/shop.png) no-repeat 0 bottom !important;*/
+}
+
+.order-table tbody .shop td {
+    border: none;
+    height: 27px;
+    line-height: 1.8;
+    text-align: left;
+    padding-left:6px;
+}
+
+.order-table tbody .shop td.promo-info {
+    max-width: 350px\9;
+}
+
+.order-table .seller {
+    margin-left: 16px;
+}
+
+/*addby youjiao  project = COD*/
+#order-confirm-iframe .msg24-attention-cod,
+#order-confirm-iframe .msg24 {
+    margin: 0 0 20px;
+}
+
+.msg24-attention-cod {
+    /* 卖家详情提示信息 */
+    background: #e5f5ff;
+    border: 1px solid #40b3ff;
+    font-size: 12px;
+    line-height: 22px;
+    padding: 17px 10px 17px 60px;
+}
+
+.msg24-attention-cod p, .msg24-attention-cod h3 {
+    color: #404040;
+}
+
+.msg24-attention-cod p {
+    margin-left: 1em;
+}
+
+.msg24-attention-cod h3 {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.msg24-attention-cod h2 {
+    background: url(http://a.tbcdn.cn/sys/common/img/msg_bg.png) no-repeat 0 -500px;
+    text-indent: -999em;
+    overflow: hidden;
+    float: left;
+    width: 36px;
+    height: 36px;
+    margin-left: -46px;
+    _display: inline;
+}
+
+.cod-table tbody td.s-title {
+    /*width: 250px;*/
+}
+
+.cod-table tbody td.s-title a em {
+    display: block;
+    width: 20em;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.cod-table tbody td.s-title a:hover em {
+    width: auto;
+    overflow: visible;
+    white-space: normal;
+}
+
+.cod-table tbody td.s-money {
+    width: 99px;
+}
+
+.cod-table tbody td.s-money .icon {
+    margin-left: .5em;
+}
+
+.cod-icon {
+    background: url(http://a.tbcdn.cn/sys/common/icon/trade/item_cod.png) no-repeat 5px 1px;
+    padding-left: 30px;
+    color: #404040;
+    zoom: 1;
+}
+
+#fastbuy .cod-icon {
+    *background-position: 10px 3px;
+    _background-position: 10px 5px;
+}
+
+.order-table .go .btn {
+    font-size: 12px;
+}
+
+/* unCod item at cart_list page */
+#J_cod_popup_c, .yui-panel-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+#J_cod_popup_c .underlay, .yui-panel-container .underlay {
+    background: #404040;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    *filter: alpha(opacity = 50);
+}
+
+#J_cod_popup, .cod-popup {
+    position: absolute;
+    left: 50%;
+    top: 250px;
+    margin-left: -438px;
+    border: 1px solid #ffe0b2;
+    z-index: 11;
+}
+
+#J_cod_popup .bd, .cod-popup .bd {
+    background: #fff;
+    border: 3px solid #fff5e5;
+    padding: 5px;
+}
+
+#J_cod_popup .bd .msg24, .cod-popup .bd .msg24 {
+    margin: 5px 15px 5px 5px;
+    *display: inline; /*奇怪的下空白*/
+}
+
+#J_cod_popup .bd .msg24 .cartback, .cod-popup .bd .msg24 .cartback {
+    font-size: 12px;
+    font-weight: normal;
+    color: #0041d9;
+    margin-left: 10px;
+}
+
+#J_cod_popup .container-close, .cod-popup .container-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: url(http://a.tbcdn.cn/img/app/album/close.png) no-repeat 0 100%;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-indent: -999em;
+    overflow: hidden;
+    outline: none;
+}
+
+/*.order-table .gift {
+    text-align:right;
+    margin-top:-20px;
+    [;margin-top:0;]
+    *margin-top:-20px;
+    padding-bottom:4px;
+    font-family:simsun;
+    color:#808080;
+    z-index:-1;
+    background:white;
+    width:340px;
+    height:18px;
+    overflow:hidden;
+    float:right;
+    text-overflow:ellipise;
+}
+.order-table .gift-v2 {
+    margin-top:0;
+}
+.order-table .gift a {
+*//* color:#808080; *//*
+}
+.order-table .gift:hover, .order-table .gift-hover {
+width:500px;
+}
+.order-table .gift em {
+margin:0 3px;
+}*/
+
+.order-table .gift {
+    float: right;
+}
+
+.page-fastbuy .order-info .gift {
+    text-align: right;
+    max-width: 340px;
+    _width: 340px;
+    height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-fastbuy .s-money select {
+    width: 75px;
+}
+
+.order-table ul.scrolling-promo-hint {
+    height: 22px;
+    overflow: hidden;
+    text-align: right;
+}
+
+.order-table ul.scrolling-promo-hint li {
+    height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-table tbody tr.s-blue, .order-table tbody tr.s-blue:hover {
+    background: #f5fbff !important;
+}
+.order-table tbody tr.s-blue td {
+    padding: 12px;
+    border-bottom: 0;
+}
+.order-table tbody tr.s-blue select {
+    vertical-align:middle;
+}
+.order-table tbody tr.s-blue .total {
+    font-size: 18px;
+    color: #f60;
+    font-family: tahoma;
+}
+
+.order-table tbody tr.s-blue td.gift {
+    text-align: left;
+    padding: 10px 15px 5px;
+    float: none;
+}
+
+.order-table tbody tr.s-blue td.gift em {
+    color: #ff6600;
+}
+
+.order-table tfoot td {
+    padding: 12px;
+    text-align:right;
+}
+.order-table tfoot .msg-bundle {
+    margin-right:20px;
+}
+.order-table .point-info {
+    vertical-align: top;
+    padding-top: 12px;
+    padding-right: 0px;/* add by yansong */
+    color: #404040;
+}
+
+.order-table .point-info em {
+    font-weight: bold;
+}
+
+.order-table .point-info a {
+    text-decoration: underline;
+    margin-left: 12px;
+}
+
+.order-table .charge-info {
+    text-align: right;
+    padding-top: 21px;
+    padding-bottom: 10px;
+    color: #404040;
+}
+
+#goods .order-table .charge-info {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.order-table .charge-info .total {
+    color: #f60;
+    font: 20px tahoma;
+    margin-right: 3px;
+}
+
+.order-table .charge-info .point {
+    font: bold 13px / 28px tahoma;
+}
+
+.order-table .go {
+    text-align: right;
+    padding-bottom: 30px;
+}
+
+.order-table .go button {
+    float: right;
+    margin-left: 6px;
+}
+
+.order-table .unable-title {
+    text-align: left;
+    font-weight: bold;
+}
+
+.order-table .unable-title a {
+    font-weight: normal;
+}
+
+/* 给卖家留言 */
+.order-table .gbook {
+    overflow: hidden;
+    zoom: 1;
+    float:left;
+    display:inline;
+    line-height:15px;
+}
+
+.order-table .gbook * {
+    float: left;
+}
+
+.order-table .gbook label {
+    padding-top: 3px;
+}
+
+.order-table .gbook textarea {
+    width: 220px;
+    height: 15px;
+    border: 1px solid #8FB9DC;
+    padding: 2px;
+    overflow: auto;
+    resize:none;
+}
+
+.order-table .gbook textarea.s {
+    height: 40px;
+    border:1px solid #FFAD35;
+}
+
+.order-table .gbook textarea.off {
+    color: #999;
+}
+.order-table .gbook .gbook-title{
+    color:#999;
+}
+.order-table .gbook em {
+    width: 360px;
+    margin: 5px 0 0 72px;
+}
+
+.order-table .gbook .anonymous {
+    margin-left: 16px;
+    *margin-left: 12px;
+}
+
+.order-table .gbook .anonymous input {
+    margin: 0 5px 0 0;
+    *margin: -3px 0 0 0;
+    vertical-align: middle;
+}
+
+.order-table .gbook .msg {
+    clear: both;
+    white-space: nowrap;
+}
+
+.order-table tfoot .msg p {
+    float: right;
+    margin-top: 3px;
+}
+/*发票*/
+.order-table .invoice {
+     float:left;
+    display:inline;
+     line-height:15px;
+}
+.order-table .invoice label {
+    padding-top: 3px;
+}
+
+.order-table .invoice textarea {
+    width: 220px;
+    height: 15px;
+    border: 1px solid #8FB9DC;
+    padding: 2px;
+    overflow: auto;
+  
+    resize:none;
+}
+
+.order-table .invoice textarea.s {
+    height: 40px;
+    border:1px solid #FFAD35;
+}
+
+.order-table .invoice textarea.off {
+    color: #999;
+}
+.order-table .invoice .invoice-title{
+    color:#999;
+    float:left;
+    display:inline;
+}
+.order-table .invoice .invoice-edit{
+    vertical-align: top;
+    margin-left:10px;
+    padding-top:2px;
+    display:inline-block;
+}
+/*商家联盟*/
+.order-table .shop .alliance-order-icon {
+    vertical-align: middle;
+    padding: 2px 2px;
+}
+
+.order-table .shop .alliance-order-text {
+    float: right;
+    *margin-top: -25px;
+}
+
+/*发票抬头 阿大 20100701*/
+/*
+.order-table .invoice {
+    overflow: hidden;
+    margin-bottom: 10px;
+    *zoom: 1;
+}
+
+.order-table .invoice * {
+    float: left;
+}
+
+.order-table .invoice em {
+    padding-right: 5px;
+}
+
+.order-table .invoice .default,
+.order-table .invoice .custom {
+    display: block;
+    height: 21px;
+}
+
+.order-table .invoice .custom {
+    padding-left: 12px;
+}
+
+.order-table .invoice .custom .h {
+    margin-left: -12px;
+    padding: 4px;
+}
+
+.order-table .invoice .custom input {
+    border: 1px solid #A7A6AA;
+    height: 15px;
+    padding: 2px;
+    width: 340px;
+}
+
+.order-table .invoice .custom {
+    display: none;
+}
+
+.order-table .invoice-edit .custom {
+    display: block;
+}
+
+.order-table .invoice-edit .default {
+    display: none;
+}
+
+.order-table .invoice .msg {
+    clear: both;
+}
+
+.order-table .invoice .msg em {
+    margin: 5px 0pt 0pt 72px;
+    width: 90px;
+    text-align: left;
+}
+*/
+/* 小计 */
+.order-table .subtotal {
+    text-align: right;
+    /*vertical-align: top;*/
+}
+
+.order-table .subtotal .msg {
+    float:right;
+}
+.order-table .subtotal .tips {
+    text-align:left;
+}
+.order-total {
+    clear:both;
+}
+.fare-insure {
+    padding-top:5px;
+}
+.fare-insure .fare-money {
+    font-weight:bold;
+    color:#ff6600;
+}
+
+/* 订单的积分和提交 */
+.point-out, .point-in, .order-go, .order-verify {
+    padding: 12px 0;
+    text-align: right;
+}
+
+.page-fastbuy .order-go {
+    text-align: left;
+}
+
+.point-out {
+    padding-top: 6px;
+}
+
+.point-out strong {
+    font-size: 18px;
+    color: #404040;
+    font-family: tahoma;
+}
+
+.point-out em {
+    font-weight: bold;
+    font-family: tahoma;
+}
+
+.point-out em.cash {
+    color: #f60;
+}
+
+.point-out .text {
+    width: 56px;
+    padding: 2px;
+}
+
+.point-in {
+    margin-top:5px;
+    background: url(http://a.tbcdn.cn/app/tc/img/point_in.png) no-repeat right 0;
+}
+
+.point-in em {
+    font-weight: bold;
+    font-family: tahoma;
+    font-size: 14px;
+}
+
+.point-in strong {
+    font-family: tahoma;
+    font-size: 26px;
+    color: #f60;
+    font-weight: bold;
+}
+
+.point-in .msg {
+    zoom: 1;
+}
+
+.order-verify {
+
+}
+
+.order-verify input.text {
+    width: 142px;
+    padding: 3px 3px;
+    vertical-align: middle;
+}
+
+.order-verify em {
+    color: red;
+    font: 12px 'simsun', arial;
+}
+
+.order-verify a.change {
+    width: 50px;
+    display: inline-block;
+    line-height: 14px;
+    padding-top: 12px;
+}
+
+.order-verify img {
+    border: 1px solid #c0c0c0;
+    vertical-align: middle;
+    margin-top: -11px;
+}
+
+.order-go {
+    margin-right: -4px;
+}
+
+.order-go .back {
+    padding-left: 16px;
+    background: url(http://a.tbcdn.cn/app/tc/img/back.png) no-repeat 0 1px;
+    margin-right: 12px;
+}
+
+.order-go button {
+    width: 138px;
+    height: 29px;
+    background: url(http://a.tbcdn.cn/app/tc/img/order_go.png) no-repeat;
+    border: 0;
+    text-indent: -999em;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* 以下宝贝已不能买 */
+.order-table-unable thead th, .order-table-unable tbody td {
+    border-color: #ddd;
+}
+
+.order-table-unable tbody tr, .order-table-unable tbody tr:hover {
+    background-color: #ededed !important;
+}
+
+.order-table-unable tbody td.s-amount a:hover, .order-table-unable tbody td.s-amount a:active {
+    border-color: #dbdbdb;
+}
+
+.order-table-unable tbody td.s-amount, #goods .order-table tbody td.s-amount {
+    -moz-user-select: -moz-all;
+}
+
+#goods .order-table tbody td {
+    border-bottom-color: #ddf0fe;
+}
+
+#goods .order-table tbody tr:hover {
+    background: #f1f8ff;
+}
+
+/**
+ * 空车
+*/
+#empty {
+    padding: 48px 0 100px 156px;
+    background: url(http://a.tbcdn.cn/app/tc/img/empty.png) no-repeat 40px 46px;
+}
+
+#empty h2 {
+    font: bold 14px / 20px arial;
+}
+
+#empty ul {
+    margin-top: 12px;
+    line-height: 20px;
+}
+
+/**
+ * Form Fields
+*/
+.form {
+    zoom: 1;
+}
+
+.form:after, .form fieldset ul:after, .form fieldset li span:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.form fieldset ul {
+    /*zoom: 1;*/
+}
+
+.form fieldset li {
+    clear: left;
+}
+
+.form fieldset li li {
+    float: left;
+    clear: none;
+    white-space: nowrap;
+    zoom: 1;
+    margin: 2px 10px 2px 0;
+}
+
+.form fieldset label {
+    float: left;
+    width: 80px;
+    padding-left: 0;
+    padding-right: 8px;
+    text-align: right;
+    color: #404040;
+    padding-top: 4px;
+    zoom: 1;
+    line-height: 1.2;
+}
+
+.form fieldset li span label {
+    width: auto;
+    padding: 0;
+    text-align: left;
+    padding-top: 0;
+    *padding-top: 3px;
+    color: #404040;
+}
+
+.form fieldset li span {
+    display: block;
+    *display: inline;
+    overflow: hidden;
+    zoom: 1;
+    color: #808080;
+}
+
+.form fieldset li span em {
+    position: absolute;
+    margin: 0 0 0 -8px;
+    font-style: normal;
+    color: red;
+    line-height: 24px;
+    font-family: 'simsun';
+}
+
+.form fieldset li .text {
+    padding: 2px;
+    *padding: 1px 2px;
+}
+
+.form fieldset li select {
+    height: 23px;
+    line-height: 23px;
+    color: #404040;
+}
+
+.form fieldset li textarea {
+    padding: 2px;
+    height: 44px;
+}
+
+.form fieldset li h2 {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    *float: left;
+    width: 150px;
+    text-align: right !important;
+    margin-bottom: 0 !important;
+}
+
+.order-info h2 {
+    margin-bottom: -30px !important;
+}
+
+.form fieldset li small {
+    padding-left: 10px;
+    font-size: 12px;
+    color: #7f7f7f;
+    font-weight: normal; /**float: left;*/
+}
+
+.delivery-info fieldset li small {
+    color: #000;
+}
+
+.form fieldset li small span {
+    display: inline;
+    *zoom: normal;
+    overflow: visible;
+}
+
+.form fieldset li small span:after {
+    display: inline;
+}
+
+/**
+ * 确认订单
+*/
+#order-confirm-iframe {
+    padding: 0;
+    margin: 0;
+    width: 950px;
+}
+
+#order-wrapper {
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    border-radius: 0 5px 0 0;
+    background: #D9F6FF;
+    padding: 12px;
+}
+
+#order {
+    padding-top: 10px;
+    background: white; /*margin: 0 15px;*/
+    /*border-top:15px #D9F6FF solid;*/
+}
+
+#order h2, #goods h2 {
+    font: bold 15px / 20px arial;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#order iframe {
+    overflow: hidden;
+    width: 100%;
+}
+
+#address {
+    margin-bottom: 40px;
+    color: #404040;
+}
+
+#address ul {
+    padding-left: 40px;
+}
+
+#address ul ul {
+    padding-left: 0;
+}
+
+#address li {
+    margin-bottom: 5px;
+    border: 1px solid #fff;
+    _zoom: 1;
+}
+#address #temp-address,
+#address #temp-address li {
+    height: auto;
+}
+
+#address li.selected {
+    background-color: #fdf2c9;
+    border: 1px solid #FBEBAD;
+}
+
+#address .go {
+    margin-left: 95px;
+    _margin-left: 98px;
+}
+
+#address .go .skin-gray {
+    margin-left: 5px;
+}
+
+#address .msg {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+#address .msg p {
+    padding: 2px 10px 0 23px;
+}
+
+.msg .loading {
+    color: #404040;
+    float: left;
+    line-height: 16px;
+    padding: 2px 10px 2px 23px;
+    background: url(http://img03.taobaocdn.com/tps/i3/T1NAdGXb0FXXXXXXXX-16-16.gif) no-repeat 0 3px;
+}
+
+#address li .set-default {
+    display: none;
+}
+
+#address li.hover .set-default {
+    display: inline;;
+    margin-left: 15px;
+}
+
+#temp-address .form {
+    display: none;
+}
+
+#temp-address hr {
+    margin: 10px 0 0 0;
+}
+
+#temp-address.selected {
+    position: relative;
+    top: -4px;
+    left: -8px;
+    padding: 0;
+    border: 1px solid #FFEB9C !important;
+    background-color: #fff !important;
+    z-index: 9998;
+}
+
+#temp-address .text {
+    margin-left: 0;
+}
+
+#temp-address.selected .container {
+    padding: 1px 5px;
+    border: 3px solid #FFF7D8;
+    position: relative;
+}
+
+.container .edit {
+    padding-left: 14px;
+    background: #fff url(http://a.tbcdn.cn/app/tc/img/edit.png) 0 50% no-repeat;
+    text-decoration: underline;
+    display: none;
+    margin-left: 10px;
+}
+
+.container .cancel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    background: #fff url(http://a.tbcdn.cn/app/tc/img/close.png) 50% 50% no-repeat;
+    height: 9px;
+    width: 9px;
+    padding: 5px;
+}
+
+.container .cancel:focus {
+    outline: none;
+}
+
+.container .cancel span {
+    display: none;
+}
+
+#temp-address.selected .container .cancel {
+    visibility: visible;
+}
+
+#temp-address.selected .form {
+    display: block;
+    padding: 15px;
+}
+
+#temp-address.locked .form {
+    display: none;
+}
+
+#temp-address.locked .max-notice {
+    margin-top: 3px;
+    margin-left: 22px;
+    *margin-left: 29px;
+    height: auto !important;
+}
+
+#temp-address.locked .edit {
+    display: inline;
+}
+
+#temp-address.locked .cancel {
+    visibility: hidden;
+}
+
+#temp-address.locked .msg {
+    display: block;
+}
+
+#address label {
+    padding-left: 8px;
+}
+
+div.max-notice {
+    display: inline-block;
+    /* ie8,firefox3,safari,opera */
+    display: -moz-inline-stack;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    filter: alpha(opacity = 50);
+    opacity: 0.5;
+    background-color: #404040;
+    z-index: 9997;
+}
+
+/*在购物选择其他收获地址出现遮罩层解决ie6问题*/
+.shim {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.5;
+    _filter:alpha(opacity=0);
+}
+
+#address .addr-dist {
+    _position:absolute;
+    _width:100%;
+}
+.addr-dist li {
+    margin-bottom: 0 !important;
+}
+
+.addr-dist li em {
+    margin: -3px 0 0 0 !important;
+}
+
+#addrZip {
+    margin-left: 8px !important;
+}
+
+li#temp-address .form  .msg,
+.address-confirm .msg {
+    display: none;
+    margin: 5px 0 0 0;
+}
+
+li#temp-address .invalid .msg,
+.address-confirm .invalid .msg {
+    display: block;
+}
+
+.invalid input, .invalid textarea, .invalid select {
+    border: 1px solid #FF8080;
+}
+
+/* Loading Status */
+.loading-status {
+    position: absolute;
+    width: 254px;
+    height: 79px;
+    top: 0;
+    left: 348px;
+    background: transparent url(http://a.tbcdn.cn/app/tc/img/loading_bg.png) 50% 50% no-repeat;
+    text-align: center;
+    z-index: 9999;
+}
+
+.loading-status span {
+    display: inline-block;
+    padding-left: 25px;
+    color: #000;
+    font-size: 14px;
+    line-height: 79px;
+    background: transparent url(http://a.tbcdn.cn/app/tc/img/loading.gif) 0 50% no-repeat;
+}
+
+/* Discount Pop */
+.discount-pop {
+    text-align: left;
+    background: #e8e8e8;
+    padding: 5px;
+    border: 1px solid #666;
+}
+
+.discount-pop ul {
+    background: white;
+    padding: 5px;
+    width: 200px;
+}
+
+.discount-pop ul li em {
+    color: #f60;
+}
+
+.discount-pop span {
+    position: absolute;
+    left: 5px;
+    top: -6px;
+    width: 11px;
+    height: 7px;
+    background: url(http://a.tbcdn.cn/img/app/volcano/popup_arrow.gif) no-repeat;
+}
+
+/* Login Popup */
+.login-now {
+    position: absolute;
+    top: -450px;
+    left: -227px; /*width:642px;*/
+    height: 307px;
+    background-color: #fafafa;
+    border: #aaaaaa solid 1px;
+    -moz-box-shadow: #ccc 3px 3px 3px;
+    -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX = 3, OffY = 3, Color = silver, Positive = true);
+}
+
+.login-now .shadow {
+    /*width:450px;*/
+    height: 309px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background-color: #000;
+    filter: alpha(opacity = 20);
+    opacity: 0.2;
+}
+
+.login-now .shadow span {
+    display: none;
+}
+
+.login-now .skin {
+    height: 270px;
+    background-color: #fafafa;
+    border: #ffffff solid 1px;
+}
+
+/* Related Items by KongWei @ 2009-6-2 */
+#related h2 {
+    background: transparent url(http://a.tbcdn.cn/img/app/hesper/arrow_rb.png) no-repeat scroll 3px 6px;
+    font-size: 14px;
+    padding-left: 16px;
+}
+
+#related .pic {
+    border: 1px solid #CED2D1;
+}
+
+#related ul li {
+    float: left;
+}
+
+#related .item {
+    text-align: center;
+}
+
+#related p.null {
+    text-align: center;
+    line-height: 170px;
+}
+
+#recently-viewed {
+    float: left;
+    width: 270px;
+    overflow: hidden;
+}
+
+#recently-viewed ul {
+    margin-left: 16px;
+}
+
+#recently-viewed ul li {
+    margin: 5px 20px 0 0;
+}
+
+#recently-viewed .price {
+    text-align: center;
+}
+
+#recently-viewed .price strong {
+    background-image: none;
+    font-size: 12px;
+    padding-left: 0;
+    font-weight: 700;
+}
+
+#others-bought {
+    border-left: 1px solid #CCC;
+    padding-left: 10px;
+    float: left;
+    position: relative;
+    width: 640px;
+    overflow: hidden;
+}
+
+#others-bought ul {
+    height: 155px;
+    padding-top: 15px;
+}
+
+#others-bought ul li {
+    margin-left: 6px;
+}
+
+#others-bought .item {
+    width: 100px;
+    overflow: hidden;
+}
+
+#others-bought .pic {
+    margin: 0 auto;
+}
+
+#others-bought .desc {
+    margin-top: 10px;
+    height: 36px;
+    overflow: hidden;
+}
+
+#others-bought .price strong {
+    font-size: 12px;
+    background-position: 0 -2px;
+}
+
+#others-bought .promotion-today {
+    text-decoration: underline;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* 确认订单出错时图标 by chonghou @ 2009-07-21 */
+#content .feedback-page-error {
+    background: url(http://img02.taobaocdn.com/tps/i2/T1L71cXhxiXXXXXXXX-100-65.png) no-repeat;
+    padding-left: 116px;
+    min-height: 65px;
+}
+
+/* Fast Buy by KongWei @ 2009-06-19 */
+#fastbuy .msg {
+    margin-top: 5px;
+}
+
+#fastbuy .address-confirm fieldset ul,
+#fastbuy .delivery-info fieldset ul {
+    /*margin-left:35px;*/
+}
+
+#fastbuy .address-confirm fieldset ul ul,
+#fastbuy .delivery-info fieldset ul ul {
+    margin-left: 0;
+}
+
+#fastbuy .address-confirm fieldset li,
+#fastbuy .delivery-info fieldset li {
+    margin-bottom: 10px;
+}
+
+#fastbuy .address-confirm .address-set li {
+    margin-bottom: 5px;
+
+}
+
+#fastbuy .address-confirm fieldset li label,
+#fastbuy .delivery-info fieldset li label {
+    width: 150px;
+}
+
+#fastbuy .address-confirm fieldset li .text,
+#fastbuy .delivery-info fieldset li .text {
+    margin: 0;
+}
+
+#fastbuy .address-confirm .cod-attention {
+    margin: 0 65px 10px 157px;
+    background: url("http://a.tbcdn.cn/sys/common/img/msg_bg.png") no-repeat scroll 15px -1258px #E5F5FF;
+    border: 1px solid #40B3FF;
+    padding: 15px 10px 5px 60px;
+}
+
+#fastbuy .address-confirm .cod-error {
+    margin: 0 65px 0 133px;
+    background: url("http://a.tbcdn.cn/sys/common/img/msg_bg.png") no-repeat scroll 15px -390px #FFF2F2;
+    border: 1px solid #FF8080;
+    padding: 15px 10px 15px 60px;
+}
+
+#fastbuy .address-confirm .cod-attention h3 {
+    margin-bottom: 15px;
+}
+
+#fastbuy .delivery-info span {
+    line-height: 22px;
+    color: #000;
+}
+
+#fastbuy .delivery-info span .cod-icon {
+    background-position: 5px 1px;
+    *background-position: 5px 5px;
+    _background-position: 5px 7px;
+    padding-left: 25px;
+}
+
+#fastbuy .delivery-info span span,
+#fastbuy .delivery-info span span:after {
+    display: inline;
+}
+
+#fastbuy .delivery-info span span.hidden,
+#fastbuy .delivery-info span span.hidde:after {
+    display: none;
+}
+
+#fastbuy .delivery-info span dl label {
+    width: auto;
+    float: none;
+}
+
+#fastbuy .delivery-info span dl {
+    line-height: 22px;
+}
+
+#fastbuy .delivery-info span dl dd {
+    border: 1px solid #CCC;
+    background-color: #F3F3F3;
+    padding: 5px 5px 5px 20px;
+    width: 500px;
+}
+
+#fastbuy .delivery-info span dl dd li {
+    float: none;
+    margin: 0;
+}
+
+#fastbuy .delivery-info span dl dd li.msg {
+    display: block;
+}
+
+#fastbuy .delivery-info span dl dd li.msg {
+    display: block;
+}
+
+#fastbuy .delivery-info span .text {
+    color: #808080;
+}
+
+#fastbuy-popup {
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    width: 0;
+    height: 0;
+    background-color: #F0FAFF;
+    border: #B2D1FF solid 1px;
+    z-index: 9999;
+}
+
+#fastbuy .indicator {
+    display: -moz-display-box;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-top;
+    *vertical-align: baseline;
+    text-indent: -999em;
+    overflow: hidden;
+    background: url(http://img01.taobaocdn.com/tps/i1/T1j04kXXJ2yJOHNz_X-16-16.gif) no-repeat scroll 0 0 transparent;
+}
+
+#fastbuy .addr-dist li label {
+    text-align: right;
+}
+
+#fastbuy .order-info {
+    border-top: 10px solid #D9F6FF;
+    border-bottom: 10px solid #D9F6FF;
+    padding: 10px;
+}
+
+#fastbuy .order-info .order-table th {
+    height: 36px;
+}
+
+#fastbuy .order-info .order-table th {
+    border-bottom: 1px solid #D9F6FF;
+}
+
+#fastbuy .payment {
+    background: #FFF7D9;
+    height: 36px;
+    _height: 30px;
+    _padding-top: 6px;
+    line-height: 36px;
+    text-indent: 15px;
+}
+
+#fastbuy .payment .stressed {
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Microsoft YaHei', 'Microsoft Simhei', sans-serif;
+}
+
+#fastbuy .payment .pay-for-another {
+    /*_display:none;*/
+}
+
+#fastbuy .payment em {
+    font-size: 18px;
+    color: #ff5500;
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+}
+
+#fastbuy .payment input {
+    vertical-align: middle;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+#fastbuy .payment .points-box {
+    padding-left: 10px;
+}
+
+#fastbuy .payment .points-box em {
+    font-size: 12px;
+    font-weight: bold;
+    color: #404040;
+}
+
+.order-table .gbook textarea.off {
+    background: url(http://img01.taobaocdn.com/tps/i1/T1DeRkXlZRy0QLP9DI-344-19.png) no-repeat scroll 0 0 #fff;
+}
+
+.order-table .gbook.ccc textarea.off {
+    background: url(http://img01.taobaocdn.com/tps/i1/T1eOxqXXpkXXXXXXXX-344-19.png) no-repeat scroll 0 0 #fff;
+}
+
+.order-table .gbook textarea.on {
+    background: none #fff;
+}
+
+#header {
+    z-index: 9997;
+}
+
+/* IE6 only */
+div.overlay {
+    _position: absolute;
+}
+
+.container .cancel {
+    _margin: 5px;
+}
+
+#related {
+    _zoom: 1;
+}
+
+#others-bought ul li {
+    _margin-left: 5px;
+}
+
+#fastbuy-popup {
+    _position: absolute;
+}
+
+/**
+ * @modify: 增加消保icon;
+ * @by: 长天;
+ * @mtime: 2009/8/11;
+*/
+.xb a,
+.xb span {
+    vertical-align: middle;
+}
+
+.order-table .s-title .xb span {
+    margin-right: 0;
+}
+
+.xb a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    text-indent: -9999px;
+    background-image: url(http://img01.taobaocdn.com/tps/i1/T1eCRkXeQgC0Pg9ykn-498-250.png);
+    background-repeat: no-repeat;
+}
+
+.xb .xb-truth {
+    background-position: -188px 0;
+}
+
+.xb .xb-auth {
+    background-position: -338px 0;
+}
+
+.xb .xb-return {
+    background-position: -156px 0;
+}
+
+.xb .xb-quality {
+    background-position: -140px 0;
+}
+
+.xb .xb-thunder {
+    background-position: -297px 0;
+}
+
+.xb .xb-guarantee {
+    background-position: -319px 0;
+}
+
+/* 收货地址数量切换按钮  by jianfei */
+
+#more-addresses, #less-addresses {
+    float: right;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+#more-addresses {
+    background: transparent url("http://img07.taobaocdn.com/tps/i1/T1yudfXdXxXXXXXXXX-15-50.gif") no-repeat scroll right -3px;
+}
+
+#less-addresses {
+    background: transparent url("http://img07.taobaocdn.com/tps/i1/T1yudfXdXxXXXXXXXX-15-50.gif") no-repeat scroll right -28px;
+}
+
+/* end of 收货地址数量切换按钮*/
+
+/* modify end */
+
+/**
+* @modify: 打通收藏夹与购物车;
+* @by: changtian;
+* @mtime: 2009.9.10
+*/
+.unable-box {
+    /*height: 26px;*/
+    /*overflow: hidden;*/
+    border-top: 1px dashed #ccc;
+}
+
+.order-table-unable thead .trigger span {
+    display: inline;
+    float: right;
+    width: 102px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-indent: -9999px;
+    color: #404040;
+    font-weight: bold;
+    cursor: pointer;
+    background: #80b2ff url(http://img07.taobaocdn.com/tps/i7/T1x4puXdtDXXXXXXXX-114-285.png) no-repeat 0 -27px;
+}
+
+.expand-box {
+    height: auto;
+}
+
+.expand-box .order-table-unable thead .trigger span {
+    background-position: 0 0;
+}
+
+.order-table-unable tbody .lost-effective td {
+    padding-top: 10px;
+    text-align: left;
+    border: none;
+    background: #fff;
+}
+
+.order-table-unable tbody .lost-effective td .tip {
+    margin-left: 10px;
+}
+
+.order-table-unable tbody .lost-effective td .tip em {
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.order-table-unable tbody .lost-effective td button {
+    width: 114px;
+    height: 25px;
+    overflow: visible;
+    line-height: 25px;
+    background: url(http://img04.taobaocdn.com/tps/i4/T1wqpmXhlcXXXXXXXX-114-285.png) no-repeat 0 -172px;
+    border: none;
+    cursor: pointer;
+}
+
+#cart .unable-box .msg {
+    position: absolute;
+}
+
+#cart .unable-box .msg .attention {
+    background-color: #f0faff;
+    border: 1px solid #bde1f1;
+}
+
+/*
+ * 感兴趣的宝贝部分
+*/
+#interested {
+    width: 950px;
+    overflow: hidden;
+}
+
+#interested h3 {
+    position: absolute;
+    z-index: 100;
+    height: 20px;
+    line-height: 20px;
+    color: #404040;
+    font-size: 12px;
+}
+
+#interested .con {
+    overflow: hidden;
+}
+
+/* tabs */
+#interested .con .tabs {
+    height: 26px;
+    margin-bottom: 20px;
+    padding-left: 150px;
+    border-bottom: 1px solid #a7cbff;
+}
+
+#interested .con .tabs li {
+    display: inline;
+    float: left;
+    min-width: 1px;
+    height: 26px;
+    margin-right: 3px;
+    line-height: 26px;
+    _width: 1px;
+    _white-space: nowrap;
+}
+
+#interested .con .tabs li a {
+    display: block;
+    background: url(http://img04.taobaocdn.com/tps/i4/T1wqpmXhlcXXXXXXXX-114-285.png) no-repeat 0 -51px;
+}
+
+#interested .con .tabs li a span {
+    display: block;
+    height: 26px;
+    padding: 0 10px;
+    color: #111;
+    background: url(http://img04.taobaocdn.com/tps/i4/T1wqpmXhlcXXXXXXXX-114-285.png) no-repeat 100% -77px;
+    cursor: pointer;
+}
+
+#interested .con .tabs li a:hover {
+    text-decoration: none;
+}
+
+#interested .con .tabs li.current {
+    position: relative;
+    z-index: 1;
+    top: 1px;
+}
+
+#interested .con .tabs li.current a {
+    font-weight: bold;
+    background-position: 0 -109px;
+}
+
+#interested .con .tabs li.current a span {
+    background-position: 100% -135px;
+}
+
+/* pannel */
+#interested .con .pannel {
+    min-height: 250px;
+    _height: 250px;
+    padding-bottom: 20px;
+}
+
+#interested .con .pannel ul {
+    width: 960px;
+    overflow: hidden;
+}
+
+#interested .con .pannel ul li {
+    display: inline;
+    float: left;
+    width: 162px;
+    overflow: hidden;
+    margin: 0 14px;
+}
+
+#interested .con .pannel ul li .pic {
+    display: table-cell;
+    width: 160px;
+    height: 160px;
+    text-align: center;
+    vertical-align: middle;
+    *display: block;
+    *line-height: 0;
+    *font-family: arial;
+    *font-size: 140px;
+    border: 1px solid #e6e6e6;
+}
+
+#interested .con .pannel ul li .pic img {
+    vertical-align: middle;
+}
+
+#interested .con .pannel ul li .desc,
+#interested .con .pannel ul li .price {
+    display: block;
+    margin-top: 8px;
+    text-align: left;
+}
+
+#interested .con .pannel ul li .price {
+    color: #f60;
+    font-weight: bold;
+    text-indent: 12px;
+    background: url(http://img04.taobaocdn.com/tps/i4/T1wqpmXhlcXXXXXXXX-114-285.png) no-repeat 0 -271px;
+}
+
+/* 正在加载数据的gif动画图片 */
+#interested .pannel .tip {
+    height: 60px;
+    text-indent: 160px;
+    line-height: 60px;
+    color: #404040;
+}
+
+#interested .pannel .tip-loading {
+    line-height: 0;
+}
+
+#interested .pannel .tip-loading img {
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+#interested .pannel .tip-nodata {
+    background: #f7f7f7;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/*
+ * 增加去我的收藏夹
+ * by changzhi at 2010-01-25
+*/
+#J_FavPannel {
+    position: relative;
+}
+
+#J_FavPannel .gotomyfav {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+/* modify end */
+
+/**
+* @desc: 手机快速拍优化;
+* @by: changtian;
+* @mtime: 2009/11/18;
+*/
+/*
+* 订单列表
+*/
+
+.page-fastbuy #authorization {
+    height: 100px;
+}
+
+.page-fastbuy #authorization h2 {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-bottom: 0 !important;
+    text-align: right !important;
+    width: 150px;
+}
+
+.page-fastbuy #authorization   small {
+    color: #7F7F7F;
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.page-fastbuy #authorization  iframe {
+    margin-top: 10px;
+    height: 70px;
+}
+
+.page-fastbuy .address-set {
+    margin-left: 150px;
+    margin-bottom: 5px;
+    padding: 10px 10px 5px;
+    width: 600px;
+    background-color: #fff7d9;
+    color: #000;
+    font-weight: bold;
+}
+
+.page-fastbuy .address-set em {
+    font-weight: bold;
+}
+
+.page-fastbuy .address-set input {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.page-fastbuy #fastbuy .delivery-info .pay-method {
+    font-weight: bold;
+    color: black;
+}
+
+.page-fastbuy #fastbuy .delivery-info fieldset .cod-intro {
+    padding-left: 10px;
+    color: #808080;
+}
+
+.page-fastbuy #fastbuy .delivery-info fieldset .online-payment-intro {
+    padding-left: 10px;
+    color: #808080;
+}
+
+.page-fastbuy ul.scrolling-promo-hint {
+    text-align: right;
+    max-width: 340px;
+    _width: 340px;
+    float: right;
+}
+
+.label-server-error,
+.label-error {
+    background: url("http://a.tbcdn.cn/sys/common/img/msg_bg.png") no-repeat scroll 5px 5px #FFF2F2;
+    border: 1px solid #FF8080;
+    max-height: 50px;
+    line-height: 25px;
+    margin: 5px 0 0;
+    padding-left: 28px;
+    width: 400px;
+    color: #404040;
+    overflow: hidden;
+}
+
+/*修改访客购买页面错误提示文案宽度  by xiangyang 2011-04-14*/
+.page-fastbuy .address-confirm .label-error {
+    width: 500px;
+    margin: 5px 0 0;
+    padding-left: 28px;
+    overflow: hidden;
+}
+
+.page-fastbuy .popup-confirmid .label-error {
+    width: 200px;
+}
+
+.page-fastbuy .flow-steps {
+    padding-left: 7px;
+    _padding-bottom: 20px;
+    margin-top: 0;
+}
+
+.page-fastbuy .flow-steps .num4 li {
+    width: 212px;
+}
+
+.page-fastbuy .flow-steps .num5 li {
+    width: 167px;
+}
+
+.page-fastbuy .nav {
+    height: 175px;
+    background: white;
+    overflow: hidden;
+}
+
+.address-confirm {
+}
+
+.page-fastbuy .nav h3 {
+    height: 36px;
+    margin-bottom: 10px;
+    text-indent: -9999em;
+}
+
+.page-fastbuy .nav p {
+    font-size: 14px;
+    line-height: 2;
+}
+
+.page-fastbuy .nav  .arrow {
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background: url(http://img05.taobaocdn.com/tps/i5/T1Y.xDXeVLXXXXXXXX-200-100.png) no-repeat;
+    top: 0;
+    right: 0;
+}
+
+.page-fastbuy .nav .as-a-newbie {
+    float: left;
+    width: 530px;
+    height: 165px;
+    position: relative;
+    _display: inline;
+    padding-top: 20px;
+    padding-left: 15px;
+    background-color: #d9f6ff;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -khtml-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.page-fastbuy .nav .as-a-newbie h3 {
+    background: url(http://img03.taobaocdn.com/tps/i3/T1B.NDXixjXXXXXXXX-327-35.png) no-repeat;
+}
+
+.page-fastbuy .nav .as-a-newbie .arrow {
+    background-position: 5px -2px;
+}
+
+.page-fastbuy .nav .as-a-member {
+    float: right;
+    width: 380px;
+    height: 145px;
+    position: relative;
+    padding-left: 15px;
+    _display: inline;
+    padding-top: 20px;
+    background: #FEF7D5;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.page-fastbuy .nav .as-a-member .arrow {
+    background-position: -98px -2px;
+}
+
+.page-fastbuy .nav .as-a-member h3 {
+    background: url(http://img03.taobaocdn.com/tps/i3/T1HpXEXnddXXXXXXXX-203-36.png) no-repeat;
+}
+
+.page-fastbuy .nav .as-a-member .btn,
+.page-fastbuy .nav .as-a-member .long-btn {
+    margin-top: 15px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.page-fastbuy #crumbs {
+    margin-bottom: 20px;
+}
+
+.page-fastbuy .show-order {
+    position: relative; /* 加来这一句, 才能完全隐藏子元素 */
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    *margin-bottom: 0;
+}
+
+.page-fastbuy .order-list h2 {
+    width: 260px;
+    margin: 0 0 -23px 10px;
+}
+
+.page-fastbuy .order-list th.s-title {
+    text-indent: -9999px;
+}
+
+.page-fastbuy input[type=radio] {
+    vertical-align: middle;
+}
+
+/* 非会员与会员选择通用样式 */
+.page-fastbuy .type-info {
+    position: relative;
+    color: #666;
+}
+
+.page-fastbuy .type-info h3 {
+    padding-top: 20px;
+    text-indent: 28px;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.page-fastbuy .type-info h3 em {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+}
+
+.page-fastbuy .type-info ul {
+    margin: 20px 0 0 55px;
+}
+
+.page-fastbuy .type-info ul li {
+    height: 18px;
+    margin-top: 10px;
+    text-indent: 15px;
+    line-height: 18px;
+    background: url(http://img03.taobaocdn.com/tps/i3/T1TjloXmFkXXXXXXXX-133-178.png) no-repeat -127px -65px;
+
+}
+
+.page-fastbuy .cod-options {
+}
+
+.page-fastbuy .cod-options:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+}
+
+.page-fastbuy .cod-options ul {
+}
+
+.page-fastbuy .cod-options  li {
+    padding-left: 10px;;
+}
+
+.page-fastbuy .cod-options li.selected {
+}
+
+#fastbuy dl dd.cod-options label {
+    display: inline-block;
+    *zoom:1;
+    width: 120px;
+}
+
+.page-fastbuy .cod-options label span {
+    padding-left: 8px;
+}
+
+.page-fastbuy .cod-options .cod-info {
+    color:#808080;
+}
+
+.page-fastbuy .cod-detail {
+    position: absolute;
+    border: 1px solid #e1e1e1;
+    background-color: #fcfcfc;
+    padding-left: 10px;
+    padding-right: 10px;
+    left: 111px;
+    z-index: 1;
+}
+
+/* 用户类型选择区 */
+.page-fastbuy .user-type {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.page-fastbuy .user-type .nonmember {
+    display: inline;
+    float: left;
+    width: 630px;
+    height: 180px;
+    background: #dcf0ff;
+}
+
+.page-fastbuy .user-type .nonmember .btn-fastbuy {
+    position: absolute;
+    right: 100px;
+    top: 70px;
+    width: 134px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    background: url(http://img03.taobaocdn.com/tps/i3/T1TjloXmFkXXXXXXXX-133-178.png) no-repeat 0 0;
+}
+
+.page-fastbuy .user-type .member {
+    display: inline;
+    float: right;
+    width: 300px;
+    height: 180px;
+    background: #f6f6f6;
+}
+
+.page-fastbuy .user-type .member .btn-login {
+    display: block;
+    width: 120px;
+    height: 30px;
+    margin: 25px 0 0 50px;
+    text-align: center;
+    line-height: 30px;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    background: url(http://img03.taobaocdn.com/tps/i3/T1TjloXmFkXXXXXXXX-133-178.png) no-repeat 0 -39px;
+}
+
+.page-fastbuy .user-type .member p {
+    width: 200px;
+    margin: 20px 0 0 50px;
+}
+
+/* 快速通道使用帮助 */
+.page-fastbuy .help-fastbuy {
+    display: none;
+    height: 0;
+    margin-top: 30px;
+    overflow: hidden;
+    background: #dcf0ff;
+}
+
+.page-fastbuy .help-fastbuy h3 {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* 圆角样式 */
+.page-fastbuy .add-corner .corner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 10px;
+}
+
+.page-fastbuy .add-corner .b-corner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.page-fastbuy .add-corner .corner span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    background-image: url(http://img03.taobaocdn.com/tps/i3/T1TjloXmFkXXXXXXXX-133-178.png);
+    background-repeat: no-repeat;
+}
+
+.page-fastbuy .add-corner .t-corner {
+    margin-bottom: -10px;
+}
+
+.page-fastbuy .add-corner .b-corner {
+    margin-top: -10px;
+}
+
+.page-fastbuy .add-corner .t-corner .l {
+    top: 0;
+    left: 0;
+}
+
+.page-fastbuy .add-corner .t-corner .r {
+    top: 0;
+    right: 0;
+}
+
+.page-fastbuy .add-corner .b-corner .r {
+    bottom: 0;
+    right: 0;
+}
+
+.page-fastbuy .add-corner .b-corner .l {
+    bottom: 0;
+    left: 0;
+}
+
+/* 圆角: 非会员 */
+.page-fastbuy .nonmember .t-corner .l,
+.page-fastbuy .help-fastbuy .t-corner .l {
+    background-position: 0 -73px;
+}
+
+.page-fastbuy .nonmember .t-corner .r,
+.page-fastbuy .help-fastbuy .t-corner .r {
+    background-position: -15px -73px;
+}
+
+.page-fastbuy .nonmember .b-corner .l,
+.page-fastbuy .help-fastbuy .b-corner .l {
+    background-position: -45px -73px;
+}
+
+.page-fastbuy .nonmember .b-corner .r,
+.page-fastbuy .help-fastbuy .b-corner .r {
+    background-position: -30px -73px;
+}
+
+/* 圆角: 会员 */
+.page-fastbuy .member .t-corner .l {
+    background-position: -60px -73px;
+}
+
+.page-fastbuy .member .t-corner .r {
+    background-position: -75px -73px;
+}
+
+.page-fastbuy .member .b-corner .l {
+    background-position: -105px -73px;
+}
+
+.page-fastbuy .member .b-corner .r {
+    background-position: -90px -73px;
+}
+
+.page-fastbuy .order-go input {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.page-fastbuy .order-go p {
+    margin: 10px 0 15px;
+}
+
+/*
+* 显示帮助部分和快速拍部分
+*/
+.show-fastbuy .show-order {
+    display: none;
+}
+
+.show-fastbuy .help-fastbuy {
+    display: block;
+    height: 140px;
+}
+
+/*
+* 给确认收货地址部分的手机号码段添加高亮效果
+*/
+.show-fastbuy .address-confirm li.high-light {
+    padding: 5px 0;
+    background: #f1f8ff;
+    border: 1px solid #d1ebff;
+}
+
+/*
+* 修改运送方式--货到付款部分的样式
+*/
+#content.show-fastbuy .delivery-info .cod {
+    overflow: hidden;
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+#content.show-fastbuy .delivery-info .cod input {
+    display: inline;
+    float: left;
+    width: 20px;
+    margin: 5px 0 0 -15px;
+}
+
+#content.show-fastbuy .delivery-info .cod label {
+    display: block;
+}
+
+#content.show-fastbuy .delivery-info .cod .cod-icon {
+    background-position: 5px 4px;
+}
+
+#content.show-fastbuy .delivery-info .cod .cod-icon strong {
+    color: #f00;
+}
+
+#content.show-fastbuy .delivery-info .cod .cod-icon,
+#content.show-fastbuy .delivery-info .cod .text {
+    display: block;
+}
+
+#content.show-fastbuy .delivery-info .cod .text {
+    padding: 0;
+    text-indent: 10px;
+    *text-indent: 7px;
+}
+
+/* 手机快速拍优化 end */
+
+/*淘宝电器城icon*/
+.icon-3c a, .icon-dbb a{
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+
+}
+.icon-3c a {background: url(http://img07.taobaocdn.com/tps/i7/T1g9BqXoJfXXXXXXXX-16-16.png) no-repeat;}
+
+/*电保包*/
+.icon-dbb a { background: url(http://img01.taobaocdn.com/tps/i1/T1Ek1gXfRtXXXXXXXX-16-16.gif) no-repeat;}
+
+.icon-3c em, .icon-dbb em{
+    color: #fff;
+    text-indent: -9999px;
+    display: inline-block;
+    *margin-top: 5px;
+    overflow: hidden;
+    display: none !important;
+}
+/*end*/
+
+/*cod服务费分级  by yuchun @2010-4-1 start*/
+.delivery-info .server-fee {
+    padding-left: 48px;
+    width: 420px;
+}
+
+.delivery-info .server-fee input {
+    vertical-align: middle;
+}
+
+.delivery-info .server-fee .labeled {
+    width: 50px;
+    margin-left: -50px;
+    text-align: right;
+    position: absolute;
+}
+
+.delivery-info .server-fee p {
+    position: relative;
+}
+
+.delivery-info .server-fee .tips {
+    position: absolute;
+    width: 300px;
+    right: 0;
+}
+
+.view-corp-popup {
+    position: absolute;
+    background-color: #E8E8E8;
+    border: 1px solid #666666;
+    padding: 5px;
+}
+
+.view-corp-popup p {
+    background: #fff;
+    padding: 10px;
+}
+
+.view-corp-popup i {
+    background: url("http://a.tbcdn.cn/img/app/volcano/popup_arrow.gif") no-repeat scroll left top transparent;
+    display: block;
+    height: 7px;
+    left: 5px;
+    position: absolute;
+    top: -6px;
+    width: 11px;
+    padding-right: 80px;
+}
+
+.view-corp-popup a {
+    padding: 0 4px;
+}
+
+/*cod服务费分级  by yuchun @2010-4-1 end*/
+/*购物车数量超出的提示信息 by yuchun@2010-5-4 start*/
+.pageinfo-cart .tips p {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+
+/*购物车数量超出的提示信息 by yuchun@2010-5-4 end*/
+/*立刻购买泡泡提示，当购物车没有可购买的宝贝时 by xingdou@2010-10-26*/
+.cart-popup {
+    position: absolute;
+    z-index: 9999;
+    width: 250px;
+    text-align: left;
+}
+.cart-popup-border{
+    background-color:#E8E8E8;
+    border:1px solid #666666;
+    padding:5px;
+}
+.cart-popup-bd{
+    background-color:#FFFFFF;
+    padding:15px;
+    padding-top:5px;
+    color: #636363;
+}
+.cart-popup-icon{
+    background:url("http://img02.taobaocdn.com/tps/i2/T1MrpPXipdXXXXXXXX-11-7.gif") no-repeat scroll left top transparent;
+    display:block;
+    height:7px;
+    right:30px;
+    position:absolute;
+    bottom: -6px;
+    width:11px;
+    _bottom: -13px;
+}
+
+/*淘宝优惠区域，包含跨店铺优惠等信息*/
+.tb-promotion {
+    text-align:right;
+    margin-bottom:10px;
+}
+.tb-promotion .total em {
+    font-size:14px;
+    font-weight:bold;
+}
+.tb-promotion .desc {
+    color:#808080;
+}
+.tb-promotion .desc .name,
+.tb-promotion .desc .shop {
+    margin-top:6px;
+    position:relative;
+}
+.tb-promotion .desc .shop ul{
+    float:right;
+    padding:2px 2px 2px 4px;
+    border:1px solid #fbebb0;
+    background-color:#fef7db;
+}
+.tb-promotion .desc .shop em {
+    font-weight:bold;
+}
+.tb-promotion .desc .arr {
+    position:absolute;
+    top:-15px;
+    right:30px;
+}
+.tb-promotion .desc .arr em {
+    position:absolute;
+    font-size:0;
+    width:0;
+    height:0;
+    top:1px;
+    border:8px solid #fef7db;
+    border-style:dashed dashed solid dashed;
+    border-color:transparent transparent #fef7db transparent ;
+}
+.tb-promotion .desc .arr em.b {
+    top:0;
+    border-color:transparent transparent #fbebb0 transparent ;
+}
+.order-table .subtotal .tips a{
+    display:block;
+}
+/*新加管理收货地址 add by zhangting 10-11-4 上午10:58 */
+#address .manage-address {
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+#address .manage-address a:link,#address .manage-address a:visited {
+    color: #0044DD;
+    text-decoration: none;
+}
+/*{{{
+ * @desc支付方式前置
+ * @author wuyu
+*/
+#fastbuy .payment-info .entity {
+    margin:0 0 15px 150px;
+    _height:1%;
+    *min-height:1px;
+}
+#fastbuy .payment-info dl {
+    margin:8px 8px 8px 0;
+}
+#fastbuy .payment-info dt {
+    color:#000;
+    margin-bottom:8px;
+}
+#fastbuy .payment-info dd {
+    margin-left:20px;
+}
+#fastbuy .payment-info dt small.howto-open {
+    float:right;
+}
+#fastbuy .payment-info dd ul {
+    width:100%;
+    overflow:hidden;
+}
+#fastbuy .payment-info dd li {
+    float:left;
+    height:34px;
+    margin:0 20px 10px 0;
+}
+#fastbuy .payment-info dd .cashier-bank-qy {
+    margin-right:0;
+}
+#fastbuy .payment-info dd li a:hover {
+    border: 1px solid #ffb357;
+}
+#fastbuy .payment-info dd li a em {
+    overflow: hidden;
+    display: block;
+    text-indent: -100em;
+}
+#fastbuy .payment-info fieldset li label {
+    float:none;
+    padding-right:0;
+    padding-top:0;
+    text-align:left;
+}
+#fastbuy .payment-info fieldset li dd label {
+    width:123px;
+    line-height:100%;
+}
+#fastbuy .payment-info fieldset li dd .cashier-bank-qy .icon-box {
+    width:143px;
+}
+#fastbuy .payment-info fieldset li dt label {
+    width:auto;
+}
+#fastbuy .payment-info .cod-intro {
+    display:inline;
+}
+#fastbuy .payment-info .icon-cod {
+    background:transparent url(http://a.tbcdn.cn/sys/common/icon/trade/item_cod.png) no-repeat scroll 100% 4px;
+    padding-right:18px;
+}
+#fastbuy .payment-info .icon-payment {
+    margin-left:3px;
+    display:inline-block;
+    background:transparent url(http://a.tbcdn.cn/sys/common/img/msg_bg.png) no-repeat scroll 0 -348px;
+    width:18px;
+    height:18px;
+    text-indent:-9999px;
+    vertical-align:middle;
+    overflow:hidden;
+}
+#fastbuy .payment-info .icon {
+    width:auto;
+}
+#fastbuy .payment-info .cashier-bank-qy .icon {
+    width:123px;
+}
+#fastbuy .payment-info fieldset li li {
+    white-space:normal;
+}
+#fastbuy .payment-info .msg-notsupport {
+    margin-left:21px;
+}
+#fastbuy .payment-info fieldset li .icon-cod {
+    line-height:16px;
+}
+/*}}}*/
+.bundle-popup {
+    position:absolute;
+    margin:15px 0 0 -205px;
+    padding:9px;
+    width:220px;
+}
+.bundle-popup .iframe {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:-1;
+}
+.bundle-popup .arrow {
+    position:absolute;
+    top:1px;
+    left:190px;
+    width:17px;
+    height:9px;
+    overflow:hidden;
+    background:transparent url(http://img02.taobaocdn.com/tps/i2/T1rpRPXX4XXXXXXXXX-18-17.png) no-repeat scroll 0 0;
+}
+.bundle-popup .inner {
+    background-color:#fff6c8;
+    border:1px solid #ffcc1c;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:2px;
+}
+.bundle-popup .entity {
+    margin:3px;
+    padding:8px;
+    background-color:#fff;
+}
+.bundle-popup .entity li {
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.bundle-disabled {
+    margin-bottom:10px;
+}
+.bundle-disabled .tips {
+    float:none;
+}
+/*质检icon add by zhangting 11-5-30 下午2:10  */
+.xb .xb-zhijian {
+    background:url(http://img02.taobaocdn.com/tps/i2/T1f8FTXcBfXXXXXXXX.png) no-repeat 0 0 transparent;
+}
+
+
+/*电器城项目新加*/
+#goods .service-total-price{
+   
+}
+#goods .service-total-price em{
+     color: #F60;
+    font: bold 12px tahoma;
+}
+
+#goods .service-list.collapse{
+    text-align:left;
+}
+#goods .service-title{
+    float:left;
+    display:inline;
+}
+#goods .service-list.collapse{
+    padding-left:80px;
+    background: url(http://img01.taobaocdn.com/tps/i1/T1jbeqXbRIXXXXXXXX-7-14.png) no-repeat 65px center;
+}
+#goods .service-list.collapse li{
+    float:left;
+    display:inline;
+    background: url(http://img01.taobaocdn.com/tps/i1/T1CbCqXgJEXXXXXXXX-12-12.png) no-repeat 0 4px;
+    padding-left:17px;
+    line-height:19px;
+    margin-left:30px;
+}
+#goods .service-list.collapse .service-do-edit{
+    float:right;
+    margin-right:20px;
+}

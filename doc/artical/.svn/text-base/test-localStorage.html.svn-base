@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body></body>
+</html>
+<script>
+    var $=function(ele){
+        return document.getElementById(ele)
+    }
+    /**
+     * 混合两个object
+     */
+    var mix=function(target,prototypes){
+        for(var i in prototypes){
+            target[i]=prototypes[i];
+        }
+    }
+    var log=function(info,value){
+        var log=null;
+        var hasValue=(arguments.length!=1)
+        if(!$("consolelog")){
+            log=document.createElement("textarea");
+            mix(log.style,{
+                width:"200px",
+                height:"500px",
+                position:"absolute",
+                top:"0",
+                right:"0"
+            });
+            log.id="consolelog"
+            document.body.appendChild(log)
+        }else{
+            log=$("consolelog")
+        }
+        log.value+="\n"+info;
+        hasValue&&(log.value+="\n"+value);
+        try{
+            if(console&&console.log){
+                console.log(info);
+                hasValue&&console.log(value);
+            }else if(opera&&opera.postError){
+                opera.postError(info)
+                hasValue&&opera.postError(value)
+            }
+        }catch(e){
+            
+        }
+       
+    };
+    var Test=function(){
+
+        return{
+            numberIndex:function(){
+                localStorage[2]="test213";
+                log("支持纯数字索引?",localStorage[2])
+            },
+            numberStringIndex:function(){
+                localStorage['3']="test213";
+                log("支持数字字符串索引?",localStorage['3'])
+            },
+            undefinedIndex:function(){
+                log("不存在的索引?",localStorage['undefined'])
+            },
+            numberSet:function(){
+                localStorage.setItem(4,"43434")
+                log("支持纯数字设置?",localStorage[4])
+            },
+            numberStringSet:function(){
+                localStorage.setItem("5","43434")
+                log("支持数字字符串设置?",localStorage["5"])
+
+            },
+            undefinedGet:function(){
+                log("不存在的获取?",localStorage['undefined'])
+            },
+            oxTest:function(){
+                localStorage[6]="test213";
+                localStorage["6"]="testfsf";
+                log("数字和字符串是否互相干扰?",localStorage[6])
+            },
+            dengyu:function(){
+                log("数字和字符串是否互相干扰?",localStorage[6]===localStorage.getItem(6))
+            }
+        }
+    }();
+    for(var i in Test){
+        Test[i]();
+    }
+</script>

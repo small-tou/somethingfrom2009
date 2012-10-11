@@ -1,0 +1,37 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            #img-list img{
+                -webkit-transition: all 1.5s ease-in-out;
+                background: #aaa;
+                position: absolute;
+                top:0;
+                left:0;
+            }
+          
+        </style>
+    </head>
+    <body>
+        <div id="img-list">
+            <img src="http://img01.taobaocdn.com/imgextra/i1/687799975/T2Q40IXgJbXXXXXXXX_!!687799975.jpg"/>
+            <img src="http://img04.taobaocdn.com/imgextra/i4/687799975/T2qh0IXh0bXXXXXXXX_!!687799975.jpg"/>
+            <img src="http://img03.taobaocdn.com/imgextra/i3/687799975/T2sehkXaXMXXXXXXXX_!!687799975.jpg"/>
+        </div>
+        <script>
+            var imgs=document.getElementById("img-list").getElementsByTagName("img");
+            for(var i=0;i<imgs.length;i++){
+                imgs[i].onclick=function(){
+                   // this.style.webkitTransform="scale(0.001,0.001)"
+                    this.style.opacity=0
+                }
+            }
+        </script>
+    </body>
+</html>

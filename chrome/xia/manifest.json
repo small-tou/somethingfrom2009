@@ -1,0 +1,22 @@
+{
+  "name": "tms自动填充(淘宝内部工具)",
+  "version": "1.6",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "自动快速填充tms测试数据(淘宝内部工具)",
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title":"运行中",
+    "default_popup":"popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/","https://*/","https://*/*","http://*/*"],
+      "js": ["script.js"],
+      "run_at":"document_end",
+      "all_frames":true
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+10
+
+dir
+196
+https://mj-javascript-lib.googlecode.com/svn/trunk/version1.0.3/openapi/example/server
+https://mj-javascript-lib.googlecode.com/svn
+
+
+
+2011-07-13T11:14:10.427567Z
+50
+xinyu198736@gmail.com
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+338f9ee8-0c80-be1d-cdcd-b90a77f9b586
+
+INSTALL
+file
+
+
+
+
+2012-01-11T14:50:16.000000Z
+41b335e4827cae43edd49ccfea8a7430
+2011-07-13T11:14:10.427567Z
+50
+xinyu198736@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1505
+
+cache
+dir
+
+core
+dir
+
+www
+dir
+

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/library/store/mysql
+END
+mysql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/library/store/mysql/mysql.sql
+END
+install.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/library/store/mysql/install.php
+END

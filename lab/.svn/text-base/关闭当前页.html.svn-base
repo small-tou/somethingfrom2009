@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <a href="#" id="close">aaa</a>
+    </body>
+</html>
+<script>
+    document.getElementById("close").onclick=function(){
+   window.open('','_parent','');
+         window.close();
+    }
+
+</script>

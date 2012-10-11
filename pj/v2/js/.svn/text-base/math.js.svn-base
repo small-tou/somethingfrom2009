@@ -1,0 +1,81 @@
+(function(){
+    var matrix=function(config){
+        this._init(config)
+    }
+    matrix.prototype={
+        _init:function(config){
+            if(config&&config.data)
+                this.data=config.data;
+        },
+        /**
+         * 矩阵相乘
+         * @param {matrix} m 被乘的矩阵
+         */
+        mul:function(m){
+            var r=[],s=this.data,m=m.data,
+            p=s[0].length //每次运算相加的次数
+            if(m.length!=s[0].length) {
+                T.trace("矩阵不能相乘")
+            }
+            for(var i =0;i<s.length;i++){
+                r[i]=[]
+                for(var n=0;n<m[0].length;n++){
+                    r[i][n]=0;
+                    for(var l=0;l<p;l++){
+                        r[i][n]+=s[i][l]*m[l][n];
+                    }
+                }
+            }
+            this.data=r;
+            return this;
+        },
+        set:function(data){
+            this.data=data;
+        },
+        get:function(){
+            return this.data
+        },
+        toString:function(){
+            return this.data.to_s()
+        }
+    };
+    var cubicBezier=function(config){
+        this._init(config)
+    }
+    cubicBezier.prototype={
+        _init:function(config){
+            var p=this.points=config.points;
+            this.m1=new matrix();
+            this.m2=new matrix({
+                data:[
+                [1,0,0,0],
+                [-3,3,0,0],
+                [3,-6,3,0],
+                [-1,3,-3,1]
+                ]
+            });
+            this.m3=new matrix({
+                data:[
+                p.p0.toArray(),
+                p.p1.toArray(),
+                p.p2.toArray(),
+                p.p3.toArray()
+                ]
+            })
+            this.m=null
+        },
+        /**
+         * 获取某个时间点计算出来的坐标值,时间线不由此类控制
+         */
+        get:function(t){
+            this.m1.set([
+                [1,t*t,t*t*t,t*t*t*t]
+                ]);
+            this.m=this.m1.mul(this.m2).mul(this.m3)
+            return new SCD.Point(this.m.get()[0][0],this.m.get()[0][1]);
+        }
+    }
+    SCD.Math={}
+    SCD.Math.Matrix=matrix;
+    SCD.Math.CubicBezier=cubicBezier
+})();

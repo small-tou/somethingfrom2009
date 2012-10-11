@@ -1,0 +1,56 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+    var date=new Date();
+    var time=date.getTime();
+    var now
+    var count=0
+    /*  setTimeout(function(){
+        count++
+        if(count<300){
+              var i=0
+        while(i<10){
+            document.body.innerHTML+=i+"<br/>"
+            i++
+        }
+            setTimeout(arguments.callee,5);
+        }
+        
+    },5)
+     */
+    /*
+    var timer=setInterval(function(){
+        count++
+        var i=0
+        while(i<10){
+            document.body.innerHTML+=i+"<br/>"
+            i++
+        }
+        if(count>300){
+            clearInterval(timer)
+        }
+    },3)
+
+    setTimeout(function(){
+        if(t.width()>w){
+            //dom操作
+            setTimeout(arguments.callee,0);
+        }
+    },0)
+    while(t.width()>w){
+        //dom操作
+    }
+    */
+   setTimeout( function(){ console.log("bb") } , 0);

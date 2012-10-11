@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/library/body
+END
+OAuthBodyContentDisposition.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/library/body/OAuthBodyContentDisposition.php
+END
+OAuthBodyMultipartFormdata.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/library/body/OAuthBodyMultipartFormdata.php
+END

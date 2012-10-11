@@ -1,0 +1,108 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            *{
+                font:12px/1.5 tahoma,helvetica,clean,sans-serif;
+            }
+            .item{
+
+                line-height:30px;
+                padding-left:10px;
+            }
+            .avatar{
+                width:20px;
+                height:20px;
+                display: inline-block;
+                vertical-align: -5px;
+            }
+            .count{
+                float:right;
+                line-height:30px;
+            }
+            a:link,a:visited{
+                text-decoration: none;
+                color:#45649E;
+
+            }
+            ul,li{
+                list-style: none;
+                margin:0;
+                padding:0;
+            }
+            *{
+                font-size:12px;
+            }
+            html,body{
+                width:120px;
+                margin:0;
+            }
+            body{
+                padding:5px;
+                padding-left:20px;
+                padding-bottom: 20px;
+                width:260px;
+            }
+            strong{
+                color:#ff6700;
+                padding-right:10px;
+            }
+            div{
+                line-height:16px;
+            }
+            a:link,a:visited{
+                color:#4878B6;
+                text-decoration: none;
+            }
+            #list{
+                height:110px;
+                overflow:auto;
+            }
+            #list div{
+border-bottom:1px solid #eee;
+line-height:18px;
+            }
+        </style>
+        <script src="jquery.js"></script>
+    </head>
+    <body>
+        <div id="list">
+
+
+        </div>
+        <div><a href="notify.html" target="_self" style="padding-right:20px;">返回</a><a href="http://t.sina.com.cn" target="_blank">打开我的微博</a></div>
+
+    </body>
+    <script>
+       
+        var xhr = new XMLHttpRequest();
+        var url = "http://api.t.sina.com.cn/statuses/mentions.json?source=1053363421&count=15";
+        xhr.open("POST",url, true);
+        xhr.onreadystatechange =  function(e) {
+            if (xhr.readyState == 4) {
+                eval("var response="+this.responseText)
+                $("#list")[0].innerHTML="";
+                for(var i in response){
+                    var dom=document.createElement("div")
+                    dom.innerHTML=response[i].user.name+" : "+response[i].text
+                    $("#list")[0].appendChild(dom)
+                }
+            }};
+        xhr.send();
+        var xhr1 = new XMLHttpRequest();
+        var url1 = "http://api.t.sina.com.cn/statuses/reset_count.json?source=1053363421&type=2";
+        xhr1.open("POST",url1, true);
+        xhr1.onreadystatechange =  function(e) {
+            if (xhr1.readyState == 4) {
+              
+            }};
+        xhr1.send();
+        
+    </script>
+</html>

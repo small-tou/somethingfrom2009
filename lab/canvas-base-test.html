@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="600" height="300"></canvas>
+    </body>
+</html>
+<script>
+var $=MJ;
+$.use("canvas.base",function(){
+    
+    var can=new $.Canvas.core()
+    can.init();
+    can.canvas=$.Dom.get("#canvas");
+    can.begin();
+    can.on("render",function(p){
+        console.log("ss")
+    })
+    
+})
+</script>

@@ -1,0 +1,52 @@
+
+var $=function(ele){
+    return document.getElementById(ele)
+}
+
+
+chrome.extension.sendRequest({
+    cmd: "tabid"
+}, function(response) {
+    console.log(response)
+});
+/*
+document.body.onkeydown=function(e){
+ if(e.ctrlKey && e.keyCode==90){
+  chrome.extension.sendRequest({
+                cmd: "history"
+            });
+ }
+}
+*/
+var count=0;
+var lastCount=0;
+setInterval(function(){
+if(!$("messageBubble_bubbleMsgList_ul")){
+    return;
+}
+    var html=$("messageBubble_bubbleMsgList_ul").innerHTML
+    var msgCount=$("messageBubble_bubbleMsgList_ul").getElementsByTagName("li").length;
+    count=0;
+    if(msgCount!=0){
+        var reg=/<span class="count">\(([0-9]*?)\)<\/span>/g
+        var match;
+        while(match=reg.exec(html)){
+            count+=match[1]*1
+        }
+        /*
+         *<li id="messagebubble_msg_1" class="item"><a href="###"><span class="count">(1)</span><img class="avatar" src="http://face3.qun.qq.com/cgi/svr/face/getface?cache=0&amp;type=4&amp;fid=0&amp;uin=2261815352&amp;vfwebqq=f9acf0636cf11413e80f03c639b0b1985285f0730f8e3cd9ba6e65d7b74f323880b4f5b0d6f2b113" alt=""><span class="content"><span class="contentInner">CNodeJS一群：小尾巴怎么写？</span></span></a></li>
+         **/
+        if(count!=lastCount){
+            lastCount=count;
+            chrome.extension.sendRequest({
+                cmd: "hasMessage",
+                value:msgCount,
+                ele:html,
+                count:count
+            });
+            
+        }
+       
+    }
+    lis=null;
+},3000)

@@ -1,0 +1,355 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="jquery.js"></script>
+        <script src="main.js"></script>
+        <script src="jq-ui.js"></script>
+        <link rel="stylesheet" href="main.css"/>
+    </head>
+    <body>
+        <div id="main-canvas">
+            <div id="resize-control">
+
+            </div>
+        </div>
+
+        <script>
+            var CONTROLPADDING=5;
+
+            var Shape=function(){
+                this.init();
+            }
+            Shape.prototype={
+                init:function(){
+                    this.x=0;
+                    this.y=0;
+                    this.id=0;
+                    this.width=0;
+                    this.height=0;
+                    this.canvas
+                    this.con
+                    this.ctx
+                    this.globalControl;//全局控制对象
+                    this.beginX=0;//存储创建时的x和y,这个值创建之后就不会改变
+                    this.beginY=0;
+                },
+                drawRect:function(){
+
+                    var lineargradient = this.ctx.createLinearGradient(0,0,350,350);
+                    lineargradient.addColorStop(0,'#ff6700');
+                    lineargradient.addColorStop(1,'#49B14F');
+                    this.ctx.strokeStyle  ="#111";
+                    this.ctx.lineWidth=2
+                    //    this.ctx.lineCap="butt";
+                    //    this.ctx.lineJoin="bevel"
+                    //  this.ctx.rect(0,0,this.canvas.width,this.canvas.height)
+                    this.ctx.moveTo(3,0);
+                    this.ctx.lineTo(3,this.canvas.height);
+                    //this.ctx.arc(this.canvas.width/2,this.canvas.width/2,this.canvas.width/2-10,0,Math.PI*2)
+                    //	this.ctx.moveTo(this.canvas.width/2,0);
+                    //	this.ctx.lineTo(this.canvas.width/2,this.canvas.height);
+
+
+                    this.ctx.stroke();
+                }, 
+                clear:function(){
+                    this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+                },
+                resizeTo:function(x1,y1,x2,y2){
+                    this.x=x1||this.x;
+                    this.y=y1||this.y;
+                    this.width=x2-this.x;
+                    this.height=y2-this.y;
+                    if(x2<this.beginX){
+                        
+                        this.x=x2;
+                        this.width=this.beginX-this.x;
+                    }
+                    if(y2<this.beginY){
+                        this.y=y2;
+                        this.height=this.beginY-this.y;
+                    }
+                   
+                    $(this.con).css({
+                        left:(this.x-CONTROLPADDING)+"px",
+                        top:(this.y-CONTROLPADDING)+"px",
+                        width:this.width+CONTROLPADDING*2+"px",
+                        height:this.height+CONTROLPADDING*2+"px"
+                    })
+                    $(this.canvas).attr({
+                      
+                        width:this.width,
+                        height:this.height
+                    })
+                    this.clear();
+                    this.drawRect();
+                    (this.x+":"+this.y+":"+(this.x+this.width)+":"+(this.y+this.height))
+                },
+                active:function(){
+                    var now=this;
+                    $(this.con).css({
+                        border:"1px dashed rgba(99,99,99,1)"
+                        
+                    }).draggable({
+                        drag:function(e,ui){
+                            now.x=ui.offset.left+CONTROLPADDING;
+                            now.y=ui.offset.top+CONTROLPADDING;
+                            ResizeControl.place(
+                            now.x-CONTROLPADDING,
+                            now.y-CONTROLPADDING,
+                            now.x+now.width+CONTROLPADDING*2,
+                            now.y+now.height+CONTROLPADDING*2
+                        );
+                        },
+                        stop:function(){
+                            now.build();
+                        }
+                    });
+                    ResizeControl.place(
+                    this.x-CONTROLPADDING,
+                    this.y-CONTROLPADDING,
+                    this.x+this.width+CONTROLPADDING*2,
+                    this.y+this.height+CONTROLPADDING*2
+                );
+                },
+                unactive:function(){
+                    $(this.con).css({
+                        border:"1px dashed rgba(99,99,99,0)"
+                    }).draggable( "destroy" );
+                    ResizeControl.hide();
+                },
+                create:function(){
+                    this.x=this.beginX;
+                    this.y=this.beginY;
+                    this.canvas=document.createElement("canvas");
+                    this.con=document.createElement("div");
+                    $(this.canvas).addClass("compo-canvas").appendTo(this.con).attr({
+                        width:0,
+                        height:0
+                    })
+                    $(this.con).addClass("compo-con").appendTo(this.globalControl.mainCanvas).css({
+                        left:(this.x-CONTROLPADDING)+"px",
+                        top:(this.y-CONTROLPADDING)+"px",
+                        display:"block",
+                        width:0,
+                        height:0
+                    })
+                    this.ctx=this.canvas.getContext("2d")
+                    //  
+                },
+                build:function(){
+                    var now=this;
+                    this.beginX=this.x;
+                    this.beginY=this.y;
+                    $(this.canvas).bind("mousedown",function(){
+                        now.globalControl.activeShape=now;
+                        now.globalControl.active(now)
+                    })
+                },
+                destory:function(){
+                    this.con.parentNode.removeChild(this.con)
+                }
+            }
+            var GlobalControl=function(){
+                var mainCanvas;
+                var now;
+                var isCreating=false;
+                var lastActive;
+                return {
+                    shapes:[],
+                    activeShape:null,
+                    mainCanvas:null,
+                    init:function(id){
+                        now=this;
+                        this.mainCanvas=mainCanvas=$(id)
+                        this.bindEvent()
+                    },
+                    bindEvent:function(){
+                        mainCanvas.bind("mousedown",this.createShape);
+                        mainCanvas.bind("mousemove",this.mouseMove);
+                        mainCanvas.bind("mouseup",this.mouseUp)
+                        mainCanvas.bind("selectstart",function(){
+                            return false;
+                        })
+                    },
+                    createShape:function(e){
+                        if(e.target!=this) return;
+                        now.activeShape&&now.activeShape.unactive();
+                        var shape=new Shape();
+                        shape.beginX=e.pageX-mainCanvas.offset().left;
+                        shape.beginY=e.pageY-mainCanvas.offset().top;
+                        shape.id=now.shapes.length;
+                        shape.globalControl=now;
+                        shape.create()
+                        now.activeShape=shape;
+                        now.shapes.push(shape)
+                        isCreating=true;
+                    },
+                    mouseMove:function(e){
+                        if(isCreating){
+                            now.activeShape.resizeTo(null,null,e.pageX-mainCanvas.offset().left,e.pageY-mainCanvas.offset().top)
+                        }
+                    },
+                    mouseUp:function(e){
+                        if(isCreating){
+                            if( now.activeShape.width==0|| now.activeShape.height==0){
+                                now.activeShape.destory();
+                                now.shapes.splice(now.shapes.length-1,1)
+
+                            }else{
+                                now.activeShape.build();
+                                now.active(now.activeShape)
+                            }
+                            isCreating=false
+                        }
+                    },
+                    active:function(shape){
+                        lastActive&&lastActive.unactive();
+                        shape.active();
+                       
+                        lastActive=shape;
+                    }
+                }
+            }();
+
+            GlobalControl.init("#main-canvas");
+            var ResizeControl=function(){
+                /**
+                 * 用来控制缩放按钮
+                 */
+
+                var resizers={
+                    tlResizer:null,
+                    tResizer:null,
+                    trResizer:null,
+                    rResizer:null,
+                    brResizer:null,
+                    bResizer:null,
+                    blResizer:null,
+                    lResizer:null
+                }
+                var rW=10;
+                var rH=5;
+                var now
+                return{
+                    init:function(){
+                        now=this;
+                        this.con=$("#resize-control")
+                    },
+                    creatResizer:function(){
+                        for(var i in resizers){
+                            resizers[i]=document.createElement("div");
+                            resizers[i].className=i+" "+"resizer"
+                            resizers[i].id=i;
+                            $(resizers[i]).appendTo(this.con)
+                        }
+                        var drag=function(e,ui){
+                            var active=now.globalControl.activeShape
+                            var x1=active.x,y1=active.y,x2=active.x+active.width,y2=active.y+active.height;
+                            var left=ui.offset.left,top=ui.offset.top;
+                            switch(e.target.id){
+                                case "tlResizer":x1=left+rW;y1=top+rH;break;
+                                case "brResizer":x2=left;y2=top-rH/2;break;
+                                case "blResizer":x1=left+rW;y2=top-rH/2;break;
+                                case "trResizer":y1=top+rH;x2=left;break;
+                                case "rResizer":x2=left;break;
+                                case "lResizer":x1=left+rW;break;
+                                case "tResizer":y1=top+rH*3/2;break;
+                                case "bResizer":y2=top-rH/2;break;
+                            }
+                            (x1+":"+y1+":"+x2+":"+y2)
+                            active.resizeTo(x1,y1,x2,y2)
+                            active.active();
+                        }
+                        $([$("#tlResizer")[0],$("#trResizer")[0],$("#brResizer")[0],$("#blResizer")[0]]).draggable({
+                            drag:function(e,ui){
+                                drag(e,ui)
+                               
+                            },
+                            stop:function(){
+                                now.globalControl.activeShape.build();
+                            }
+                           
+                        });
+                        $([$("#rResizer")[0],$("#lResizer")[0]]).draggable({
+                            drag:function(e,ui){
+                                drag(e,ui)
+                               
+                            },
+                            stop:function(){
+                                now.globalControl.activeShape.build();
+                            },
+                            axis:"x"
+                        });
+                        $([$("#tResizer")[0],$("#bResizer")[0]]).draggable({
+                            drag:function(e,ui){
+                                drag(e,ui)
+                               
+                            },
+                            axis:"y",
+                            stop:function(){
+                                now.globalControl.activeShape.build();
+                            }
+                        });
+                    },
+                    place:function(x1,y1,x2,y2){
+                        this.con.css("display","block");
+                        $(resizers.tlResizer).css({
+                            left:x1-rW/2+"px",
+                            top:y1-rH/2+"px",
+                            cursor:"nw-resize"
+                        })
+                        $(resizers.brResizer).css({
+                            left:x2-rW+"px",
+                            top:y2-rH*3/2+"px",
+                            cursor:"nw-resize"
+                        })
+                        $(resizers.tResizer).css({
+                            left:(x1+(x2-x1)/2)-rW/2+"px",
+                            top:y1-rH/2+"px",
+                            cursor:"n-resize"
+                        })
+                        $(resizers.trResizer).css({
+                            left:x2-rW+"px",
+                            top:y1-rH/2+"px",
+                            cursor:"ne-resize"
+                        })
+                        $(resizers.rResizer).css({
+                            left:x2-rW+"px",
+                            top:(y1+(y2-y1)/2)+"px",
+                            cursor:"e-resize"
+                        })
+                        $(resizers.bResizer).css({
+                            left:(x1+(x2-x1)/2)-rW/2+"px",
+                            top:y2-rH*3/2+"px",
+                            cursor:"n-resize"
+                        })
+                        $(resizers.blResizer).css({
+                            left:x1-rW/2+"px",
+                            top:y2-rH*3/2+"px",
+                            cursor:"ne-resize"
+                        })
+                        $(resizers.lResizer).css({
+                            left:x1-rW/2+"px",
+                            top:(y1+(y2-y1)/2)+"px",
+                            cursor:"e-resize"
+                        })
+                    },
+                    hide:function(){
+                        this.con.css("display","none")
+                    }
+                }
+            }();
+            ResizeControl.globalControl=GlobalControl;
+            ResizeControl.init();
+            ResizeControl.creatResizer()
+        </script>
+
+    </body>
+</html>

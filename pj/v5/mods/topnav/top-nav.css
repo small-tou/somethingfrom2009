@@ -1,0 +1,71 @@
+#top-nav{
+    height:30px;
+    background: #6d93c1; /* 为较旧的或者不支持的浏览器设置备用属性 */
+    background: -moz-linear-gradient(top, #6d93c1, #7b9ec9);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d93c1), to(#7b9ec9));
+    border-top: 1px solid white;
+z-index:10000;
+position: relative;
+}
+#top-nav .nav-list{
+
+}
+#top-nav .nav-item{
+float:left;
+display:inline;
+position: relative;
+}
+#top-nav .nav-item .nav-title{
+    padding:0 15px;
+    line-height:30px;
+    color:#fff;
+    cursor:default;
+    -webkit-transition: background .1s ease-in;
+-moz-transition: background .1s ease-in;
+-o-transition: background .1s ease-in;
+transition: background .1s ease-in;
+}
+#top-nav .nav-item.expand .nav-title{
+    background:#fff;
+    color:#666;
+}
+#top-nav .nav-item .subNav{
+    position:absolute;
+    left:0px;
+    top:30px;
+    background:#fff;
+    border:1px solid #dedede;
+    box-shadow: 1px 1px 5px #dedede;
+    min-width:150px;
+    color:#666;
+    line-height:28px;
+}
+#top-nav .nav-item.expand .subNav{
+    display:block;
+}
+#top-nav .nav-item .subNav .sub-item{
+    padding:0 15px;
+    cursor:pointer;
+    -webkit-transition: background .1s ease-in;
+-moz-transition: background .1s ease-in;
+-o-transition: background .1s ease-in;
+transition: background .1s ease-in;
+}
+
+#top-nav .nav-item  .sub-item.disabled{
+    color:#999;
+    cursor:text;
+}
+#top-nav .nav-item .subNav .sub-item:hover{
+    background: #6d93c1; /* 为较旧的或者不支持的浏览器设置备用属性 */
+/*    background: -moz-linear-gradient(top, #6d93c1, #7b9ec9);*/
+/*    background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d93c1), to(#7b9ec9));*/
+   color:#fff;
+}
+#top-nav .nav-item .subNav .sub-line{
+    height:1px;
+    line-height:1px;
+    font-size:1px;
+    border-bottom:1px solid #dedede;
+    margin:3px 0;
+}

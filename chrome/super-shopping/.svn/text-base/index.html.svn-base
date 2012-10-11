@@ -1,0 +1,55 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="core.js"></script>
+        <script src="base.js"></script>
+        <style>
+            body{
+                width:300px;
+            }
+            *{
+                font-size:12px;
+            }
+            fieldset{
+                margin-top:10px;
+                border-radius:5px;
+                border: 1px solid #ddd;
+            }
+            .checkbox_label{
+                vertical-align:1px;
+                padding-left:3px;
+            }
+            .gray{
+                color:#aaa;
+            }
+            .black{
+                color:#333;
+            }
+            #info{
+                color:#ff6600;
+            }
+        </style>
+    </head>
+    <body>
+        
+    </body>
+</html>
+<script>
+    var $=MJ
+
+    var titleExpnull;
+
+    var exps={
+        "taobao":{
+            title:[".detail-hd h3",".tb-detail-hd h3"]
+        }
+    }
+
+</script>

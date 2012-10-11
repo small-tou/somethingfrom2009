@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="jquery.js"></script>
+        <link rel="stylesheet" href="http://a.tbcdn.cn/??p/global/1.0/global-min.css?t=2011081120110301.css" /> 
+        <style>
+            *{
+                font-size:12px;
+            }
+            html,body{
+                width:480px;
+                height:300px;
+                margin:0;
+            }
+            body{
+                padding:10px;
+            }
+            strong{
+                color:#ff6700;
+
+            }
+            div{
+                line-height:16px;
+            }
+            a:link,a:visited{
+                color:#4878B6;
+                text-decoration: none;
+            }
+            cookies{
+                display:block;
+                height:200px;
+                overflow: auto;
+                width:460px;
+            }
+            cookies a{
+                margin-left:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>已有cookie(可禁用和更改)</h1>
+    <cookies></cookies>
+    <h1>添加cookie</h1>
+    <addcookie>
+        name : <input style="width:110px" type="text" id="name"/> value : <input style="width:110px" type="text" id="value"/> <button id="add">添加</button>
+    </addcookie>
+    <h1>开关cookie</h1>
+    <qiehuan>
+        name : <input style="width:110px" type="text" id="qie_name" /> value : <input style="width:110px" type="text" id="qie_value"/><button id="open">开启</button><button id="close">关闭</button>
+    </qiehuan>
+    <script>
+        $("#qie_name").val(localStorage['qie_name'])
+        $("#qie_value").val(localStorage['qie_value'])
+        $("#open").click(function(){
+            chrome.tabs.getSelected(undefined, function(tab){
+                chrome.cookies.set({
+                    url:tab.url,
+                    name:$("#qie_name").val(),
+                    value:$("#qie_value").val()
+                }, function(){
+                    $("#name").val("")
+                    $("#value").val("")
+                    chrome.cookies.getAll({
+                        url:tab.url
+                    },function(cookies){
+                        $("cookies").html("")
+                        update(tab.url,cookies)
+                    })
+                })
+            });
+            localStorage['qie_name']=$("#qie_name").val()
+             localStorage['qie_value']=$("#qie_value").val()
+        })
+        $("#close").click(function(){
+            chrome.tabs.getSelected(undefined, function(tab){
+                chrome.cookies.remove({
+                    url:tab.url,
+                    name:$("#qie_name").val(),
+                }, function(){
+                    $("#name").val("")
+                    $("#value").val("")
+                    chrome.cookies.getAll({
+                        url:tab.url
+                    },function(cookies){
+                        $("cookies").html("")
+                        update(tab.url,cookies)
+                    })
+                })
+            });
+             localStorage['qie_name']=$("#qie_name").val()
+             localStorage['qie_value']=$("#qie_value").val()
+        })
+        chrome.tabs.getSelected(undefined, function(tab){
+            chrome.cookies.getAll({
+                url:tab.url
+            },function(cookies){
+                update(tab.url,cookies)
+            })
+        })
+        var cache=[
+            
+        ]
+        var update=function(url,cookies){
+            $.each(cookies,function(i,n){
+                var item=document.createElement("div");
+                
+                var key=document.createElement("input");
+                key.type="text";
+                key.className="name"
+                key.style.width="150px"
+                key.style.marginLeft="10px"
+                key.value=n.name
+
+                item.appendChild(key)
+                var value=document.createElement("input");
+                value.type="text";
+                value.className="value"
+                value.style.width="150px"
+                value.style.marginLeft="10px"
+                value.value=n.value
+                item.appendChild(value)
+                var check=document.createElement("a")
+                check.href=""
+                check.innerHTML="更改"
+                item.appendChild(check);
+                var del=document.createElement("a")
+                del.innerHTML="删除"
+                del.href=""
+                item.appendChild(del);
+                $("cookies").append(item);
+                
+                $(del).click(function(){
+                    
+                    var name=$(this.parentNode).children(".name").val();
+                    var value=$(this.parentNode).children(".value").val()
+                    chrome.cookies.remove({
+                        url:url,
+                        name:$(this.parentNode).children(".name").val()
+                    }, function(){
+                        cache.push({
+                            name:name,
+                            value:value,
+                            url:url,
+                            isClose:true
+                        })
+                        chrome.cookies.getAll({
+                            url:url
+                        },function(cookies){
+                            $("cookies").html("")
+                            update(url,cookies)
+                        })
+                    })
+                })
+                $(check).click(function(){
+
+                    var name=$(this.parentNode).children(".name").val();
+                    var value=$(this.parentNode).children(".value").val()
+                    chrome.cookies.set({
+                        url:url,
+                        name:name,
+                        value:value
+                    }, function(){
+                        chrome.cookies.getAll({
+                            url:url
+                        },function(cookies){
+                            $("cookies").html("")
+                            update(url,cookies)
+                        })
+                    })
+                })
+            })
+        }
+        $("#add").click(function(){
+            chrome.tabs.getSelected(undefined, function(tab){
+                chrome.cookies.set({
+                    url:tab.url,
+                    name:$("#name").val(),
+                    value:$("#value").val()
+                }, function(){
+                    $("#name").val("")
+                    $("#value").val("")
+                    chrome.cookies.getAll({
+                        url:tab.url
+                    },function(cookies){
+                        $("cookies").html("")
+                        update(tab.url,cookies)
+                    })
+                })
+            })
+        })
+        $("#value").keydown(function(e){
+            if(e.keyCode!=13) return;
+            chrome.tabs.getSelected(undefined, function(tab){
+                chrome.cookies.set({
+                    url:tab.url,
+                    name:$("#name").val(),
+                    value:$("#value").val()
+                }, function(){
+                    $("#name").val("")
+                    $("#value").val("")
+                    chrome.cookies.getAll({
+                        url:tab.url
+                    },function(cookies){
+                        $("cookies").html("")
+                        update(tab.url,cookies)
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+</html>

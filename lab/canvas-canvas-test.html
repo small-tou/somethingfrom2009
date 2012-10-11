@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="600" height="300"></canvas>
+    </body>
+</html>
+<script>
+var $=MJ;
+$.use("canvas.base",function(){
+    
+    var can=new $.Canvas.core()
+    can.init();
+    can.canvas=$.Dom.get("#canvas");
+    can.ctx=can.canvas.getContext("2d")
+    can.begin();
+    can.on("render",function(p){
+        can.ctx.shadowOffsetX = 2;
+can.ctx.shadowOffsetY = 2;
+can.ctx.shadowBlur    =19;
+can.ctx.shadowColor   = '#00f';
+can.ctx.fillStyle     = '#00f';
+can.ctx.fillRect(20, 20, 150, 100);
+    })
+    
+})
+</script>

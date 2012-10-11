@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            body{
+                width:400px;
+            }
+            div{
+                font-size: 12px;
+                padding:5px 0px 5px 0px;
+            }
+            fieldset{
+                margin-top:10px;
+                border-radius:5px;
+                border: 1px solid #ddd;
+                font-size:12px;
+            }
+            .checkbox_label{
+                vertical-align:1px;
+                padding-left:3px;
+            }
+            .gray{
+                color:#aaa;
+            }
+            .black{
+                color:#333;
+            }
+            #info{
+                color:#ff6600;
+            }
+            button{
+                border:1px solid #bbb;
+                border-radius:3px;
+                height:30px;
+                background: -webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0, rgb(239,239,239)),
+                    color-stop(1, rgb(247,247,247))
+                    );
+                color:#444;
+                cursor: pointer;
+                padding:0 10px;
+            }
+            button:hover{
+                border:1px solid #0886f5;
+                background: -webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0,#0886f5),
+                    color-stop(1, #41a4fa)
+                    );
+                color:#fff;
+            }
+            select{
+                border:1px solid #bbb;
+                border-radius:3px;
+                height:20px;
+
+            }
+            input{
+                height:20px;
+
+            }
+            .black_list{
+                padding:10px;
+            }
+            .black_list #see_black{
+                margin-left:20px;
+            }
+            .black_list button{
+                display:none;
+            }
+            #add{
+                height:25px;
+            }
+            #fontsize{
+                vertical-align: middle;
+
+            }
+            .font_size label{
+                padding-left:10px;
+            }
+            #fontsize_num{
+                color:#ff6700;
+                padding:0 5px;
+            }
+            #setText,#setNumber{
+                display:none;
+            }
+            .do{
+                margin-top:10px;
+                border:1px solid #eee;
+                border-radius:5px;
+                padding:5px;
+            }
+            #imgList{
+                border:1px solid #ddd;
+                max-height:200px;
+                overflow:auto;
+            }
+            #imgList div{
+                height:12px;
+                overflow:hidden;
+
+            }
+        </style>
+    </head>
+    <body>
+
+        <div>当前填充类型选择(选择后在页面的输入框中点击即可自动填写数据)</div>
+        <select id="type">
+            <option value="0">关闭功能</option>
+            <option value="1">图片地址</option>
+            <option value="2">随机文字</option>
+            <option value="3">随机数字</option>
+            <option value="4">url(统一填#)</option>
+        </select>
+        <div class="do">
+            <div id="setImg">
+                <div>设置备用的图片地址</div>
+                <div><button id="zhua">将本页图片抓取到备用地址中(只支持taobaocdn.com的图片)</button></div>
+                <div>
+                    <div id="imgList"></div>
+                </div>
+            </div>
+            <div id="setText">
+                <div>设置文字长度</div>
+                <div>最小长度:<input type="number" id="minText"/></div>
+                <div>最大长度:<input type="number" id="maxText"/></div>
+            </div>
+            <div id="setNumber">
+                <div>设置数字范围</div>
+                <div>最小:<input type="number" id="minNum"/></div>
+                <div>最大:<input type="number" id="maxNum"/></div>
+            </div>
+        </div>
+        <div>开发者:天祁(淘宝网UED)</div>
+        <div>博客:<a href="http://www.html-js.com" target="_blank">http://www.html-js.com</a></div>
+    </body>
+</html>
+<script>
+     localStorage['nowType']= localStorage['nowType']||"1" //默认填充图片
+    localStorage['on']=localStorage['on']||"0" //默认关闭
+     localStorage['imgs']= localStorage['imgs']||"" //默认关闭
+    localStorage['minText']= localStorage['minText']||"0"
+    localStorage['maxText']= localStorage['maxText']||"20"
+    localStorage['minNum']= localStorage['minNum']||"0"
+    localStorage['maxNum']=localStorage['maxNum']||"1000"
+    var $=function(ele){
+        return document.getElementById(ele)
+    }
+    var lastEle=$("setImg");
+
+
+    var getImgs=function(tab){
+        chrome.tabs.executeScript(tab.id,{
+            code:"var imgs=document.getElementsByTagName('img');"
+        });
+    };
+    (function(){
+        var imgs=localStorage["imgs"].split("$**$")
+        $("imgList").innerHTML=""
+        for(var i =0;i<imgs.length;i++){
+            $("imgList").innerHTML+="<div>"+imgs[i]+"</div>"
+        }
+    })();
+    function valueChange(ele){
+        var type=localStorage['nowType']
+        if(type!="0"){
+            localStorage['on']="1"
+        }else{
+            localStorage['on']="0"
+        }
+        if(type=="1"){
+            lastEle&&(lastEle.style.display="none")
+            $("setImg").style.display="block";
+            lastEle=$("setImg")
+        }else if(type=="2"){
+            lastEle&&(lastEle.style.display="none")
+            $("setText").style.display="block";
+            lastEle=$("setText")
+        }else if(type=="3"){
+            lastEle&&(lastEle.style.display="none")
+            $("setNumber").style.display="block";
+            lastEle=$("setNumber")
+        }else if(type=="4"){
+            lastEle&&(lastEle.style.display="none")
+        }else if(type=="0"){
+            lastEle&&(lastEle.style.display="none")
+        }
+      
+    }
+    $("type").value=localStorage['nowType']
+    valueChange($("type"))
+    $("type").onchange=function(){
+        localStorage['nowType']=this.value
+        valueChange(this)
+     
+    };
+    $("zhua").onclick=function(){
+        chrome.tabs.getSelected(null, function(tab) {
+            chrome.tabs.sendRequest(tab.id, {cmd:"zhua"}, function(response) {
+                var imgs=response.imgs;
+                console.log(response)
+                localStorage["imgs"]=imgs.join("$**$")
+                $("imgList").innerHTML=""
+                for(var i =0;i<imgs.length;i++){
+                    $("imgList").innerHTML+="<div>"+imgs[i]+"</div>"
+                }
+            });
+        });
+    };
+   $("minText").value=localStorage['minText']
+   $("maxText").value=localStorage['maxText']
+   $("minNum").value=localStorage['minNum']
+   $("maxNum").value=localStorage['maxNum']
+    setInterval(function(){
+        localStorage['minText']=$("minText").value
+        localStorage['maxText']=$("maxText").value
+        localStorage['minNum']=$("minNum").value
+        localStorage['maxNum']=$("maxNum").value
+    },10)
+   
+</script>

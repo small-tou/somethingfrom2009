@@ -1,0 +1,38 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../js/jquery.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/point.js"></script>
+        <script src="../js/math.js"></script>
+        <script src="../js/util.js"></script>
+    </head>
+    <body>
+        <canvas id="canvas" width="1000" height="600"></canvas>
+    <input type="range" max="30" min="4" id="light" step="2" value="10">
+        <script>
+                var ctx=$("#canvas")[0].getContext("2d");
+            //  B(u) = P0 * ( 1 - u ) 2 + P1 * 2 * u ( 1 - u ) + P2 u2
+            //P0 * ( 1 - u )3 + P1 * 3 * u * ( 1 - u )2 + P2 * 3 * u2 * ( 1 - u ) + P3 * u3
+            var f=function(begin,c1,c2,end,t){
+                var p=new SCD.Point(0,0)
+                p.x=begin.x*(1-t)*(1-t)*(1-t)+c1.x*3*t*(1-t)*(1-t)+c2.x*3*t*t*(1-t)+end.x*t*t*t
+                p.y=begin.y*(1-t)*(1-t)*(1-t)+c1.y*3*t*(1-t)*(1-t)+c2.y*3*t*t*(1-t)+end.y*t*t*t
+                return p;
+            }
+            ctx.beginPath();
+            for(var i=0;i<=1;i+=0.1){
+                var p=f(new SCD.Point(0,0), new SCD.Point(100,620), new SCD.Point(1000,33), new SCD.Point(800,600),i)
+                console.log(p.toString())
+                ctx.lineTo(p.x,p.y)
+            }
+            ctx.stroke();
+        </script>
+    </body>
+</html>

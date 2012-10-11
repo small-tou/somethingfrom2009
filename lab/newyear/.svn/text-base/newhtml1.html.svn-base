@@ -1,0 +1,25 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>＿￣─￣▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ︵ ︶ ︷ ︸ ︹ ︺ ︻ ︼ ︽ ︾ ︿ ﹀ ﹁ ﹂ ﹃ ﹄ ﹉ ﹊ ﹋ ﹌ ﹍ ﹎ ﹏ </title>
+    
+  </head>
+  <body>
+      <div>
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ︵ ︶ ︷ ︸ ︹ ︺ ︻ ︼ ︽ ︾ ︿ ﹀ ﹁ ﹂ ﹃ ﹄ ﹉ ﹊ ﹋ ﹌ ﹍ ﹎ ﹏ 
+
+
+</div>
+    <div>┌</div>
+    var bundleList = model.getAttr('bundles')
+
+                for(var i in bundleList){
+                    if(typeof(bundleList[i].usedPoint)!="undefined"&&bundleList[i].usedPoint*1!=0){
+                        bundleList[i]=undefined;
+                        if(model.getAttr("bundle")==i){
+                            model.setAttr("bundle","")
+                         }
+                    }
+                }
+  </body>
+</html>

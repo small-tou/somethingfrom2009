@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/example/server/core/templates
+END
+index.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/example/server/core/templates/index.tpl
+END
+register.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/example/server/core/templates/register.tpl
+END
+logon.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/50/trunk/version1.0.3/openapi/example/server/core/templates/logon.tpl
+END

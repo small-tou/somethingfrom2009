@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="core.js"></script>
+        <script src="base.js?ssD"></script>
+        <script src="json2.js"></script>
+        <style>
+            body,html{
+                background:#eee;
+                padding:0;
+                margin:0;
+                font-family: Georgia,"微软雅黑","黑体";
+                font-size:12px;
+                color:#404040;
+            }
+            a,a:visited{
+                color:#0E8CEE;
+            }
+            a,img{
+                border:none;
+            }
+            #content{
+
+            }
+            #header{
+                height:80px;
+                background: #555;
+                border-bottom:5px solid #9ED859;
+            }
+            h1{
+                margin:0;
+
+            }
+            #header h1{
+                color:#fff;
+                padding-top:25px;
+                padding-left:50px;
+                float:left;
+                font-size:35px;
+            }
+            #header .description{
+                margin-top:29px;
+                padding-left:50px;
+                color:#eee;
+                font-size:18px;
+                float:left;
+                padding-top:10px;
+            }
+            #header .description span{
+                font-size:14px;
+                color:#D6ECBC;
+                font-weight: normal;
+
+            }
+
+            .note{
+                min-height:35px;
+                margin:10px;
+                background: #fff;
+                border-radius:5px;
+                line-height:35px;
+                padding-left:10px;
+            }
+            em{
+                font-style: normal;
+                font-size:12px;
+            }
+            em.title{
+                color:#72B522;
+                padding:0 2px;
+                font-weight: bold;
+            }
+            em.num{
+                color:#ff6700;
+                padding:0 2px;
+            }
+            em.name{
+                color:#666;
+                padding:0 2px;
+            }
+            em.white{
+                color:#fff;
+                padding:0 2px;
+                font-size:14px;
+            }
+            em.gray{
+                color:#999;
+            }
+            .line{
+                height:3px;
+
+                font-size:0px;
+                line-height: 0px;
+                overflow:hidden;
+                background:#9ED859;
+                margin:10px;
+            }
+            .main-container{
+                margin:10px;
+            }
+            ul,li{
+                list-style: none;
+                padding:0;
+                margin:0;
+
+
+            }
+            .main-container li{
+                width:23%;
+                background:#fff;
+                border-radius:5px;
+                height:240px;
+
+                float:left;
+                display: inline;
+                margin-right:2.1%;
+                overflow: hidden;
+                margin-bottom:20px;
+            }
+            .main-container li .bd{
+                overflow: auto;
+                height:200px;
+                padding:5px;
+            }
+            .main-container li .item{
+                height:25px;
+                border-radius:3px;
+                background:#f7f7f7;
+                line-height:25px;
+                padding-left:10px;
+                margin-bottom:5px;
+            }
+            .main-container li .hd{
+                height:30px;
+                line-height:30px;
+                padding-left:10px;
+                background: #C1EC8F;
+                font-weight:bold;
+            }
+            body{
+
+            }
+            .index{
+                display: inline-block;
+                width:40px;
+                text-align: right;
+                padding-right:20px;
+            }
+            #title{
+                height:15px;
+                width:190px;
+            }
+            #folder{
+                width:195px;
+                height:22px;
+            }
+            .allstar {
+                display: inline-block;
+                width: 128px;
+                height: 11px;
+                position: relative;
+                margin-right: 5px;
+                background: url(star.gif);
+                overflow: hidden;
+                white-space: nowrap;
+                z-index: 1;
+            }
+            .allstar em {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: inline-block;
+                height: 11px;
+                background: url(star.gif) 0 -11px;
+            }
+            .allstar b {
+                position: relative;
+                display: inline-block;
+                width: 13px;
+                height: 11px;
+                cursor: pointer;
+                cursor: hand;
+                z-index: 1;
+            }
+            #help{
+                display: inline-block;
+                width:20px;
+                float:right;
+                height:20px;
+                padding-top:3px;
+            }
+            button{
+                float:right;
+                width:80px;
+                height:30px;
+                margin-right:10px;
+                margin-top:3px;
+            }
+            #help_layer{
+                display:none;
+            }
+            #update{
+                display:none;
+            }
+            ul,li{
+                line-height:20px;
+            }
+            li{
+                display:none;
+            }
+            h1{
+                font-size:12px;
+                height:20px;
+            }
+            ul.item{
+
+            }
+            h1.no-selected .folder{
+                display:inline-block;
+                width:25px;
+                height:15px;
+                background:url(no-selected.png) no-repeat 5px center ;
+                border:1px solid RGBA(255,255,255,0);
+                float:left;
+            }
+            h1 span{
+                display:inline-block;
+                height:18px;
+                line-height:18px;
+            }
+            h1:hover{
+
+                background-color:#F1F7FF;
+                border:1px solid RGBA(182,212,252,1)
+                    border-radius:3px;
+            }
+
+            h1.selected .folder{
+                display:inline-block;
+                width:20px;
+                float:left;
+                height:15px;
+                background:url(selected.png) no-repeat 5px center ;
+            }
+            ul.item.expand{
+                background:url(expand.png) no-repeat 15px 10px ;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="note" id="con">
+
+        </div>
+
+    </body>
+</html>
+<script>
+    var $=MJ,D=$.Dom,E=$.Event
+
+    var FavorPlus=function(){
+        var encode=function(str){
+            return str.replace(/</g,"&lt;").replace(/>/,"&gt;")
+        }
+        var    listFolderCount=0
+        return {
+            tree:{},
+            html:"",
+            init:function(){
+                this.listTree(this.tree)
+                D.get("#con").innerHTML=this.html
+            },
+            listTree:function(tree){
+                //       this.html+="<ul>"
+                listFolderCount++
+                for(var i =0;i<tree.length;i++){
+                    if(tree[i].children){
+                        this.html+="<ul class='item expand'>"
+                        this.html+="<h1 class='no-selected' style='padding-left:"+listFolderCount*20+"px;'><icon class='expand-icon'></icon><icon class='folder-icon'></icon><span>"+encode(tree[i].title)+"</span></h1>"
+                        this.html+="<ul class='item-body'>"
+                        this.listTree(tree[i].children)
+                        this.html+="</ul>"
+                        this.html+="</ul>"
+                    }else{
+                        //   this.html+="<li>"+encode(tree[i].title)+"</li>"
+                    }
+                }
+                listFolderCount--
+                //       this.html+="</ul>"
+            }
+            
+        }
+    }();
+    chrome.bookmarks.getTree(function(tree){
+        FavorPlus.tree=tree
+
+       
+        FavorPlus.init();
+    })
+
+    var FolderCon=function(){
+        return {
+            m:{    //数据模型
+                tree:null,
+                
+            },
+            v:{    //构建view的方法
+                
+            },
+            c:{    //行为,由事件触发,去操作数据
+                
+            },
+            init:function(config){
+                
+            }
+        }
+        
+    }();
+    var ListCon=function(){
+        return {
+            m:{
+
+            },
+            v:{
+
+            },
+            c:{
+                
+            },
+            init:function(config){
+                
+            }
+        }
+    }();
+
+    var MainProcessor=function(){
+        return {
+            init:function(){
+                
+            }
+        }
+    }();
+</script>

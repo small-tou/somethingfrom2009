@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="jquery.js"></script>
+        <link rel="stylesheet" href="http://a.tbcdn.cn/??p/global/1.0/global-min.css?t=2011081120110301.css" />
+        <link rel="stylesheet" type="text/css" href="M-UI.css"/>
+        <style>
+            *{
+                font-size:12px;
+            }
+            html,body{
+                width:480px;
+                height:300px;
+                margin:0;
+            }
+            .content{
+                padding:10px;
+            }
+            strong{
+                color:#ff6700;
+
+            }
+            div{
+                line-height:16px;
+            }
+            a:link,a:visited{
+                color:#4878B6;
+                text-decoration: none;
+            }
+            cookies{
+                display:block;
+                height:200px;
+                overflow: auto;
+                width:460px;
+            }
+            cookies a{
+                margin-left:10px;
+            }
+            .form-input{
+                margin-top:10px;
+            }
+            hr{
+                margin:10px 0;
+                width:90%;
+            }
+            .item {
+                height:20px;
+                line-height:20px;
+
+            }
+            .item a:hover{
+                color:#f60;
+                text-decoration: underline;
+            }
+            #to_info{
+                font-weight:bold;
+                padding-left:5px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="content">
+           
+            <br/>
+            <div style="margin:10px;">
+                在此添加新的淘宝账户
+            </div>
+            <div class="form-input">
+                <label>用户名:</label><input style="width:200px;" id="username" />
+            </div>
+            <div class="form-input">
+                <label>密&nbsp; 码:</label><input type="password" style="width:200px;" id="password"/>
+            </div>
+            <div class="form-input">
+                <div class="m-button" style="width:100px">
+                    <div class="l"></div>
+                    <div class="btn-inner" id="add">add</div>
+                    <div class="r"></div>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <h1>已经存在的账户,请选择切换</h1>
+                <div id="list">
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script>
+localStorage.env=localStorage.env||"com";localStorage.env=="com"?$("#to_info").html("\u7ebf\u4e0a"):$("#to_info").html("daily");$("#to_com").click(function(){$("#to_info").html("\u7ebf\u4e0a");localStorage.env="com";repaint()});$("#to_daily").click(function(){$("#to_info").html("daily");localStorage.env="daily";repaint()});var bbc="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";function bs(g){var c,e,a;var f,d,b;a=g.length;e=0;c="";while(e<a){f=g.charCodeAt(e++)&255;if(e==a){c+=bbc.charAt(f>>2);c+=bbc.charAt((f&3)<<4);c+="==";break}d=g.charCodeAt(e++);if(e==a){c+=bbc.charAt(f>>2);c+=bbc.charAt(((f&3)<<4)|((d&240)>>4));c+=bbc.charAt((d&15)<<2);c+="=";break}b=g.charCodeAt(e++);c+=bbc.charAt(f>>2);c+=bbc.charAt(((f&3)<<4)|((d&240)>>4));c+=bbc.charAt(((d&15)<<2)|((b&192)>>6));c+=bbc.charAt(b&63)}return c}$("#add").click(function(){if($("#username").val()!=""&&$("#password").val()!=""){localStorage[localStorage.env+"***"+$("#username").val()]=bs($("#password").val());localStorage[localStorage.env+"***list"]=localStorage[localStorage.env+"***list"]||"";var b=localStorage[localStorage.env+"***list"].split("%$$%");for(var a=0;a<b.length;a++){if(b[a]==""){b.splice(a,1)}}b.push($("#username").val());localStorage[localStorage.env+"***list"]=b.join("%$$%");repaint();$("#username").val("");$("#password").val("")}});$("#password").keyup(function(b){if(b.keyCode==13){if($("#username").val()!=""&&$("#password").val()!=""){localStorage[localStorage.env+"***"+$("#username").val()]=bs($("#password").val());localStorage[localStorage.env+"***list"]=localStorage[localStorage.env+"***list"]||"";var c=localStorage[localStorage.env+"***list"].split("%$$%");for(var a=0;a<c.length;a++){if(c[a]==""){c.splice(a,1)}}c.push($("#username").val());localStorage[localStorage.env+"***list"]=c.join("%$$%");repaint();$("#username").val("");$("#password").val("")}}});var mix=function(c,b){for(var a in b){c[a]=b[a]}};function repaint(){localStorage[localStorage.env+"***list"]=localStorage[localStorage.env+"***list"]||"";var e=localStorage[localStorage.env+"***list"].split("%$$%");$("#list")[0].innerHTML="";for(var c=0;c<e.length;c++){var d=document.createElement("div");d.className="item";var b=document.createElement("a");b.innerHTML=e[c];b.href="#";d.appendChild(b);$("#list")[0].appendChild(d);var f=document.createElement("a");mix(f.style,{"float":"right",paddingRight:"50px",color:"#aaa"});f.href="#";f.innerHTML="\u5220\u9664";d.appendChild(f);b.onclick=function(){console.log("https://login."+(localStorage.env=="com"?"taobao.com":"daily.taobao.net")+"/member/login.jhtml?ref=chromeextension&username="+encodeURIComponent(this.innerHTML)+"&password="+localStorage[localStorage.env+"***"+this.innerHTML]);var a=chrome.tabs.create({url:"https://login."+(localStorage.env=="com"?"taobao.com":"daily.taobao.net")+"/member/login.jhtml?ref=chromeextension&username="+encodeURIComponent(this.innerHTML)+"&password="+localStorage[localStorage.env+"***"+this.innerHTML],selected:false},function(g){setTimeout(function(){chrome.tabs.remove(g.id)},900)})};f._value=e[c];f.onclick=function(){var g=localStorage[localStorage.env+"***list"].split("%$$%");for(var a=0;a<g.length;a++){if(g[a]==""||g[a]==this._value){g.splice(a,1)}}localStorage[localStorage.env+"***list"]=g.join("%$$%");repaint()}}if(e.length=="0"){$("#list")[0].innerHTML="<EM>\u6ca1\u6709\u8d26\u6237,\u8bf7\u6dfb\u52a0</EM>"}}repaint();
+    </script>
+</html>

@@ -1,0 +1,37 @@
+10
+
+dir
+196
+https://mj-javascript-lib.googlecode.com/svn/trunk/version1.0.3/openapi/library/store/oracle/OracleDB
+https://mj-javascript-lib.googlecode.com/svn
+
+
+
+2011-07-13T11:14:10.427567Z
+50
+xinyu198736@gmail.com
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+338f9ee8-0c80-be1d-cdcd-b90a77f9b586
+
+1_Tables
+dir
+
+2_Sequences
+dir
+
+3_Procedures
+dir
+

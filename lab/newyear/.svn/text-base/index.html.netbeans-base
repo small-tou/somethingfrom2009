@@ -1,0 +1,29 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="kissy.js"></script>
+        
+        <style>
+            .snow{
+                width:10px;
+                height:10px;
+                background: #eee;
+               
+                position:absolute;
+                background: url(11.png) no-repeat;
+/*                 -webkit-transform: scale(0.1, 0.1);*/
+                 background-size:cover;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="snow"></div>
+    </body>
+    <script src="snow.js"></script>
+</html>

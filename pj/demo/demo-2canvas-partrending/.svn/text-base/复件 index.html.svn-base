@@ -1,0 +1,460 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../jquery.js"></script>
+        <style>
+            #main-canvas{
+                position:absolute;
+                top:0;
+                left:0;
+                z-index:10;
+            }
+            #sub-canvas{
+                position:absolute;
+                top:0px;
+                left:0;
+                z-index:100;
+                border:1px solid #aaa;
+            }
+
+            #redraw-canvas{
+                position:absolute;
+                top:0;
+                left:0;
+                z-index:1;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <button>随机生成1000个电阻</button>
+        <button>查看渲染结果</button>
+    <canvas id="main-canvas" width="1000" height="600"></canvas>
+    <canvas id="sub-canvas" width="1000" height="600" ></canvas>
+    <canvas id="redraw-canvas" width="1000" height="600" ></canvas>
+
+    <script>
+       
+        var GLOBAL=function(){
+            var main_canvas=$("#main-canvas")[0]
+            var sub_canvas=$("#sub-canvas")[0]
+            var redraw_canvas=$("#redraw-canvas")[0]
+            return {
+                main_canvas:main_canvas,
+                sub_canvas:sub_canvas,
+                main_ctx:main_canvas.getContext("2d"),
+                sub_ctx:sub_canvas.getContext("2d"),
+                now_canvas:sub_canvas,
+                now_ctx:sub_canvas.getContext("2d"),
+                grid_width:30,
+                grid_height:30,
+                grid_xCount:400,
+                grid_yCount:200,
+                redraw_canvas:redraw_canvas,
+                redraw_ctx:redraw_canvas.getContext("2d")
+            }
+        }();
+       
+        var extend=function(source){
+            var r=function(){
+
+            }
+            for(var i in source.prototype){
+                r.prototype[i]=source.prototype[i]
+            }
+            return r;
+        };
+        var ap=function(target,prototypes){
+            for(var i in prototypes){
+                target.prototype[i]=prototypes[i];
+            }
+            return target;
+        };
+
+        var line=function(p,w){
+            p=parseInt(p)
+
+            return p+((w%2==0)?0:0.5)
+        }
+        /**
+         * GraphicObject 基础图元对象
+         * 一个图元对象是一个基本的元素,它可以被拖动,可以添加和删除(基本图元不可以删除,只有图元组才可以删除)
+         * 拥有这些基本属性:
+         * xy坐标,相对于画布.
+         * 宽度和高度,文字的宽度可以由 measureText方法计算
+         */
+        var GO=function(){
+        }
+        GO.prototype={
+            init:function(){
+                this.x=0;
+                this.y=0;
+                this.width=0;
+                this.height=0;
+                this.ctx=GLOBAL.sub_ctx;
+                this.grids=[]//所在框架跨越那些栅格
+                this.id;
+                this.zIndex;
+                this._init();
+            },
+            _init:function(){
+                
+            },
+            draw:function(){
+                
+            },
+            checkPoint:function(x,y){
+                if((x>=this.x&&x<=(this.x+this.width))||(y>=this.y&&y<=(this.y+this.height))){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+        /**
+         * 用来控制所有的图元,例如激活某个图元,绘制某个图元,
+         * 图元GO只是一种数据结构,而GOControl则提供数据到视图的转换方法和接口
+         */
+        var GOControl=function(){
+            var main_ctx=GLOBAL.main_ctx;
+            var sub_ctx=GLOBAL.sub_ctx;
+            var main_canvas=GLOBAL.main_canvas;
+            var sub_canvas=GLOBAL.sub_canvas;
+            var will_GO=null;//现在的图元,之后画出来的都是这个图元或者图元组
+            var active_GO=null;//当前激活的图元,可以对此图元进行一些激活后的操作,例如:拖动更改等
+            var now;
+            var isDragging=false;
+            var zIndex=0;
+            var copyImg=null;
+            return {
+                GOS:[],//所有图元的集合
+                GRIDS:{
+                    
+                },
+                zIndexs:{
+                        
+                },
+                will_GO:null,
+                active:function(go){
+                   
+                    active_GO=go;
+                  
+                    go.draw();
+                    GLOBAL.now_ctx.beginPath();
+                    GLOBAL.now_ctx.lineWidth=1;
+                    GLOBAL.now_ctx.strokeStyle="#ddd"
+                    GLOBAL.now_ctx.strokeRect(go.x,go.y,go.width,go.height)
+                    GLOBAL.now_ctx.stroke()
+                },
+                unactive:function(go){
+                    this.reDrawSub(go);
+                },
+                toMain:function(go){
+                    this.unactive(go)
+                        
+                },
+                reDrawSub:function(go){
+                    GLOBAL.sub_ctx.clearRect(0,0,GLOBAL.sub_canvas.width,GLOBAL.sub_canvas.height)
+                },
+                reDrawMain:function(go,drawThis){
+                    var __w=GLOBAL.grid_width;
+                    var __h=GLOBAL.grid_height;
+                    var redraw_ctx=GLOBAL.redraw_ctx;
+                    var redraw_canvas=GLOBAL.redraw_canvas;
+                    var canvas=GLOBAL.now_canvas;
+                    var ctx=GLOBAL.now_ctx;
+                    var grids=go.grids;
+               //     console.log(grids)
+                    var gos=[]
+                     
+                    grids.sort(function(a,b){
+                        return a-b;
+                    })
+                    $.each(grids,function(i,n){
+                        for(var m in now.GRIDS[n]){
+                            now.GRIDS[n][m]&&gos.push(now.GRIDS[n][m])
+                        }
+                      
+                    });
+                    $.unique(gos);
+                   
+                    var m1,n1,m2,n2;
+                    m1=parseInt(grids[0]/GLOBAL.grid_xCount)+1;
+                    n1=grids[0]%GLOBAL.grid_xCount
+                    m2=parseInt(grids[grids.length-1]/GLOBAL.grid_xCount)+1;
+                    n2=grids[grids.length-1]%GLOBAL.grid_xCount
+
+                    var x1=(n1-1)*__w,
+                    y1=(m1-1)*__h,
+                    x2=n2*__w,
+                    y2=m2*__h;
+                    redraw_canvas.width=x2-x1;
+                    redraw_canvas.height=y2-y1;
+                    GLOBAL.now_ctx=redraw_ctx
+                    GLOBAL.now_canvas=redraw_canvas;
+                    GLOBAL.now_ctx.clearRect(0,0,GLOBAL.now_ctx.width,GLOBAL.now_ctx.height)
+           //         GLOBAL.main_ctx.clearRect(x1,y1,x2-x1,y2-y1)
+                    redraw_ctx.save();
+                    redraw_ctx.translate(-x1,-y1);
+                    $.each(gos,function(i,n){
+                        if(drawThis===true){
+                            (n!==go)&&n.draw();
+                        }else{
+                            n.draw();
+                        }
+                        
+                    })
+                    redraw_ctx.restore();
+                    copyImg=new Image();
+                    copyImg.src=redraw_canvas.toDataURL();
+                    copyImg.onload=function(){
+                        GLOBAL.main_ctx.clearRect(x1,y1,x2-x1,y2-y1)
+                        GLOBAL.main_ctx.drawImage(this,x1,y1,this.width,this.height)
+                    }
+                    console.log('redraw_ctx');
+                    this.setCtx("main");
+                    
+                },
+                line:function(p,isEven){
+                    return p+(isEven?0:0.5)
+                },
+                init:function(){
+                    now=this;
+                    this.bind();
+                },
+                bind:function(){
+                
+                    $(sub_canvas).bind('click',function(e){
+                        
+                            
+                    }).bind("mousemove",function(e){
+                        if(isDragging==true){
+                            var pos={
+                                x:e.offsetX,
+                                y:e.offsetY
+                            }
+                            now.move(pos);
+                        }
+                           
+                    }).bind("mousedown",function(e){
+                        var pos={
+                            x:e.offsetX,
+                            y:e.offsetY
+                        }
+                        now.pick(pos)
+                    }).bind("mouseup",function(e){
+                        if(isDragging==false){
+                            
+                        }else{
+                            now.unactive(active_GO)
+                            now.setCtx("redraw")
+                            now.reDrawMain(active_GO)
+                            //    active_GO&&now.toMain(active_GO)
+                        }
+                        isDragging=false;
+                            
+                    });
+                },
+                create:function(pos){
+                    if(active_GO){
+                        this.unactive(active_GO)
+                        this.setCtx("redraw")
+                        this.reDrawMain(active_GO)
+                    }
+                    //    active_GO&&this.toMain(active_GO)
+                    if(this.will_GO==null) return;
+                    var go=new this.will_GO();
+                    go.init();
+                        console.log("create")
+                    go.x=(pos.x-go.width/2)<0?0:(pos.x-go.width/2)
+                    go.y=(pos.y-go.height/2)<0?0:(pos.y-go.height/2)
+                    go.id=this.GOS.length;
+                    this.GOS.push(go);
+                    this.setIndex(go);
+                    this.setGRID(go)
+                    this.active(go)
+                },
+                move:function(pos){
+                    var go=active_GO
+                    go.x=(pos.x-go.width/2)<0?0:(pos.x-go.width/2)
+                    go.y=(pos.y-go.height/2)<0?0:(pos.y-go.height/2)
+                    console.log("moving")
+                    this.setGRID(go)
+                    this.reDrawSub(go);
+                    this.active(go)
+                    //go.draw();
+                },
+                setGRID:function(go){
+                    //接下来判断当前图元都占用了哪些grids,然后塞到对应的栅格中,一个GO可能对应多个栅格
+                    
+                    //这样编号的好处是可以随意增加栅格数量,而不会对已有的编号产生影响,因为按照这种编号方式,随着数字增加,是从一个角开始依次拍出去的,而跟横向宽度和高度没有关系
+                    //对栅格编号,编号方式是n=(y+x-2)(y+x-1)/2+y
+                    //例如:
+                    //1   2   4   7   11
+                    //3   5   8   12
+                    //6   9   13
+                    //10 14
+                    //15
+                    var __w=GLOBAL.grid_width;
+                    var __h=GLOBAL.grid_height;
+                    var min={x:Math.floor(go.x/__w)+1,y:Math.floor(go.y/__h)+1};
+                    var max={x:Math.floor((go.x+go.width)/__w)+1,y:Math.floor((go.y+go.height)/__h)+1};
+                    var index;
+                        
+                    var indexs=[]
+                    //遍历当前图元之前所在的栅格,然后删除之,重新计算
+                    $.each(go.grids,function(i,n){
+                        now.GRIDS[n][go.id]=null;
+                    });
+                    go.grids=[] //清空栅格,重新计算
+                       
+                    for(var m=min.x;m<=max.x;m++){
+                        for(var n=min.y;n<=max.y;n++){
+                        //    index=(n+m-2)*(n+m-1)/2+n;
+                        index=(n-1)*GLOBAL.grid_xCount+m;
+                            if(this.GRIDS[index]==undefined){
+                                this.GRIDS[index]=[]
+                            }
+                            var id=go.id
+                            this.GRIDS[index][id]=go; //
+                           
+                            ($.inArray(index,go.grids)!=-1)||go.grids.push(index)//如果图元所在的栅格不包括当前,就push进图元
+                          /*
+                            GLOBAL.now_ctx.beginPath();
+                            GLOBAL.now_ctx.lineWidth=1;
+                            GLOBAL.now_ctx.strokeStyle="#aaa"
+                          
+                            GLOBAL.now_ctx.strokeRect((m-1)*__w,(n-1)*__h,__w,__h);
+                            GLOBAL.now_ctx.fillText(index,(m-1)*__w,(n-1)*__h+10);
+                            GLOBAL.now_ctx.stroke();
+            */
+                        }
+                    }
+                },
+                /**
+                 *鼠标按下的时候,判断鼠标是否点到某个图元
+                 */
+                pick:function(pos){
+                    var __w=GLOBAL.grid_width;
+                    var __h=GLOBAL.grid_height;
+                    var m=Math.floor(pos.x/__w)+1
+                    var n=Math.floor(pos.y/__h)+1
+                    var  index=(n-1)*GLOBAL.grid_xCount+m;
+                    var gos=this.GRIDS[index]
+                    //排序算法,把gos按照zIndex排序到a中
+                    var a=[]
+                    for(var i in gos){
+                        gos[i]&&a.push(gos[i])
+                    }
+                    console.log(a)
+                    a.sort(function(a,b){
+                        return a.zIndex-b.zIndex;
+                    })
+                    for(var i=0;i<a.length;i++){
+                        if(a[i].checkPoint(pos.x,pos.y)) {
+                            
+                            this.setCtx("sub")
+                            this.active(a[i])
+                            this.setCtx("redraw")
+                            this.reDrawMain(a[i],true)
+                            this.setCtx("sub")
+                            isDragging=true;
+                            break;
+                        };
+                    }
+                    if(isDragging==false){
+                        
+                        this.create(pos);
+                        this.setCtx("sub")
+                            this.active(active_GO)
+                            this.setCtx("redraw")
+                            this.reDrawMain(active_GO,true)
+                            this.setCtx("sub")
+                        isDragging=true;
+                    }
+                 //   console.log(isDragging)
+                        
+                },
+                setIndex:function(go){
+                    this.zIndexs[zIndex]=go;
+                    go.zIndex=zIndex;
+                    zIndex++;
+                },
+                setCtx:function(name){
+                    GLOBAL.now_ctx=GLOBAL[name+"_ctx"]
+                    GLOBAL.now_canvas=GLOBAL[name+"_canvas"]
+                }
+            }
+        }();
+        /**
+         * 文字图元
+         */
+        var text=ap(extend(GO),{
+            _init:function(){
+                this.text="";
+            },
+            draw:function(){
+                
+            }
+        });
+        ///////////////////////////////////////
+        var resistanceMain=ap(extend(GO),{
+            _init:function(){
+                this.width=40
+                this.height=5;
+            },
+            draw:function(){
+                var x=this.x;
+                var y=this.y;
+                var ctx=GLOBAL.now_ctx;
+                ctx.beginPath();
+                var w=2
+                ctx.lineWidth=w;
+                ctx.strokeStyle="#C37F7F"
+                ctx.moveTo(line(0+x,w),line(2.5+y,w));
+                ctx.lineTo(line(10+x,w),line(2.5+y,w));
+                ctx.stroke();
+                ctx.beginPath()
+                ctx.strokeStyle="#7F7FFE"
+                ctx.strokeRect(line(10+x,w),line(y,w),20,5);
+                ctx.stroke();
+                ctx.beginPath()
+                ctx.strokeStyle="#C37F7F"
+                ctx.moveTo(line(30+x,w),line(2.5+y,w));
+                ctx.lineTo(line(40+x,w),line(2.5+y,w));
+                ctx.stroke();
+            },
+            checkPoint:function(x,y){
+                if((x>=(this.x+10)&&x<=(this.x+this.width-10))||(y>=this.y&&y<=(this.y+this.height))){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        })
+        var resistance=ap(extend(GO),{
+            draw:function(){
+                
+            }
+        });
+
+        
+        
+        GOControl.init();
+        GOControl.will_GO=resistanceMain;
+
+        for(var i =0;i<1;i++){
+            GOControl.create({
+            x:1000*Math.random(),
+            y:600*Math.random()
+        })
+        }
+    </script>
+</body>
+</html>

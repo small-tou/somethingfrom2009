@@ -1,0 +1,36 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
+  </head>
+  <body>
+    TODO write content
+  </body>
+</html>
+<script>
+    var arr=[
+        "http://www.html-js.com/icon.png",
+        "http://sstatic.net/stackoverflow/img/favicon.ico"
+    ];
+    var icon=null;
+    var links=document.getElementsByTagName("head")[0].getElementsByTagName("link")
+        for(var i =0;i<links.length;i++){
+            if(links[i].getAttribute("rel").indexOf("icon")!=-1){
+                icon=links[i]
+            }
+        }
+    var count=0
+ 
+    setInterval(function(){
+          console.log(count)
+        console.log(arr[count])
+      //  icon.href=arr[count]
+        if(count==0) count=1; else count=0;
+    },500)
+</script>

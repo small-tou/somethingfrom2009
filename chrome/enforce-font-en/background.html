@@ -1,0 +1,33 @@
+﻿
+<script>
+    /*
+     * To change this template, choose Tools | Templates
+     * and open the template in the editor.
+     */
+    //document.body.innerHTML+="<style>*{font-family:'微软雅黑' !important;}</style>";
+    // Copyright (c) 2010 The Chromium Authors. All rights reserved.
+    // Use of this source code is governed by a BSD-style license that can be
+    // found in the LICENSE file.
+    chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if(request.cmd=="style"){
+            sendResponse({
+                name:localStorage["font_name"],
+                b_list:localStorage["b_list"],
+                enforce_font:localStorage["enforce_font"],
+                enforce_size:localStorage["enforce_size"],
+                size:localStorage["size"],
+                b_list_size:localStorage["b_list_size"]
+            })
+
+        }
+       
+    });
+
+    //for 扩展互助计划
+    window.version_m=3.1
+    if(localStorage["version_m"]!=window.version_m){
+        chrome.tabs.create({selected:true,url:"ad.html"})
+        localStorage["version_m"]=window.version_m
+    }
+</script>

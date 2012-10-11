@@ -1,0 +1,49 @@
+(function(){
+    var p=SCD.Point;
+    SCD.EditGO=SCD.extend(SCD.GO);
+    
+    SCD.ap(SCD.EditGO,{
+        _init:function(){
+            
+        },
+        //从某处开始画线
+        begin:function(pos){
+           
+        },
+        end:function(){
+           
+        },
+        lButtonDown:function(pos){
+          
+        },
+        moving:function(pos){
+          
+        },
+        placing:function(pos){
+            
+        },
+        rButtonDown:function(){
+
+        },
+        active:function(){
+
+        },
+        draw:function(){
+           
+        },
+        destroy:function(){
+            
+        },
+        getCompress:function(){
+            
+        },
+        setStyle:function(strokeStyle,strokeWidth,fillStyle){
+            this.strokeStyle=strokeStyle
+            this.strokeWidth=strokeWidth
+            this.fillStyle=fillStyle
+        },
+        isIn:function(){
+            return false;
+        }
+    });
+})();

@@ -1,0 +1,131 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            *{
+                font-size:12px;
+            }
+            html,body{
+                width:220px;
+                margin:0;
+            }
+            strong{
+                color:#ff6700;
+                padding-right:10px;
+            }
+            div{
+                line-height:16px;
+            }
+            a:link,a:visited{
+                color:#4878B6;
+                text-decoration: none;
+            }
+            .quxiao{
+                padding:5px 0;
+            }
+            #progress{
+                width:90%;
+                height:150px;
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div>新评论数 : <strong><script> document.write(localStorage['new_comments']);</script></strong><a href="http://weibo.com/comment" target="_blank">查看</a></div>
+        <div>新私信数 : <strong><script> document.write(localStorage['new_dm']);</script></strong><a href="http://weibo.com/messages" target="_blank">查看</a></div>
+        <div>新粉丝数 : <strong><script> document.write(localStorage['new_followers']);</script></strong><a href="#" target="_blank" id="fensi">查看</a></div>
+        <div>新at我数 :<strong> <script> document.write(localStorage['new_mentions']);</script></strong><a href="http://weibo.com/at/weibo" target="_blank">查看</a></div>
+        <div><a href="http://t.sina.com.cn" target="_blank">打开我的微博</a></div>
+        <div class="quxiao"><a href="javascript:void(0);" id="quxiao" title="扫描2个月内没有发布微博的僵尸粉">扫描僵尸粉并批量取消关注</a></div>
+        <div class="progress"><textarea id="progress"></textarea></div>
+        <script src="jquery.js"></script>
+        <script>
+
+            document.getElementById("fensi").onclick=function(){
+                if( localStorage['new_id']){
+                    chrome.tabs.create({
+                        url:"http://weibo.com/"+localStorage['new_id']+"/fans"
+                    });
+                }else{
+                    var xhr = new XMLHttpRequest();
+                    var url = "http://api.t.sina.com.cn/account/verify_credentials.json?source=1053363421";
+                    xhr.open("POST",url, true);
+                    xhr.onreadystatechange =  function(e) {
+                        if (xhr.readyState == 4) {
+                            eval("var response="+this.responseText)
+                            localStorage['new_id']=response['id']
+                            chrome.tabs.create({
+                                url:"http://weibo.com/"+response['id']+"/fans"
+                            });
+                        }};
+                    xhr.send();
+                }
+    
+                return false;
+            }
+            var handle=function(response){
+                $("#progress")[0].style.display="block"
+                for(var i in response['users']){
+                    var user=response['users'][i]
+                    var jiangshi=false;
+
+                    try{
+                        if(user['status']){
+                            var time=new Date(user['status']['created_at']);
+                            var timenow=new Date();
+                            if(timenow-time>1000*60*60*24*30*2){
+                                jiangshi=true;
+                            }
+
+                        }else{
+                            jiangshi=true;
+                        }
+                    }catch(e){
+
+                    }
+                    if(jiangshi){
+                        var xhr1 = new XMLHttpRequest();
+                        var url = "http://api.t.sina.com.cn/friendships/destroy.json?source=877441444&user_id="+user['id'];
+                        xhr1.open("POST",url, true);
+                        xhr1.onreadystatechange =  function(e) {
+                            if (xhr1.readyState == 4) {
+                                eval("var uuu="+this.responseText)
+                                $("#progress")[0].value+="已取消关注 : "+uuu['screen_name']+"\n"
+                            }};
+                        xhr1.send();
+                    }
+                }
+                if(response['next_cursor']!=0){
+                    var xhr2 = new XMLHttpRequest();
+                    var url = "http://api.t.sina.com.cn/statuses/friends.json?source=877441444&count=199&cursor="+response['next_cursor'];
+                    xhr2.open("POST",url, true);
+                    xhr2.onreadystatechange =  function(e) {
+                        if (xhr2.readyState == 4) {
+                            eval("var response1="+this.responseText)
+                            handle(response1)
+                        }};
+
+                    xhr2.send();
+                }
+            }
+            $("#quxiao").click(function(){
+                var xhr = new XMLHttpRequest();
+                var url = "http://api.t.sina.com.cn/statuses/friends.json?source=877441444&count=199&cursor=-1";
+                xhr.open("POST",url, true);
+                xhr.onreadystatechange =  function(e) {
+                    if (xhr.readyState == 4) {
+                        eval("var response="+this.responseText)
+                        handle(response)
+                    }};
+                    
+                xhr.send();
+            })
+        </script>
+    </body>
+</html>

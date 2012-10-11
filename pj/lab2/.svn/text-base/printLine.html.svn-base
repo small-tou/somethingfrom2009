@@ -1,0 +1,55 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="../jquery.js"></script>
+  </head>
+  <body>
+  <canvas id="canvas" width="1000" height="600"></canvas>
+  <script>
+      var can=$("#canvas")[0]
+      var ctx=can.getContext("2d");
+
+      for(var i=0;i<10;){
+         
+           i+=0.5
+          ctx.beginPath();
+           ctx.lineWidth=i
+          ctx.moveTo(i*50,10);
+          ctx.lineTo(i*50,200)
+          ctx.closePath()
+          ctx.stroke()
+         
+      }
+       for(var i=0;i<10;){
+          i+=0.5
+          ctx.beginPath();
+          ctx.lineWidth=i
+          ctx.moveTo(i*51,220);
+          ctx.lineTo(i*51,400)
+          ctx.closePath()
+          ctx.stroke()
+          
+      }
+
+     ctx.beginPath()
+          ctx.lineWidth=1
+          ctx.moveTo(11.5,520);
+          ctx.lineTo(11.5,600)
+          ctx.closePath()
+          ctx.stroke()
+          
+          ctx.beginPath()
+          ctx.lineWidth=3
+          ctx.moveTo(20,520);
+          ctx.lineTo(20,600)
+          ctx.closePath()
+          ctx.stroke()
+  </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="jquery.js"></script>
+    </head>
+    <body>
+    <canvas width="450" height="240">
+    </canvas>
+</body>
+</html>
+<script>
+    var setData=function(imageData,x,y,value){
+        imageData.data[((y*(imageData.width*4)) + (x*4)) + 0]=value[0]
+        imageData.data[((y*(imageData.width*4)) + (x*4)) + 1]=value[1]
+        imageData.data[((y*(imageData.width*4)) + (x*4)) + 2]=value[2]
+        imageData.data[((y*(imageData.width*4)) + (x*4)) + 3]=value[3]
+    }
+    var getData=function(imageData,x,y,index){
+        return imageData.data[((y*(imageData.width*4)) + (x*4)) + index]
+    }
+    var max=function(arr){
+            var max1=0;
+            for(var i=0,j=arr.length;i<j;i++){
+                if(arr[i]*1>max1) max1=arr[i]*1
+            }
+            return max1;
+        }
+    var getV=function(imageData,x,y){
+        var arr=[
+           getData(imageData,x,y,0),
+           getData(imageData,x,y,1),
+           getData(imageData,x,y,2)
+        ]
+        return max(arr)
+    }
+    var can=$("canvas")[0];
+    var ctx=can.getContext('2d');
+    var img=new Image()
+    img.onload=function(){
+        can.width=img.width;
+        can.height=img.height;
+        ctx.drawImage(img,0,0)
+        var imageData=ctx.getImageData(0,0,img.width,img.height)
+        for(var i=0;i<imageData.height;i++){
+            for(var i2=0;i2<imageData.width;i2++){
+                var v=(getV(imageData,i2,i)>230?255:0)
+                setData(imageData,i2,i,[
+                    v,v,v,
+                    255
+                ]);
+            }
+        }
+        ctx.putImageData(imageData, 0, 0,0,0,imageData.width,imageData.height)
+    }
+    img.src="FA7AB76CE5D6BF5E9660095BAD622AD2_200_267.jpg"
+   
+</script>

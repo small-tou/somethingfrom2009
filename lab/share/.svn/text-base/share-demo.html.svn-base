@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title>分享组件测试</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://a.tbcdn.cn/??s/kissy/1.1.3/kissy-min.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://www.html-js.com/wp-content/plugins/syntax-highlighter-and-code-prettifier/styles/shCore.css" />
+        <link type="text/css" rel="stylesheet" href="http://www.html-js.com/wp-content/plugins/syntax-highlighter-and-code-prettifier/styles/shThemeDefault.css" />
+        <script type="text/javascript" src="http://www.html-js.com/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shCore.js"></script>
+        <script type="text/javascript" src="http://www.html-js.com/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/shBrushJScript.js"></script>
+        <script type="text/javascript">
+            SyntaxHighlighter.config.clipboardSwf = 'http://www.html-js.com/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/clipboard.swf';
+            SyntaxHighlighter.all();
+        </script>
+        <link rel="stylesheet" type="text/css" href="http://a.tbcdn.cn/tbsp/tbsp.css?t=20090602.css" />
+        <style>
+            body{
+                padding:20px;
+            }
+            .J_Share_Trigger{
+                position:absolute;
+                top:200px;
+                left:400px;
+                width:100px;
+                height:70px;
+                background:#1F9FD4;
+                text-align: center;
+                line-height: 18px;
+                cursor:pointer;
+                color:#fff;
+                border:5px solid #ff6700;
+                padding:5px;
+                border-radius:5px;
+            }
+            fieldset{
+                border:1px solid #aaa;
+                border-radius:5px;
+                padding:20px;
+            }
+            fieldset li{
+                line-height:25px;
+                list-style-type: disc;
+            }
+            fieldset input{
+                height:17px;
+            }
+            button{
+                height:30px;
+                width:100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="J_Share_Trigger" data:shareConfig="anim:0">初始化后点我<br/>拖动我到边上观察自适应后的弹出层位置</div>
+        <form>
+            <fieldset>
+                <legend>自定义配置</legend>
+                <ul id="configs">
+                    <li>
+                        <label id="pos">pos</label>: <input type="hidden" id="pos_input" value="1"/><select id="posselect">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>(1-8,表示8个位置)
+                    </li>
+                    <li>
+                        <label id="hasText">hasText</label>: <input type="hidden" id="hasText_input" value="1"/><select id="hasTextselect">
+                            <option value="1">1</option>
+                            <option value="0">0</option>
+                        </select>(1表示显示文本,0表示不显示文本)
+                    </li>
+                    <li>
+                        <label id="triggerType">triggerType</label>:<input type="hidden" id="triggerType_input" value="click"/><select id="triggerTypeselect">
+                            <option value="click">click</option>
+                            <option value="hover">hover</option>
+                        </select>(click表示点击后显示,hover表示浮上来的时候显示)
+                    </li>
+                    <li>
+                        <label id="anim">anim</label>:<input type="hidden" id="anim_input" value="0"/><select id="animselect">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                        </select>(0表示关闭动画,1表示开启动画,ie下动画效果不顺畅,不推荐开启)
+                    </li>
+                    <li>
+                        <label id="title">title</label>:<input type="text" id="title_input" value=""/>(分享的标题,一般自动就可以获取到)
+                    </li>
+                    <li>
+                        <label id="url">url</label>:<input type="text" id="url_input" value=""/>(分享的url,一般自动设为当前的url)
+                    </li>
+                    <li><button id="rebuild" type="button">重新初始化</button></li>
+                </ul>
+            </fieldset>
+        </form>
+        <fieldset>
+            <legend>说明</legend>
+            <div>
+                <ul>
+                    <li>通过上面的配置项可以改变分享组件的配置,使用的时候,配置项请写在按钮的data:shareConfig属性中,按钮必须有J_Share_Trigger的className,每个页面只能有一个</li>
+                    <li>按钮示例:
+                        <pre class="brush: js; auto-links: true; collapse: false; first-line: 1; gutter: true; html-script: false; light: false; ruler: false; smart-tabs: true; tab-size: 4; toolbar: true;">
+                                <div class="J_Share_Trigger" data:shareConfig="anim:0;triggerType:hover;hasText:1;pos:1;">初始化后点我,拖动我到边上观察自适应</div>
+                        </pre>
+                    </li>
+                    <li>弹出层有8个方向,可以自己调节上面的配置观察,在不同情况下可以使用不同的方向,防止影响页面美观</li>
+                    <li>自定义的方向并不是固定不变的,如果弹出层超出了当前可视区域,程序会自动处理这种情况,试图让弹出层在可视区域内显示,极端情况下除外(窗口很小?)</li>
+                    <li>可以在页面中覆盖此组件的方法,在覆盖前,只需要调用die()方法让组件死掉,然后重写组件的方法,最后再次调用init()方法即可</li>
+                    <li>程序初始化的时候只会做很少工作,只有当第一次点击的时候才会创建dom加载css,对页面性能影响不是很大</li>
+                </ul>
+            </div>
+
+        </fieldset>
+
+
+
+    </body>
+</html>
+
+<script src="share_tmall.js?t=2342343.js"></script>
+<script>
+    (function(){
+        var S=KISSY,D=S.DOM,E=S.Event;
+        E.on("#posselect","change",function(){
+            D.get("#pos_input").value=this.options[this.selectedIndex].value
+        })
+        E.on("#hasTextselect","change",function(){
+            D.get("#hasText_input").value=this.options[this.selectedIndex].value
+        })
+        E.on("#triggerTypeselect","change",function(){
+            D.get("#triggerType_input").value=this.options[this.selectedIndex].value
+        })
+        E.on("#animselect","change",function(){
+            D.get("#anim_input").value=this.options[this.selectedIndex].value
+        })
+        E.on("#rebuild","click",function(){
+            S.Share.die();
+            var configs=D.query("li",D.get("#configs"))
+            var s=""
+            S.each(configs,function(i){
+                try{
+                    if(D.get("input",i).value){
+                        s+=D.get("label",i).id+":"+D.get("input",i).value+";"
+                    }
+                }catch(e){
+
+                }
+              
+            })
+            D.attr(".J_Share_Trigger","data:shareConfig",s)
+            S.Share.init();
+        })
+        D.get(".J_Share_Trigger").onselectstart=function(){
+            return false;
+        }
+        E.on(".J_Share_Trigger","mousedown",function(){
+            E.on(document.body,"mousemove",function(e){
+                D.css(".J_Share_Trigger",{
+                    left:e.pageX-50+"px",
+                    top:e.pageY-35+"px",
+                    cursor:""
+                })
+            })
+        })
+        
+        E.on(document.body,"mouseup",function(e){
+            E.remove (document.body,"mousemove")
+            e.halt()
+        })
+    })();
+</script>
+
+<style>
+
+</style>

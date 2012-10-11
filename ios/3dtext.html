@@ -1,0 +1,83 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta id="viewport" name="viewport" content="user-scalable=no,initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="iphon_tetris_icon.png"/>
+        <link rel="apple-touch-startup-image" href="startup.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            body{
+                background:#000;
+                font-family: arial;
+            }
+            span.color1{
+                text-shadow:1px 1px 9px #ff6700;
+                color:#ff6700;
+                font-size:30px;
+                font-weight: bold;
+            }
+            span.color2{
+                text-shadow:1px 1px 9px #079807;
+                color:#079807;
+                font-size:30px;
+                font-weight: bold;
+            }
+            span.color3{
+                text-shadow:1px 1px 9px #099DCE;
+                color:#099DCE;
+                font-size:35px;
+                font-weight: bold;
+            }
+            span.color4{
+                text-shadow:1px 1px 9px #C914A5;
+                color:#C914A5;
+                font-size:28px;
+                font-weight: bold;
+            }
+            span.color5{
+                text-shadow:1px 1px 9px #05E2D5;
+                color:#05E2D5;
+                font-size:50px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <span>fdsfsdfdsfsdfsdf</span>
+        </div>
+        <script>
+            var gx,gy;
+            for(var i=0;i<20;i++){
+                var ele=document.createElement("span");
+                ele.left=Math.random()*200;
+                ele.top=Math.random()*400;
+                ele.innerHTML="fsdff";
+                ele.style.position="absolute";
+                ele.style.zIndex=i;
+                ele.style.fontSize=20+i*3;
+                ele.className="color"+parseInt(i/4);
+                document.body.appendChild(ele)
+            }
+            window.addEventListener("deviceorientation",function(e){
+                gx=e.gamma;
+                gy=e.beta;
+                var span= document.getElementsByTagName("span")
+                for(var i =0;i<span.length;i++){
+                    span[i].style.left=gx*0.4*span[i].style.zIndex+span[i].left+"px"
+                    span[i].style.top=gy*0.4*span[i].style.zIndex+span[i].top+"px"
+                }
+          
+          
+                //  document.getElementById("log").innerHTML=e.alpha+"<br/>"+e.beta+"<br/>"+e.gamma
+            })
+        </script>
+    </body>
+</html>

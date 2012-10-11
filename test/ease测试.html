@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/).*?\/.*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+        <style>
+            body{
+                background: #eee;
+            }
+            #canvas{
+                float:left;
+                border:1px solid #109CE5;
+                margin:10px;
+                background: url(images/ease-bg.png) no-repeat;
+            }
+            #control{
+                width:800px;
+                height:300px;
+                border:1px solid #109CE5; 
+                background: #fff;
+                float:left;
+                margin-left:10px;
+                margin-top:10px;
+
+            } 
+            .tween-item{
+                float:left;
+                display:inline;
+                width:90px;
+                height:30px;
+                font-size:12px;
+                text-align: center;
+                line-height: 30px;
+                color:#109CE5;
+                background: #f5f5f5;
+                border:1px solid #aaa;
+                margin-left:5px;
+                margin-top:5px;
+                cursor: pointer;
+            }
+            #control .hd{
+                height:30px;
+                color:#109CE5; 
+                background: #f5f5f5;
+                border:1px solid #aaa;
+                font-weight:bold;
+                line-height: 30px;
+                margin:5px;
+            }
+        </style>
+    </head>
+    <body>
+    <canvas id="canvas" width="400" height="400">对不起,您的浏览器不支持canvas,所以无法运行此演示,请使用chrome,firefox,Safari中的一种浏览器来运行此程序!</canvas>
+    <div id="control">
+        <div class="hd">点击标签可以切换缓动方式</div>
+    </div>
+    <div style="clear:both"></div>
+</body>
+</html>
+<script>
+    var $=MJ;
+    
+    $.use(["base","ease"],function(){
+        var D=$.Dom,T=$.tool
+        var canvas=D.get("#canvas");
+        var ctx=canvas.getContext('2d');
+       
+        ctx.lineWidth = 0.5;
+       
+        var lineargradient = ctx.createLinearGradient(0,0,400,400);
+        lineargradient.addColorStop(0,'#ff6700');
+        lineargradient.addColorStop(1,'#49B14F');
+        ctx.strokeStyle  =lineargradient;
+
+        var beginP=new $.Vector(100,100);
+        var endP=new $.Vector(300,300);
+        var nowP=new $.Vector(0,0);
+        var steps=200   //经过的步数
+        var timer;
+        function createControl(){
+            for(var i in $.Ease.tween){
+                T.trace(i)
+                var li=$.Dom.createElement("div",{i:i,c:"tween-item"})
+                $("#control").append(li)
+                $(li).click(function(){
+                    drawEase(this.innerHTML)
+                })
+            }
+            
+        }
+        function drawEase(name){
+            clearInterval(timer)
+            ctx.clearRect(0,0,400,400);
+            ctx.beginPath();
+            var t=0;
+            ctx.moveTo(beginP.x,beginP.y)
+            timer=setInterval(function(){
+                t++;
+                if(t>steps){
+                    clearInterval(timer)
+                    ctx.closePath();
+                    //
+                }else{
+                    var m=$.Ease.tween[name](t/steps);
+                    ctx.lineTo(((endP.x-beginP.x)*t/steps+beginP.x),((endP.y-beginP.y)*m+beginP.y));
+                    ctx.stroke();
+                }
+            },10);
+        }
+        createControl() ;
+        
+    })
+</script>

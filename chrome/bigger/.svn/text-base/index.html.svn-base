@@ -1,0 +1,258 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="M-UI.css"/>
+        <script src="core.js"></script>
+        <script src="base.js"></script>
+        <script src="M-UI.js"></script>
+        <script src="data.js?11"></script>
+        <script src="MQuery.js"></script>
+        <style>
+            .m-tab{
+                margin:30px 10px;
+                margin-bottom:70px;
+            }
+            .hide{
+                display: none;
+            }
+            .m-tab .bd .tab_1 a{
+                font-size:13px;
+                line-height: 20px;
+                float: left;
+                display: inline;
+                margin-right:50px;
+                width:80px;
+            }
+
+            .m-tab .bd dl{
+                margin:20px;
+            }
+            .m-tab .bd dt{
+                float:left;
+                height:24px;
+                line-height: 24px;
+                padding-right:10px;
+            }
+            .m-button{
+                width:90px;
+                margin-top:20px;
+            }
+            .m-tab .bd{
+                position: relative;
+            }
+            .m-tab .bd .tab_4 li{
+                line-height:20px;
+            }
+            thanks{
+                position:absolute;
+                right:10px;
+                bottom:10px;
+                color:#ff6700;
+            }
+            .fl{
+                position: absolute;
+                bottom:15px;
+                left:10px;
+            }
+            .tab_5 dl{
+                padding:0;
+                color:#777;
+            }
+            .tab_5 dd, .tab_5 dt{
+                display: block;
+                clear:both;
+                line-height: 20px;
+            }
+            .tab_5 dt{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hide" id="tab1">
+            <ul>
+                <script>
+                    for(var i in DATA){
+                        DATA[i].info&&document.write("<li><a target='_blank' href='"+DATA[i].info.split("^^")[1]+"'>"+DATA[i].info.split("^^")[0]+"</a></li>")
+                    }
+                </script>
+                <li><a>不断增加中</a></li>
+            </ul>
+
+        </div>
+        <div class="hide" id="tab2">
+            <fieldset>
+                <legend>提交不支持的软件下载网站</legend>
+                <dl>
+                        <a href="http://www.html-js.com/?p=1015" target="_blank">去support页面提交</a>
+                </dl>
+            </fieldset>
+        </div>
+        <div class="hide" id="tab3">
+            <fieldset>
+                <legend>提交错误信息(bug)</legend>
+                <dl>
+                    <dt>错误信息:</dt>
+                    <dd><textarea style="width:400px;height:100px;" id="tab3_info"></textarea></dd>
+                    <div class="m-button" id="tab3_submit">
+                        <div class="l"></div>
+                        <div class="btn-inner">提　交</div>
+                        <div class="r"></div>
+                    </div>
+                </dl>
+            </fieldset>
+        </div>
+        <div class="hide" id="tab4">
+
+        </div>
+        <div class="hide" id="tab5">
+            <dl>
+                <dt>1.有什么用?</dt>
+                <dd>当你开启这个插件的时候,浏览某些软件下载网站,可以立即把软件的真实下载地址显示在明显的位置,从而减少误操作和找寻真实地址耗费的时间</dd>
+                <dt>2.然后呢?</dt>
+                <dd>你可以提交其他我们不支持的网站,也可以提交bug,我们将持续跟进</dd>
+                <dt>3.作者?</dt>
+                <dd>可以通过 email:xinyu198736@gmail.com 或者 qq:676588498 或者 旺旺:xinyu1987326 联系作者</dd>
+            </dl>
+        </div>
+    </body>
+</html>
+<script>
+        ~function(){
+        var GC=MY.Dom.getByClass,
+        C=MY.Dom.createElement,
+        G=MY.Dom.get
+        
+        var tab=new MY.ui.Tab({
+            width:700,
+            height:250
+        })
+        tab.appendTo(document.body)
+        
+        tab.addTab({
+            title:"目前支持的网站",
+            icon:"tab1.png",
+            html:MY.Dom.get("tab1").innerHTML,
+            //     selected:true,
+            id:1,
+            selected:true
+        })
+        MY.Dom.get("tab1").innerHTML=""
+        tab.addTab({
+            title:"提交不支持的网站",
+            icon:"tab2.png",
+            html:MY.Dom.get("tab2").innerHTML,
+            id:2
+            
+           
+        })
+        MY.Dom.get("tab2").innerHTML=""
+        tab.addTab({
+            title:"提交错误",
+            html:MY.Dom.get("tab3").innerHTML,
+            icon:"tab4.png",
+            id:3
+        })
+        MY.Dom.get("tab3").innerHTML=""
+        tab.addTab({
+            title:"小众软件",
+            html:"fsdbbbbbbbbbbbbfsdf",
+            icon:"tab3.png",
+            id:4
+        })
+        tab.addTab({
+            title:"我是什么?",
+            html:MY.Dom.get("tab5").innerHTML,
+            icon:"tab5.png",
+            id:5
+        })
+        tab.addListener("change",function(p){
+            if(p.fire_param=="4"){
+                var con=GC("tab_4","li",GC("bd-con","ul",tab.ele)[0])[0],ul,li
+                con.innerHTML="<img src='img/loader.gif' style='margin:90px auto;display:block;'/>"
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "http://feed.appinn.com/", true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4) {
+                        // WARNING! Might be evaluating an evil script!
+                        var xml=xhr.responseXML
+                        var items=xml.documentElement.getElementsByTagName("item"),item,link
+                        if(items&&items.length>=1){
+                            con.innerHTML=""
+                            ul=C("ul",{p:con})
+                        }
+                        for(var i =0,n=items.length;i<n;i++){
+                            li=C("li",{p:ul})
+                            item=items[i].getElementsByTagName('title')[0]
+                            link=items[i].getElementsByTagName('link')[0]
+                            li.innerHTML="<a href='"+link.firstChild.data+"' target='_blank'>"+item.firstChild.data+"</a>"
+                        }
+                        con.innerHTML+="<thanks>感谢\"<a href='http://www.appinn.com' target='_blank'>小众软件</a>\"提供数据</thanks>"
+                    }
+                }
+                xhr.send();
+            }
+        })
+        var fl=C("div",{p:document.body,i:"作者博客:<a href='http://www.html-js.com' target='_blank'>http://www.html-js.com</a>",c:"fl"})
+
+            ~function(){
+            function sendTab2(){
+                if($("#tab2_info").val()===""){
+                    alert("请输入正确的网址")
+                }else{
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://www.beiju123.cn/test/bigger/addSite.php?url="+$("#tab2_info").val().replace("http://","").replace("https://",""), true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4) {
+                            chrome.tabs.create({
+                                url:"success.html"
+                            })
+                        }
+                    }
+                    xhr.send();
+                }
+            }
+            function sendTab3(){
+                if($("#tab3_info").val()===""){
+                    alert("请输入正确的网址")
+                }else{
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://www.beiju123.cn/test/bigger/addMsg.php?msg="+$("#tab2_info").val(), true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4) {
+                            chrome.tabs.create({
+                                url:"success.html"
+                            })
+                        }
+                    }
+                    xhr.send();
+                }
+            }
+
+            $("#tab2_submit").click(function(){
+                sendTab2()
+            })
+            $("#tab2_info").keydown(function(e){
+                if(e.keyCode==13){
+                    sendTab2()
+                }
+            })
+            $("#tab3_submit").click(function(){
+               sendTab3()
+            })
+            $("#tab3_info").keydown(function(e){
+                if(e.keyCode==13){
+                    sendTab3()
+                }
+            })
+        }()
+    }()
+   
+    
+</script>

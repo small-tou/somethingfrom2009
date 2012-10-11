@@ -1,0 +1,13 @@
+{
+  "name": "一键控制所有扩展",
+  "version": "1.2",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+        "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "description": "利用此扩展,你可以方便滴一键禁用所有扩展,并且在稍后恢复他们",
+  "permissions": ["management", "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html",
+  "omnibox": { "keyword" : "weibo" }
+}

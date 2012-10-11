@@ -1,0 +1,115 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="../jquery.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="1800" height="1600"></canvas>
+    <div id="svg" style="border: 1px solid black;position : absolute;top : 50px;left : 50px;"></div>
+    <canvas id="canvas" width="200px" height="200px" style="border: 1px solid black;position : absolute;top : 300px;left : 50px;"></canvas>
+</body>
+</html>
+<script>
+    
+    var svg="M153 334 C153 334 151 334 151 334 C151 339 153 344 156 344 C164 344 171 339 171 334 C171 322 164 314 156 314 C142 314 131 322 131 334 C131 350 142 364 156 364 C175 364 191 350 191 334 C191 311 175 294 156 294 C131 294 111 311 111 334 C111 361 131 384 156 384 C186 384 211 361 211 334 C211 300 186 274 156 274"
+    
+    var SVGKEY={
+        m:['moveTo',0,1],
+        M:['moveTo',0,1],
+        l:"lineTo",
+        c:"bezierCurveTo",
+        s:"bezierCurveTo",
+        t:"quadraticCurveTo",
+        q:'quadraticCurveTo',
+        a:'arcTo',
+        z:"closePath"
+    }
+    var drawSVG=function(ctx,svg,config){
+        var config=config||{}
+        ctx.beginPath();
+        var reg=/[a-zA-Z]([0-9]| |\.|,|-)*/g
+        var result=svg.match(reg)
+        var key,values,lastX=0,lastY=0,lastCX=0,lastCY=0,x1,y1;
+        for(var i =0;i<result.length;i++){
+            key=result[i].substr(0,1);
+            values=result[i].substring(1).replace(/-/g," -").replace(/(^\s*)|(\s*$)/g, "").split(/\s+|,/)
+            for(var n=0;n<values.length;n++){
+                values[n]=values[n]*1
+            }
+            console.log(key)
+            console.log(values)
+            switch(key){
+                case "z":ctx.closePath();
+                    if(i!=result.length-1){
+                        ctx.stroke();
+                        config.fill&&ctx.fill();
+                        ctx.beginPath()
+                    };
+                    break;
+                case "m":
+                    ctx.moveTo(values[0]+lastX,values[1]+lastY);lastX+=values[0];lastY+=values[1];break;
+                case "M":
+                    ctx.moveTo(values[0],values[1]);lastX=values[0];lastY=values[1];break;
+                case "L":
+                    ctx.lineTo(values[0],values[1]);lastX=values[0];lastY=values[1];break;
+                case "l":
+                    ctx.lineTo(values[0]+lastX,values[1]+lastY);lastX+=values[0];lastY+=values[1] ;break;
+                case "H":
+                    ctx.lineTo(values[0],lastY); lastX=values[0];break;
+                case "h":
+                    ctx.lineTo(values[0]+lastX,lastY);lastX+=values[0];break;
+                case "V":
+                    ctx.lineTo(lastX,values[0]);lastY=values[0];break;
+                case "v":
+                    ctx.lineTo(lastX,values[0]+lastY);lastY+=values[0];break;
+                case "C":
+                    lastX=values[4],lastY=values[5];lastCX=values[2],lastCY=values[3];
+                    ctx.bezierCurveTo(values[0],values[1],values[2],values[3],values[4],values[5]);break;
+                case "c":
+                    ctx.bezierCurveTo(values[0]+lastX,values[1]+lastY,values[2]+lastX,values[3]+lastY,values[4]+lastX,values[5]+lastY);
+                    lastX+=values[4],lastY+=values[5];lastCX=values[2]+lastX,lastCY=values[3]+lastY;
+                    break;
+                case "S":
+                    x1=2*lastX-lastCX;y1=2*lastY-lastCY;lastX=values[2];lastY=values[3];lastCX=values[0],lastCY=values[1];
+                    ctx.bezierCurveTo(x1,y1,values[0],values[1],values[2],values[3]);break;
+                case "s":
+                    x1=2*lastX-lastCX;y1=2*lastY-lastCY;
+                    ctx.bezierCurveTo(x1,y1,values[0]+lastX,values[1]+lastY,values[2]+lastX,values[3]+lastY);
+                    lastX+=values[2];lastY+=values[3];lastCX=values[0]+lastX,lastCY=values[1]+lastY;break;
+                case "t"://two param
+                    x1=2*lastX-lastCX; y1=2*lastY-lastCY;lastX=values[0]; lastY=values[1];
+                    ctx.quadraticCurveTo(x1,y1,values[0],values[1]);break;
+                case "q":
+                    lastX=values[2];lastY=values[3];lastCX=values[0];lastCY=values[1];
+                    ctx.quadraticCurveTo(values[0],values[1],values[2],values[3]);break;
+                case "a":
+                    ctx.arc();break;
+                                        
+            }
+            
+           
+            
+        }
+        ctx.stroke()
+        config.fill&&ctx.fill();
+    }
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d")
+    ctx.lineWidth="2"
+    // drawSVG(ctx,svg);
+    /* drawSVG(ctx,
+    "M57.45245361328125,360.9246826171875 L74.42807006835938,360.9246826171875 M112.27326202392578,361.02337646484375 L129.24880981445312,361.02337646484375 M112.17156219482422,360.9665832519531 A18.834516525268555,18.834516525268555 0 1 1 74.50241088867188,360.9665832519531 A18.834516525268555,18.834516525268555 0 1 1 112.17156219482422,360.9665832519531 zM80.23289489746094,360.4623718261719 C92.66505432128906,340.6373291015625 95.68899536132812,382.6373291015625 106.44107818603516,361.1344909667969 M55.72499084472656,359.99285888671875 L57.42068099975586,359.99285888671875 L57.42068099975586,361.68731689453125 L55.72499084472656,361.68731689453125 L55.72499084472656,359.99285888671875 zM129.27252197265625,360.15435791015625 L130.96826171875,360.15435791015625 L130.96826171875,361.8504943847656 L129.27252197265625,361.8504943847656 L129.27252197265625,360.15435791015625 z"
+    ,{
+        fill:true
+    })
+     */
+    //   drawSVG(ctx,"M357.056,352.81c0,0-2.694,5.198-5.569,15.031z");
+    drawSVG(ctx,"M366.276,332.537c0,0-0.198,2.264-0.973,6.364c-0.388,2.05-0.93,4.556-1.682,7.46  C361,357.89,355,376.89,339,373.89c-20-5-33-20-53-25c-2,0-4,2-5,3c-5,12-1,33-19,35.999c-2.833,0.501-5.527,0.363-8.135-0.225  c-13.039-2.937-23.911-17.089-39.144-18.669c-2.155-0.665-3.987-1.538-5.455-2.688c-2.937-2.301-4.419-5.716-4.18-10.596  c0.277-2.988,0.537-5.958,0.811-8.925c0.274-2.967,0.563-5.931,0.899-8.905c66.826-28.121,70.577-64.104-17.795-90.99  c7-9,18-15,23.702-25.196c0.826-2.056,1.298-4.304,1.298-6.804c2.833,1.5,5.5,3.299,8.035,5.225C235,228.89,247,248.89,263,242.89  c4-2,5-11,4.138-16.819c0.103-3.071,0.149-6.209,0.256-9.153s0.273-5.694,0.606-8.028c1-7,3-14,10.102-17.37  c2.352-1.704,4.972-3.278,7.713-4.593c10.963-5.259,23.852-6.371,29.185,4.963c9,16,3,34,7.354,51.375  c0.629,2.786,1.337,5.544,2.087,8.305c2.998,11.046,6.205,22.251,9.825,33.845c4.184,13.326,9.363,26.833,16.299,39.919  c1.387,2.617,2.845,5.217,4.378,7.796c3.057,4.759,6.057,10.759,10.157,15.17c1.809,2.387,3.657,4.729,5.509,7.035  c12.938,16.136,26.005,30.532,26.076,46.356c-0.051,8.679-0.006,17.083,1.305,25.002c0.672,3.926,1.574,7.697,2.733,10.99  c0.864,2.409,1.84,2.158,2.318-0.092c1.149-5.301,2.296-10.957,4.579-16.559c10.206-24.021,68.694-53.26,63.174-63.588  c-9.714-9.419-36.71-8.135-36.71-8.135C405.968,350.978,381.045,338.078,366.276,332.537z");
+drawSVG(ctx,"M211.375,183.101L189,246.89l86.131-53.538c0,0,35.631-62.185,0-3.852  S286,348.89,286,348.89c64.565-23.555,122.022-178.518,34.429-131.243s-47.595,295.812-47.595,295.812L437.417,245.75  c0,0-371.875,57.292-292.708,206.25")
+</script>

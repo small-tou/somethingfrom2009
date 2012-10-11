@@ -1,0 +1,104 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/jquery.js"></script>
+        <script src="js/jq-ui.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/point.js"></script>
+        <script src="js/math.js"></script>
+        <script src="js/util.js"></script>
+        
+        <script src="js/baseGraphic.js"></script>
+        <script src="js/edit/editGO.js"></script>
+        <script src="js/edit/drawLine.js"></script>
+        <script src="js/edit/drawArc.js"></script>
+        <script src="js/edit/drawBrokenLine.js"></script>
+        <script src="js/edit/drawBezier.js"></script>
+        <script src="js/edit/drawPolygon.js"></script>
+        <script src="js/edit/drawRect.js"></script>
+        <script src="js/edit/drawEllipse.js"></script>
+        <script src="js/edit/controlManager.js"></script>
+        <script src="js/edit/editContext.js"></script>
+        <style>
+            #context_view{
+                position:relative;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="SCD.debug('#main_view_0')">主视图</button>
+        <button onclick="SCD.debug('#sub_view_0')">辅视图</button>
+        <button id="tojson">输出结果</button>
+        <button id="select">选择功能</button>
+        <button id="grid_open">开启栅格捕获</button>
+        <button id="grid_close">关闭栅格捕获</button>
+        <div id="control">
+            <button id="control_line" data:type="line">画线</button>
+            <button id="control_arc" data:type="arc">画圆弧</button>
+             <button id="control_brokenline" data:type="brokenline">画折线</button>
+             <button id="control_bezier" data:type="bezier">画贝塞尔</button>
+             <button id="control_polygon" data:type="polygon">画多边形</button>
+             <button id="control_rect" data:type="rect">画矩形</button>
+        </div>
+        <div id="colors">
+            线条色彩:<button>#ff6700</button><button>#45E84D</button><button>#454DE8</button>
+        </div>
+        <div id="fillcolors">
+            填充色彩:<button>#ff6700</button><button>#45E84D</button><button>#454DE8</button>
+        </div>
+        <div id="width">
+            <button class="up">线粗细+</button><button class="down">线粗细-</button><span>1px</span>
+        </div>
+        <div id="context_view">
+
+        </div>
+        <script>
+            
+            var ectx=new SCD.EditContext();
+            ectx.init({
+                container:$("#context_view")[0]
+            });
+            ectx.selectOBJ("line")
+
+            $("#control button").click(function(){
+                ectx.selectOBJ($(this).attr("data:type"))
+            })
+            $("#tojson").click(function(){
+                console.log(ectx.toJSON())
+            })
+            $("#colors button").click(function(){
+                ectx.setStrokeStyle(this.innerHTML)
+            })
+$("#fillcolors button").click(function(){
+                ectx.setFillStyle(this.innerHTML)
+            })
+            var width=1;
+            $("#width .up").click(function(){
+                width++;
+                $("#width span").html(width+"px")
+                ectx.setLineWidth(width)
+            })
+            $("#width .down").click(function(){
+                width--;
+                $("#width span").html(width+"px")
+                ectx.setLineWidth(width)
+            })
+            $("#select").click(function(){
+                ectx.setEffect(2)
+            })
+            
+            $("#grid_open").click(function(){
+                ectx.gridCapture=true;
+            })
+            $("#grid_close").click(function(){
+                ectx.gridCapture=false;
+            })
+        </script>
+    </body>
+</html>

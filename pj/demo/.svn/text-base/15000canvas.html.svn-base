@@ -1,0 +1,22 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <script>
+            var timer=(new Date()).getTime()
+            for(var i=0;i<150000;i++){
+               var x=Math.random()*1024
+            }
+            var timer2=(new Date()).getTime()
+            alert(timer2-timer)
+        </script>
+    </body>
+</html>

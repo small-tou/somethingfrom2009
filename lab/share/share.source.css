@@ -1,0 +1,102 @@
+ .tmall-share{
+        width:300px;
+        background:#fff;
+        border:1px solid #9A0C1A;
+        -moz-box-shadow:#DAB8BB 0px 0px 3px;
+        -webkit-box-shadow:0px 0px 3px #DAB8BB;
+        position: absolute;
+        top:400px;
+        left:500px;
+        display: none;
+    }
+    .tmall-share-inner{
+        background:#f7f7f7;
+        height:100%;
+        position: relative;
+    }
+    .tmall-share-hd{
+        border-bottom:1px solid #ddd;
+        height:25px;
+        padding-left:5px;
+        line-height:25px;
+        position: relative;
+        font-size:12px;
+    }
+    .tmall-share-hd h2{
+        font-weight: bold;
+        font-size:12px;
+    }
+    .tmall-share-close{
+        position: absolute;
+        right:5px;
+        top:0px;
+        height:25px;
+        width:30px;
+        line-height: 25px;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+    }
+    .tmall-share-s{
+        background: url(http://img02.taobaocdn.com/tps/i2/T1gGhSXoRrXXXXXXXX-67-16.png) no-repeat;
+        width:11px;
+        height:11px;
+        position:absolute;
+    }
+    .pos-1 .tmall-share-s{
+        background-position: -3px 0px;
+        top:-11px;
+    }
+    .pos-2 .tmall-share-s{
+        background-position: -20px -1px;
+
+        right:-11px;
+    }
+    .pos-3 .tmall-share-s{
+        background-position: -36px -1px;
+        bottom:-9px;
+        _bottom:-13px;
+    }
+    .pos-4 .tmall-share-s{
+        background-position: -53px -1px;
+        left:-10px;
+    }
+    .pos-1 .s-1,.pos-3 .s-1{
+        left:10px;
+    }
+    .pos-1 .s-2,.pos-3 .s-2{
+        right:10px;
+    }
+    .pos-2 .s-1,.pos-4 .s-1{
+        top:10px;
+    }
+    .pos-2 .s-2,.pos-4 .s-2{
+        bottom:10px;
+    }
+    .tmall-share-bd{
+        padding:5px 5px 15px 10px;
+    }
+    .tmall-share-list li{
+        float:left;
+        display:inline;
+        margin-top:5px;
+        height:20px;
+        margin-left:3px;
+    }
+    .tmall-share .show-all li{
+        width:80px;
+    }
+    .tmall-share-list li a{
+        cursor:pointer;
+        padding-left:19px;
+        display:block;
+        height:16px;
+        color:#666;
+        background:url(http://img03.taobaocdn.com/tps/i3/T1VRXQXjtDXXXXXXXX-16-500.gif) no-repeat;
+        line-height:16px;
+    }
+    .tmall-share .show-icon li{
+        width:20px;
+        overflow:hidden;
+        text-indent: -100px;
+    }

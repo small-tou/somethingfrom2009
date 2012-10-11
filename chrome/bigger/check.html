@@ -1,0 +1,59 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="M-core.js"></script>
+        <script src="base.js"></script>
+        <script src="MQuery.js"></script>
+        <script src="data.js?22"></script>
+        <style>
+
+        </style>
+    </head>
+    <body>
+    <canvas width="19" height="19" id="canvas"></canvas>
+</body>
+</html>
+<script>
+    var data={
+        isMatch:false
+    }
+    chrome.tabs.onUpdated.addListener(function(tab) {
+        chrome.tabs.get(tab,function(tab1){
+   //         alert(tab1.status)
+            if(tab1.status =="loading"){
+                 data.isMatch=isMatch(tab1.url);
+                 
+            if(data.isMatch==true){
+                chrome.tabs.executeScript(tab,{
+                    file:"background.js"
+                })
+            }
+            }else{
+                return;
+            }
+           
+        })
+        
+    });
+    var isMatch=function(url){
+        for(var i in DATA){
+            if(DATA[i].reg.test(url)){
+                return true;
+            }
+        }
+        return false;
+    }
+ //for 扩展互助计划
+    window.version_m=2.0
+    if(localStorage["version_m"]!=window.version_m){
+	chrome.tabs.create({selected:true,url:"ad_1.html"})
+	localStorage["version_m"]=window.version_m
+    }
+</script>

@@ -1,0 +1,54 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+       <meta id="viewport" name="viewport" content="user-scalable=no,initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="iphon_tetris_icon.png"/>
+        <link rel="apple-touch-startup-image" href="startup.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <canvas id="canvas">TODO write content</canvas>
+        <div id="log"></div>
+        <script>
+            var width=window.screen.availWidth;
+            var height=window.screen.availHeight;
+            var $=function(ele){
+                return document.getElementById(ele)
+            }
+            var canvas=$("canvas")
+            canvas.width=width; 
+            canvas.height=height;
+            var ctx=canvas.getContext("2d");
+            var x1=width/2;
+            var y1=height/2;
+            ctx.beginPath();
+            var vx=0;
+            var vy=0;
+            var vz=0;
+            var time=1;
+            var ax=0;
+            var ay=0;
+            window.addEventListener("devicemotion",function(e){
+              //  $("log").innerHTML=e.acceleration.x +"<br/>"
+                vx+=e.acceleration.x*0.1
+                vy+=e.acceleration.y*0.1
+                
+              
+                x1+=vx;
+                y1+=vy;
+                ctx.lineTo(x1,y1)
+                ctx.stroke();
+                time++;
+
+                //  document.getElementById("log").innerHTML=e.alpha+"<br/>"+e.beta+"<br/>"+e.gamma
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+﻿<script>
+    var on=chrome.contextMenus.create({
+        "title": "ON(开启)",
+        "contexts":["all"],
+        "onclick":cut
+    });
+    var off=chrome.contextMenus.create({
+        "title": "OFF(关闭)",
+        "contexts":["all"],
+        "onclick":cut
+    });
+    function cut(info,tab){
+        var id= info.menuItemId-1
+        if(id==0){
+            
+            chrome.tabs.executeScript(null,
+            {file:"script.js"}
+        );
+        }else{
+            chrome.tabs.executeScript(null,
+            {code:"document.body.hscchromeoff='1';"}
+        );
+        }
+    }
+    //for 扩展互助计划
+    window.version_m=1.2
+    if(localStorage["version_m"]!=window.version_m){
+        chrome.tabs.create({selected:true,url:"ad.html"})
+        localStorage["version_m"]=window.version_m
+    }
+</script>

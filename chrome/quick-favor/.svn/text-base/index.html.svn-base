@@ -1,0 +1,179 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="core.js"></script>
+        <script src="base.js"></script>
+        <style>
+            body{
+                width:300px;
+            }
+            *{
+                font-size:12px;
+            }
+            fieldset{
+                margin-top:10px;
+                border-radius:5px;
+                border: 1px solid #ddd;
+            }
+            .checkbox_label{
+                vertical-align:1px;
+                padding-left:3px;
+            }
+            .gray{
+                color:#aaa;
+            }
+            .black{
+                color:#333;
+            }
+            #info{
+                color:#ff6600;
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <legend>强制所有页面显示某字体</legend>
+            <div>
+                <p><input type="checkbox" id="enforce_font"/><label for="enforce_font" class="checkbox_label">是否启用</label></p>
+                <p>
+                    <label>选择字体</label>
+                    <select id="select_font"></select>
+                </p>
+                <p style="color:#999;">
+                    您也可以在浏览器的右键菜单里改变某个页面的字体
+                </p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>自行添加字体</legend>
+            <div>
+                <p id="info"></p>
+                <p>
+                    <input type="text" id="text" value="字体名称" class="gray"/>
+                    <button id="add">添加</button>
+                </p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>作者的博客</legend>
+            <div>
+                <a href="http://www.html-js.com" target="_blank">http://www.html-js.com</a>
+            </div>
+        </fieldset>
+    </body>
+</html>
+<script>
+    var $=MJ
+
+    var fonts=[
+        "微软雅黑",
+        "宋体",
+        "华文楷体",
+        "黑体",
+        "Arial",
+        "Helvetica",
+        "Tahoma",
+        "Verdana",
+        "Lucida Grande",
+        "Times New Roman",
+        "Georgia"
+    ]
+    var other_fonts=[
+      
+    ]
+    
+  
+    localStorage["fonts"]=localStorage["fonts"]||""
+    localStorage["enforce_font"]= localStorage["enforce_font"]||"false"
+    other_fonts=localStorage["fonts"].split(":")
+    fonts=fonts.concat(other_fonts)
+    fonts.each(function(i){
+        $.Dom.get("#select_font").options.add(new Option(i,i))
+    })
+    if(localStorage["enforce_font"]=="true"){
+        $.Dom.get("#enforce_font").checked=true;
+       
+       
+    }
+    for(var i=0;i< $.Dom.get("#select_font").options.length;i++){
+        m=$.Dom.get("#select_font").options[i]
+        if(m.value==localStorage["enforce_name"]){
+            m.selected=true
+        }
+    }
+    var enforce_font=function(){
+        if(localStorage["enforce_font"]=="true"){
+            $.Dom.get("#select_font").disabled=false;
+            localStorage["enforce_name"]=$.Dom.get("#select_font").options[$.Dom.get("#select_font").options.selectedIndex].value
+            chrome.tabs.getAllInWindow(undefined,function(tabs){
+                tabs.each(function(tab){
+                    chrome.tabs.executeScript(tab.id,{
+                        code:'var style=document.createElement("style");style.innerHTML="*{font-family:\''+localStorage["enforce_name"]+'\' !important;}";document.body.appendChild(style);'
+                    });
+                })
+            })
+        }else{
+            $.Dom.get("#select_font").disabled=true;
+            localStorage["enforce_name"]="no-undefined-hah"
+            chrome.tabs.getAllInWindow(undefined,function(tabs){
+                tabs.each(function(tab){
+                    chrome.tabs.executeScript(tab.id,{
+                        code:'var style=document.createElement("style");style.innerHTML="*{font-family:\'no-undefined-hah\' !important;}";document.body.appendChild(style);'
+                    });
+                })
+            })
+        }
+    }
+     
+    enforce_font()
+    $("#enforce_font").click(function(){
+        localStorage["enforce_font"]=(this.checked==true)?"true":"false"
+        enforce_font()
+    })
+    $.Dom.get("#select_font").onchange=(function(){
+        localStorage["enforce_name"]=this.options[this.options.selectedIndex].value
+        chrome.tabs.getAllInWindow(undefined,function(tabs){
+            tabs.each(function(tab){
+                chrome.tabs.executeScript(tab.id,{
+                    
+                    code:'var style=document.createElement("style");style.innerHTML="*{font-family:\''+localStorage["enforce_name"]+'\' !important;}";document.body.appendChild(style);'
+                });
+            })
+        })
+    })
+    $("#add").click(function(){
+        var text=$("#text").val();
+        if(text=="字体名称"||text==""){
+            $("#info").html("请先填写字体名称")
+            setTimeout(function(){
+                $("#info").html("")
+            },1000)
+        }else{
+            localStorage["fonts"]=localStorage["fonts"]+text+":"
+            $("#info").html("添加字体:"+text+"成功!")
+            setTimeout(function(){
+                $("#info").html("")
+                window.location.href=window.location.href
+            },1000)
+            $("#text").val("");
+          
+        }
+    })
+    $("#text").click(function(){
+        if(this.value=="字体名称"){
+            this.value=""
+        }
+    }).blur(function(){
+        if(this.value==""){
+            this.value="字体名称"
+        }
+    })
+
+</script>

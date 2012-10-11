@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/49/trunk/version1.0.3/test-case
+END
+testLib.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/20/trunk/version1.0.3/test-case/testLib.js
+END
+dom.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/20/trunk/version1.0.3/test-case/dom.html
+END
+actionJS.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/49/trunk/version1.0.3/test-case/actionJS.js
+END
+auto-test.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/49/trunk/version1.0.3/test-case/auto-test.html
+END
+test-lib.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/20/trunk/version1.0.3/test-case/test-lib.js
+END

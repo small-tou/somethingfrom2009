@@ -1,0 +1,28 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=2.0, maximum-scale=3.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="iphon_tetris_icon.png"/>
+
+        <link rel="apple-touch-startup-image" href="startup.png" />
+       
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>测试列表</title>
+    </head>
+    <body>
+        <div><a href="balltest.html">balltest.html</a></div>
+         <div><a href="touch.html">touch.html</a></div>
+         <div><a href="3dtext.html">3dtext.html</a></div>
+          <div><a href="script.html">script.html</a></div>
+          <div><a href="testA.html">testA.html</a></div>
+          <div><a href="testAccetion.html">testAccetion.html</a></div>
+        <div><a href="http://www.html-js.com/mj/pj/demo/demo-2canvas-partrending/index.html">canvas-render.html</a></div>
+    </body>
+</html>   

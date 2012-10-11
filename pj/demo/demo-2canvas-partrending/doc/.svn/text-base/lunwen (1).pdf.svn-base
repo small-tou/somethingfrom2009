@@ -1,0 +1,394 @@
+
+
+
+<html>
+
+<head id="ctl00_Head1"><title>
+
+	download pdf files  in the  website  
+
+</title><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta name="robots" content="all" /><link rel="stylesheet" type="text/css" media="all" href="/images/css/standard.css" /><link rel="stylesheet" type="text/css" media="all" href="/images/css/format.css" /><link rel="stylesheet" type="text/css" media="all" href="/images/css/user.css" /><link rel="stylesheet" type="text/css" href="/images/css/style.css" /><meta name="keywords" content="钢管;超声波;连续测厚;计算机图形显示;虚拟设备驱动程序 朱娟花" /><meta name="description" content="在工业生产及日常生活中,往往需要知道物体各处的精确壁厚,以确保生产安全。目前国内缺乏高效、精密的测量工具。    文章介绍了一个由超声波测厚系统装置和本论文设计的监控软件组成的“钢管可视化超声波连续测厚系统”,其不但能对各种刚性管材各处的壁厚进行高速、连续地探测,还能通过计算机检测系统多图形地显示壁厚曲线、超标报警,并能进行数据存储和查询。    文章首先研究了超声波测厚的国内外发展现状及研究意义,然后介绍了超声测厚的原理,最后详细说明了钢管超声波连续测厚系统的软硬件组成,其中重点介绍了由超声连续测厚主程序和虚拟设备驱动程序HY6070.VxD组成的监测软件。    此测厚系统能实现钢管自动化在线检测,解决了传统测厚方法效率低、检测不完全的缺点,用于市场后反应良好。 钢管可视化超声波连续测厚系统的研究" /></head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" >
+
+  
+
+           <table border='0' width="1008px" cellpadding='0' cellspacing='0' align='center' class='topline' >
+
+        	<tr>
+
+        		<td height='66' align='center' style='width: 188px'><a href='http://www.lw23.com/'><img src='/images/logo.gif'  alt='论文网'/></a></td>
+
+        		<td valign='top'>
+
+        		    <table border='0'  align=center cellpadding='0' cellspacing='0' class='f12' style='width: 818px' >
+
+        			      <tr align='center'>
+
+        		          <td style='width: 816px'><a id='A6'  href='http://www.lw23.com/' title='论文网'>论文网</a>&nbsp;|&nbsp;
+
+        		         
+
+        		         
+
+        		           <a  href='/catalog_list_4/'>教育学论文</a>&nbsp;|&nbsp; 
+
+        		           <a  href='/catalog_list_5/'>文学论文</a>&nbsp;|&nbsp;
+
+        		           
+
+        		            <a  href='/catalog_list_7/'>理学论文</a>&nbsp;|&nbsp;
+
+        		           <a  href='/catalog_list_8/'>工学论文</a>&nbsp;|&nbsp;
+
+        		           <a  href='/catalog_list_9/'>农学论文</a>&nbsp;|&nbsp;
+
+        		           <a  href='/catalog_list_10/'>医学论文</a>&nbsp;|&nbsp;
+
+        		           <a  href='/catalog_list_11/'>军事学论文</a>&nbsp;|&nbsp;
+
+        		           <a  href='/catalog_list_12/'>管理学论文</a>&nbsp;|&nbsp;
+
+        		           <a  href='/catalog_list_3/'>法学论文</a>&nbsp;
+
+        		           
+
+
+
+        		           </td> 
+
+        	            </tr>
+
+        	         <tr align='center'>
+
+        		         <td style='width: 816px; height: 31px;'>
+
+        		         <a  href='/catalog_list_6/'>历史学论文</a>&nbsp;|&nbsp;
+
+        		          <a  href='/catalog_list_1/'>哲学论文</a>&nbsp;|&nbsp;
+
+        		          <a  href='/catalog_list_2/'  >经济学论文</a>&nbsp;|&nbsp;
+
+        		          
+
+        		          <a  href='/translator.aspx'>论文翻译</a>&nbsp;|&nbsp;
+
+        		          
+
+        		          <a  href='/catalog_list_2/'>论文标签</a>&nbsp;|&nbsp;
+
+        		          <a  href='#'>专业分类</a>&nbsp;|&nbsp;
+
+        		          <a  href='/hots.aspx'>论文排行</a>&nbsp;|&nbsp;
+
+        		           <a  href='/recommen.aspx'>推荐论文</a>&nbsp;|&nbsp;
+
+        		          
+
+        		          <a  href='/link.aspx'>友情链接</a>&nbsp;|&nbsp;
+
+        		          <a  href='/sitemap.aspx'>网站地图</a>&nbsp;|&nbsp;
+
+        		          <a  href='/help.aspx'>在线帮助</a>&nbsp;|&nbsp;
+
+        		        
+
+        		           
+
+        		           
+
+        		       </td>
+
+        	        </tr>
+
+        		  </table>
+
+        		</td>
+
+        	</tr>
+
+        </table>
+
+
+
+  
+
+  
+
+<table border="0" width="998px" align="center" cellpadding="0" cellspacing="0">
+
+	<tr width="100%" >
+
+		<td  background="/images/ni_nav_btm_bg.gif" > </td>  
+
+       
+
+	</tr>
+
+	<tr >
+
+		<td colspan="24" align="center" class="i_s_bg">
+
+		  <table border="0" cellpadding="0" cellspacing="0" class="f12">
+
+		    <form name=f method="get" action="/search.aspx">
+
+			<tr>
+
+				<td width="350"><input  type="text" name="q" size="48" value="" style="border: 1px solid #4286D6; font-size: 15px" onmouseover="this.focus()" onfocus="this.select()" maxlength="100"   class="i_s_input"   ></td>
+
+                    <td >&nbsp;&nbsp;
+
+				 <input id="Submit2" type="submit" title="论文搜索" value="论文搜索"  class="formbutton"  >
+
+				
+
+			</tr>
+
+		</form>
+
+		</table>
+
+		</td>
+
+	</tr>
+
+	
+
+</table>
+
+
+
+
+<table width="1008px" align=center>
+
+   <tr>
+
+         <td width="100%">
+
+             
+
+               <table width="100%" border="0" cellpadding="1"  style="border:1px solid #4F7FC7; border-collapse: collapse">
+
+                            <tr>
+
+                               <td height="25" bgcolor="#6699cc"  align=left   colspan="3" >&nbsp;<img  src="/images/icon_balloon.gif" width="13" height="15" >&nbsp;&nbsp;
+
+                               <b><a href='http://www.lw23.com/'  class="link_a03"><font class="text_a02">论文网</font></a>
+
+                               
+
+                               </b></td>
+
+                             </tr>
+
+                             <tr>
+
+                                <td>
+
+                                  <div class='boxes' align=center >
+
+<div class="left" style="margin: 10px 10px 10px 10px; background: url(/images/wait.gif) no-repeat; width:66px; height:66px; position:relative">
+					<div style="position:absolute; top:50%; margin-top:-14px; margin-left: -17px">
+						<span id="waitnumber" style="font-size:2em; text-align:center; width:33px; height:33px;">15</span>
+					</div>
+				</div>
+                                     <table width=98% ><tr><td align='center' colspan='3'>
+                                     
+                                    
+                                     
+                                     <font color=red><b>点击下面的链接下载pdf文献，或者10秒后自动下载pdf文件</b></font></td></tr><tr><td width=98% colspan='3' ><hr color= #C0D0E0 height=1  width=98% /></td></tr><tr><td width='98%' colspan='3'>
+                                     <script type="text/javascript"><!--
+google_ad_client = "pub-0875043418057162";
+/* 728x90, 创建于 11-7-22 */
+google_ad_slot = "8372778591";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</td></tr>
+<tr>
+<td>
+
+				</td>
+</tr>
+
+<tr>
+<td width='33%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/pdf_7fbbdd44-4148-45bd-bdac-a7376312291b/lunwen.pdf' #download><img src='/images/file/rar.gif'></a></td><td width='33%' ><a href='/pdf_7fbbdd44-4148-45bd-bdac-a7376312291b/lunwen.pdf' name='#download'><img src='/images/file/pdf.gif'></a></td><td width='33%'><a href='/pdf_7fbbdd44-4148-45bd-bdac-a7376312291b/lunwen.pdf' name='#download'><img src='/images/file/doc.gif'></a></td></tr>
+</tr>
+
+<tr><td width=98% colspan='3'>The Research on the System of Visualized Ultrasonic Successive Measuring Thickness for Steel Pipes<br/>
+
+Steel   pipe ; Ultrasonic ; Successive   thickness   measurement ;Multi-graphic computer display;  Virtual device drive program<br/>
+Modern industry production has great performance in productive efficiency, low cost, energy saving and human resource saving, but the loss which results from equipment failure will also increase in proportion. In particular, once equipments like steel-making converters have accidents during producing course, which will not only result in great economic losses but also put workers in danger. When making steel, steel-making converter"s lining meets molten steel, slag and smoke directly, and it is eroded by physical, mechanical and chemical effect continuously. Accordingly, the thickness of the whole or part of steel-making converter"s lining decreases increasingly. So, it is very important to detect the erosion condition of steel-making converter"s lining and to adopt corresponding measures in time for steel-making furnace to maintain its high yield and longevity.Taking laser thickness measurement as primary detection method, combining the result of flame image processing, this paper presents a multi-sensor fusion detection scheme which is based on the research of multi-sensor data fusion theory and method. Because the eroded state and process of converter"s lining is described difficultly with mathematic model, this paper uses BP network as fusion algorithm, and takes good use of self-teaching character of neural network to realize the function of multi-sensor fusion. In addition, the design of laser thickness measurement system is finished. Based on the study on characteristic of different thickness measurement methods and measurement scope, aiming at the application background of thickness measurement of converter"s lining, a laser thickness measurement system based on the phase method is designed in this paper. During the process of design, we deeply analyze and discuss some key technology such as the problem of big and small angle detecting phase.In this paper, a new method of converter detection is presented. Realization of this system would make real time detect converter in the process of manufacture feasible and improve the efficiency of detection. At the same time, this scheme provides reference value for other high temperature detection in industry.<br/>Usually, in the field of industry manufacturing and people daily life, it is very importance of knowing the precise thickness of parts of an object to ensure production safety. While the current state is no proper measuring instrument efficiently and precisely meet it nationally.The paper presents a visualized ultrasonic successive thickness measuring system for steel pipes, which primarily consisting of a ultrasonic measuring device and a control software. Using it, not only can we probe the wall thickness of kinds of rigid pipe successively and speedily , but also display curves of thickness in multi-graphs and alert when its value exceeds the standard by the computer inspecting system, furthermore, save and check the data.In the paper, the importance and the current state of the steel pipe ultrasonic thickness inspecting are investigated firstly. Following the principle of the ultrasonic thickness measuring is presented detailedly. Lastly, the software and hardware of the system are explored at large, of which the inspecting software consisting of a main program and a virtual device drive program named HY6070.VxD is emphasized.With the help of the system, the online inspection of the steel pipe automatic manufacture can realized easily, resolving the problem of low efficiency and incomplete defects contrary to the conventional thickness measuring means. The effect response of the measuring system from market is very well.<br/></td></tr> <tr><td width='5%' ><hr color= '#C0D0E0'  /></td> <td>【相关论文】</td> <td width='80%' ><hr color= '#C0D0E0'  /></td></tr><tr><td colspan='3'>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0875043418057162";
+/* 728x90, 创建于 11-7-22 */
+google_ad_slot = "8372778591";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+                                       </div>
+
+                                </td>
+
+                </tr>  
+
+            </table>
+
+         </td>      
+
+     </tr>
+
+    </table>
+
+ 
+
+
+
+
+
+    <table width="1008px" align=center>
+
+   <tr>
+
+         <td><a href='/update_1.aspx'>论文更新1</a></td>      
+
+         <td><a href='/update_2.aspx'>论文更新2</a></td>      
+
+         <td><a href='/update_3.aspx'>论文更新3</a></td>      
+
+         <td><a href='/update_4.aspx'>论文更新4</a></td>      
+
+         <td><a href='/update_5.aspx'>论文更新5</a></td>      
+
+         <td><a href='/update_6.aspx'>论文更新6</a></td>      
+
+         <td><a href='/update_7.aspx'>论文更新7</a></td>      
+
+         <td><a href='/update_8.aspx'>论文更新8</a></td>      
+
+         <td><a href='/map.html'>论文索引</a></td>      
+
+          <td><a href='http://www.6lib.com'>第6图书馆</a></td>      
+
+     </tr>
+
+    </table>
+
+
+
+
+
+<table  border='0' align='center' cellpadding='0' cellspacing='0' width="998px">
+
+         <tr>
+
+       		<td  height='2' align='center' bgcolor='#e6e6e6'> </td>
+
+       	</tr>
+
+     
+
+       	
+
+       	    
+
+       
+
+       	
+
+       	 <tr>
+
+       	   <td align='center'>
+
+       	     <table cellpadding='0' cellspacing='0' border='0' width='760'>
+
+       				
+
+       				<tr>
+
+       					<td align='center'>
+
+       							Copyright (c) 2009  <a href="http://www.lw23.com">论文网</a>  www.lw23.com All Rights Reserved . 鄂 08104732     <script language="javascript" type="text/javascript" src="http://js.users.51.la/1961631.js"></script>
+
+<noscript><a href="http://www.51.la/?1961631" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/1961631.asp" style="border:none" /></a></noscript>
+
+       			    						                               
+
+                               </td>
+
+       				</tr>
+
+       						
+
+       				<tr>	
+
+       				    <td align='center' class='text' colspan=2>
+
+       					
+
+       					</td>
+
+       			     </tr>	
+
+       			     
+
+       			      <tr>
+
+       			      
+
+       			     </tr>
+
+       			  
+
+       	     
+
+       	      </table>
+
+            </td></tr>
+
+ </table>
+ 
+ 		<script>
+			wait = 10;
+			function checkWait() {
+				wait--;
+				if (wait == 0) {
+					window.location = 'http://www.lw23.com/pdf_7fbbdd44-4148-45bd-bdac-a7376312291b/lunwen.pdf';
+				} else {
+					if (wait < 10)
+						document.getElementById('waitnumber').innerHTML = '0' + wait;
+					else
+						document.getElementById('waitnumber').innerHTML = wait;
+					
+					setTimeout('checkWait();', 1000);
+				}
+			}
+			checkWait();
+		</script>
+
+<div style="display:none">
+
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4525932.js"></script>
+
+<noscript><a href="http://www.51.la/?4525932" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4525932.asp" style="border:none" /></a></noscript></div>
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="http://gate.looyu.com/18610/73683.js"></script>
+
+</body>
+
+</html>

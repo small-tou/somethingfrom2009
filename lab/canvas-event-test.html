@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="600" height="300" style="margin:50px;background: #aaa;"></canvas>
+    </body>
+</html>
+<script>
+var $=MJ;
+$.use("canvas.sprite.circle",function(){
+    
+    var can=new $.Canvas.core()
+    can.init();
+    can.canvas=$.Dom.get("#canvas");
+    can.ctx=can.canvas.getContext("2d")
+    can.begin();
+    can.on("render",function(p){
+     //   console.log("ss")
+    })
+    var eve=new $.Canvas.Event()
+    eve.init(can);
+    
+    var circle=new $.Canvas.Sprite.Circle();
+    circle._move=function(){
+        this.pos.x+=1
+    }
+    circle.init();
+    circle.r=100;
+    eve.add(circle)
+    can.addSprite(circle);
+    circle.on("click",function(params){
+        console.log(params.fire_param)
+    })
+    circle.on("mousemove",function(params){
+        console.log(params.fire_param.offsetX)
+    })
+   
+    
+   // alert(eve)
+    
+})
+</script>

@@ -1,0 +1,122 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta id="viewport" name="viewport" content="user-scalable=no,initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="iphon_tetris_icon.png"/>
+        <link rel="apple-touch-startup-image" href="startup.png" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>测试列表</title>
+        <style>
+            body{
+                overflow: hidden;
+                width:100%;
+                height:100%;
+                display: block;
+                background: #fff; 
+            }
+          
+            boby,html{
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body> 
+    <canvas id="canvas" ></canvas>
+    
+    <script>
+        var width=window.screen.availWidth;
+        var height=window.screen.availHeight;
+        var $=function(ele){
+            return document.getElementById(ele)
+        }
+        $("canvas").width=width;
+        $("canvas").height=height-10;
+         
+     
+        var ctx=$("canvas").getContext("2d")
+        var ball=function(){
+            this.x=Math.random()*width
+            this.y=Math.random()*height
+            this.r=10
+            this.color="#ff6700"
+            this.vx=0
+            this.vy=0
+        }
+        ball.prototype={
+            move:function(){
+this.vx=this.vx+gx*0.4
+                this.vy=this.vy+gy*0.4
+
+                if(this.x>=width-this.r){
+                    this.vx=-1*Math.abs(0.7*this.vx);
+                }
+                if(this.x<=0+this.r){
+                    this.vx=Math.abs(0.7*this.vx);
+                }
+                if(this.y>=height-this.r){
+                    this.vy=-1*Math.abs(0.7*this.vy);
+                }
+                if(this.y<=0+this.r){
+                    this.vy=Math.abs(0.7*this.vy);
+                }
+                this.x+=this.vx;
+                this.y+=this.vy;
+            },
+            draw:function(){
+
+                ctx.beginPath();
+                ctx.fillStyle=this.color;
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2)
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+                   
+                    
+            
+        var gx=0;
+        var gy=0;
+       
+        var balls=[]
+        var color=[
+            '#ff6700',
+            "#679866",
+            "#D43A16",
+            "#637FE4",
+             '#ff6700',
+            "#679866",
+            "#D43A16",
+            "#637FE4"
+        ]
+        for(var i=0;i<30;i++ ){
+            var aa=new ball();
+            aa.color=color[parseInt(i/5)]
+            aa.r=Math.random()*10+10
+            balls.push(aa)
+        }
+        
+        setInterval(function(){
+             ctx.clearRect(0,0,$("canvas").width,$("canvas").height);
+            for(var i=0;i<balls.length;i++){
+               
+                balls[i].move();
+                
+                balls[i].draw();
+            }
+          
+        },30)
+        window.addEventListener("deviceorientation",function(e){
+            gx=e.gamma;
+            gy=e.beta;
+            //  document.getElementById("log").innerHTML=e.alpha+"<br/>"+e.beta+"<br/>"+e.gamma
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <canvas width="1024" height="786" id="canvas"></canvas>
+    </body>
+</html>
+<script>
+    var can=document.getElementById("canvas")
+    var ctx=can.getContext("2d");
+    
+   
+   
+    var time=(new Date()).getTime();
+    for(var i=0;i<15000;i++){
+        var m=Math.floor(Math.random()*4)
+        if(m==0){
+            ctx.save()
+            ctx.rotate(Math.random()*Math.PI*2)
+            ctx.fillRect(Math.random()*1024,Math.random()*786,Math.random()*10,Math.random()*10)
+            ctx.restore()
+        }else if(m==1){
+            var x=Math.random()*1024
+            var y=Math.random()*786
+            var r=Math.random()*5
+            ctx.beginPath();
+            ctx.moveTo(x,y)
+            ctx.arc(x,y,r,0,Math.PI*2)
+            ctx.closePath();
+            
+            ctx.stroke();
+            ctx.fill();
+        }else if(m==2){
+             var x=Math.random()*1024
+           var y=Math.random()*786
+           ctx.moveTo(x,y)
+          var r=Math.random()*100
+           ctx.moveTo(x,y)
+           ctx.arc(x,y,r,0,Math.PI*2*Math.random())
+          // ctx.bezierCurveTo(x1,y1,x2,y2,x3,y3)
+           ctx.stroke()
+        }else if(m==3){
+            ctx.save()
+            ctx.rotate(Math.random()*Math.PI*2)
+             var x=Math.random()*1024
+           var y=Math.random()*786
+            ctx.fillText("fsdffdsf",x,y)
+            ctx.restore()
+        }
+    }
+    var time2=(new Date()).getTime();
+    alert(time2-time)
+</script>

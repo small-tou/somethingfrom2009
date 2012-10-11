@@ -1,0 +1,33 @@
+﻿<script>
+   
+    //for 扩展互助计划
+    window.version_m=1.5
+    if(localStorage["version_m"]!=window.version_m){
+        chrome.tabs.create({selected:true,url:"ad.html"})
+        localStorage["version_m"]=window.version_m
+    }
+
+    chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if (request.cmd == "getState"){
+            var state={
+                nowType:localStorage['nowType'],
+                isOn:localStorage['on']
+            }
+            if(state.nowType=="1")
+                state.imgs= localStorage["imgs"].split("$**$")
+            if(state.nowType=="2"){
+                state.minText=localStorage['minText']
+                state.maxText=localStorage['maxText']
+            }
+            if(state.nowType=="3"){
+                state.minNum=localStorage['minNum']
+                state.maxNum=localStorage['maxNum']
+            }
+            sendResponse({
+                state:state
+            });
+        }
+           
+    });
+</script>

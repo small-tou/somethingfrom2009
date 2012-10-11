@@ -1,0 +1,15 @@
+<script>
+
+    chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if(request.cmd=="show_page_action"){
+          //  chrome.pageAction.show(sender.tab.id)
+        }
+    });
+
+    chrome.tabs.onSelectionChanged.addListener(function(tabId) {
+       chrome.tabs.getSelected(undefined, function(tab){
+             chrome.pageAction.show(tab.id)
+       })
+    });
+</script>

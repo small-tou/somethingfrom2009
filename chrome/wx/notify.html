@@ -1,0 +1,57 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            *{
+                font:12px/1.5 tahoma,helvetica,clean,sans-serif;
+            }
+            .item{
+
+                line-height:30px;
+                padding-left:10px;
+            }
+            .avatar{
+                width:20px;
+                height:20px;
+                display: inline-block;
+                vertical-align: -5px;
+            }
+            .count{
+                float:right;
+                line-height:30px;
+            }
+            a:link,a:visited{
+                text-decoration: none;
+                color:#45649E;
+
+            }
+            ul,li{
+                list-style: none;
+                margin:0;
+                padding:0;
+            }
+            body{
+                padding:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>微信网页版提醒您：您有（<em id="msg"></em>）条新消息</h1>
+        <div id="list">
+
+        </div>
+    </body>
+    <script>
+        document.getElementById("msg").innerHTML= localStorage['count']
+        setInterval(function(){
+            document.getElementById("msg").innerHTML= localStorage['count']
+        },2000)
+        
+    </script>
+</html>

@@ -1,0 +1,123 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+
+            *{
+                font-size: 12px;
+            }
+            fieldset{
+                margin-top:10px;
+                border-radius:5px;
+                border: 1px solid #ddd;
+                font-size:12px;
+            }
+            .checkbox_label{
+                vertical-align:1px;
+                padding-left:3px;
+            }
+            .gray{
+                color:#aaa;
+            }
+            .black{
+                color:#333;
+            }
+            #info{
+                color:#ff6600;
+            }
+            button{
+                border:1px solid #bbb;
+                border-radius:3px;
+                height:30px;
+                background: -webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0, rgb(239,239,239)),
+                    color-stop(1, rgb(247,247,247))
+                    );
+                color:#444;
+                cursor: pointer;
+                padding:0 10px;
+                width:90px;
+                margin-left:40px;
+            }
+            button:hover{
+                border:1px solid #0886f5;
+                background: -webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0,#0886f5),
+                    color-stop(1, #41a4fa)
+                    );
+                color:#fff;
+            }
+            input{
+                height:28px;
+
+            }
+            .black_list{
+                padding:10px;
+            }
+            .black_list #see_black{
+                margin-left:20px;
+            }
+            .black_list button{
+                display:none;
+            }
+            #add{
+                height:25px;
+            }
+            #fontsize{
+                vertical-align: middle;
+
+            }
+            .font_size label{
+                padding-left:10px;
+            }
+            #fontsize_num{
+                color:#ff6700;
+                padding:0 5px;
+            }
+            textarea{
+                width:800px;
+                height:40px;
+                vertical-align: middle;
+                box-shadow: 0 2px 2px #ddd inset;
+                border: 1px solid #BBB;
+                background:#fff;
+            }
+            li{
+
+                list-style: none;
+                margin:0;
+                padding:0;
+                margin-top:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="uploadForm" method="POST" action="http://api.t.sina.com.cn/statuses/upload.xml" enctype="multipart/form-data" id="weibo">
+            <ul>
+                <li><label>微博内容:</label><textarea name="status" ></textarea></li>
+                <li><label>选择图片:</label><input type="file" name="pic" value="C:\fakepath\1000594880c0f5cd6d.jpg" /></li>
+            </ul>
+            <button type="submit" id="weibo_submit">发布</button>
+            <input type="hidden" name="source" value="1053363421" />
+        </form>
+    </body>
+    <script>
+        document.getElementById("weibo_submit").onclick=function(){
+            chrome.extension.sendRequest({cmd: "pic"}, function(response) {
+                
+            });
+        }
+    </script>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0056)http://tech.it168.com/j/2007-12-26/200712261651532.shtml -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<meta http-equiv="content-language" content="gb2312">
+<meta name="description" content="">
+<meta name="keywords" content="优化你的手机游戏：使用脏矩形技术 - 技术频道| IT168">
+
+
+<title>优化你的手机游戏：使用脏矩形技术 - 
+技术门户
+| ITPUB | </title>
+<link rel="StyleSheet" href="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/style.css" type="text/css" media="screen">
+<script language="javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/ycncommon.js"></script>
+<script language="javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/ycnevent.js"></script>
+<script language="javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/loginAndEmail.js"></script>
+<script type="text/javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/chkFrom.asp"></script>
+<script language="javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/nav.js"></script>
+<script language="javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/resize.js"></script> 
+</head>
+<body>
+
+<!-- 信箱 -->
+
+<div id="emailf" class="emailf">
+	<div class="t14">商讯信箱</div>	 
+	<form action="http://mail.it168.com/mail/login.csp" method="post" target="_blank">
+		<div>用户名：<input name="user" type="text" class="inp11" size="6"> @ 
+			<select name="host" style="width:100px">
+                              <option selected="">vip.it168.com</option>
+                              <option>free.it168.com</option>
+                              <option>udc.it168.com</option>
+                              <option>staff.it168.com</option>
+                              <option>it168.com</option>
+                            </select>
+		   <img id="emailfClose" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/close.gif">
+		</div>
+		
+		
+		<div>密&nbsp;&nbsp;码：<input name="pass" type="password" class="inp11" size="10">&nbsp;&nbsp;&nbsp;<a href="http://register.it168.com/xieyi.asp" target="_blank">注册</a>|<a href="http://register.it168.com/backpwd.asp" target="_blank">忘记密码</a></div>
+		<div style="width:100%;text-align:center"><input type="image" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/dlbut2.gif" align="absmiddle"></div>
+	</form>
+</div>
+
+
+<div id="loginf" class="loginf" style="z-index:2000">
+	<div class="t15">登录</div>
+	<div class="loginb"><a href="javascript:void(0);" id="personT" class="dl1">个人用户</a><a href="javascript:void(0);" id="corpT" class="dl01">经销商</a><img id="loginfClose" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/close.gif" style="float:right"></div>
+	<div class="lbg" id="login_con">
+	</div>
+	<div id="person_login_con" style="display:none;">
+		<form action="http://sso.it168.com/sso/login.do?cmd=0" target="_blank" method="post">
+			<div>用户名：<input name="login_name" type="text" class="inp11" size="10"> <input type="image" alt="登录" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/dlbut2.gif" align="absmiddle"></div>
+			<div>密&nbsp;&nbsp;码：<input name="password" type="password" class="inp11" size="10">&nbsp;<a href="http://sso.it168.com/sso/reg_term.jsp">注册</a>|<a href="http://sso.it168.com/sso/forgetPassword.jsp">忘记密码</a></div>
+			<div>验证码：<input name="rand" type="text" class="inp11" size="6"><span id="yanzhenImg"><img border="0" id="yzimg" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/Image" align="absmiddle"></span><input type="hidden" name="return_url" value=""> <a href="javascript:ReloadCheckCode();">看不清？</a></div>
+			<iframe id="zxj4" src="javascript:void(0)" frameborder="0" style="position:absolute; visibility:inherit; top:35px; left:10px;width:254px;height:110px; z-index:-1; filter=&#39;progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)&#39;;"></iframe>
+<!-- 登陆 -->
+		</form>
+	</div>
+	<div id="corp_login_con" style="display:none">
+		<form action="http://business.it168.com/loginFromOther.aspx" target="_blank" method="post">
+			<br>
+			<div>用户名：<input name="username" type="text" class="inp11" size="10"> <input type="image" alt="登录" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/dlbut2.gif" align="absmiddle"></div>
+			<div>密&nbsp;&nbsp;码：<input name="pwd" type="password" class="inp11" size="10">&nbsp;<a href="http://business.it168.com/register.asp">注册</a>|<a href="http://business.it168.com/getpwd.asp">忘记密码</a></div>
+			<br>
+			<iframe id="zxj4" src="javascript:void(0)" frameborder="0" style="position:absolute; visibility:inherit; top:35px; left:10px;width:254px;height:110px; z-index:-1; filter=&#39;progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0)&#39;;"></iframe>
+		</form>
+	</div>
+</div>
+
+
+<script language="JavaScript">
+            function ReloadCheckCode(){ 
+                var CodeArea=document.getElementById("yanzhenImg"); 
+                var rnum=RndNum(10); 
+                CodeArea.innerHTML="<IMG id=\"yzimg\" alt=\"\" align=\"absmiddle\" src=\"http://sso.it168.com/sso/Image?random="+ rnum +"\" />"; 
+             } 
+		
+            function RndNum(n){ 
+                var rnd=""; 
+                for(var i=0;i<n;i++)
+                     rnd+=Math.floor(Math.random()*10);
+                return rnd;
+            }
+
+init_loginTab();
+</script>
+
+
+
+<div id="tl"><!--ADV|顶通--><span id="ADV_TOPTL"></span><!--ADV|顶通-->
+<!--ADV|通栏--><div id="ADV_TL"><div class="divad_clear"></div></div><!--ADV|通栏-->
+</div>
+<div class="c_rim2">
+<!-- 导航 -->
+<style>
+/* 头部 */
+#header{ width:980px; margin:0px auto 0px; }
+#header .right{ width:812px; height:75px; padding:3px 5px 0 15px; background:url(/images2007/bg01.gif) no-repeat; }
+.logon{ width:100%; clear:both; height:23px; }
+.logon li{ float:left; }
+.logon li.one{ background:url(/images2007/icon03.gif) no-repeat left; padding-left:14px; padding-top:6px; margin-right:10px;  }
+.logon li.two{ background:url(/images2007/icon04.gif) no-repeat left; padding-left:19px; padding-top:6px;}
+.logon li a{ color:#0010e6; }
+.logon li.three{ float:right; background:url(/images2007/it-04.jpg) no-repeat left; padding-left:15px; padding-top:5px;  }
+.logon li.three a{ color:#195381; }
+.nav{ color:#000; padding-top:4px; word-spacing:6px; height:18px;  }
+.nav a{ color:#000; }
+.nav a.here{ color:#f00; }
+.subNav{ padding-top:6px;  color:#f4f8fc; word-spacing:6px;  }
+.subNav a{ color:#f4f8fc; }
+</style>
+<div id="header">
+	<a href="http://www.itpub.net/" target="_blank"><img class="left" border="0" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/logo.gif" width="148" height="78"></a>
+	<div class="right">
+		<ul class="logon">
+			<li class="one"><a href="http://sso.itpub.net/Login?return_url=http://www.itpub.net/list.html">登录</a></li>
+			<li class="two"><a href="http://sso.itpub.net/Register">注册</a></li>
+			<li class="three"><a href="http://publish.itpub.net/">返回首页</a></li>
+		</ul>
+		<div class="clear"></div>
+		
+		<div class="nav">
+			<a href="http://publish.itpub.net/" target="_blank">门户</a>  |  <a href="http://www.itpub.net/list.html">论坛</a>  |  <a href="http://weblog.itpub.net/" target="_blank">Blog</a>  |<a href="http://publish.itpub.net/more/1211_1.shtml" target="_blank">新闻</a>  |  <a href="http://publish.itpub.net/more/1214_1.shtml" target="_blank">文档</a>  |  <a href="http://publish.itpub.net/tagsearch.aspx" target="_blank">Tag</a>  |  <a href="http://tech.it168.com/j/2007-12-26/resource.shtml" target="_blank">下载</a>  |  <a href="http://publish.itpub.net/KnowledgeBase/default.aspx" target="_blank">搜索</a>  |  <a href="http://edu.itpub.net/" target="_blank">培训</a>  |  <a href="http://wiki.itpub.net/" target="_blank">WiKi</a>  |  <a href="http://www.ixpub.net/" target="_blank">IXPUB</a>  |  <a href="http://publish.itpub.net/tougao/" target="_blank">投稿</a>  |  <a href="http://publish.itpub.net/zt/tech-zt/index.html" target="_blank">专题</a> 
+		</div>
+		
+		<div class="subNav">
+			频道: <a href="http://publish.itpub.net/oracle.shtm" target="_blank">Oracle</a> | <a href="http://publish.itpub.net/DB2.shtm" target="_blank">DB2</a> | <a href="http://publish.itpub.net/database/sqlserver.shtml" target="_blank">SQL Server</a> | <a href="http://publish.itpub.net/erp.aspx" target="_blank">ERP</a> | <a href="http://publish.itpub.net/scm.aspx" target="_blank">SCM</a> | <a href="http://publish.itpub.net/java.shtm" target="_blank">Java</a> | <a href="http://publish.itpub.net/Microsoft.shtm" target="_blank">微软技术</a> | <a href="http://publish.itpub.net/opensource.shtm" target="_blank">开源</a> | <a href="http://publish.itpub.net/manage.shtm" target="_blank">项目管理</a> | <a href="http://publish.itpub.net/soa.shtm" target="_blank">SOA</a> | <a href="http://publish.itpub.net/bi.shtm" target="_blank">商业智能</a> |<a href="http://www.itpub.net/ibm/" target="_blank">IBM软件技术</a> 
+		</div>
+	
+	</div>
+	<div class="clear"></div>
+</div>
+
+<!-- 当前位置 -->
+<div class="top02">
+	<div class="dqwz">您的位置：<a href="http://www.it168.com/">首页</a> &gt; <a href="http://tech.it168.com/">技术频道</a> &gt; 正文</div>
+</div>
+</div>
+<!-- 内容开始 -->
+<div class="w_rim">
+	<!-- left -->
+	<div class="l1">
+	<!-- 广告 -->
+	<!--ADV|标题通栏--><div id="ADV_BTTL"><div class="divad_clear"></div></div><!--ADV|标题通栏-->
+	<!--ADV|文字链接--><div id="ADVTXT"><span id="ADV_TXT1"></span><span id="ADV_TXT2"></span><div class="divad_clear"></div></div><!--ADV|文字链接-->
+	<div class="w_c1">
+			<div class="w_t1">
+				<div class="w_c2">
+					<div class="l2 f16"><h1>优化你的手机游戏：使用脏矩形技术</h1></div>
+					<div class="r2 top8">[<a href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(keyit=window.open('http://www.365key.com/storeit.aspx?t='+escape(d.title)+'&u='+escape(d.location.href)+'&c='+escape(t),'keyit','scrollbars=no,width=475,height=575,left=75,top=20,status=no,resizable=yes'));keyit.focus();">收藏此页</a>] [<a href="javascript:window.print();">打印</a>]</div>
+				</div>
+				<div class="top11">
+								</div>
+
+				<div class="w_c2">
+					<div class="l2">
+				
+					作者：<b class="red">（来自ITPUB博客）</b>&nbsp;&nbsp;2007-12-26
+					<b id="AbortBBS"></b>
+					</div>
+				
+					<div class="r2">
+						<div><b>内容导航：</b></div>
+						<a id="Nav1" href="javascript:;" class="sel">
+																						
+												 第1页 															</a>
+
+
+<div class="pp">
+  <div id="Nav1Menu" class="p">
+			<a href="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  .htm" title="" class="hov1">第1页：<span>
+		
+		
+		 第1页 </span></a>
+	  </div>
+</div>
+
+					</div>
+					<script>init_Nav();</script>		
+				
+				
+				</div>
+			</div>
+			
+			<div class="memo"><div id="1"><p><strong>【IT168 技术文档】</strong>本文基于2D表现的游戏，在当今3D大行其道的时代，说2D是否显得格格不入？这个问题我不作讨论，因为本人从事的一直都是2D游戏的开发，所以如果你认为讨论2D技术是一个过时的东西就此打住。&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 优化一直是我在程序中追求的东西之一，想想让自己的游戏在一个古董机器能流畅的运行或者说在当今的机器上，CPU占用率和内存占用率都很低的情况。（毕竟我非常讨厌一个游戏独占了我所有的CPU资源）。&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 如果从图形接口上作优化，常用的就是使用3D加速和CPU的特殊指令（虽然说DirectDraw能够使用2D硬件加速，但大部分机器支持的仅仅是简单的加速，比如带ColorKey的支持，连一些稍微高级一点的东西，比如Alpha混合，带Alpha通道的纹理（表面）都不支持，需要自己写，优化起来还是使用CPU的特殊指令）。虽然说使用3D加速非常简单，但是它的缺点也非常明显：对硬件有苛刻的要求，如果仅仅是做2D游戏不推荐使用（新手作为练习写DEMO而使用倒还可以,我也这样使用过，呵呵)。使用特殊的CPU指令最常见的就是使用MMX指令了，现在想找到一块装了Windows95以上但不支持MMX的CPU都有难度 ~自己花了大半年的时间用MMX高速实现了D3D对2D贴图的各种特效（带通道或者不带通道的纹理，带BlendColor, 带缩放旋转，做加减法的Alpha混合之类的）之后，虽然发现可以不使用D3D的东西，但是如果画面的东西很多的话，在一些内存带宽不高的机器上的速度还是不够理想，所以还是需要更多的优化。这时候我想起了DirtyRect。 <br>什么是脏矩形？简单的说，就是游戏每次画面的刷新只更新需要更新的那一块区域。Windows本身就是最好的例子。或者说Flash控件，也正是利用了脏矩形技术，所以他的效率才如此的高。传统的游戏循环如下： <br>while( 游戏没有结束 ) <br>{ <br>if( 有Windows消息 ) <br>{ <br>处理Windows消息 <br>} <br>else if( 需要渲染 ) <br>{ <br>清除游戏屏幕的缓冲区 <br>把游戏中的物体画到缓冲区里面 <br>把缓冲区更新到游戏窗口上 <br>锁定游戏速度，Sleep一段时间，限制FPS <br>} <br>}&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 从上面的伪代码可以看出，每次游戏都要做清除缓冲区-〉渲染游戏的物体-〉更新到窗口，而基本上我们写游戏至少要保证最低每秒钟要刷新24帧以上（一般都在30）。所以上面的代码每秒钟要至少24次以上，画面东西越多，耗费的CPU越多。 <br>不过我们也可以自然的想到，每次那么多东西不一定都需要更新的，比如一个动画，一般都有一个延迟，比如间隔200毫秒更新一次，那么在这段时间是不需要重新画的，只有更新了帧以后，表示这个动画所在的范围已经“脏”了，需要重新画，这个时候才需要画这个动画。而这段时间之内我们可以节约大量的CPU时间，很自然，积少成多，总体下来这个数值是非常可观的。再举一个例子，一个静止的游戏物体，（比如一棵树）是永远都不需要更新的，除非这个树的位置或者他的属性发生了变化。这样下来我们首先想到的是，每次我们都省略清除后台缓冲这个步骤，这个非常重要，因为上一次画下来的东西都在这个缓冲区里面，如果清除之后就什么都没有啦~~&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 搞明白了这个原理以后，下面来看看具体实现过程中遇到的问题：&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 游戏中的物体不会是相互没有遮挡的，所以如果遇到遮挡的问题怎么办？&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 如果游戏中有100个物体，里面的物体相互遮挡关系总有一个顺序，为了简化问题，只考虑两个物体遮挡的情况，多个物体的遮挡可以根据这个来衍生。 <br><br></p>
+<p align="center"><img alt="" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/20071226163135.bmp"></p>
+<p><br><br><br><br>&nbsp;&nbsp;&nbsp; 考虑上图，物体B遮挡了物体A, 也就是说渲染顺序是先画A再画B，这个顺序由各自定义，（我自己就喜欢用一棵渲染树来排序，当然如果你用连表或者其他数据结构来实现也没有问题。）如果物体A的整个区域都需要更新，那么对于B物体，需要更新的部分也就只有A与B的交集部分（图中的蓝色区域)，在画B的时候，我们设置目标裁减区域（也就是屏幕缓冲的裁减区域）为这个交集部分，则B在渲染的时候，相当于整个缓冲区大小就只有蓝色区域那么大，那么裁减函数将会把B的数据区裁减到相应的位置（你实现的图形函数中不会没有做裁减的工作吧？？？如果没有实现，你就不用看了，直接return算了，不然下面的东西你肯定不明白我说什么）。怎么样，B物体相当于只画了蓝色区域这一部分的东西，比整个区域来说节约了不少时间吧？&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 不知道上面说的你明白了没有，如果没有明白请多看几遍，直到弄明白之后再往下看，不然千万不要往下看。 <br>上面的例子大家肯定会问一个问题，我如何控制B只画蓝色区域的部分呢？这个问题我暂时不说，等到把所有的遮挡情况说完了再说。继续看另外的遮挡情况 <br><br></p>
+<p align="center"><img alt="" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/20071226163150.bmp"></p>
+<p><br><br><br>&nbsp;&nbsp;&nbsp; 上面6个物体A,B,C,D,E,X。X是我们的游戏背景颜色，假设画的顺序是EADCB,如果E需要重新画，那很显然，A,B,C,D不需要做什么&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 如果A,D都需要重新画，那显然A,D只需要各画一次。而B需要更新的，不是需要更新BD相交的区域，而是AB相交的大区域，也就是说小区域该忽略掉，如果B需要重新画，A,D,C需要重新画吗？也许有人会说，B画的次序是在最后的，所以前面的就不需要画了，对么？答案是错的，需要重新画，因为背景缓冲区我们一般情况下不去清除它，所以谈不上画的顺序了。也就是说，A与B相交的部分，A在下次画的时候也需要更新，D也同样(想通了吗？再举一个例子，如果B含有大量的透明色，如果B需要更新的话，那么B的区域首先要涂上X作为背景，不然B非透明色如果变成了透明色的话，那B在重新画的时候，由于透明色不需要画，那么B上一次留下来的颜色就残留在X上面，看起来当然不对啦，同理对于A,D也一样处理）。 <br>上面的理论部分不知道听明白了没有，如果不明白的话自己花一点点时间去想象看。假如明白了的话，下面继续更加深入的问题。&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 从上面的理论解说部分可以看出，脏矩形的选取和优化是关键。怎样得到最优化的脏矩形表，就成为了这个技术优化的核心部分。&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 为了简单起见，这里使用的是一个链表来管理所有的渲染物体。&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 为了实现我们所设计的东西，我设计了一个非常简单的类： <br>class CRenderObject <br>{ <br>public: <br>virtual ~CRenderObject(){} <br>virtual void OnRender( GraphicsDevice*pDevice ) = 0; //所有物体都在这里渲染 <br>virtual void OnUpdate( float TimeStamp ) = 0;//物体更新，比如动画帧更新拉之类的，在这里面可以设置DirtyRect标志之类的 <br>virtual bool IsDirty( ) = 0;//是否有脏矩形 <br>virtual bool GetBoundsRect(RECT*pRect) =0;//得到该物体的范围 <br>virtual int GetDirtyRects ( RECT*pRectBuffer ) = 0;//该物体的脏矩形个数，填充到pRectBuffer里面，返回填充了多少个 <br>...其他函数 <br>};&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 我们还需要一个简单的能管理脏矩形和渲染物体的类 <br>class CRenderObjectManager <br>{ <br>pulibc: <br>void RemoveRenderObject( CRenderObject*pObject );//删除一个渲染物体 <br>void AddRenderObject( CRenderObject*pObject );//添加一个渲染物体 <br>void Render( GraphicsDevice*pDevice );//渲染所有的物体 <br>void Update( );//更新所有物体 <br>.....其他函数 <br>protected: <br>std::list&lt; CRenderObject* &gt; m_RenderObjects; <br>int m_nCurrentDirtyRectCount;//当前脏矩形数量 <br>struct DirtyRect <br>{ <br>RECT Range; //脏矩形范围 <br>int AreaSize; //脏矩形大小，用来排序 <br>}; <br>BOOL m_bHoleDirty;//是否全部脏了 <br>DirtyRect m_DirtyRects[128];//屏幕上最多的脏矩形数量，如果大于这个数量则认为屏幕所有范围都脏了 <br>}; <br>void CRenderObjectManager::Update() <br>{ <br>m_bHoleDirty = false; <br>m_nCurrentDirtyRectCount = 0; <br>static RECT DirtyRectBuffer[128]; <br>float TimeStamp = GetElapsedTime(); <br>for(std::list&lt; CRenderObject* &gt;::iterator it = m_RenderObjects.begin(); <br>it != m_RenderObjects.end(); it++) <br>{ <br>CRenderObject*pObject = *it; <br>pObject-&gt;OnUpdate( TimeStamp ); <br>if(m_bHoleDirty == false &amp;&amp; pObject-&gt;IsDirty() ) <br>{ <br>int Count = pObject-&gt;GetDirtyRects(DirtyRectBuffer); <br>for( i =0; i&lt;Count;i++) <br>{ <br>对于该物体的每一个脏矩形DirtyRectBuffer[i] <br>如果DirtyRectBuffer[i]　没有在任何一个已有的脏矩形范围内 <br>那么把这个脏矩形根据从大到小的顺序添加到脏矩形范围内，否则忽略这个脏矩形 <br>　　　如果脏矩形数量已经大于设定的最大脏矩形范围，设置所有所有屏幕都脏了的标志， <br>} <br>} <br>} <br>如果屏幕所有都脏了，填充背景颜色 <br>否则为每一个脏矩形填充背景颜色 <br>} <br>void CRenderObjectManager::Render( GraphicsDevice* pGraphics) <br>{ <br>for(std::list&lt; CRenderObject* &gt;::iterator it = m_RenderObjects.begin(); <br>it != m_RenderObjects.end(); it++) <br>{ <br>CRenderObject*pObject = *it; <br>if(如果屏幕都脏了的标志已经设定） <br>{ <br>RECT rcBoundsRect = { 0, 0, 0, 0 }; <br>if( pObject-&gt;GetBoundsRect( rcBoundsRect ) ) <br>{ <br>//设置屏幕裁减区域 <br>pGraphics-&gt;SetClipper( &amp;rcBoundsRect ); <br>} <br>pObject-&gt;OnRender( pGraphics ); <br>} <br>else <br>{ <br><br>RECT rcBoundsRect = { 0, 0, 0, 0 }; <br>if( pObject-&gt;GetBoundsRect( rcBoundsRect ) ) <br>{ <br>//如果该物体的范围与脏矩形缓冲区的任何一个脏矩形有交集的话 <br>for( int i=0; i&lt;m_nCurrentDirtyRectCount; i++ ) <br>{ <br>RECT rcIntersect; <br>if( ::IntersectRect( &amp;rcIntersect, &amp;m_DirtyRects[i].Range, &amp;rcBoundsRect ) ) <br>{ <br>//只画交集的部分 <br>pGraphics-&gt; SetClipper ( &amp;m_DirtyRects[i].Range ); <br>pObject-&gt;OnRender( pGraphics ); <br>} <br>} <br>} <br>} <br>｝ <br>}&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 好了，核心代码的伪代码就在这里，不知道大家看明白没有，当然我在这里上面实现的这种方法有一个缺陷，最坏情况下一个也许会导致重新画很多次，如图的情况： <br><br><br></p>
+<p align="center"><img alt="" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/20071226163248.bmp"></p>
+<p><br><br><br>&nbsp;&nbsp;&nbsp; 假设A是渲染物体，B,C,D,E是由大到小的脏矩形范围，那么很显然，重叠的部分就被反复画。。。这是在分割脏矩形导致的问题，这样画下来，如果A物体是采用了叠加混合到背景的算法的话，问题就出来了，重画的部分会变得非常亮。所以脏矩形的分割就显得非常重要，也就是说把这些脏矩形还要分割为互相独立的互不相交的矩形，至于分割算法嘛，嘿嘿，各位还是动一下脑筋思考思考吧：）这个也是最值得优化的地方了，哈哈。实在想不出的话，最简单的方法就是把彼此相交的脏矩形都做一个合并，得到更大的脏矩形，虽然没有相交的区域了，但是也许这个脏矩形会变得比较大了哦：） <br>最后，大家一定关心的是我会不会提供源代码，很抱歉的说，不能。我在我的引擎中实现的不是以简单的链表去做的，用的是一棵比较复杂的渲染树，牵扯到的东西就比较多了，所以不方便提供代码，不过可以给一个演示吧：）再说大家如果真的明白了我所说的，那就可以自己动手写一下嘛，不要怕失败/。<br><br>&nbsp;&nbsp;&nbsp; 好啦，关于脏矩形的技术就介绍到这里啦，用好这个技术你会发现你的游戏会在配置极低的机器上也能运行如飞的：）这种技术如果能用在现在市面上的那么多的游戏中的话，就不必为一个小游戏就强占了您１００％的CPU资源而烦恼拉：） <br>如果您有更好的方法或者指出其中的不完善的地方还请您不吝赐教，大家多多交流：） <br><br>关于测试的Demo&nbsp;<br>&nbsp;&nbsp;&nbsp; 该Demo渲染部分由Kylinx花了近半年的时间，全部采用MMX写成，已经成功实现d3d中对2d纹理的操作，速度非常快 <br><br>关于Settings.ini <br>EnableDirtyRect = 1 //是否允许脏矩形技术，0=关闭，1=开启 <br>LockFPS = 1 //是否锁定FPS，0=关闭，1=开启 <br>哈，这个Demo在不锁定FPS,脏技术开启的的情况下，我的Duron1.8G CPU,FPS达到 31500左右！（没错，是三万一千五百）这个数字吓人吧？如果脏技术未打开，只能在150左右，相差200倍阿！！！ <br><br>如果LockFPS开启，在我机器上（512M DDR)跑30个DEMO,CPU占用还是为0，哈哈！&nbsp;<br><br>&nbsp;&nbsp;&nbsp; 关于该引擎：演示用的这个引擎（代号ShinyFairy：闪灵，基于前期开发的GFX3.0系列，该系列已经成功运行在某商业游戏公司的休闲游戏系列），采用Kylinx历时2年多开发的具有自主知识产权的基于2D游戏的超级引擎，强大的数据加密，打包，图形接口同时提供d3d8版本和mmx版本，该演示使用的是mmx版本，适用于各种休闲游戏平台，或者大型2D RPG/MMORPG均可适用。<br><br>&nbsp;&nbsp;&nbsp; 例子下载：http://dev.gameres.com/Program/Visual/2D/DirtyRectDemo.rar </p></div><div style="display: none; " id="ParagraphCount">1</div></div>
+
+
+			<div class="w_c2 top12">
+				<div class="l2 r" style="float:right;">
+
+									<img src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/new_54.gif" width="63" height="23" alt="" align="absmiddle">
+				
+
+				<span class="f14">
+        					<a href="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  .htm"><b>1</b></a>
+			
+				</span>
+									<img src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/new_56.gif" width="63" height="23" alt="" align="absmiddle">
+				
+				
+				</div>
+
+			</div>
+			<div class="contdh">
+				<div class="c2">
+					【内容导航】
+					<table>
+					<tbody><tr>
+																							<td>第1页：<b>
+						<a href="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  .htm" title="">
+												第1页
+												</a>
+						
+						</b></td>
+																</tr>
+					</tbody></table>
+				</div>
+			</div>
+
+
+
+
+
+
+			<div class="w_c2 top12">
+				<div class="l2">&#169;版权所有。未经许可，不得转载。</div>
+				<div class="r2 r">
+					[责任编辑：<b class="bl"><a href="http://paimai.it168.com/gzmailbox/input.asp?sendto=%D6%A3%D6%D8" target="_blank">郑重</a></b>]
+				</div>
+			</div>
+
+			
+			<!-- 网友点评 -->
+
+			<div id="iframetd1">
+			<iframe src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/Article_new.htm" frameborder="no" border="0" marginwidth="0" marginheight="0" align="center" width="100%" scrolling="no" noresize="" height="100%" id="myiframe1"></iframe>
+			</div>
+<script language="javascript">
+function resetIframeHeight(){
+try{
+var str=window.clipboardData.getData('text');
+var obj=document.getElementById('iframetd1');
+if(str.match(/^frameHeight=\d+$/)){
+obj.style.height=parseInt(str.match(/\d+/))+'px';
+window.clipboardData.setData('text','null');
+}
+}catch(e){}
+setTimeout(resetIframeHeight,100);
+}
+resetIframeHeight();
+</script>
+			<!--ADV|底通栏--><div id="ADV_DTL"><div id="47226"><div style="position:absolute; z-index:2; width:670; height: 120"><a href="http://adshow.it168.com/manager/files/icount.asp?cid=47226&cUrl=http://ad.cn.doubleclick.net/clk;202117953;26633996;n?http://dellstorecn.sg.dell.com/public/default.jsp?c=cn&s=dhs&l=cn&rflag=AP&aflag=A&siteid=it168vostroDT" target="_blank"><img border="0" width="670" height="120" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/23.gif"></a></div><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" width="670" height="120"> <param name="movie" value="http://adshow.it168.com/newImage/20080714/47226_124622.swf"> <param name="quality" value="high"> <param name="wmode" value="transparent">  <embed src="http://adshow.it168.com/newImage/20080714/47226_124622.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash" wmode="transparent" width="670" height="120"></object></div></div><!--ADV|底通栏-->
+			<div class="bai">
+				<!-- 相关文章 -->
+				<!-- 相关论坛贴 -->
+				<div class="top12"></div>
+<div class="pl"><span><a href="http://www.itpub.net/" target="_blank">进入论坛&gt;&gt;</a></span>相关论坛贴</div>
+<div class="li">
+<ul>
+<li><a href="http://www.itpub.net/thread-1016639-1-1.html" target="_blank" title="求供货商行项目明细的相关BAPI">求供货商行项目明细的相关BAPI</a></li>
+<li><a href="http://www.itpub.net/thread-1016619-1-1.html" target="_blank" title="如何將兩個PARAMETERS放在一行?">如何將兩個PARAMETERS放在一行?</a></li>
+<li><a href="http://www.itpub.net/thread-1016611-1-1.html" target="_blank" title="问个简单的问题，account type有什么控制作用？">问个简单的问题，account type有什么控制作用？</a></li>
+<li><a href="http://www.itpub.net/thread-1016491-1-1.html" target="_blank" title="abap中select 怎麼取SY-DATUM的年月">abap中select 怎麼取SY-DATUM的年月</a></li>
+<li><a href="http://www.itpub.net/thread-1016353-1-1.html" target="_blank" title="大家来列举一下查找同一内表中重复记录的最优化的算法">大家来列举一下查找同一内表中重复记录的最优化...</a></li>
+<li><a href="http://www.itpub.net/thread-1016327-1-1.html" target="_blank" title="如何控制已开发票不能跨两个月或以上进行冲销">如何控制已开发票不能跨两个月或以上进行冲销</a></li>
+</ul>
+</div>
+
+				
+
+				<!-- 精彩友情推荐 -->
+				
+			</div>
+		</div>
+	</div>
+	<!-- right -->
+	<div class="r1">
+		<!--ADV|画中画--><div id="ADV_HZH"><div id="46838"><div style="position:absolute; z-index:2; width:300; height: 250"><a href="http://adshow.it168.com/manager/files/icount.asp?cid=46838&cUrl=http://211.94.190.80/html.ng/params.styles=clickcmd&adspec=Flash&adtype=crazyAD&affiliate=it168&campaignid=1504&channel=cai_jing&log=0?" target="_blank"><img border="0" width="300" height="250" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/23.gif"></a></div><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" width="300" height="250"> <param name="movie" value="http://adshow.it168.com/newImage/20080618/ad_115256.swf"> <param name="quality" value="high"> <param name="wmode" value="transparent">  <embed src="http://adshow.it168.com/newImage/20080618/ad_115256.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash" wmode="transparent" width="300" height="250"></object></div></div><!--ADV|画中画-->
+		·<a href="http://www.it168.com/a2009/1001/753/000000753758.shtml" title="LoadRunner创建测试脚本" target="_blank">LoadRunner创建测试脚本</a><br>
+·<a href="http://www.it168.com/a2009/1001/753/000000753759.shtml" title="用LoadRunner编写socket应用的测试脚本" target="_blank">用LoadRunner编写socket应用的测试脚本</a><br>
+·<a href="http://www.it168.com/a2009/1001/753/000000753762.shtml" title="使用LoadRunner 编写JAVA 测试脚本" target="_blank">使用LoadRunner 编写JAVA 测试脚本</a><br>
+·<a href="http://www.it168.com/a2009/1001/753/000000753763.shtml" title="LoadRunner脚本编程 " target="_blank">LoadRunner脚本编程 </a><br>
+·<a href="http://tech.it168.com/focus/200902/cto090227/index.html" title="【高端访谈】寻找下一代CTO向冠军冲刺 " target="_blank">【高端访谈】寻找下一代CTO向冠军冲刺 </a><br>
+·<a href="http://tech.it168.com/focus/200902/sql2008wajue/index.html" title="【技术专题】SQL Server 2008数据挖掘指南 " target="_blank">【技术专题】SQL Server 2008数据挖掘指南 </a><br>
+·<a href="http://tech.it168.com/focus/200901/ctohelendu/index.html" title="【高端访谈】畅谈“寻找下一代CTO”" target="_blank">【高端访谈】畅谈“寻找下一代CTO”</a><br>
+·<a href="http://tech.it168.com/focus/200902/net2008/index.html" title="【热点专题】08年.NET最受欢迎的图书" target="_blank">【热点专题】08年.NET最受欢迎的图书</a><br>
+
+		<!--ADV|立柱1--><div id="ADV_LZ1"><div id="43514"><div style="position:absolute; z-index:2; width:300; height: 240"><a href="http://adshow.it168.com/manager/files/icount.asp?cid=43514&cUrl=http://mccannafa7.allyes.com/main/adfclick?user=MccannAfa7|fy08sql_it168|it168_TechnologyArticle_PIP_bonus&db=mccannafa7&log=on&ip=59.151.56.230&bid=17755&cid=855555&sid=17095&kv=&exp1=-278766978&exp2=6213872680&cache=627411&url=http://www.microsoft.com/china/sql/default.mspx" target="_blank"><img border="0" width="300" height="240" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/23.gif"></a></div><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" width="300" height="240"> <param name="movie" value="http://adshow.it168.com/newImage/20080409/ad_154413.swf"> <param name="quality" value="high"> <param name="wmode" value="transparent">  <embed src="http://adshow.it168.com/newImage/20080409/ad_154413.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash" wmode="transparent" width="300" height="240"></object></div></div><!--ADV|立柱1-->		
+		<!-- 热点文章排行 -->
+		<ul>
+			<li class="li001"><a href="http://tech.it168.com/a2011/0712/1216/000001216539.shtml" title="追求自由竞争市场 浅析开放平台的本质" target="_blank">追求自由竞争市场 浅析开放平台的本质</a></li>
+
+			<li class="li002"><a href="http://tech.it168.com/a2011/0711/1215/000001215971.shtml" title="国产软件优先采购权取消 欧美施压所致" target="_blank">国产软件优先采购权取消 欧美施压所致</a></li>
+
+			<li class="li003"><a href="http://tech.it168.com/a2011/0711/1215/000001215876.shtml" title="7月编程排行：Objective-C将成年度语言" target="_blank">7月编程排行：Objective-C将成年度语言</a></li>
+
+			<li class="li004"><a href="http://tech.it168.com/a2011/0616/1205/000001205529.shtml" title="最新30佳：HTML5 网站设计案例欣赏" target="_blank">最新30佳：HTML5 网站设计案例欣赏</a></li>
+
+			<li class="li005"><a href="http://tech.it168.com/a2011/0615/1204/000001204894.shtml" title="新手神器：MySQL-Cluster架构图文详解" target="_blank">新手神器：MySQL-Cluster架构图文详解</a></li>
+
+			<li class="li006"><a href="http://tech.it168.com/a2011/0613/1203/000001203361.shtml" title="9个重要习惯 极大提升工作和时间效率" target="_blank">9个重要习惯 极大提升工作和时间效率</a></li>
+
+			<li class="li007"><a href="http://tech.it168.com/a2011/0610/1202/000001202685.shtml" title="GPU高性能开发技术：CUDA实战" target="_blank">GPU高性能开发技术：CUDA实战</a></li>
+
+			<li class="li008"><a href="http://tech.it168.com/a2011/0610/1202/000001202952.shtml" title="程序员必备：几个国外IT网站" target="_blank">程序员必备：几个国外IT网站</a></li>
+
+			<li class="li009"><a href="http://tech.it168.com/a2011/0610/1202/000001202938.shtml" title="静态化部分网页提高网站体验和seo表现" target="_blank">静态化部分网页提高网站体验和seo表现</a></li>
+
+			<li class="li010"><a href="http://tech.it168.com/a2011/0610/1202/000001202837.shtml" title="CUDA开发实战：C#代码中使用DLL" target="_blank">CUDA开发实战：C#代码中使用DLL</a></li>
+
+</ul>
+		<!--ADV|立柱2--><div id="ADV_LZ2"><div class="divad_clear"></div></div><!--ADV|立柱2-->
+		<!--ADV|供应商--><div id="ADV_GYS"><div class="divad_clear"></div></div><!--ADV|供应商-->
+		<!--ADV|立柱3--><div id="ADV_LZ3"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://adshow.it168.com/manager/files/icount.asp?cid=35780&cUrl=http://solmigprc.bizcom.com.cn/software/solaris/index.jsp?source=SOL07_IT168_BUTT7" target="_blank"><img src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/ad_1603.gif" border="0" width="300" height="120"></a></td></tr></tbody></table></div><!--ADV|立柱3-->
+		<!-- 近期热评文章 -->
+		<div id="iframetd2">
+		<iframe src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/tech_article_new.htm" frameborder="no" border="0" marginwidth="0" marginheight="0" align="center" width="100%" scrolling="no" noresize="" id="myiframe2" height="280"></iframe>		
+		</div>
+		<!--ADV|立柱4--><div id="ADV_LZ4"><table border="0" cellspacing="0" cellpadding="0"><tbody><tr><td><a href="http://adshow.it168.com/manager/files/icount.asp?cid=47907&cUrl=http://ad.cn.doubleclick.net/clk;205701376;28352587;k?http://www.dell.com.cn/virtual" target="_blank"><img src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/ad_104210.jpg" border="0" width="300" height="240"></a></td></tr></tbody></table></div><!--ADV|立柱4-->
+		<!--ADV|立柱5--><div id="ADV_LZ5"><div class="divad_clear"></div></div><!--ADV|立柱5-->
+
+		
+		</div>
+	</div>
+
+<!-- 内容结束 -->
+<div class="line1"></div>
+<!-- foot -->
+<div class="top8"></div>
+<div class="btm">
+<ul class="btmlink">
+  <li class="copytxt">CopyRight 1999-2006 itpub.net All Right Reserved.&nbsp;&nbsp;&nbsp;&nbsp;E-mail:Webmaster@itpub.net</li>
+  <li class="copytxt">北京皓辰广域网络信息技术有限公司.&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">京ICP证:010037号</a>&nbsp;&nbsp;&nbsp;<a href="http://www.itpub.net/contactus.php" target="_blank">联系我们</a>&nbsp;&nbsp;&nbsp;<a href="http://www.itpub.net/flgw.php" target="_blank">法律顾问</a><img width="1" height="1" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/itpub.gif" border="0"><img width="1" height="1" src="http://log.tigerbar.net/itpub.gif?publish" border="0"></li>
+</ul>
+<a class="border1" href="http://www.bj.cyberpolice.cn/alarm/alarm.htm" target="_blank">
+<img height="47" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/police.jpg" width="118" border="0"></a> <a class="border1" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202006092100005" target="_blank"><img height="48" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/hd315.gif" width="40" border="0"></a></div>
+<script language="javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/pv.js"></script>
+<script>
+function sendPV(){
+    var pvTrack = new PvTrack();
+    pvTrack.type = 11; // 频道类别ID
+    pvTrack.channel =24; // 频道ID
+    pvTrack.pageType = 0;
+    pvTrack.track();
+}
+window.setTimeout("sendPV()", 3);
+</script>
+
+<!-- START WRating v1.0 -->
+<script type="text/javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/a1.js">
+</script>
+<script type="text/javascript">
+var vjAcc="860010-2083110200";
+var wrUrl="http://it168.wrating.com/";
+vjTrack("");
+</script><div style="display:none"><img src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/a.gif" id="wrTagImage" width="1" height="1"></div>
+<noscript>&lt;img src="http://it168.wrating.com/a.gif?a=&amp;c=860010-2083110200" width="1" height="1"/&gt;</noscript>
+<!-- END WRating v1.0 -->
+<!--Publish AD START-->
+<script type="text/javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/advs_publish_v3.js"></script>
+<script type="text/javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/advtmp_v1.js"></script>
+<script type="text/javascript">
+var adv_c="publish"//信息化专区文章页
+var adv_date="2007-03-19"
+var adv_debug="0";
+//$import("/cad/v07_adv_js_idlist.js","js")
+//$import("/cad/v07_adv_js_public.js","js")
+//$import("/cad/v07_adv_js_gys.js","js")
+</script>
+
+<input name="revurl" id="revurl" type="hidden" value="">
+<script type="text/javascript">
+firsturl=document.referrer;
+//firsturl="ublish.itpub.net/";
+var objxx=document.getElementById("revurl");
+objxx.value=firsturl;
+
+//暂时广告添加
+document.getElementById('ADV_HZH').innerHTML="<div id=46838><div style='position:absolute; z-index:2; width:300; height: 250'><a href='http://adshow.it168.com/manager/files/icount.asp?cid=46838&cUrl=http://211.94.190.80/html.ng/params.styles=clickcmd&adspec=Flash&adtype=crazyAD&affiliate=it168&campaignid=1504&channel=cai_jing&log=0?' target=_blank><img border=0 width=300 height=250  src='http://adshow.it168.com/newImage/23.gif'></a></div><OBJECT classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0' WIDTH=300 HEIGHT=250> <PARAM NAME=movie VALUE='http://adshow.it168.com/newImage/20080618/ad_115256.swf'> <PARAM NAME=quality VALUE=high> <PARAM NAME=wmode VALUE=transparent>  <EMBED src='http://adshow.it168.com/newImage/20080618/ad_115256.swf' TYPE='application/x-shockwave-flash'  PLUGINSPAGE='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash' wmode='transparent'  WIDTH=300 HEIGHT=250></EMBED></OBJECT></div>"
+
+document.getElementById('ADV_LZ1').innerHTML="<div id=43514><div style='position:absolute; z-index:2; width:300; height: 240'><a href='http://adshow.it168.com/manager/files/icount.asp?cid=43514&cUrl=http://mccannafa7.allyes.com/main/adfclick?user=MccannAfa7|fy08sql_it168|it168_TechnologyArticle_PIP_bonus&db=mccannafa7&log=on&ip=59.151.56.230&bid=17755&cid=855555&sid=17095&kv=&exp1=-278766978&exp2=6213872680&cache=627411&url=http://www.microsoft.com/china/sql/default.mspx' target=_blank><img border=0 width=300 height=240  src='http://adshow.it168.com/newImage/23.gif'></a></div><OBJECT classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0' WIDTH=300 HEIGHT=240> <PARAM NAME=movie VALUE='http://adshow.it168.com/newImage/20080409/ad_154413.swf'> <PARAM NAME=quality VALUE=high> <PARAM NAME=wmode VALUE=transparent>  <EMBED src='http://adshow.it168.com/newImage/20080409/ad_154413.swf' TYPE='application/x-shockwave-flash'  PLUGINSPAGE='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash' wmode='transparent'  WIDTH=300 HEIGHT=240></EMBED></OBJECT></div>"
+
+document.getElementById('ADV_DTL').innerHTML="<div id=47226><div style='position:absolute; z-index:2; width:670; height: 120'><a href='http://adshow.it168.com/manager/files/icount.asp?cid=47226&cUrl=http://ad.cn.doubleclick.net/clk;202117953;26633996;n?http://dellstorecn.sg.dell.com/public/default.jsp?c=cn&s=dhs&l=cn&rflag=AP&aflag=A&siteid=it168vostroDT' target=_blank><img border=0 width=670 height=120  src='http://adshow.it168.com/newImage/23.gif'></a></div><OBJECT classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0' WIDTH=670 HEIGHT=120> <PARAM NAME=movie VALUE='http://adshow.it168.com/newImage/20080714/47226_124622.swf'> <PARAM NAME=quality VALUE=high> <PARAM NAME=wmode VALUE=transparent>  <EMBED src='http://adshow.it168.com/newImage/20080714/47226_124622.swf' TYPE='application/x-shockwave-flash'  PLUGINSPAGE='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash' wmode='transparent'  WIDTH=670 HEIGHT=120></EMBED></OBJECT></div>"
+
+document.getElementById('ADV_LZ3').innerHTML="<table border='0' cellspacing='0' cellpadding='0'><tr><td><a href='http://adshow.it168.com/manager/files/icount.asp?cid=35780&cUrl=http://solmigprc.bizcom.com.cn/software/solaris/index.jsp?source=SOL07_IT168_BUTT7' target=_blank><img src='http://adshow.it168.com/newImage/20070926/ad_1603.gif' border=0 width=300 height=120></a></td></tr></table>"
+
+document.getElementById('ADV_LZ4').innerHTML="<table border='0' cellspacing='0' cellpadding='0'><tr><td><a href='http://adshow.it168.com/manager/files/icount.asp?cid=47907&cUrl=http://ad.cn.doubleclick.net/clk;205701376;28352587;k?http://www.dell.com.cn/virtual' target=_blank><img src='http://adshow.it168.com/newImage/20080714/ad_104210.jpg' border=0 width=300 height=240></a></td></tr></table>"
+
+//ADV_BTTL.innerHTML="<IFRAME MARGINHEIGHT=0 MARGINWIDTH=0 FRAMEBORDER=0 WIDTH=670 HEIGHT=120  SCROLLING=NO SRC=http://adshow.it168.com/corpImage/Intel/2008023/2008023_1417.html></IFRAME>"
+
+//ADV_TL.innerHTML="<div id=43165><div style='position:absolute; z-index:2; width:980; height: 90'><a href='http://adshow.it168.com/manager/files/icount.asp?cid=43165&cUrl=http://mccannafa7.allyes.com/main/adfclick?user=MccannAfa7|intel_ITopia_IT168|IT168_TechITPUBarticlepage_Leaderboard_980x90_53_Xeon&db=mccannafa7&log=on&ip=61.4.182.2&bid=20253&cid=1086964&sid=19417&kv=&exp1=-864941564&exp2=6961162167&cache=273810&url=http://prcappzone.intel.com/ITopia/xeon_2.htm?cid=CPXIto1H08cn_35' target=_blank><img border=0 width=980 height=90  src='http://adshow.it168.com/newImage/23.gif'></a></div><OBJECT classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0' WIDTH=980 HEIGHT=90> <PARAM NAME=movie VALUE='http://adshow.it168.com/newImage/20080428/43165_11728.swf'> <PARAM NAME=quality VALUE=high> <PARAM NAME=wmode VALUE=transparent>  <EMBED src='http://adshow.it168.com/newImage/20080428/43165_11728.swf' TYPE='application/x-shockwave-flash'  PLUGINSPAGE='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwavFlash' wmode='transparent'  WIDTH=980 HEIGHT=90></EMBED></OBJECT></div>"
+</script>
+<!--Publish AD END-->
+<script type="text/javascript" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/count.js"></script><script language="javascript">document.write('<img width=1 height=1 src=http://logcount.it168.com/counter.gif?id=92&url='+escape(top.document.URL)+'&refer='+escape(top.document.referrer)+' border=0>'); </script><img width="1" height="1" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/counter.gif" border="0">
+
+<script>
+   document.write("<img width=1 height=1 src=http://count.it168.com/count.dll?Type=Img2&add=1&id=93&refer="+escape(top.document.referrer)+" border=0>");
+</script><img width="1" height="1" src="./优化你的手机游戏：使用脏矩形技术 - 技术门户   ITPUB  _files/count.dll" border="0">
+
+ 
+
+<div id="fa_wave_msg_wrap" style="display: none; "><div class="fawave_btns fawave_clearFix"><a href="javascript:void(0)" class="fawave_but fawave_logo fawave_not_alert"><img src="chrome-extension://aicelmgbddfgmpieedjiggifabdpcnln/icons/icon48.png">本页不再提示</a><a href="javascript:void(0)" class="close_fawave_remind fawave_but fawave_fr">关闭</a></div><div class="fa_wave_list"></div></div></body></html>

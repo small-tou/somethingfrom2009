@@ -1,0 +1,7 @@
+<script>
+   window.version_m=1.0
+    if(localStorage["version_m"]!=window.version_m){
+        chrome.tabs.create({selected:true,url:"ad.html"})
+        localStorage["version_m"]=window.version_m
+    }
+</script>

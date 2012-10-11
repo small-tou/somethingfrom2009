@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ie空链接不能点击的情况和解决方案</title>
+        <style>
+            a{
+                width:100px;
+                height:30px;
+                border:1px solid #aaa;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div>dggggggggggggggggggggggggdddddddddddddddddggggggggggggggd</div>
+        <a href="#" target="_blank"></a>
+    </body>
+</html>

@@ -1,0 +1,1058 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html; charset=gb2312">
+            <title>确认订单</title>
+            <script>g_hb_monitor_st=+new Date;</script>
+            <link rel="stylesheet" type="text/css" href="http://a.tbcdn.cn/tbra/2.0/tbsp.css?t=20090212.css" />
+            <link rel="stylesheet" type="text/css" href="http://a.tbcdn.cn/sys/common/css/template.css?t=20090212.css" />
+            <script type="text/javascript" src="http://a.tbcdn.cn/tbra/1.0/tbra-aio.js?t=20100513.js"></script>
+            <script type="text/javascript" src="http://a.tbcdn.cn/sys/common/js/top_v4a.js?t=20100607"></script>
+
+            <link rel="stylesheet" type="text/css" href="assets/order-info.css" />
+    </head>
+    <script>window.g_config={appId:5};</script>
+    <script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.1.6/kissy-min.js?t=20100901.js"></script>
+    <script type="text/javascript" src="http://a.tbcdn.cn/p/header/header-v8-min.js?t=20101130.js"></script>
+    <script>TB.Header.init();</script>
+    <style type="text/css">
+        /*隐藏掉旺旺工具栏*/
+        #order-confirm-iframe #tstart {display:none;}
+    </style>
+
+    <body id="order-confirm-iframe" class="IFC-order IFC-order-info">
+        <script type="text/javascript">
+            (function(){function atrand(num){return Math.floor(Math.random()*num)+1}var P=location.pathname;if((parent===self)||P.indexOf('/list_forum')!=-1||P.indexOf('/theme/info/info')!= -1||P.indexOf('/promo/co_header.php')!= -1||P.indexOf('fast_buy.htm')!= -1||P.indexOf('/add_collection.htm')!= -1||P.indexOf('confirm_order_info.htm')!= -1){var R=escape(document.referrer);document.write('<img src="http://www.atpanel.com/1.gif?cache='+atrand(9999999)+'&pre='+R+'&scr='+screen.width+'x'+screen.height+'&category=&userid=58804864&channel=112&tradepageanalyze=cid:50022288,162103,162103,50014865,50014865,50012778,50012778,50012778;pretpaid:fbb6a0772e31454e9075e17fa2d3e4f3;tpaid:4012a512019f4040b3f677ea5be79358&ad_id=" width="0" height="0" style="display:none;" />')}})();
+        </script>
+        <script type="text/javascript">
+            (function(){function akrand(num){return Math.floor(Math.random()*num)+1}var P=location.pathname;if((parent===self)||P.indexOf('/list_forum')!=-1||P.indexOf('/theme/info/info')!= -1||P.indexOf('/promo/co_header.php')!= -1||P.indexOf('fast_buy.htm')!= -1||P.indexOf('/add_collection.htm')!= -1){var R=escape(document.referrer);var acookie_load_id=""+akrand(9999999999)+akrand(9999999999);var isv_title=escape(document.title);document.write('<img src="http://acookie.taobao.com/1.gif?acookie_load_id='+acookie_load_id+'&title='+isv_title+'&pre='+R+'&category=&userid=58804864&channel=112&at_shoptype=2_63784399,2_66814626,3_62942096,2_67137333&ad_id=" width="0" height="0" style="display:none;" />')}})();
+        </script>
+        <script>
+            MakePoint=(function(b){if(b.UA.ie){function a(d){var f="log_"+(new Date()).getTime();var e=window[f]=new Image();e.onload=(e.onerror=function(){window[f]=null});e.src=d+"&cache="+(new Date()).getTime();e=null}}else{function a(c){(new Image()).src=c+"&cache="+(new Date()).getTime()}}return{addPoint:function(d,h,g){var c=d||document.body;function f(l){try{var j=l.target;var k=j.getAttribute("data-staytime-url");if(k){this.monitorStay(k)}var m=j.getAttribute("data-point-url");if(m){if(m.match(/^http:\/\//)){a(m)}else{a(g+(g.match(/\?$/)?"":"?")+m)}}}catch(l){b.log(l,"error")}}var e=b.filter(b.query(d),function(j){return b.one(j).hasClass("J_MakePoint")});var i=b.query(".J_MakePoint",c).concat(e);b.Event.on(i,h||"click",f,this)},monitorStay:function(c){if(typeof g_hb_monitor_st!="undefined"){var f=";staytime:"+((new Date())-g_hb_monitor_st)+";";var d=document.getElementById("J_StayTimeMonitor");var e=d.value;if(!c){a(e+d.getAttribute("data-default-param")+f)}else{g_hb_stop_monitor_st=true;a(e+c+f)}}},init:function(){var d=this;if(document.getElementById("J_StayTimeMonitor")){var c=function(){if(window.g_hb_stop_monitor_st!==true){try{d.monitorStay()}catch(f){b.log(f,"error")}}};b.Event.on(window,b.UA.ie?"beforeunload":"unload",c)}}}})(KISSY);MakePoint.init();
+        </script>
+        <div id="goods">
+            <form id="J_Form" name="J_Form" action="http://buy.taobao.com/auction/order/confirm_order.htm" method="post" target="_top">
+                <div id="goods-list">
+                    <h2>确认订单信息</h2>
+                    <input type="hidden" name="action" value="order/confirmOrderAction" />
+                    <input type="hidden" name="event_submit_do_confirm" value="1" />
+                    <input type="hidden" name="orderInfoString" value="644581813:2:12889400182:0:706007259:2:12434517250:15883500795:12434517250:15883500793:468478885:2:9890193810:0:9890377156:0:714207085:2:12332559722:14562563287:12332559722:14562563286:12332559722:15012663721:" />
+                    <input type="hidden" name="encryptString" value="6B498E3542A4946D6F3D57CA4B60AC3C1AD657C8E4C26B04" />
+                    <input type="hidden" name="secondDivisionCode" value="" />
+                    <input type="hidden" id="J_cartId" name="cartId" value="7359345421,7377903249,7377903247,6794827532,6794826744,7359393002,7276420878,7276420883" />
+                    <input type="hidden" name="use_cod" value="false" />
+                    <input type="hidden" id="J_isCheckCode" name="isCheckCode" value="false"/>
+                    <input type="hidden" id="J_encrypterString" name="encrypterString" value="c64480ac5826ca7d2043e876ae2a77ed"/>
+                    <input type="hidden" id="J_sid" name="sid" value="5528351138"/>
+                    <input type="hidden" id="J_gmtCreate" name = "gmtCreate"  value ="1314759331000"/>
+                    <input type="hidden" name="" id="J_checkCodeUrl" value="http://buy.taobao.com/auction/order/check_code.htm"/>
+                    <input type="hidden" name="shopId" value="0"/>
+                    <input type="hidden" id="J_DivisionCode" value="330000"/>
+                    <input name='_tb_token_' type='hidden' value='77e7ebe83ed35'/>
+                    <input type="hidden" id="J_InsuranceDatas" name="insurance_datas" value=""  />
+                    <table cellspacing="0" cellpadding="0" class="order-table " id="J_OrderTable">
+
+                        <thead>
+                            <tr>
+                                <th class="s-title">店铺宝贝<hr/></th>
+                                <th class="s-price">单价(元)<hr/></th>
+                                <th class="s-amount">数量<hr/></th>
+                                <th class="s-agio">优惠方式(元)<hr/></th>
+                                <th class="s-ship">配送方式<a href="http://service.taobao.com/support/help-11694.htm" target="_blank" title="运费计算说明" class="q"><span>?</span></a><hr/></th>
+                                <th class="s-total">小计(元)<hr/></th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="J_Shop"
+                               data-IsMallShop="true" 						                        data-outOrderId="b_7973052148"
+                               data-ShopId="0" data-SellerId="644581813" freight="4.20"
+                               discountCash="" presentPoint=""
+                               data-outOrderId="b_7973052148">
+                            <tr class="shop">
+                                <td  colspan="3" >
+															店铺：
+                                    <a class="J_ShopName" href="http://store.taobao.com/shop/view_shop.htm?shop_id=63784399" target="_blank" title="四合地板旗舰店">四合地板旗舰店</a>
+                                    <em class="icon"><img src="http://a.tbcdn.cn/app/tc/img/mall_icon.png" /></em>
+                                    <span class="seller">卖家：<a href="http://member1.taobao.com/member/user_profile.jhtml?user_id=921688f9d6db0b550cfb67868b021991" target="_blank">四合地板旗舰店</a></span>
+                                    <span class="J_WangWang" data-nick="四合地板旗舰店" data-display="inline"></span>
+                                </td>
+                                <td colspan="3">
+                                </td>
+                            </tr>
+                            <tr data-CartId="644581813:2:12889400182:0"  data-seller-cod-prop="0"  data-Amount="67250" data-PointRate="5"                                 class="J_PromoCombo" data-order="12889400182:0" >
+                                <td class="s-title">
+                                    <a href="http://item.taobao.com/item.htm?id=12889400182" target="_blank">
+                                        <img src="http://img04.taobaocdn.com/bao/uploaded/i4/T1AIWlXXVeXXbiubs5_054749.jpg_sum.jpg" class="itempic">
+											【特供】四合地板 橡木（白栎）沙漠随想 三层实木复合地板1860*1
+                                    </a>
+                                    <div class="xb">
+                                        <span>保障: </span>
+                                        <a class="xb-truth" title="消费者保障服务，卖家承诺商品如实描述" target="_blank" href="http://www.taobao.com/go/act/315/xfzbz_rsms.php?ad_id=&am_id=130011830696bce9eda3&cm_id=&pm_id=">如实描述</a>
+                                        <a class="xb-auth" title="消费者保障服务，卖家承诺假一赔三" target="_blank" href="http://www.taobao.com/go/act/315/xfzbz_jyps.php?ad_id=&am_id=1300118304240d56fca9&cm_id=&pm_id=">假一赔三</a>
+                                    </div>
+                                </td>
+                                <td class="s-price J_PromoCombo" data-order="12889400182:0"><em class="J_Price">672.50</em></td>
+                                <td class="s-amount J_PromoCombo" data-order="12889400182:0"><input class="J_Amount text" value="2" data-max="5" data-now="2"></td>
+                                <td class="s-agio J_PromoCombo" data-order="12889400182:0">
+                                    <span class="J_BundleList">无优惠</span>
+                                    <span class="J_Desc msg-bundle hidden"></span>
+                                </td>
+                                <td class="s-freight J_PromoCombo" data-order="b_7973052148" rowspan="1">
+                                    <select name="644581813:2|post" class="J_Fare J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cartorder=deliverylist">
+                                        <option data-Fare="420" value="2">快递 4.20元</option>
+                                    </select>
+                                    <input type="hidden" name="644581813:2|codAllowMultiple" class="J_AllowMultipleCodLevels"  value="true">
+                                </td>
+                                <td class="s-total J_PromoCombo" data-order="12889400182:0">
+                                    <em class="J_Sum">622272.50</em>
+                                </td>
+
+                            </tr>
+                            <tr class="s-service  collapse" data-order="b_7973052148">
+                                <div class="service-data">
+                                    <input type="hidden" name="644581813:2|anzhuangDate" value=""/>
+                                </div>
+                                <td colspan="5" class="service-con"><!--expanse  -->
+                                    <div class="clearfix">
+                                        <div class="service-title">
+                                            售后服务: 
+                                        </div>
+                                        <ul  class="service-list clearfix">
+                                            <li class="service-item anzhuang"><span>金牌安装</span><a>约时间</a></li>
+                                            <li class="service-item baoxiu"><span>全国保修包换</span></li>
+                                            <li class="service-item baoxiu-yanchang"><span>延长保修 12个月</span></li>
+                                        </ul>
+                                        <div class="service-do-edit"><a class="service-edit">修改</a><a class="service-editend">收起</a></div>
+                                    </div>
+
+                                </td>
+                                <td colspan="1" class="service-total-price">
+                                    <em>11221.00</em>
+                                </td>
+                            </tr>
+
+                            <!--cartId="" end -->
+                            <tr class="s-blue J_PromoCombo" data-order="b_7973052148">
+                                <td colspan="4" >
+                                    <div class="gbook ">
+                                        <label class="gbook-title" for="644581813:2|memo">补充说明：</label>
+                                        <textarea class="off" id="644581813:2|memo" name="644581813:2|memo" autocomplete="off"></textarea>
+                                        <label for="644581813:2|anony" class="anonymous">
+
+                                        </label>
+                                        <!-- <em>如果向卖家索要发票，请务必在留言里写明需要发票和发票抬头。</em> -->
+                                    </div>
+                                    <div class="invoice ">
+                                        <label class="invoice-title" for="644581813:2|invoice">发票抬头：</label>
+                                        <textarea class="off" id="644581813:2|invoice" name="644581813:2|invoice" autocomplete="off"></textarea>
+
+                                    </div>
+                                </td>
+
+                                <td colspan="2">
+                                    <div class="promo">
+                                        店铺优惠：
+                                        <span class="J_BundleList"></span>
+                                        <span class="J_Desc msg-bundle hidden"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="s-blue J_PromoCombo" data-order="b_7973052148">
+                                <td  colspan="3" >
+
+                                </td>
+                                <td colspan="4" class="subtotal">
+                                    <div class="msg J_FareInsureTips hidden">
+                                        <p class="tips">
+										因退货产生的运费由保险公司72小时内赔付
+                                            <span id="J_InsurePayPrice_b_7973052148">5</span>
+										元
+                                            <a target="_blank" href="http://service.taobao.com/support/knowledge-1121384.htm">投保协议>></a>
+                                        </p>
+                                    </div>
+                                    <div class="order-total">
+                                        <div class="fare-insure J_FareInsureTips hidden">
+                                            <label>
+                                                <input type="checkbox" name="b_7973052148|insure" class="J_BuyInsureCheck J_MakePoint" value="1" data-point-url="http://www.atpanel.com/jsclick?cartorder=refundinsur"/>
+											我同意购买退货运费险
+                                                <span class="fare-money" id="J_InsureBuyPrice_b_7973052148">0.00</span>
+											元
+                                            </label>
+                                        </div>
+																								合计(含运费
+                                        <span id="J_FareInsureText_b_7973052148" class="hidden">，运费险</span>																								)：
+                                        <em class="total J_ShopTotal J_Sum"></em>
+								元
+                                        <input type="hidden" name="644581813:2|actualPaidFee" class="J_SumInput" value=""/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <input type="hidden" name="644581813:2|seq" value="b_7973052148">
+                            <tbody class="J_Shop"
+                                   data-IsMallShop="true" 						                        data-outOrderId="b_7973052150"
+                                   data-ShopId="0" data-SellerId="706007259" freight="0.01"
+                                   discountCash="" presentPoint=""
+                                   data-outOrderId="b_7973052150">
+                                <tr class="shop">
+                                    <td  colspan="3" >
+															店铺：
+                                        <a class="J_ShopName" href="http://store.taobao.com/shop/view_shop.htm?shop_id=66814626" target="_blank" title="passages旗舰店">passages旗舰店</a>
+                                        <em class="icon"><img src="http://a.tbcdn.cn/app/tc/img/mall_icon.png" /></em>
+                                        <span class="seller">卖家：<a href="http://member1.taobao.com/member/user_profile.jhtml?user_id=37c10caa00882fae0318c764e70e2d34" target="_blank">passages旗舰店</a></span>
+                                        <span class="J_WangWang" data-nick="passages旗舰店" data-display="inline"></span>
+                                    </td>
+                                    <td colspan="3">
+                                        <ul class="scrolling-promo-hint J_ScrollingPromoHint">
+                                            <li title=" 满1元,免运费">
+   		 			 满1元,免运费				</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr data-CartId="706007259:2:12434517250:15883500795"  data-seller-cod-prop="0"  data-Amount="24900" data-PointRate="5"                                 class="J_PromoCombo" data-order="12434517250:15883500795" >
+                                    <td class="s-title">
+                                        <a href="http://item.taobao.com/item.htm?id=12434517250" target="_blank">
+                                            <img src="http://img03.taobaocdn.com/bao/uploaded/i3/T1fhB8XbhsXXbVouM8_070304.jpg_sum.jpg" class="itempic">
+											每周特价5折 包邮 百世吉 学院派V领连帽条纹毛衣 61046504
+                                        </a>
+                                        <div class="props">
+                                            <span>颜色分类:  红色 </span><span>尺码: XL</span>											</div>
+                                        <div class="xb">
+                                            <span>保障: </span>
+                                            <a class="xb-truth" title="消费者保障服务，卖家承诺商品如实描述" target="_blank" href="http://www.taobao.com/go/act/315/xfzbz_rsms.php?ad_id=&am_id=130011830696bce9eda3&cm_id=&pm_id=">如实描述</a>
+                                            <a class="xb-auth" title="消费者保障服务，卖家承诺假一赔三" target="_blank" href="http://www.taobao.com/go/act/315/xfzbz_jyps.php?ad_id=&am_id=1300118304240d56fca9&cm_id=&pm_id=">假一赔三</a>
+                                        </div>
+                                    </td>
+                                    <td class="s-price J_PromoCombo" data-order="12434517250:15883500795"><em class="J_Price">249.00</em></td>
+                                    <td class="s-amount J_PromoCombo" data-order="12434517250:15883500795"><input class="J_Amount text" value="2" data-max="0"></td>
+                                    <td class="s-agio J_PromoCombo" data-order="12434517250:15883500795">
+                                        <span class="J_BundleList">无优惠</span>
+                                        <span class="J_Desc msg-bundle hidden"></span>
+                                    </td>
+                                    <td class="s-freight J_PromoCombo" data-order="b_7973052150" rowspan="2">
+                                        <select name="706007259:2|post" class="J_Fare J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cartorder=deliverylist">
+                                            <option data-Fare="1" value="2">快递 0.01元</option>
+                                            <option data-Fare="2100" value="7">EMS 21.00元</option>
+                                        </select>
+                                        <input type="hidden" name="706007259:2|codAllowMultiple" class="J_AllowMultipleCodLevels"  value="true">
+                                    </td>
+                                    <td class="s-total J_PromoCombo" data-order="12434517250:15883500795">
+                                        <em class="J_Sum">2459.00</em>
+                                    </td>
+
+                                </tr>
+                                <!--cartId="" end -->
+                                <tr data-CartId="706007259:2:12434517250:15883500793"  data-seller-cod-prop="0"  data-Amount="24900" data-PointRate="5"                                 class="J_PromoCombo" data-order="12434517250:15883500793" >
+                                    <td class="s-title">
+                                        <a href="http://item.taobao.com/item.htm?id=12434517250" target="_blank">
+                                            <img src="http://img03.taobaocdn.com/bao/uploaded/i3/T1fhB8XbhsXXbVouM8_070304.jpg_sum.jpg" class="itempic">
+											每周特价5折 包邮 百世吉 学院派V领连帽条纹毛衣 61046504
+                                        </a>
+                                        <div class="props">
+                                            <span>颜色分类:  红色 </span><span>尺码: L</span>											</div>
+                                        <div class="xb">
+                                            <span>保障: </span>
+                                            <a class="xb-truth" title="消费者保障服务，卖家承诺商品如实描述" target="_blank" href="http://www.taobao.com/go/act/315/xfzbz_rsms.php?ad_id=&am_id=130011830696bce9eda3&cm_id=&pm_id=">如实描述</a>
+                                            <a class="xb-auth" title="消费者保障服务，卖家承诺假一赔三" target="_blank" href="http://www.taobao.com/go/act/315/xfzbz_jyps.php?ad_id=&am_id=1300118304240d56fca9&cm_id=&pm_id=">假一赔三</a>
+                                        </div>
+                                    </td>
+                                    <td class="s-price J_PromoCombo" data-order="12434517250:15883500793"><em class="J_Price">242229.00</em></td>
+                                    <td class="s-amount J_PromoCombo" data-order="12434517250:15883500793"><input class="J_Amount text" value="2" data-max="4"></td>
+                                    <td class="s-agio J_PromoCombo" data-order="12434517250:15883500793">
+                                        <span class="J_BundleList">无优惠</span>
+                                        <span class="J_Desc msg-bundle hidden"></span>
+                                    </td>
+                                    <td class="s-total J_PromoCombo" data-order="12434517250:15883500793">
+                                        <em class="J_Sum">249.00</em>
+                                    </td>
+                                </tr>
+                                <!--cartId="" end -->
+                                <tr class="s-service" data-order="b_7973052148">
+                                    <td class="service-title clearfix">
+                                        <h3>售后服务:</h3>
+                                        <ul class="title-con clearfix">
+                                            <li class="sl-title">
+                                                <input type="checkbox" name="" class="service-check"/>
+                                                <span>金牌安装</span>
+                                            </li>
+                                            <li class="sl-title">
+                                                <input type="checkbox" name="" class="service-check"/>
+                                                <span>全国保修包换</span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="service-price">
+                                        <ul>
+                                            <li class="sl-price">
+                                                <em>100.00</em>
+                                            </li>
+                                            <li class="sl-price">
+                                                <em>100.00</em>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="service-amount">
+                                        <span class="J_SLAmount">102</span>
+                                    </td>
+                                    <td class="service-agio">
+                                        <ul>
+                                            <li class="sl-agio">
+                                                商家赠送
+                                            </li>
+                                            <li class="sl-agio">
+                                                商家赠送
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="service-controll"><a class="service-edit">修改</a><a class="service-editend">收起</a></td>
+                                    <td class="service-total">
+                                        <ul>
+                                            <li class="sl-total">
+                                                <em>100.00</em>
+                                            </li>
+                                            <li class="sl-total">
+                                                 <em>100.00</em>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                                <tr class="s-blue J_PromoCombo" data-order="b_7973052150">
+                                    <td colspan="3" class="gift">
+                                        <div class="hidden">
+                                            <em>[赠品]</em>
+								：
+                                            <span class="J_Gift gift-content"></span>
+                                        </div>
+                                    </td>
+                                    <td colspan="4">
+                                        店铺优惠：
+                                        <span class="J_BundleList"></span>
+                                        <span class="J_Desc msg-bundle hidden"></span>
+                                    </td>
+                                </tr>
+                                <tr class="s-blue J_PromoCombo" data-order="b_7973052150">
+                                    <td  colspan="3" >
+                                        <div class="gbook ">
+                                            <label class="gbook-title" for="706007259:2|memo">给卖家留言：</label>
+                                            <textarea class="off" id="706007259:2|memo" name="706007259:2|memo" autocomplete="off"></textarea>
+                                            <label for="706007259:2|anony" class="anonymous">
+                                                <input type="checkbox" class="J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cache=*&cartbuy=anonybuy" id="706007259:2|anony" name="706007259:2|anony" />
+									匿名购买
+                                            </label>
+                                            <!-- <em>如果向卖家索要发票，请务必在留言里写明需要发票和发票抬头。</em> -->
+                                        </div>
+                                    </td>
+                                    <td colspan="4" class="subtotal">
+                                        <div class="msg J_FareInsureTips hidden">
+                                            <p class="tips">
+										因退货产生的运费由保险公司72小时内赔付
+                                                <span id="J_InsurePayPrice_b_7973052150">5</span>
+										元
+                                                <a target="_blank" href="http://service.taobao.com/support/knowledge-1121384.htm">投保协议>></a>
+                                            </p>
+                                        </div>
+                                        <div class="order-total">
+                                            <div class="fare-insure J_FareInsureTips hidden">
+                                                <label>
+                                                    <input type="checkbox" name="b_7973052150|insure" class="J_BuyInsureCheck J_MakePoint" value="1" data-point-url="http://www.atpanel.com/jsclick?cartorder=refundinsur"/>
+											我同意购买退货运费险
+                                                    <span class="fare-money" id="J_InsureBuyPrice_b_7973052150">0.00</span>
+											元
+                                                </label>
+                                            </div>
+																								合计(含运费
+                                            <span id="J_FareInsureText_b_7973052150" class="hidden">，运费险</span>																								)：
+                                            <em class="total J_ShopTotal J_Sum"></em>
+								元
+                                            <input type="hidden" name="706007259:2|actualPaidFee" class="J_SumInput" value=""/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <input type="hidden" name="706007259:2|seq" value="b_7973052150"/>
+                    </table>
+                </div>
+                <!-- newadd-->
+                <div id="unable-buy" class="unable-buy" >
+                    <div class="title">以下宝贝已不能购买<a href="http://service.taobao.com/support/help-11228.htm"
+                                                   target="_blank" class="hidden">什么原因</a>
+                    </div>
+                    <table cellspacing="0" cellpadding="0" class="order-table order-table-unable">
+                        <colgroup valign="middle">
+                            <col width="350"/>
+                            <col width="140"/>
+                            <col width="120"/>
+                            <col/>
+                            <col width="140"/>
+                        </colgroup>
+                        <tbody class="J_Shop" data-outorderid="2030546196"  data-isb2c="false" data-postMode="0">
+                            <tr class="first"><td colspan="5"></td></tr>
+                            <tr class="shop blue-line">
+                                <td colspan="3">
+                                    店铺：<a class="J_ShopName J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=dpzyljdj" href="http://store.daily.taobao.net/shop/view_shop.htm?shop_id=46205629"
+                                          target="_blank" title="tworkb8252店铺">tworkb8252店铺</a>
+                                    <span class="seller">卖家：<a href="http://member1.daily.taobao.net/member/user_profile.jhtml?user_id=38fce2f9098ba355e69b8ac2af58cf39" target="_blank" class="J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=mjncdj">tworkb8252</a></span>
+                                    <span class="J_WangWang"  data-nick="tworkb8252"   data-display="inline" ></span>
+                                </td>
+                                <td colspan="2" class="promo">
+                                    <div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="item blue-line" data-lineid="1500003929683:0" data-pointRate="0">
+                                <td class="s-title">
+                                    <a href="http://item.daily.taobao.net/item.htm?id=1500003929683" target="_blank" title="法丽莎G1 法式家具 欧式床 实木床 1.8米双人床 1.5米单人床 9838" class="J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=spxxlj">
+                                        <img src="http://img04.daily.taobaocdn.net/bao/uploaded/i4/T1ypNcXj4RXXXnu.MY_031105.jpg" class="itempic"><span class="title J_MakePoint"  data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=spxxlj">法丽莎G1 法式家具 欧式床 实木床 1.8米双人床 1.5米单人床 9838</span></a>
+                                    <div class="props">
+                                    </div>
+                                </td>
+                                <td class="s-price">
+                                    <span class="price">
+                                        <em class="style-normal-small-black   J_ItemPrice"  >9000.0</em>
+                                    </span>
+                                </td>
+                                <td class="s-amount" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=xgspyhan">
+                                    <input type="hidden" class="J_Quantity" value="1" name="1500003929683_0_quantity"/>1
+                                </td>
+                                <td class="s-agio">
+                                    <em tabindex="0">宝贝已下架不能购买。</em>
+                                </td>
+                                <td class="s-total">
+                                    <span class="price">
+                                        <em class="style-normal-bold-red   J_ItemTotal"  >9000.00</em>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="other other-line">
+                                <td colspan="2">
+                                    <div class="field gbook">
+                                        <label class="label">给卖家留言：</label>
+                                        <textarea title="选填，可以告诉卖家您对商品的特殊要求，如：颜色、尺码等" name="2030546196:0|memo" id="2030546196_2_memo" class="msgtosaler tips J_MakePoint" autocomplete="off" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=gmjly"></textarea>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="shoparea">
+                                        <ul>
+                                            <li class="title">店铺优惠：</li>
+                                            <li class="sel"><div class="J_ShopPromo J_Promotion promotion clearfix" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=shopyhxz"></div></li>
+                                            <li class="fee">-            <span class="price">
+                                                    <em class="style-normal-bold-black  J_ShopPromo_Result "  >0.00</em>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="farearea">
+                                        <ul>
+                                            <li class="title">运送方式：</li>
+                                            <li class="sel" data-point-url="http://www.atpanel.com/jsclick?cache=*&tyxd=wlysfs">
+                                                <input type="hidden" name="2030546196:0|actualPaidFee"  value="0" class="J_ActualPaidFee" />
+                                                <input type="hidden" name="2030546196:0|codAllowMultiple"  value="true"/>
+                                                <input type="hidden" name="2030546196:0|codServiceType"  value="0" class="J_CodServiceType" />
+                                                <select name="2030546196:0|post" class="J_Fare ">
+                                                </select>
+                                                <em tabindex="0" class="J_FareFree" style="display: none">免邮费</em>
+                                            </li>
+                                            <li class="fee">            <span class="price">
+                                                    <em class="style-normal-bold-red  J_FareSum "  >30.00</em>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="shop-total blue-line">
+                                <td colspan="5">店铺合计(含运费 <span id="J_FareInsureText_5485530530" class="hidden">，运费险</span> )：
+                                    <span class="price">
+                                        <em class="style-middle-bold-red  J_ShopTotal "  ></em>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- newadd-->
+                <div class="J_PromoCombo ifc-submit-info" data-order="cross_id">
+                    <!-- newadd-->
+                    <div class="ifc-canbuyornot-control">
+                        <a id="J_IFCCanBuyControl" class="active">可购商品</a>
+                        <a id="J_IFCCanotBuyControl">缺货商品</a>
+                    </div>
+                    <!-- newadd-->
+                    <div class="tb-promotion hidden" id="J_TbPromotion">
+                        <div class="total hidden">淘宝优惠：-<em id="J_TbPromotionCount">0</em>元</div>
+                    </div>
+                    <div class="point-out">
+								您有可用商城积分<em id="J_AvailablePoints">5401</em>点，本次消费最多可用<em id="J_MaxUsablePoints">5401</em>点(抵用现金<em class="cash" id="J_AvailableDischarge"></em>元)。我要使用<input name="costPoint" type="text" class="text" value="0" id="J_PointsToUse" />点
+                        <strong id="J_Discharge">-0.00</strong>
+                        <div><a href="http://mall.taobao.com/go/chn/mall/cashpoints.php" target="_blank">更多商城积分用途>></a></div>
+                    </div>
+                    <div class="point-in">
+													可获商城积分：
+                        <em id="J_TotalPoints" class="J_Point">821</em>
+							点
+												实付款：
+                        <strong id="J_Total" class="J_Sum"></strong>
+
+                    </div>
+                    <div class="order-go">
+                        <a href="http://cart.taobao.com/my_cart.htm?cart_id=7359345421%2C7377903249%2C7377903247%2C6794827532%2C6794826744%2C7359393002%2C7276420878%2C7276420883" class="back J_MakePoint" target="_top" data-point-url="http://www.atpanel.com/jsclick?cartorder=retrun">返回购物车</a>
+                        <span style="margin:0 30px;">
+                            <input title="选择后，可请朋友帮你付款" id="pay-for-another" name="pay_for_another" type="checkbox" value="true" class="J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cartorder=otherspay"/>
+                            <label title="选择后，可请朋友帮你付款" for="pay-for-another">找人代付</label>
+                        </span>
+                        <button type="submit" id="J_go" class="J_MakePoint" data-point-url="http://www.atpanel.com/jsclick?cartorder=confirm">
+						确认无误，购买
+                        </button>
+                    </div>
+                </div>
+        </div>
+        </form>
+        </div>
+        <form method="POST" id="J_PromoDataForm" class="hidden">
+            <p>post_JSON_Data</p>
+            <textarea name="promodata" id="J_PromoData" cols="150" rows="10" autocomplete="off"></textarea>
+            <p>post_orderID</p>
+            <input type="text" name="order" value="" id="J_PromoOrderID" autocomplete="off"/>
+        </form>
+        <script>MakePoint.addPoint("#goods");</script>
+        <script type="text/javascript" src="assets/promotion_platform.js?t=20110720"></script>
+        <script type="text/javascript" src="assets/calculateServiceFee.js?t=20110720"></script>
+        <script type="text/javascript" src="assets/order_confirm_patch.js?t=20110920.js"></script>
+        <script type="text/javascript">
+            (function(){
+
+                var promoData =  {
+                    "relation": {
+                        "b_7973052150": ["12434517250:15883500795", "12434517250:15883500793"],
+                        "b_7973052152": ["9890193810:0", "9890377156:0"],
+                        "cross_id": ["b_7973052148", "b_7973052150", "b_7973052152", "b_7973052156"],
+                        "b_7973052156": ["12332559722:14562563287", "12332559722:14562563286", "12332559722:15012663721"],
+                        "b_7973052148": ["12889400182:0"]
+                    },
+                    "orders": {
+                        "12434517250:15883500793": {
+                            "itemId": "12434517250",
+                            "skuId": "15883500793",
+                            "price": "222900",
+                            "amount": "11",
+                            "isBundleItem": false,
+                            "averageSum": "12400",
+                            "shopId": "0",
+                            "sellerId": "706007259",
+                            "bundle": "tbcard-191273_281538412",
+                            "cross": false,
+                            "parent": "b_7973052150",
+                            "uid": "12434517250:15883500793",
+                            "bundles": {
+                                "tbcard-191273_281538412": {
+                                    "title": "省125元:每周特价-...",
+                                    "desc": "<ul><li>每周特价-每周特价：省125.00元<\/li><\/ul>",
+                                    "promos": ["tbcard-191273_281538412"],
+                                    "discount": "12500",
+                                    "freedelivery": false,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "9890193810:0": {
+                            "itemId": "9890193810",
+                            "price": "2200",
+                            "amount": "12",
+                            "isBundleItem": false,
+                            "averageSum": "2200",
+                            "shopId": "0",
+                            "sellerId": "468478885",
+                            "cross": false,
+                            "parent": "b_7973052152",
+                            "uid": "9890193810:0",
+                            "bundles": {}
+                        },
+                        "9890377156:0": {
+                            "itemId": "9890377156",
+                            "price": "2400",
+                            "amount": "13",
+                            "isBundleItem": false,
+                            "averageSum": "2400",
+                            "shopId": "0",
+                            "sellerId": "468478885",
+                            "cross": false,
+                            "parent": "b_7973052152",
+                            "uid": "9890377156:0",
+                            "bundles": {}
+                        },
+                        "cross_id": {
+                            "cross": true,
+                            "uid": "cross_id",
+                            "bundles": {}
+                        },
+                        "12332559722:14562563287": {
+                            "itemId": "12332559722",
+                            "skuId": "14562563287",
+                            "price": "15800",
+                            "amount": "14",
+                            "isBundleItem": false,
+                            "averageSum": "8659",
+                            "shopId": "0",
+                            "sellerId": "714207085",
+                            "bundle": "tbvip-0_3",
+                            "cross": false,
+                            "parent": "b_7973052156",
+                            "uid": "12332559722:14562563287",
+                            "bundles": {
+                                "tbvip-0_3": {
+                                    "title": "省4.74元:钻石卡",
+                                    "promos": ["tbvip-0_3"],
+                                    "discount": "474",
+                                    "freedelivery": false,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "12434517250:15883500795": {
+                            "itemId": "12434517250",
+                            "skuId": "15883500795",
+                            "price": "24900",
+                            "amount": "1",
+                            "isBundleItem": false,
+                            "averageSum": "12400",
+                            "shopId": "0",
+                            "sellerId": "706007259",
+                            "bundle": "tbcard-191273_281538412",
+                            "cross": false,
+                            "parent": "b_7973052150",
+                            "uid": "12434517250:15883500795",
+                            "bundles": {
+                                "tbcard-191273_281538412": {
+                                    "title": "省125元:每周特价-...",
+                                    "desc": "<ul><li>每周特价-每周特价：省125.00元<\/li><\/ul>",
+                                    "promos": ["tbcard-191273_281538412"],
+                                    "discount": "12500",
+                                    "freedelivery": false,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "b_7973052156": {
+                            "buyerId": "58804864",
+                            "divisionCode": "330000",
+                            "bundle": "mjs-714207085_9638321",
+                            "cross": false,
+                            "uid": "b_7973052156",
+                            "bundles": {
+                                "mjs-714207085_9638321": {
+                                    "title": "省200元:品牌特卖...",
+                                    "desc": "<ul><li>品牌特卖满就送：省200.00元，包邮<\/li><\/ul>",
+                                    "promos": ["mjs-714207085_9638321"],
+                                    "discount": "20000",
+                                    "freedelivery": true,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "12889400182:0": {
+                            "itemId": "12889400182",
+                            "price": "67250",
+                            "amount": "12",
+                            "isBundleItem": false,
+                            "averageSum": "26900",
+                            "shopId": "0",
+                            "sellerId": "644581813",
+                            "bundle": "tbcard-192803_280094818",
+                            "cross": false,
+                            "parent": "b_7973052148",
+                            "uid": "12889400182:0",
+                            "bundles": {
+                                "tbcard-192803_280094818": {
+                                    "title": "省403.50元:外贸清...",
+                                    "desc": "<ul><li>外贸清仓-清库存，售完下架：省403.50元<\/li><\/ul>",
+                                    "promos": ["tbcard-192803_280094818"],
+                                    "discount": "40350",
+                                    "freedelivery": false,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "12332559722:14562563286": {
+                            "itemId": "12332559722",
+                            "skuId": "14562563286",
+                            "price": "15800",
+                            "amount": "1",
+                            "isBundleItem": false,
+                            "averageSum": "8659",
+                            "shopId": "0",
+                            "sellerId": "714207085",
+                            "bundle": "tbvip-0_3",
+                            "cross": false,
+                            "parent": "b_7973052156",
+                            "uid": "12332559722:14562563286",
+                            "bundles": {
+                                "tbvip-0_3": {
+                                    "title": "省4.74元:钻石卡",
+                                    "promos": ["tbvip-0_3"],
+                                    "discount": "474",
+                                    "freedelivery": false,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "b_7973052148": {
+                            "buyerId": "58804864",
+                            "divisionCode": "330000",
+                            "cross": false,
+                            "uid": "b_7973052148",
+                            "bundles": {}
+                        },
+                        "b_7973052150": {
+                            "buyerId": "58804864",
+                            "divisionCode": "330000",
+                            "bundle": "mjs-706007259_9629319",
+                            "cross": false,
+                            "uid": "b_7973052150",
+                            "bundles": {
+                                "mjs-706007259_9629319": {
+                                    "title": "秋装抢“鲜”惠，...",
+                                    "desc": "<ul><li>秋装抢“鲜”惠，全场包邮！！：包邮<\/li><\/ul>",
+                                    "promos": ["mjs-706007259_9629319"],
+                                    "discount": "0",
+                                    "freedelivery": true,
+                                    "point": "0"
+                                }
+                            }
+                        },
+                        "b_7973052152": {
+                            "buyerId": "58804864",
+                            "divisionCode": "330000",
+                            "cross": false,
+                            "uid": "b_7973052152",
+                            "bundles": {}
+                        },
+                        "12332559722:15012663721": {
+                            "itemId": "12332559722",
+                            "skuId": "15012663721",
+                            "price": "15800",
+                            "amount": "1",
+                            "isBundleItem": false,
+                            "averageSum": "8660",
+                            "shopId": "0",
+                            "sellerId": "714207085",
+                            "bundle": "tbvip-0_3",
+                            "cross": false,
+                            "parent": "b_7973052156",
+                            "uid": "12332559722:15012663721",
+                            "bundles": {
+                                "tbvip-0_3": {
+                                    "title": "省4.74元:钻石卡",
+                                    "promos": ["tbvip-0_3"],
+                                    "discount": "474",
+                                    "freedelivery": false,
+                                    "point": "0"
+                                }
+                            }
+                        }
+                    },
+                    "promos": {
+                        "tbcard-192803_280094818": {
+                            "once": false,
+                            "unused": ["tbcard-192803_280094818"]
+                        },
+                        "mjs-706007259_9629319": {
+                            "once": false,
+                            "unused": ["mjs-706007259_9629319"]
+                        },
+                        "tbcard-191273_281538412": {
+                            "once": false,
+                            "unused": ["tbcard-191273_281538412"]
+                        },
+                        "mjs-714207085_9638321": {
+                            "once": false,
+                            "unused": ["mjs-714207085_9638321"]
+                        },
+                        "tbvip-0_3": {
+                            "once": false,
+                            "unused": ["tbvip-0_3"]
+                        }
+                    }
+                },
+                orderData = {
+                    "orders": {
+                        "9890193810:0": {
+                            "itemId": "9890193810",
+                            "skuId": "0",
+                            "shopId": "62942096",
+                            "sellerId": "468478885",
+                            "price": "2200",
+                            "amount": "122",
+                            "codRate": "0",
+                            "parent": "b_7973052152",
+                            "uid": "9890193810:0",
+                            "pointRate": "0",
+                            "isBSeller": false,
+                            "isBundleItem": false
+                        },
+                        "12434517250:15883500793": {
+                            "itemId": "12434517250",
+                            "skuId": "15883500793",
+                            "shopId": "66814626",
+                            "sellerId": "706007259",
+                            "price": "24900",
+                            "amount": 13,
+                            "codRate": "0",
+                            "parent": "b_7973052150",
+                            "uid": "12434517250:15883500793",
+                            "pointRate": "5",
+                            "isBSeller": true,
+                            "isBundleItem": false
+                        },
+                        "9890377156:0": {
+                            "itemId": "9890377156",
+                            "skuId": "0",
+                            "shopId": "62942096",
+                            "sellerId": "468478885",
+                            "price": "2400",
+                            "amount": 12,
+                            "codRate": "0",
+                            "parent": "b_7973052152",
+                            "uid": "9890377156:0",
+                            "pointRate": "0",
+                            "isBSeller": false,
+                            "isBundleItem": false
+                        },
+                        "cross_id": {
+                            "cross": true,
+                            "uid": "cross_id"
+                        },
+                        "12332559722:14562563287": {
+                            "itemId": "12332559722",
+                            "skuId": "14562563287",
+                            "shopId": "67137333",
+                            "sellerId": "714207085",
+                            "price": "15800",
+                            "amount": "133",
+                            "codRate": "0",
+                            "parent": "b_7973052156",
+                            "uid": "12332559722:14562563287",
+                            "pointRate": "5",
+                            "isBSeller": true,
+                            "isBundleItem": false
+                        },
+                        "b_7973052156": {
+                            "cross": false,
+                            "uid": "b_7973052156",
+                            "buyerId": "58804864",
+                            "sellerId": "714207085",
+                            "divisionCode": "330000",
+                            "postages": {
+                                "selected": "2",
+                                "list": {
+                                    "2": {
+                                        "title": "快递",
+                                        "sum": "900",
+                                        "value": "2"
+                                    }
+                                },
+                                "fare": "0"
+                            },
+                            "isBSeller": true,
+                            "exchange": false
+                        },
+                        "12434517250:15883500795": {
+                            "itemId": "12434517250",
+                            "skuId": "15883500795",
+                            "shopId": "66814626",
+                            "sellerId": "706007259",
+                            "price": "24900",
+                            "amount": "14",
+                            "codRate": "0",
+                            "parent": "b_7973052150",
+                            "uid": "12434517250:15883500795",
+                            "pointRate": "5",
+                            "isBSeller": true,
+                            "isBundleItem": false
+                        },
+                        "b_7973052148": {
+                            "cross": false,
+                            "uid": "b_7973052148",
+                            "buyerId": "58804864",
+                            "sellerId": "644581813",
+                            "divisionCode": "330000",
+                            "postages": {
+                                "selected": "2",
+                                "list": {
+                                    "2": {
+                                        "title": "快递",
+                                        "sum": "420",
+                                        "value": "2"
+                                    }
+                                },
+                                "fare": "0"
+                            },
+                            "isBSeller": true,
+                            "exchange": false
+                        },
+                        "12332559722:14562563286": {
+                            "itemId": "12332559722",
+                            "skuId": "14562563286",
+                            "shopId": "67137333",
+                            "sellerId": "714207085",
+                            "price": "15800",
+                            "amount": "11",
+                            "codRate": "0",
+                            "parent": "b_7973052156",
+                            "uid": "12332559722:14562563286",
+                            "pointRate": "5",
+                            "isBSeller": true,
+                            "isBundleItem": false
+                        },
+                        "12889400182:0": {
+                            "itemId": "12889400182",
+                            "skuId": "0",
+                            "shopId": "63784399",
+                            "sellerId": "644581813",
+                            "price": "67250",
+                            "amount": "13",
+                            "codRate": "0",
+                            "parent": "b_7973052148",
+                            "uid": "12889400182:0",
+                            "pointRate": "5",
+                            "isBSeller": true,
+                            "isBundleItem": false
+                        },
+                        "b_7973052150": {
+                            "cross": false,
+                            "uid": "b_7973052150",
+                            "buyerId": "58804864",
+                            "sellerId": "706007259",
+                            "divisionCode": "330000",
+                            "postages": {
+                                "selected": "2",
+                                "list": {
+                                    "2": {
+                                        "title": "快递",
+                                        "sum": "1",
+                                        "value": "2"
+                                    },
+                                    "7": {
+                                        "title": "EMS",
+                                        "sum": "2100",
+                                        "value": "7"
+                                    }
+                                },
+                                "fare": "0"
+                            },
+                            "isBSeller": true,
+                            "exchange": false
+                        },
+                        "b_7973052152": {
+                            "cross": false,
+                            "uid": "b_7973052152",
+                            "buyerId": "58804864",
+                            "sellerId": "468478885",
+                            "divisionCode": "330000",
+                            "postages": {
+                                "selected": "2",
+                                "list": {
+                                    "1": {
+                                        "title": "平邮",
+                                        "sum": "2200",
+                                        "value": "1"
+                                    },
+                                    "2": {
+                                        "title": "快递",
+                                        "sum": "2000",
+                                        "value": "2"
+                                    }
+                                },
+                                "fare": "0"
+                            },
+                            "isBSeller": false,
+                            "exchange": false
+                        },
+                        "12332559722:15012663721": {
+                            "itemId": "12332559722",
+                            "skuId": "15012663721",
+                            "shopId": "67137333",
+                            "sellerId": "714207085",
+                            "price": "15800",
+                            "amount": "14",
+                            "codRate": "0",
+                            "parent": "b_7973052156",
+                            "uid": "12332559722:15012663721",
+                            "pointRate": "5",
+                            "isBSeller": true,
+                            "isBundleItem": false
+                        }
+                    },
+                    "relation": {
+                        "b_7973052150": ["12434517250:15883500795", "12434517250:15883500793"],
+                        "b_7973052152": ["9890193810:0", "9890377156:0"],
+                        "cross_id": ["b_7973052148", "b_7973052150", "b_7973052152", "b_7973052156"],
+                        "b_7973052156": ["12332559722:14562563287", "12332559722:14562563286", "12332559722:15012663721"],
+                        "b_7973052148": ["12889400182:0"]
+                    }
+                };
+
+                var serviceData={
+                    orders:{
+                        "12434517250:15883500795":{
+                            services:{
+                                selected:[1,2,3],
+                                list:{
+                                    1:{
+                                        name:"金牌服务",
+                                        price:"100.00",
+                                        realPrice:"0",
+                                        agio:"免费赠送",
+                                        id:""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                TB.Promotion.init({
+                    apis:{
+                        amount:'../json/asyncGetPromotion.htm?m=changeamount&from=cartbuy',
+                        bundle:'../json/asyncGetPromotion.htm?m=changebundle&from=cartbuy'
+                    },
+                    template:{
+                        bundleList:'<select name="bundleList_{uid}">{options}</select>'
+                    },
+                    promoData:promoData,
+                    orderData:orderData,
+                    serviceData:serviceData
+                });
+            })();
+        </script>
+        <script type="text/javascript">
+            var E = YAHOO.util.Event, D = YAHOO.util.Dom;
+            // 更换验证码
+            E.onDOMReady(function(){
+                E.on('J_verifyTrigger', 'click', function(e){
+                    E.stopEvent(e);
+                    this.blur();
+                    var url="http://checkcode.taobao.com/auction/checkcode?sessionID=c64480ac5826ca7d2043e876ae2a77ed";
+                    D.get('J_verifyImage').src=url+"&t="+new Date().getTime();
+                }
+            );
+            }
+        );
+            TB.TC.OrderConfirm.initInsureApi({
+                requestAPI:'http://baoxian.taobao.com/thwy/dataProvider.html?recieveAddr=330600&itemAddress=b_7973052148|310100;b_7973052150|320100;b_7973052156|310100'
+            }
+        ); 
+            TB.TC.OrderConfirm.init();
+        </script>
+        <script type="text/javascript">
+            function display(){
+                var tips=document.getElementById("tips");
+                tips.style.visibility="visible";
+            }
+            function hide(){
+                var tips=document.getElementById("tips");
+                tips.style.visibility="hidden";
+            }
+        </script>
+
+    </body>
+</html>

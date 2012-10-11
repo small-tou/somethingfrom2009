@@ -1,0 +1,190 @@
+(function(){
+    var obj={
+        line:'DrawLine',
+        arc:"DrawArc",
+        brokenline:"DrawBrokenLine",
+        bezier:"DrawBezier",
+        polygon:"DrawPolygon",
+        rect:"DrawRect",
+        ellipse:"DrawEllipse"
+    }
+    var p=SCD.Point;
+    var contextCount=0;
+    var Context=function(){
+        
+    }
+    Context.prototype={
+        init:function(c){
+            this.config={
+                view_width:1280,
+                view_height:800,
+                container:null
+            }
+            SCD.mix(this.config,c)
+            this.canvas;
+            this.ctx;
+            this.effect=0;//0表示当前生效点在context上,1表示生效点在创建新的图形,2表示选中操作
+            this.nowOBJ=null;
+            this.GOs=[]
+            this.active_go=null;
+            this.strokeStyle="#111";
+            this.strokeWidth="2";
+            this.fillStyle="#ff6700"
+            this.lineWidth=1;
+            this.id=contextCount++;
+            
+            this.gridSize="30"
+            this.gridCapture=false;
+            this.cm=new SCD.CM();
+            this.createContext();
+            this.bind();
+        },
+        createContext:function(){
+            var config=this.config
+            this.main_canvas=document.createElement("canvas");
+            $(this.main_canvas).attr({
+                width:config.view_width,
+                height:config.view_height,
+                id:"main_view_"+this.id
+            }).css({
+                position:"absolute",
+                top:"0",
+                left:"0",
+                zIndex:"1",
+                background:"#e7e7e7"
+            }).appendTo(config.container).bind("contextmenu",function(){
+                return false;
+            })
+            this.main_ctx=this.main_canvas.getContext("2d")
+            this.sub_canvas=document.createElement("canvas");
+            $(this.sub_canvas).attr({
+                width:config.view_width,
+                height:config.view_height,
+                id:"sub_view_"+this.id
+            }).css({
+                position:"absolute",
+                top:"0",
+                left:"0",
+                zIndex:"10"
+            }).appendTo(config.container).bind("contextmenu",function(){
+                return false;
+            })
+            this.sub_ctx=this.sub_canvas.getContext("2d")
+        },
+        changeView:function(data){
+
+        },
+        switchCtx:function(to){
+            if(to=="main"){
+                this.ctx=this.main_ctx;
+            }else if(to=="sub"){
+                this.ctx=this.sub_ctx;
+            }
+        },
+        bind:function(){
+            var now=this;
+            
+            $(this.sub_canvas).bind("click",function(e){
+               
+              
+                });
+            $(this.sub_canvas).bind("mousedown",function(e){
+                e.preventDefault();
+                if(e.which==1){
+                   
+                    var pos=now.capturePos(e.offsetX||e.layerX,e.offsetY||e.layerY)
+                    if(now.effect==0){//生效在context上
+                        var go=new now.nowOBJ();
+                        go.init(now);
+                        go.begin(pos);
+                        now.activeGO(go)
+                        now.effect=1;
+                    }else if(now.effect==1){
+                        now.active_go.lButtonDown(pos)
+                        if(now.active_go.isCreateEnd==true){
+                            now.effect=0
+                        }
+                    }else if(now.effect==2){//选择中
+                        $.each(now.GOs,function(i,n){
+                            if(n.isIn(pos)){
+                                alert("select")
+                            }
+                        })
+                    }
+                }else if(e.which==3){
+                    if(now.effect==1){
+                        now.active_go.rButtonDown(pos);
+                        // now.active_go=null;
+                        now.effect=0;
+                    }
+                    e.cancelBubble = true 
+                    e.returnValue = false; 
+                    return false;
+                  
+                }
+            })
+            $(this.sub_canvas).bind("mousemove",function(e){
+                if(now.effect==0){//生效在context上
+                    return;
+                }else if(now.effect==1){
+                    var pos=now.capturePos(e.offsetX||e.layerX,e.offsetY||e.layerY)
+                    now.active_go.placing(pos)
+                }else if(now.effect==2){
+                    var pos=now.capturePos(e.offsetX||e.layerX,e.offsetY||e.layerY)
+                    now.active_go.moving(pos)
+            }
+
+            })
+        },
+        activeGO:function(go){
+            this.active_go=go;
+        },
+        selectOBJ:function(name){
+            this.nowOBJ=SCD[obj[name]]
+            this.effect=0
+        },
+        setEffect:function(type){
+            this.effect=type;
+        },
+        addGO:function(go){
+            this.GOs.push(go)
+        },
+        toJSON:function(){
+            var json={
+                part:[
+                    
+            ]
+            }
+            $.each(this.GOs,function(i,n){
+                json.part.push(n.getCompress())
+            })
+            return json;
+        },
+        setStrokeStyle:function(style){
+            this.strokeStyle=style;
+            this.sub_ctx.strokeStyle=style;
+            this.main_ctx.strokeStyle=style;
+        },
+        setLineWidth:function(width){
+            this.lineWidth=width;
+            this.sub_ctx.lineWidth=width;
+            this.main_ctx.lineWidth=width;
+        },
+        setFillStyle:function(style){
+            this.fillStyle=style;
+            this.sub_ctx.fillStyle=style;
+            this.main_ctx.fillStyle=style;
+        },
+        clearSub:function(){
+            this.sub_ctx.clearRect(0,0,this.sub_canvas.width,this.sub_canvas.height)
+        },
+        capturePos:function(x,y){
+            x=this.gridCapture?Math.round(x/this.gridSize)*this.gridSize:x;
+            y=this.gridCapture?Math.round(y/this.gridSize)*this.gridSize:y;
+            return new p(x,y);
+        }
+    }
+
+    SCD.EditContext=Context;
+})();
+

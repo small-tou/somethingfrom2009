@@ -1,0 +1,105 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            *{
+                font:12px/1.5 tahoma,helvetica,clean,sans-serif;
+            }
+            .item{
+
+                line-height:30px;
+                padding-left:10px;
+            }
+            .avatar{
+                width:20px;
+                height:20px;
+                display: inline-block;
+                vertical-align: -5px;
+            }
+            .count{
+                float:right;
+                line-height:30px;
+            }
+            a:link,a:visited{
+                text-decoration: none;
+                color:#45649E;
+
+            }
+            ul,li{
+                list-style: none;
+                margin:0;
+                padding:0;
+            }
+            *{
+            font-size:12px;
+}
+html,body{
+    width:120px;
+    margin:0;
+}
+body{
+    padding:5px;
+    padding-left:20px;
+    padding-bottom: 20px;
+    width:260px;
+}
+strong{
+    color:#ff6700;
+     padding-right:10px;
+}
+div{
+    line-height:16px;
+}
+a:link,a:visited{
+   color:#4878B6;
+   text-decoration: none;
+}
+#list{
+    width:240px;
+     height:50px;
+}
+#list div{
+    float:left;
+    width:110px;
+   
+}
+        </style>
+        <script src="jquery.js"></script>
+    </head>
+    <body>
+        <h1>您有新消息<a href="javascript:void(0);" id="no-10" style="padding-left:20px;">十六分钟内不再弹出</a></h1>
+        <div id="list">
+            <div>新评论数 : <strong id="u1"><script> document.write(localStorage['new_comments']);</script></strong><a href="comments.html" target="_self">查看</a></div>
+            <div>新私信数 : <strong id="u2"><script> document.write(localStorage['new_dm']);</script></strong><a href="http://weibo.com/messages" target="_blank">查看</a></div>
+            <div>新粉丝数 : <strong id="u3"><script> document.write(localStorage['new_followers']);</script></strong><a href="fensi.html" target="_self" id="fensi">查看</a></div>
+            <div>新at我数 :<strong id="u4"> <script> document.write(localStorage['new_mentions']);</script></strong><a href="ats.html" target="_self">查看</a></div>
+            <div><a href="http://t.sina.com.cn" target="_blank">打开我的微博</a></div>
+            <div style="clear:both;"></div>
+        </div>
+    </body>
+    <script>
+         localStorage['weichrom_no_10']="0"
+         document.getElementById("no-10").onclick=function(){
+            localStorage['weichrom_no_10']=(new Date()).getTime().toString();
+            window.close()
+        }
+       
+
+        setInterval(function(){
+            $("#u1").html(localStorage['new_comments'])
+            $("#u2").html(localStorage['new_dm'])
+            $("#u3").html(localStorage['new_followers'])
+            $("#u4").html(localStorage['new_mentions'])
+        },100)
+
+       
+   
+
+    </script>
+</html>

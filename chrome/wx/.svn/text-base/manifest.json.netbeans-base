@@ -1,0 +1,19 @@
+{
+  "name": "webQQ消息提醒工具",
+  "version": "1.5",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" ,"16": "icon.png"},
+  "description": "",
+  "browser_action": {
+    "default_icon": "icon.png"  
+  },
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus","notifications" ],
+  "background_page":"background.html",
+  "content_scripts": [
+    {
+      "matches": ["http://web.qq.com/*","http://web.qq.com/"],
+      "js": ["content-script.js"],
+      "run_at":"document_end"
+    }
+  ]
+}

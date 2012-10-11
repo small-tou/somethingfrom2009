@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/90/trunk/version1.0.3/openapi/renren
+END
+renren_token.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/renren_token.php
+END
+renren_init.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/90/trunk/version1.0.3/openapi/renren/renren_init.php
+END
+renren_demo.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/53/trunk/version1.0.3/openapi/renren/renren_demo.php
+END
+renren_access.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/55/trunk/version1.0.3/openapi/renren/renren_access.php
+END

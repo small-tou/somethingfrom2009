@@ -1,0 +1,20 @@
+{
+  "name": "新浪围脖地址栏发布工具2",
+  "version": "9.2",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" ,"16": "icon.png"},
+  "description": "",
+  "browser_action": {
+    "default_icon": "icon.png"  
+  },
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus","notifications" ],
+  "background_page":"background.html",
+  "omnibox": { "keyword" : "weibo2" },
+  "content_scripts": [
+    {
+      "matches": ["http://weibo.com/*","https://www.weibo.com/*","https://t.sina.com.cn/*"],
+      "js": ["content-script.js"],
+      "run_at":"document_start"
+    }
+  ]
+}

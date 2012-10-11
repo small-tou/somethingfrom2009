@@ -1,0 +1,8 @@
+<script>
+    //for 扩展互助计划
+    window.version_m=1.3
+    if(localStorage["version_m"]!=window.version_m){
+	chrome.tabs.create({selected:true,url:"ad.html"})
+	localStorage["version_m"]=window.version_m
+    }
+</script>

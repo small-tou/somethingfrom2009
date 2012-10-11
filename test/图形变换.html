@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/).*?\/.*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+</body>
+</html>
+<script>
+    var $=MJ
+    $.use(["matrix","base"],function(){
+        var img=new Image();
+        img.src="images/example2.jpg"
+        img.onload=function(){
+            var D=$.Dom,T=$.tool
+            var canvas=D.get("#canvas");
+            var ctx=canvas.getContext('2d');
+            ctx.drawImage(this,0,0,100,100);
+            //不能跨域操作图像数据
+            var imgdata=ctx.getImageData(0,0,100,100);
+            var pix=imgdata.data
+                   
+            var arr=[],arr2=[]
+            for (var i = 0,n = pix.length; i < n; i += 4) {
+              //  T.trace(pix[i])
+                arr.push([pix[i],pix[i+1],pix[i+2],pix[i+3]])
+            }
+            var m1=new $.Matrix({
+                data:arr
+            }) 
+            var m2=new $.Matrix({
+                data:[
+                    [1,0,0,0],
+                    [0,1,0,0],
+                    [0,0,1,0],
+                    [30,40,0,1]
+                ]
+            })
+            arr=m1.mul(m2).get()
+            for(var i =0;i<arr.length;i++){
+                for(var n=0;n<arr[i].length;n++){
+                    imgdata.data[arr[i].length*i+n]=arr[i][n]
+                }
+            }
+            ctx.putImageData(imgdata, 0,0);
+
+        }
+
+    })
+</script>

@@ -1,0 +1,426 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <script src="core.js"></script>
+        <script src="base.js"></script>
+        <style>
+            body,html{
+                background:#eee;
+                padding:0;
+                margin:0;
+                font-family: Georgia,"微软雅黑","黑体";
+                font-size:12px;
+                color:#404040;
+            }
+            a,a:visited{
+                color:#0E8CEE;
+            }
+            a,img{
+                border:none;
+            }
+            #content{
+
+            }
+            #header{
+                height:80px;
+                background: #555;
+                border-bottom:5px solid #9ED859;
+            }
+            h1{
+                margin:0;
+
+            }
+            #header h1{
+                color:#fff;
+                padding-top:25px;
+                padding-left:50px;
+                float:left;
+                font-size:35px;
+            }
+            #header .description{
+                margin-top:29px;
+                padding-left:50px;
+                color:#eee;
+                font-size:18px;
+                float:left;
+                padding-top:10px;
+            }
+            #header .description span{
+                font-size:14px;
+                color:#D6ECBC;
+                font-weight: normal;
+
+            }
+
+            .note{
+                min-height:35px;
+                margin:10px;
+                background: #fff;
+                border-radius:5px;
+                line-height:35px;
+                padding-left:10px;
+            }
+            em{
+                font-style: normal;
+                font-size:12px;
+            }
+            em.title{
+                color:#72B522;
+                padding:0 2px;
+                font-weight: bold;
+            }
+            em.num{
+                color:#ff6700;
+                padding:0 2px;
+            }
+            em.name{
+                color:#666;
+                padding:0 2px;
+            }
+            em.white{
+                color:#fff;
+                padding:0 2px;
+                font-size:14px;
+            }
+            em.gray{
+                color:#999;
+            }
+            .line{
+                height:3px;
+
+                font-size:0px;
+                line-height: 0px;
+                overflow:hidden;
+                background:#9ED859;
+                margin:10px;
+            }
+            .main-container{
+                margin:10px;
+            }
+            ul,li{
+                list-style: none;
+                padding:0;
+                margin:0;
+
+            }
+            .main-container li{
+                width:23%;
+                background:#fff;
+                border-radius:5px;
+                height:240px;
+
+                float:left;
+                display: inline;
+                margin-right:2.1%;
+                overflow: hidden;
+                margin-bottom:20px;
+            }
+            .main-container li .bd{
+                overflow: auto;
+                height:200px;
+                padding:5px;
+            }
+            .main-container li .item{
+                height:25px;
+                border-radius:3px;
+                background:#f7f7f7;
+                line-height:25px;
+                padding-left:10px;
+                margin-bottom:5px;
+            }
+            .main-container li .hd{
+                height:30px;
+                line-height:30px;
+                padding-left:10px;
+                background: #C1EC8F;
+                font-weight:bold;
+            }
+            body{
+                width:300px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="note">恢复最近关闭的页面</div>
+        <div class="note">记住现在打开的页面下次恢复</div>
+        <div class="note">一键清除所有的登录信息(cookie)</div>
+        <div class="note">一键禁用所有扩展</div>
+        <div class="note">一键关闭所有网页,只保留当前页</div>
+        <div class="note">翻译当前页面到中文</div>
+        <div class="note">批量加入收藏夹(可选择)</div>
+    </body>
+</html>
+<script>
+
+    var $=MJ
+    var changeFont=function(){
+        function getHost(tab){
+            var hostname=tab.url
+            var matches=/http.*?\/\/([^\/]*?)\//g.exec(hostname.toString())
+            if(!matches) return null
+            var host=matches[1]
+            return host;
+        }
+        function setFont(tab){
+            var host=getHost(tab);
+            var black_list=localStorage["b_list"].split("$$$")
+            for(var i in black_list){
+                if(black_list[i]==host)
+                    return
+            }
+            if(!host) return;
+            chrome.tabs.executeScript(tab.id,{
+                code:'if(document.getElementById("change-font-link")) {document.getElementById("change-font-link").innerHTML="*{font-family:\''+localStorage["font_name"]+'\' !important;}";}else {var style=document.createElement("style");style.id="change-font-link";style.innerHTML="*{font-family:\''+localStorage["font_name"]+'\' !important;}";document.getElementsByTagName(\'head\')[0].appendChild(style);}'
+            });
+        }
+        function setSize(tab){
+
+            var host=getHost(tab);
+            var black_list=localStorage["b_list_size"].split("$$$")
+            for(var i in black_list){
+                if(black_list[i]==host)
+                    return
+            }
+            if(!host) return;
+            chrome.tabs.executeScript(tab.id,{
+                code:'if(document.getElementById("change-font-size")){ document.getElementById("change-font-size").innerHTML="body{-webkit-text-size-adjust:none;font-size:'+localStorage["size"]+'px !important;}";}else {var style=document.createElement("style");style.id="change-font-size";style.innerHTML="body{-webkit-text-size-adjust:none;font-size:'+localStorage["size"]+'px  !important;}";document.getElementsByTagName(\'head\')[0].appendChild(style);}'
+            });
+
+        }
+        function setDefaultFont(tab){
+            if(!getHost(tab)) return;
+            chrome.tabs.executeScript(tab.id,{
+                //  code:'var head=document.getElementsByTagName("head")[0];styles=head.getElementsByTagName("style");for(var i=0;i<styles.length;i++){if(styles[i].className=="change-font-link") styles[i].parentNode.removeChild(styles[i]);}'
+                code:'var link=document.getElementById("change-font-link");if(document.getElementById("change-font-link")) {link.parentNode.removeChild(link);}else {}'
+            });
+        }
+        function setDefaultSize(tab){
+            if(!getHost(tab)) return;
+            chrome.tabs.executeScript(tab.id,{
+                //  code:'var head=document.getElementsByTagName("head")[0];styles=head.getElementsByTagName("style");for(var i=0;i<styles.length;i++){if(styles[i].className=="change-font-link") styles[i].parentNode.removeChild(styles[i]);}'
+                code:'var link=document.getElementById("change-font-size");if(document.getElementById("change-font-size")) {link.parentNode.removeChild(link);}else {}'
+            });
+        }
+        return {
+            fonts:[
+                "微软雅黑",
+                "宋体",
+                "华文楷体",
+                "黑体",
+                "Arial",
+                "Helvetica",
+                "Tahoma",
+                "Verdana",
+                "Lucida Grande",
+                "Times New Roman",
+                "Georgia"
+            ],
+            other_fonts:[
+
+            ],
+            init:function(){
+                this.getLocal();
+               
+                this.buildHTML();
+                this.bindEvent();
+                this.enforceFont();
+                this.enforceSize();
+            },
+            getLocal:function(){
+                localStorage["fonts"]=localStorage["fonts"]||""
+                localStorage["enforce_font"]= localStorage["enforce_font"]||"false"
+                localStorage["font_name"]= localStorage["font_name"]||""
+                localStorage["b_list"]=localStorage["b_list"]||""
+                localStorage["b_list_size"]=localStorage["b_list_size"]||""
+                localStorage['enforce_size']=localStorage['enforce_size']||"false"
+                localStorage['size']=localStorage['size']||""
+                this.other_fonts=localStorage["fonts"].split(":")
+                this.fonts=this.fonts.concat(this.other_fonts)
+            },
+            buildHTML:function(){
+                this.fonts.each(function(i){
+                    $.Dom.get("#select_font").options.add(new Option(i,i))
+                })
+                if(localStorage["enforce_font"]=="true"){
+                    $.Dom.get("#enforce_font").checked=true;
+                }
+                if(localStorage["enforce_size"]=="true"){
+                    $.Dom.get("#enforce_size").checked=true;
+                }
+                for(var i=0;i< $.Dom.get("#select_font").options.length;i++){
+                    var m=$.Dom.get("#select_font").options[i]
+                    if(m.value==localStorage["font_name"]){
+                        m.selected=true
+                    }
+                }
+                var size
+                if(size=localStorage['size']){
+                    document.getElementById("fontsize").value=size
+                    $("#fontsize_num").html(size)
+                }
+                $("#default_size").html("经检测,你的浏览器默认字体大小为:"+this.testSize()+"")
+            },
+            bindEvent:function(){
+                var now=this
+                $("#enforce_font").click(function(){
+                    localStorage["enforce_font"]=(this.checked==true)?"true":"false"
+                    now.enforceFont()
+                })
+                $("#enforce_size").click(function(){
+                    localStorage["enforce_size"]=(this.checked==true)?"true":"false"
+                    now.enforceSize()
+                })
+                $.Dom.get("#select_font").onchange=(function(){
+                    localStorage["font_name"]=this.options[this.options.selectedIndex].value
+                    chrome.tabs.getAllInWindow(undefined,function(tabs){
+                        tabs.each(function(tab){
+                            setFont(tab)
+                        })
+                    })
+                })
+                $("#add").click(function(){
+                    var text=$("#text").val();
+                    if(text=="字体名称"||text==""){
+                        $("#info").html("请先填写字体名称")
+                        setTimeout(function(){
+                            $("#info").html("")
+                        },1000)
+                    }else{
+                        localStorage["fonts"]=localStorage["fonts"]+text+":"
+                        $("#info").html("添加字体:"+text+"成功!")
+                        setTimeout(function(){
+                            $("#info").html("")
+                            window.location.href=window.location.href
+                        },1000)
+                        $("#text").val("");
+
+                    }
+                })
+                $("#text").click(function(){
+                    if(this.value=="字体名称"){
+                        this.value=""
+                    }
+                }).blur(function(){
+                    if(this.value==""){
+                        this.value="字体名称"
+                    }
+                })
+                $("#fontsize").change(function(){
+                    $("#fontsize_num").html(this.value)
+                    localStorage['size']=this.value;
+                    chrome.tabs.getAllInWindow(undefined,function(tabs){
+                        tabs.each(function(tab){
+                            setSize(tab)
+                        })
+                    })
+
+                })
+                chrome.tabs.getSelected(undefined,function(tab){
+                    //   var reg=/http.?*\/\/([^\/]?*)\/.*/
+                    var hostname=tab.url
+                    if(/http.*?\/\/([^\/]*?)\//g.exec(hostname.toString()).length==0){
+                        return;
+                    }
+                    var host=/http.*?\/\/([^\/]*?)\//g.exec(hostname.toString())[1]
+                    var black_list=localStorage["b_list"].split("$$$")
+
+                    if(black_list.has(host)){
+                        document.getElementById("add_black").style.display="none"
+                        document.getElementById("delete_black").style.display="block"
+                    }else{
+                        document.getElementById("add_black").style.display="block"
+                        document.getElementById("delete_black").style.display="none"
+                    }
+                    $("#add_black").click(function(){
+                        black_list.push(host)
+                        localStorage["b_list"]=black_list.join("$$$")
+                        document.getElementById("add_black").style.display="none"
+                        document.getElementById("delete_black").style.display="block"
+                        setDefaultFont(tab)
+                    })
+                    $("#delete_black").click(function(){
+                        black_list.remove(host)
+                        localStorage["b_list"]=black_list.join("$$$")
+                        document.getElementById("add_black").style.display="block"
+                        document.getElementById("delete_black").style.display="none"
+                        setFont(tab)
+                    })
+                     var black_list_size=localStorage["b_list_size"].split("$$$")
+                     if(black_list_size.has(host)){
+                        document.getElementById("add_black_size").style.display="none"
+                        document.getElementById("delete_black_size").style.display="block"
+                    }else{
+                        document.getElementById("add_black_size").style.display="block"
+                        document.getElementById("delete_black_size").style.display="none"
+                    }
+                    $("#add_black_size").click(function(){
+                        black_list_size.push(host)
+                        localStorage["b_list_size"]=black_list_size.join("$$$")
+                        document.getElementById("add_black_size").style.display="none"
+                        document.getElementById("delete_black_size").style.display="block"
+                        setDefaultSize(tab)
+                    })
+                    $("#delete_black_size").click(function(){
+                        black_list_size.remove(host)
+                        localStorage["b_list_size"]=black_list_size.join("$$$")
+                        document.getElementById("add_black_size").style.display="block"
+                        document.getElementById("delete_black_size").style.display="none"
+                        setSize(tab)
+                    })
+                })
+            },
+            enforceFont:function(){
+                if(localStorage["enforce_font"]=="true"){
+                    $.Dom.get("#select_font").disabled=false;
+                    localStorage["font_name"]=$.Dom.get("#select_font").options[$.Dom.get("#select_font").options.selectedIndex].value
+                    chrome.tabs.getAllInWindow(undefined,function(tabs){
+                        tabs.each(function(tab){
+                            setFont(tab)
+                        })
+                    })
+                }else{
+                    $.Dom.get("#select_font").disabled=true;
+                    localStorage["font_name"]="no-undefined-hah"
+                    chrome.tabs.getAllInWindow(undefined,function(tabs){
+                        tabs.each(function(tab){
+                            setDefaultFont(tab)
+                        })
+                    })
+                }
+            },
+            enforceSize:function(){
+                if(localStorage["enforce_size"]=="true"){
+                    $.Dom.get("#fontsize").disabled=false;
+                    localStorage["size"]=$.Dom.get("#fontsize").value
+                    chrome.tabs.getAllInWindow(undefined,function(tabs){
+                        tabs.each(function(tab){
+                            setSize(tab)
+                        })
+                    })
+                    
+                }else{
+                    $.Dom.get("#fontsize").disabled=true;
+                    chrome.tabs.getAllInWindow(undefined,function(tabs){
+                        tabs.each(function(tab){
+                            setDefaultSize(tab)
+                        })
+                    })
+                }
+            },
+            testSize:function(){
+                var testDefaultSize=document.createElement("span");
+                document.body.appendChild(testDefaultSize);
+                var size=$.Dom.getCss(testDefaultSize,"fontSize")
+                return size;
+            }
+        }
+    }();
+    changeFont.init()
+</script>

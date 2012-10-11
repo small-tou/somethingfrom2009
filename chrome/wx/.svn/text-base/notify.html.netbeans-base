@@ -1,0 +1,60 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            *{
+                font:12px/1.5 tahoma,helvetica,clean,sans-serif;
+            }
+            .item{
+
+                line-height:30px;
+                padding-left:10px;
+            }
+            .avatar{
+                width:20px;
+                height:20px;
+                display: inline-block;
+                vertical-align: -5px;
+            }
+            .count{
+                float:right;
+                line-height:30px;
+            }
+            a:link,a:visited{
+                text-decoration: none;
+                color:#45649E;
+
+            }
+            ul,li{
+                list-style: none;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>您有新消息<a href="javascript:void(0);" id="no-10" style="padding-left:20px;">十分钟内不再弹出</a></h1>
+        <div id="list">
+
+        </div>
+    </body>
+    <script>
+        localStorage['no_10']="0"
+        document.getElementById("list").innerHTML= localStorage['msg_ele']
+        setInterval(function(){
+            document.getElementById("list").innerHTML= localStorage['msg_ele']
+        },2000)
+        document.getElementById("no-10").onclick=function(){
+            localStorage['no_10']=(new Date()).getTime().toString();
+           
+            window.close()
+          
+        }
+    </script>
+</html>

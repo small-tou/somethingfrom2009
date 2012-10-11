@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>     
+        <script src="./index_files/jquery.js"></script>
+        <style>
+            #main-canvas{
+                position:absolute;
+                top:50px;
+                left:0;
+                z-index:10;
+                border:1px solid #aaa;
+            }
+            #sub-canvas{
+                position:absolute;
+                top:50px;
+                left:0;
+                z-index:100;
+                border:1px solid #aaa;
+            }
+
+            #redraw-canvas{
+                position:absolute;
+                top:50px;
+                left:0;
+                z-index:1;
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="op">运算放大器</button><button id="c">集成电路</button><button id="speaker">喇叭</button> <button id="clear">清空</button> <button id="refresh">刷新</button>
+    <canvas id="main-canvas" width="10000" height="6000"></canvas>
+    
+    <script>
+       var opStr="P|0|0|4|0|0|0|20|0|-10|2|1|IN-|1||P|0|0|4|0|0|0|20|0|-30|2|1|IN+|2||P|0|0|4|0|0|0|20|40|-20|0|1|OUT|3||P|0|0|4|0|0|0|20|20|0|1|1|V+|4||P|0|0|4|0|0|0|20|20|-40|3|1|V-|5||PL|0 0 40 -20|000|1||PL|0 -40 40 -20|000|1||PL|0 0 0 -40|000|1||PL|4 -10 10 -10|000|1||PL|4 -30 10 -30|000|1||PL|7 -27 7 -33|000|1||PL|20 0 20 -10|000|1||PL|20 -30 20 -40|000|1||";
+       var cStr="RECT|0 -260 100 0|0|128|11599871|0|1||P|0|0|2|0|1|1|20|0|-190|2|0|Q14|19||P|0|0|2|0|1|1|20|0|-180|2|0|Q13|18||P|0|0|2|0|1|1|20|100|-90|0|0|Q20|28||P|0|0|2|0|1|1|20|100|-210|0|0|Q32|40||P|0|0|2|0|1|1|20|100|-190|0|0|Q30|38||P|0|0|2|0|1|1|20|100|-180|0|0|Q29|37||P|0|0|2|0|1|1|20|100|-80|0|0|Q19|27||P|0|0|2|0|1|1|20|100|-170|0|0|Q28|36||P|0|0|2|0|1|1|20|100|-160|0|0|Q27|35||P|0|0|2|0|1|1|20|100|-150|0|0|Q26|34||P|0|0|2|0|1|1|20|100|-140|0|0|Q25|33||P|0|0|2|0|1|1|20|100|-130|0|0|Q24|32||P|0|0|2|0|1|1|20|100|-120|0|0|Q23|31||P|0|0|2|0|1|1|20|100|-110|0|0|Q22|30||P|0|0|2|0|1|1|20|100|-100|0|0|Q21|29||P|0|0|2|0|1|1|20|0|-200|2|0|Q15|20||P|0|0|2|0|1|1|20|0|-210|2|0|Q16|21||P|0|0|2|0|1|1|20|0|-120|2|0|Q7|12||P|0|0|7|0|1|1|20|0|-250|2|0|GND|22||P|0|0|7|0|1|1|20|100|-20|0|0|VCC2|24||P|0|0|2|0|1|1|20|0|-140|2|0|Q9|14||P|0|0|2|0|1|1|20|0|-150|2|0|Q10|15||P|0|0|2|0|1|1|20|0|-160|2|0|Q11|16||P|0|0|2|0|1|1|20|0|-170|2|0|Q12|17||P|0|0|2|0|1|1|20|100|-60|0|0|Q17|25||P|0|0|2|0|1|1|20|0|-130|2|0|Q8|13||P|0|0|2|0|1|1|20|0|-110|2|0|Q6|11||P|0|0|2|0|1|1|20|0|-100|2|0|Q5|10||P|0|0|2|0|1|1|20|0|-90|2|0|Q4|9||P|0|0|2|0|1|1|20|0|-60|2|0|Q1|6||P|0|0|0|0|1|1|20|0|-40|2|0|DI|43||P|0|0|2|0|1|1|20|0|-70|2|0|Q2|7||P|0|0|0|0|1|1|20|0|-20|2|0|STB|4||P|0|0|7|0|1|1|20|100|-10|0|0|VCC1|44||P|0|1|0|0|1|1|20|0|-30|2|0|CLK|2||P|0|0|2|0|1|1|20|100|-200|0|0|Q31|39||P|0|0|0|0|1|1|20|0|-10|2|0|SUS|3||P|0|0|2|0|1|1|20|100|-40|0|0|SO|42||P|0|0|2|0|1|1|20|100|-70|0|0|Q18|26||P|0|0|2|0|1|1|20|0|-80|2|0|Q3|8||P|0|0|4|0|1|1|20|100|-230|0|0|NC|5||P|0|0|4|0|1|1|20|0|-230|2|0|NC|1||P|0|0|4|0|1|1|20|100|-240|0|0|NC|23||P|0|0|4|0|1|1|20|100|-250|0|0|NC|41||";
+       var speakerStr="P|0|0|4|0|0|0|20|0|-10|2|0|1|1||P|0|0|4|0|0|0|20|0|-20|2|0|2|2||PL|23 0 14 -8|1|0|16711680|0||PL|14 -22 23 -30|1|0|16711680|0||PL|23 0 23 -30|1|0|16711680|0||PL|14 -8 14 -22|1|0|16711680|0||PL|0 -8 0 -22|1|0|16711680|0||PL|0 -22 14 -22|1|0|16711680|0||PL|0 -8 14 -8|1|0|16711680|0||";
+       
+        var TOOL = "SELECT";
+       
+        var GLOBAL=function(){
+            var main_canvas=$("#main-canvas")[0]
+            return {
+                main_canvas:main_canvas, 
+                main_ctx:main_canvas.getContext("2d")
+            }
+        }();
+         GLOBAL.main_ctx.translate(0.5,0.5); 
+       GLOBAL.main_ctx.beginPath();
+       GLOBAL.main_ctx.lineWidth=1;
+       GLOBAL.main_ctx.moveTo( 0,0);
+       GLOBAL.main_ctx.lineTo(100,100);
+       GLOBAL.main_ctx.lineTo(100,200);
+       GLOBAL.main_ctx.stroke();
+        $("#clear").bind("click",function(){
+           GLOBAL.main_ctx.clearRect(0,0,1000,600);
+            });
+            
+            var libCol = function(){
+            	var libArr = [];
+            	return {
+            		addTo:function(lib){
+            		libArr.push(lib);
+            		},
+            		paint:function(){
+            			var i = 0;
+            		 var mySize =  libArr.length;
+             			for(var i = 0 ; i <mySize ; i++){
+            	 		 libArr[i].solveStr();
+            			
+            	 		}
+            			
+            	}
+            	
+            }
+          }();
+            
+           var showLib = function(str,x,y)
+            {
+            	this._dataStr=str;
+            	this.ctx = GLOBAL.main_ctx;
+            	this.originX = x;
+            	this.originY = y;
+            	
+            };
+            
+            showLib.prototype={
+            	solveStr:function()
+            	{ 
+            		var unitList =  this._dataStr.split("||");
+            		
+            	 for(var key in unitList)
+            	 {
+            	 	 
+            	   var 	tempArr = unitList[key].split("|");
+            	   
+            	   switch(tempArr[0])
+            	   {
+            	   	case 'P':
+            	    	this.drawP(tempArr);
+            	   	break;
+            	   	
+            	   	case 'PL':
+            	    	this.drawPL(tempArr);
+            	   	break
+            	   	
+            	   	case 'RECT':
+            	   		this.drawRECT(tempArr);
+            	   		break;
+            	   	
+            	   	default:
+            	   	break;
+            	   }   
+            	 }
+            	},
+            	drawP:function(A)
+            	{
+            		var fromX = parseInt(A[8]) + this.originX;
+            		var fromY = parseInt(A[9]) + this.originY;
+            		
+            		var toX = 0;
+            		var toY = 0;
+            		
+            		var pinLength = parseInt(A[7]);
+            		
+            		switch(A[10])
+            		{
+            			case '0':
+            			toX = fromX + pinLength;
+            			toY = fromY;
+            			break;
+            			
+            			case '1':
+            			toX = fromX  ;
+            			toY = fromY + pinLength;
+            			break;
+            			
+            			case '2':
+            			toX = fromX -  pinLength  ;
+            			toY = fromY;
+            			break;
+            			
+            			case '3':
+            			toX= fromX;
+            			toY = fromY - pinLength;
+            			break;
+            			
+            			default:
+            			break;	
+            		}
+            		
+            		
+            		this.ctx.beginPath();
+            		this.ctx.strokeStyle ="FF0000";
+            		
+            		this.ctx.moveTo(fromX,fromY);
+            		this.ctx.lineTo(toX,toY);
+            		this.ctx.stroke();
+            		
+            		
+            	},
+            	drawPL:function(A)
+            	{
+            			this.ctx.beginPath();
+            		this.ctx.strokeStyle ="000000";
+            		
+            		var arrTemp = A[1].split(" ");
+            		var pointData = [];
+            		
+            		for ( var key in arrTemp)
+            		{
+            			pointData.push(parseInt(arrTemp[key]));
+            		} 
+            		
+            		this.ctx.moveTo(pointData[0] + this.originX,pointData[1] + this.originY);
+            		for ( var i=2 ; i < pointData.length ; i++)
+            		{
+            		this.ctx.lineTo(pointData[i] + this.originX,pointData[++i] + this.originY);
+            		}
+            		
+            		this.ctx.stroke();
+            		
+            		
+            		
+            		 
+            		
+            		
+            		
+            	}
+            	 ,
+            	drawRECT:function(A)
+            	{
+            			this.ctx.beginPath();
+            		this.ctx.strokeStyle ="000000";
+            		
+            		var arrTemp = A[1].split(" ");
+            		var pointData = [];
+            		
+            		for ( var key in arrTemp)
+            		{
+            			pointData.push(parseInt(arrTemp[key]));
+            		} 
+            		
+            		var width =Math.abs( pointData[0] - pointData[2]);
+            		var height = Math.abs(pointData[1] - pointData[3]);
+            		
+            		var x = this.originX + pointData[0];
+            		var y = this.originY + pointData[1]  ;
+            		
+            		this.ctx.rect(x,y,width,height); 
+            		this.ctx.stroke();
+            		
+            		
+            		
+            		 
+            		
+            		
+            		
+            	}
+            	
+            };
+            
+           
+            
+            
+                $("#op").bind("click",function(){
+                	TOOL = "OP";
+                	 
+              
+            });
+            
+               $("#c").bind("click",function(){
+                	TOOL = "C";
+                	 
+              
+            });
+             
+               $("#speaker").bind("click",function(){
+                	TOOL = "SPEAKER";
+                	 
+              
+            });
+            
+               $("#refresh").bind("click",function(){
+                	 
+                	 libCol.paint();
+              
+            });
+            
+            $("#main-canvas").bind("click",function(e){
+            	 
+            	 var pos={
+                            x:e.pageX,
+                            y:e.pageY
+                        };
+                        
+                  switch(TOOL)
+                  {
+                  	case 'OP':
+                  	var opLib = new showLib(opStr,pos.x,pos.y);
+                  	opLib.solveStr();
+                  	break;
+                  	
+                  	case 'C':
+                  	var opLib = new showLib(cStr,pos.x,pos.y);
+                  	opLib.solveStr();
+                  	break;
+                  	
+                  		case 'SPEAKER':
+                  	var opLib = new showLib(speakerStr,pos.x,pos.y);
+                  	opLib.solveStr();
+                  	break;
+                  	
+                  	default:
+                  	break;
+                  	
+                  }
+                  
+                 opLib && libCol.addTo(opLib);
+                  
+                      
+                        
+                        
+            });
+            
+            
+       
+        
+            
+    </script>
+
+
+</body></html>

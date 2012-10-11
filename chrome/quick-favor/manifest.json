@@ -1,0 +1,10 @@
+{
+  "name": "快速收藏夹",
+  "version": "1.0",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "",
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html"
+  
+}

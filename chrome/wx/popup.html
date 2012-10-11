@@ -1,0 +1,63 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        *{
+            font-size:12px;
+}
+html,body{
+    width:120px;
+    margin:0;
+}
+strong{
+    color:#ff6700;
+     padding-right:10px;
+}
+div{
+    line-height:16px;
+}
+a:link,a:visited{
+   color:#4878B6;
+   text-decoration: none;
+}
+    </style>
+  </head>
+  <body>
+      <div>新评论数 : <strong><script> document.write(localStorage['new_comments']);</script></strong><a href="http://weibo.com/comment" target="_blank">查看</a></div>
+      <div>新私信数 : <strong><script> document.write(localStorage['new_dm']);</script></strong><a href="http://weibo.com/messages" target="_blank">查看</a></div>
+      <div>新粉丝数 : <strong><script> document.write(localStorage['new_followers']);</script></strong><a href="#" target="_blank" id="fensi">查看</a></div>
+      <div>新at我数 :<strong> <script> document.write(localStorage['new_mentions']);</script></strong><a href="http://weibo.com/at/weibo" target="_blank">查看</a></div>
+      <div><a href="http://t.sina.com.cn" target="_blank">打开我的微博</a></div>
+      <script>
+
+document.getElementById("fensi").onclick=function(){
+    if( localStorage['new_id']){
+        chrome.tabs.create({
+            url:"http://weibo.com/"+localStorage['new_id']+"/fans"
+        });
+    }else{
+          var xhr = new XMLHttpRequest();
+                var url = "http://api.t.sina.com.cn/account/verify_credentials.json?source=1053363421";
+                xhr.open("POST",url, true);
+                xhr.onreadystatechange =  function(e) {
+                    if (xhr.readyState == 4) {
+                        eval("var response="+this.responseText)
+                        localStorage['new_id']=response['id']
+            chrome.tabs.create({
+            url:"http://weibo.com/"+response['id']+"/fans"
+        });
+                    }};
+                xhr.send();
+    }
+    
+    return false;
+}
+          </script>
+  </body>
+</html>

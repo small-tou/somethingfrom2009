@@ -1,0 +1,47 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="jquery.js"></script>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="600" style="background:#eee;"></canvas>
+        <script>
+            var can=$("#canvas")[0]
+            ctx=can.getContext("2d");
+            ctx.fillStyle="#007C00";
+              ctx.strokeStyle="rgba(255,255,255,0)";
+               ctx.beginPath();
+            ctx.moveTo(10,10);
+            ctx.lineTo(10,400);
+            ctx.lineTo(15,400);
+            ctx.lineTo(15,10);
+            ctx.lineTo(10,10);
+            ctx.stroke();
+            ctx.fill();
+           ctx.fillStyle="#ff6700";
+            ctx.beginPath();
+            ctx.moveTo(10,10);
+            ctx.lineTo(10,400);
+            ctx.lineTo(13,400);
+            ctx.lineTo(13,10);
+            ctx.lineTo(10,10);
+            ctx.stroke();
+            ctx.fill();
+            ctx.globalCompositeOperation = "xor";
+         ctx.beginPath();
+            ctx.moveTo(10,10);
+            ctx.lineTo(10,400);
+            ctx.lineTo(13,400);
+            ctx.lineTo(13,10);
+            ctx.lineTo(10,10);
+            ctx.stroke();
+            ctx.fill();
+        </script>
+    </body>
+</html>

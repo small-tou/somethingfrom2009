@@ -1,0 +1,15 @@
+<script>
+    var _xhr = new XMLHttpRequest();
+    _xhr.open('GET', 'ajax.php', true);
+
+    _xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+               
+                alert(this.responseText);
+            }
+        }
+    };
+
+    _xhr.send(null);
+</script>

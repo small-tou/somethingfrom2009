@@ -1,0 +1,111 @@
+<script>
+
+    var ajax={
+        _msxmls:[
+            'Microsoft.XMLHTTP',
+            'MSXML2.XMLHTTP.3.0',
+            'MSXML2.XMLHTTP'
+        ],
+        init:function(url){
+            this.timer_timeout=null;//计时器,用来设置超时
+            this.timer_state_watch=null;//计时器,用来监视readystate,避开了浏览器兼容性
+            this.url=url
+            this.obj={}
+            this.createXhrObject()
+            this.send()
+            
+            this.timeout=100
+            this.success=function(o){
+                alert(o.responseText)
+            }
+            this.fail=function(){
+
+            }
+            this.abort=function(){
+
+            }
+
+        },
+        /**
+         *生成一个XMLHttpRequest对象,
+         */
+        createXhrObject:function(){
+            var obj,i
+            try
+            {
+                // Instantiates XMLHttpRequest in non-IE browsers and assigns to http.
+                this.obj  = new XMLHttpRequest();
+                //  Object literal with http and tId properties
+
+            }
+            catch(e)
+            {
+                for(i=0; i<this._msxmls.length; ++i){
+                    try
+                    {
+                        // Instantiates XMLHttpRequest for IE and assign to http
+                        this.obj  = new ActiveXObject(this._msxmls[i]);
+                        break;
+                    }
+                    catch(e1){}
+                }
+            }
+            finally
+            {
+                return obj;
+            }
+
+        },
+        send:function(){
+            this.obj.open("GET",this.url, true);
+            this.beginStateWatch()
+            this.obj.send(null);
+
+        },
+        beginStateWatch:function(){
+            var o=this.obj;
+            var now=this;
+            if(this.timeout) this.timer_timeout=setTimeout(function(){
+                o.abort();
+                clearTimeout(now.timer_timeout)
+                now.timer_timeout=null;
+                now.onAbort();
+            },this.timeout*1000)
+            this.timer_state_watch=setInterval((function(param){
+                return function(){
+
+                    param.handleReadyState()
+                }
+            })(this),10);
+
+        },
+        /**
+         * 这里的处理比较简单,忽略了除了status=200的所有其他情况,任何异常都将导致收不到任何回应
+         */
+        handleReadyState:function(){
+
+            var o=this.obj;
+            if(o.readyState === 4&&o.status==200){
+                if(this.timer_timeout) {
+                    clearTimeout(this.timer_timeout);
+                    this.timer_timeout=null;
+                }
+                clearInterval(this.timer_state_watch);
+                this.timer_state_watch=null;
+                this.onSuccess()
+            }else if(o.readyState === 4){
+                this.onFail()
+            }
+        },
+        onSuccess:function(){
+            this.success(this.obj)
+        },
+        onAbort:function(){
+            this.abort(this.obj)
+        },
+        onFail:function(){
+            this.fail(this.obj)
+        }
+    }
+    ajax.init("ajax.php")
+</script>

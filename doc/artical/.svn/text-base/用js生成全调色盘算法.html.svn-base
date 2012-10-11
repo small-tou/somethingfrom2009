@@ -1,0 +1,114 @@
+var $=function(el){
+return document.getElementById(el)
+}
+var mix=function(target,prototypes){
+for(var i in prototypes){
+target[i]=prototypes[i];
+}
+}
+var getXY=function(el){
+if (document.documentElement.getBoundingClientRect) { // IE,FF3.0+,Opera9.5+
+var box = el.getBoundingClientRect();
+return {x:box.left+document.body.scrollLeft,
+y:box.top+document.body.scrollTop }
+} else {
+var pos = [el.offsetLeft, el.offsetTop];
+var op = el.offsetParent;
+if (op != el) {
+while (op) {
+pos[0] += op.offsetLeft + parseInt(op.style.borderLeftWidth) || 0;
+pos[1] += op.offsetTop + parseInt(op.style.borderTopWidth) || 0;
+op = op.offsetParent;
+}
+}
+return {x:pos[0],y:pos[1]}
+}
+}
+var setData=function(imageData,x,y,value){
+imageData.data[((y*(imageData.width*4)) + (x*4)) + 0]=value[0]
+imageData.data[((y*(imageData.width*4)) + (x*4)) + 1]=value[1]
+imageData.data[((y*(imageData.width*4)) + (x*4)) + 2]=value[2]
+imageData.data[((y*(imageData.width*4)) + (x*4)) + 3]=value[3]
+}
+var can2=$("canvas3");
+var ctx2=can2.getContext('2d');
+var imageData2=ctx2.createImageData(400,400)
+var pixel
+function toRGB(TColor, q, p, H) {
+if (TColor < 0) {
+TColor+=1;
+}
+if (TColor > 1) {
+TColor-=1;
+}
+if (TColor < (1/6)) {
+return p + q - p * 6 * TColor;
+} else if (TColor < (1/2)) {
+return q;
+} else if (TColor < (2/3)) {
+return p + q - p * 6 * 2 / 3 - TColor;
+} else {
+return p;
+}
+}
+function HSVToRGB(h,s,v){
+var i;
+var f, p, q, t;
+var r,g,b;
+if( s == 0 ) {
+v = Math.floor(v*255);
+return {
+r:v,
+g:v,
+b:v
+};
+}
+h /= 60;
+i = Math.floor( h );
+f = h - i;
+p = v * ( 1 - s );
+q = v * ( 1 - s * f );
+t = v * ( 1 - s * ( 1 - f ) );
+switch( i ) {
+case 0:r = v;g = t;b = p;break;
+case 1:r = q;g = v;b = p; break;
+case 2: r = p;g = v;b = t;break;
+case 3:r = p;g = q;b = v;break;
+case 4:r = t;g = p;b = v;break;
+default:r = v;g = p;b = q;break;
+}
+return {
+r:r*255,
+g:g*255,
+b:b*255
+};
+}
+for(var y=0;y<400;y++){
+for(var x=0;x<400;x++){
+var r=Math.sqrt((x-200)*(x-200)+(y-200)*(y-200))
+if(r<200){
+var angle=(Math.atan2((200-y),(200-x)))*180/Math.PI
+angle<0&&(angle+=360);
+pixel=HSVToRGB(angle,r/200,0.8)
+setData(imageData2,x,y,[
+pixel.r,
+pixel.g,
+pixel.b,
+255
+]);
+}
+}
+}
+ctx2.putImageData(imageData2, 0, 0)
+var canvasPos=getXY($("canvas3"))
+$("canvas3").onclick=function(e){
+var x=e.pageX-canvasPos.x;
+var y=e.pageY-canvasPos.y;
+var r=Math.sqrt((x-200)*(x-200)+(y-200)*(y-200))
+if(r<200){
+var angle=(Math.atan2((200-y),(200-x)))*180/Math.PI
+angle<0&&(angle+=360);
+var rgb=HSVToRGB(angle,r/200,0.8)
+document.body.style.backgroundColor="RGB("+Math.round(rgb.r)+","+Math.round(rgb.g)+","+Math.round(rgb.b)+")"
+}
+}

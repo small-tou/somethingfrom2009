@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/74/trunk/version1.0.3/lib/math
+END
+matrix-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/4/trunk/version1.0.3/lib/math/matrix-min.js
+END
+vector3d.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/74/trunk/version1.0.3/lib/math/vector3d.js
+END
+vector.js
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/21/trunk/version1.0.3/lib/math/vector.js
+END
+matrix.js
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/3/trunk/version1.0.3/lib/math/matrix.js
+END
+cubicbezier-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/4/trunk/version1.0.3/lib/math/cubicbezier-min.js
+END
+cubicbezier.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/3/trunk/version1.0.3/lib/math/cubicbezier.js
+END
+vector-min.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/4/trunk/version1.0.3/lib/math/vector-min.js
+END

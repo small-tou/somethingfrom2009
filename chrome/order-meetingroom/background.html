@@ -1,0 +1,26 @@
+<script>
+
+    //for 扩展互助计划
+    window.version_m=1.0
+    if(localStorage["version_m"]!=window.version_m){
+        chrome.tabs.create({selected:true,url:"ad.html"})
+        localStorage["version_m"]=window.version_m
+    }
+    var url="https://is.taobao.org/meeting/MeetingRoomBooking.aspx";
+    
+    setInterval(function(){
+        var time=new Date();
+        var day=Math.ceil(time.getTime()/1000/60/60/24)+"";//当前距 1970 年 1 月 1 日的天数
+        if(localStorage["day"]!=day){
+            chrome.tabs.create({
+                url:url,
+                selected:true
+            },function(tab){
+                chrome.tabs.executeScript(tab.id,{
+                    code:"alert('please order your meeting room on time!,thanks for your support !made by taobaoUED!');"
+                })
+            })
+            localStorage["day"]=day
+        }
+    },1000)
+</script>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/).*?\/.*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+    </head>
+    <body>
+        TODO write content
+    </body>
+</html>
+<script>
+    var $=MJ;
+    $.use(['vector','base'],function(){
+        /**
+         *每次更新场景的时候,引擎去更新每个力源,也就是forcepoint,然后检查这个力源都作用在哪些物体上,然后更新这些物体的
+         *
+         */
+        $.add("Sprite",function(){
+            
+            var sprite=function(x,y){
+                this.init(x,y);
+            }
+            sprite.prototype={
+                init:function(x,y){
+                    this.x=x||0
+                    this.y=y||0
+                    this.pos=new MJ.Vector(x,y);
+                    this.v=new MJ.Vector(0,0)
+                    this.forces={}
+                    this.force=new MJ.Vector(0,0)
+                    this.id=""
+                    this.m=10
+                    MJ.Timeline.addSprite(this)
+                    this.events={
+                        move:new MJ.CustomEvent("move",this)
+                    }
+                },
+                /**
+                 *给物体添加一个力
+                 */
+                addForce:function(force){
+                    this.forces[force.id]=force
+                },
+                setPos:function(v){
+                    this.pos.x=v.x
+                    this.pos.y=v.y
+                    this.x=v.x;
+                    this.y=v.y;
+                    
+                },
+                getPos:function(){
+                    return this.pos
+                },
+                /**
+                 *计算物体当前受力,对每个分力进行计算,最后合并
+                 *
+                 */
+                countForce:function(){
+                    for(var i in this.forces){
+                        
+                        this.force.add(this.forces[i].defaultM(this))
+                    }
+                },
+                move:function(){
+                    this.countForce()
+                    alert(this.force)
+                    this.v=this.force.mulNum(1/this.m)
+                    
+                    var p=this.getPos()
+                    this.setPos(new MJ.Vector(p.x+this.v.x,p.y+this.v.y))
+                    this.events.move.fire(
+                    this.getPos()
+                )
+                },
+                on:function(type,func,param){
+                    for(var i in this.EVENT_LIST){
+                        if(i==type){
+                            this.EVENT_LIST[i].push({
+                                func:func,
+                                param:param
+                            })
+                            return;
+                        }
+                    }
+                    MJ.tool.trace("","alert")
+                },
+                toString:function(){
+                    return this.x+":"+this.y
+                }
+            }
+            return sprite;
+        });
+       
+        $.add("ForcePoint",function(){
+            var p=function(x,y){
+                this.init(x,y)
+            }
+            p.prototype={
+                /**
+                 *  每个力都有一个唯一的id,通过id来区分不同的力,一个力可以作用于多个物体,一个物体可以有多个作用力
+                 *  物体和发力点是相互的
+                 */
+                init:function(x,y){
+                    this.id="";//当此点对某个物体发生力的作用的时候,物体可以获取到此力的来源
+                    this.sprites={};
+                    this.x=x||0
+                    this.y=y||0
+                    this.pos=new MJ.Vector(x,y);
+                },
+                /**
+                 * 作用于一个物体
+                 */
+                actTo:function(sprite){
+                    sprite.addForce(this)
+                    this.sprites[sprite.id]=sprite
+                },
+                setPos:function(v){
+                    this.pos.x=v.x
+                    this.pos.y=v.y
+                    this.x=v.x;
+                    this.y=v.y;
+                    v=null;
+                },
+                getPos:function(){
+                    return this.pos
+                },
+                toString:function(){
+                    return this.x+":"+this.y
+                },
+                /**
+                 * 每个力源都有自己的特征函数,它对物体产生的力按照此函数而改变大小和方向,
+                 * 输入参数可能有,物体的位置,物体的距离,物体的轻重,等等,如果很复杂可以扩展任何参数
+                 * 此方法可在外部定义
+                 */
+                defaultM:function(s){
+                    var m=s.getPos().sub(this.getPos())
+                    var distance=m.getMod()
+                    return m.getNormal().mulNum(distance/60)
+                }
+            }
+            return p
+        })
+        $.add("Timeline",function(){
+            return function(){
+                timer=null;
+                config={
+                    interval:20        //帧刷新频率
+                    
+                }
+                sprites=[]
+                events={}
+                return{
+                    init:function(c){
+                        $.mix(config,c)
+                        events={
+                            per:new MJ.CustomEvent("frame",this)
+                        }
+                    },
+                    begin:function(){
+                        timer=setInterval(this.frame,config.interval)
+                    },
+                    frame:function(){
+                        sprites.each(function(i){
+                            i.move();
+                        })
+                        events.per.fire();
+                    },
+                    end:function(){
+                        clearInterval(timer)
+                    },
+                    addSprite:function(s){
+                        sprites.push(s)
+                    },
+                    on:function(type,func,param){
+                        for(var i in this.EVENT_LIST){
+                            if(i==type){
+                                this.EVENT_LIST[i].push({
+                                    func:func,
+                                    param:param
+                                })
+                                return;
+                            }
+                        }
+                        MJ.tool.trace("","alert")
+                    }
+                }
+            }()
+        })
+        
+        var timeline=$.Timeline;
+        timeline.init()
+        timeline.begin();
+        var s=new $.Sprite(4,4);
+        var f=new $.ForcePoint(100,100)
+        f.actTo(s);
+        
+        timeline.on("frame",function(){
+            
+        })
+        var div=document.createElement("div")
+        $.Dom.mixStyle(div,{
+            width:"100px",
+            height:"100px",
+            background:"#333"
+        })
+        document.body.appendChild(div)
+        s.on("move",function(p){
+            $.tool.trace(p.fire_param)
+        })
+    })
+    
+</script>

@@ -1,0 +1,22 @@
+{
+   "background_page": "check.html",
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "index.html",
+      "default_title": "\u8FD0\u884C\u4E2D"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "http://*/*" ],
+      "run_at": "document_start"
+   }],
+   "description": "\u8FD9\u662F\u4E00\u4E2A\u6279\u91CF\u4ECE\u7F51\u9875\u91CC\u63D0\u53D6email\u5730\u5740\u7684\u5DE5\u5177,\u7279\u522B\u662F\u5728\u67D0\u4E9B\u8BBA\u575B(\u4F8B\u5982:mop)\u4E0A\u7684\u7F8E\u5973\u8D34,\u5F88\u5BB9\u6613\u51FA\u73B0\u5927\u91CF\u90AE\u7BB1\u5730\u5740,\u8FD9\u65F6\u5019\u7528\u8FD9\u4E2A\u5DE5\u5177\u53EF\u4EE5\u6293\u53D6\u5230\u5927\u91CF\u4FE1\u606F,\u611F\u89C9\u50CF\u5C0F\u5077\u4E00\u6837,\u6240\u4EE5\u7A0B\u5E8F\u540D\u6BD4\u8F83\u7325\u7410",
+   "icons": {
+      "128": "icon.png",
+      "48": "icon.png"
+   },
+   "name": "Info Thief",
+   "permissions": [ "tabs", "http://*/" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.4"
+}

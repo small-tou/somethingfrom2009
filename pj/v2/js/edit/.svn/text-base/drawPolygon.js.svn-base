@@ -1,0 +1,92 @@
+(function(){
+    var p=SCD.Point;
+    SCD.DrawPolygon=SCD.extend(SCD.EditGO);
+    SCD.ap(SCD.DrawPolygon,{
+        _init:function(){
+            this.controls=[
+            new p(0,0)
+            ];
+            this.isCreateEnd=true;
+            this.rightClickExit=false;
+        },
+        //从某处开始画线
+        begin:function(pos){
+            this.isCreateEnd=false;
+            this.controls[0]=pos;
+        },
+        end:function(){
+            this.isCreateEnd=true;
+            this.context.clearSub();
+            this.draw();
+            this.context.addGO(this)
+
+        },
+        lButtonDown:function(pos){
+            this.controls.push(pos)
+        },
+        moving:function(pos){
+          
+
+        },
+         placing:function(pos){
+ this.context.switchCtx("sub")
+            var ctx=this.context.ctx;
+            var canvas=this.context.sub_canvas;
+            var c=this.controls;
+            this.context.clearSub();
+            ctx.beginPath();
+
+            ctx.moveTo(c[0].x,c[0].y);
+            for(var i=1;i<c.length;i++){
+                ctx.lineTo(c[i].x,c[i].y);
+            }
+            ctx.lineTo(pos.x,pos.y)
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+        },
+        rButtonDown:function(){
+            if(this.controls.length==1){
+                this.destroy();
+            }else{
+                this.end();
+            }
+        },
+        active:function(){
+
+        },
+        draw:function(){
+            this.context.switchCtx("main")
+            var ctx=this.context.ctx;
+            var canvas=this.context.canvas;
+            var c=this.controls;
+            ctx.beginPath();
+            ctx.moveTo(c[0].x,c[0].y);
+            for(var i=1;i<c.length;i++){
+                ctx.lineTo(c[i].x,c[i].y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+        },
+        destroy:function(){
+            this.isCreateEnd=true;
+            this.context.clearSub();
+        //   this.end()
+        },
+        getCompress:function(){
+            var str="G:"
+            $.each(this.controls,function(i,n){
+                str+=n.x+","+n.y+" "
+            })
+            str+="|"+this.context.strokeStyle+"|"+this.context.strokeWidth+"|"+this.context.fillStyle;
+            this.compressStr=str
+            return str;
+        },
+        isIn:function(pos){
+            return SCD.util.checkPP(pos,this.controls)
+         
+        }
+    });
+})();
+

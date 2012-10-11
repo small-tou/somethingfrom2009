@@ -1,0 +1,3 @@
+<script>
+    alert(encodeURI("ÌÔ±¦Íø"))
+</script>

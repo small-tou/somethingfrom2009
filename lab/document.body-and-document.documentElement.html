@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <div style="height:100px;">
+        dddd
+    </div>
+  </body>
+</html>
+<script>
+    alert(document.compatMode)
+    var body=function(){
+        return document.compatMode=="CSS1Compat" ? document.documentElement : document.body;
+}()
+   alert(body.clientHeight)
+</script>

@@ -1,0 +1,146 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="js/jq-ui/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="js/jq-ui/themes/icon.css">
+        <script src="js/jquery.js"></script>
+        <script src="js/jq-ui/jquery.easyui.min.js"></script>
+        <script src="js/jq-ui/colorpick/jscolor.js"></script>
+        <script src="js/jq-ui.js"></script>
+        <script src="js/sea.js"></script>
+        <script src="js/core.js"></script>
+        <style>
+            #context_view{
+                position:relative;
+                height:600px;
+                width:800px;
+                float:left;
+            }
+            #option{
+                float:left;
+                margin-left:10px;
+            }
+            #sub_view_0{
+                border:1px solid #aaa;
+            }
+            #control{
+                margin-top:10px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <a id="select" class="easyui-linkbutton">选择元件</a>
+        <a id="shiye" class="easyui-linkbutton">拖动视野</a>
+        <a id="zhongdian" class="easyui-linkbutton">中心重置</a>
+        <a id="grid_open" class="easyui-linkbutton">开启栅格捕获</a>
+        <a id="grid_close" class="easyui-linkbutton">关闭栅格捕获</a>
+        <a id="scale_up" class="easyui-linkbutton">放大+</a>
+        <a id="scale_down" class="easyui-linkbutton">缩小-</a>
+        <a onclick="SCD.debug('#main_view_0')"  class="easyui-linkbutton">主视图</a>
+        <a onclick="SCD.debug('#sub_view_0')" class="easyui-linkbutton">辅视图</a>
+        <a id="tojson" class="easyui-linkbutton">输出结果</a>
+        <div id="control">
+            <a id="control_line" data:type="line" class="easyui-linkbutton">画线</a>
+            <a id="control_arc" data:type="arc" class="easyui-linkbutton">画圆弧</a>
+            <a id="control_brokenline" data:type="brokenline" class="easyui-linkbutton">画折线</a>
+            <a id="control_bezier" data:type="bezier" class="easyui-linkbutton">画贝塞尔</a>
+            <a id="control_polygon" data:type="polygon" class="easyui-linkbutton">画多边形</a>
+            <a id="control_rect" data:type="rect" class="easyui-linkbutton">画矩形</a>
+            <a id="control_ellipse" data:type="ellipse" class="easyui-linkbutton">画椭圆</a>
+        </div>
+        <div id="colors">
+            线条色彩:<button>#ff6700</button><button>#45E84D</button><button>#454DE8</button>
+        </div>
+        <div id="fillcolors">
+            填充色彩:<button>#ff6700</button><button>#45E84D</button><button>#454DE8</button>
+        </div>
+        <div id="width">
+            <button class="up">线粗细+</button><button class="down">线粗细-</button><span>1px</span>
+        </div>
+        <div id="context_view">
+
+        </div>
+        <div id="option">
+            <table id="option-table">
+
+            </table>
+        </div>
+        <script>
+            $('#tojson').linkbutton({});
+            seajs.config({
+                //   base: 'http://localhost/mj-o/pj/v4/js'
+                   base :"http://localhost/xampp/mj/pj/v4/js"
+             //   base :"http://www.html-js.com/mj/pj/v4/js"
+            });
+            seajs.use("edit/editContext.js",function(editContext){
+                window.ectx=new editContext()
+                ectx.init({
+                    container:$("#context_view")[0], view_width:800,
+                    view_height:600
+                });
+                ectx.selectOBJ("line")
+
+                $("#control a").click(function(){
+                    ectx.selectOBJ($(this).attr("data:type"))
+                })
+                $("#tojson").click(function(){
+                    var w=window.open("","","width=1100,height=610");
+                    var d=w.document
+                    d.open();
+                    d.write("<textarea style=width:1100px;height:600px;>"+JSON.stringify(ectx.toJSON())+"</textarea>");
+                    d.close();
+                    console.log(ectx.toJSON())
+                })
+                $("#shiye").click(function(){
+                    ectx.setEffect(5)
+                })
+                $("#zhongdian").click(function(){
+                    ectx.setEffect(3)
+                })
+                $("#colors button").click(function(){
+                    ectx.setStrokeStyle(this.innerHTML)
+                })
+                $("#fillcolors button").click(function(){
+                    ectx.setFillStyle(this.innerHTML)
+                })
+                var width=1;
+                $("#width .up").click(function(){
+                    width++;
+                    $("#width span").html(width+"px")
+                    ectx.setLineWidth(width)
+                })
+                $("#width .down").click(function(){
+                    width--;
+                    $("#width span").html(width+"px")
+                    ectx.setLineWidth(width)
+                })
+                $("#select").click(function(){
+                    ectx.setEffect(2)
+                })
+
+                $("#grid_open").click(function(){
+                    ectx.gridCapture=true;
+                    ectx.redrawGrid();
+                })
+                $("#grid_close").click(function(){
+                    ectx.gridCapture=false;
+                    ectx.hideGrid();
+                })
+                $("#scale_up").click(function(){
+                    ectx.setScale(ectx.scale+0.25)
+                })
+                $("#scale_down").click(function(){
+                    ectx.setScale(ectx.scale-0.25)
+                })
+             
+            })
+        </script>
+    </body>
+</html>

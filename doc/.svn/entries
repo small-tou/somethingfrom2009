@@ -1,0 +1,74 @@
+10
+
+dir
+194
+https://mj-javascript-lib.googlecode.com/svn/trunk/version1.0.3/doc
+https://mj-javascript-lib.googlecode.com/svn
+
+
+
+2011-06-02T11:45:09.355015Z
+38
+xinyu198736@gmail.com
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+338f9ee8-0c80-be1d-cdcd-b90a77f9b586
+
+artical
+dir
+
+base
+dir
+
+canvas.php
+file
+
+
+
+
+2012-01-11T14:50:19.000000Z
+b7b1e705af88ecd5812844f0d05fc155
+2011-04-08T05:26:34.163268Z
+35
+xinyu198736@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+212877
+
+core
+dir
+
+lib
+dir
+

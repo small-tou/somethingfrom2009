@@ -1,0 +1,9 @@
+{
+  "name": "淘宝会议室预定提醒插件",
+  "version": "1.0",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "淘宝会议室预定提醒插件",
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html"
+}

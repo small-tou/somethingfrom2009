@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+To change this template, choose Tools | Templates
+@time
+@author
+-->
+<html>
+    <head>
+        <title>Bezier曲线</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            var getHref=function(){
+                var href=window.location.href;
+                href=href.replace(/(.*\/.*?\/).*?\/[^\/]*$/,"$1")
+                return href
+            }
+            var   MJBASEURL=getHref(),
+            CACHE=true,
+            DEBUG=true
+        </script>
+        <script src="../core.js"></script>
+        <style>
+            body{
+                background:#000;
+            }
+        </style>
+    </head>
+    <body>
+
+    </body>
+</html>
+<script>
+    var $=MJ;
+    $.use(["base","cubicBezier"],function(){
+        var D=$.Dom,t=0
+        
+        var points={
+            p0:new $.Vector(0,0),
+            p1:new $.Vector(100,620),
+            p2:new $.Vector(1000,33),
+            p3:new $.Vector(800,600)
+        }
+        function drawP(p,inner){
+            var ele=document.createElement("div")
+            ele.innerHTML=inner
+            $.mix(ele.style,{
+                width:"18px",
+                height:"18px",
+                lineHeight:"14px",
+                fontSize:"14px",
+                background:"#ddd",
+                position:"absolute",
+                textAlign:"center",
+
+                left:p.x+"px",
+                top:p.y+"px",
+                BoxShadow:"0px 0px 3px 1px #aaa"
+            })
+            document.body.appendChild(ele)
+        }
+        function drawLine(p1,p2){
+            var minp=(p1.x>p2.x)?p2:p1
+            var maxp=(p1.x>p2.x)?p1:p2
+            var aaa=(minp.y>maxp.y)?-1:1
+            var start=minp.x
+            var end=maxp.x
+            var xy=Math.abs((maxp.x-minp.x)/(maxp.y-minp.y))
+            for(var i=start;i<end;i++){
+                var ele=document.createElement("div")
+                $.mix(ele.style,{
+                    width:"1px",
+                    height:"1px",
+                    lineHeight:"0",
+                    fontSize:"0",
+                    background:"#ddd",
+                    position:"absolute",
+                    left:i+"px",
+                    top:((i-start)*aaa/xy+minp.y)+"px",
+                    BoxShadow:"0px 0px 3px 1px #ddd"
+                })
+                document.body.appendChild(ele)
+            }
+        }
+        drawP(points.p0,"A")
+        drawP(points.p1,"B")
+        drawP(points.p2,"C")
+        drawP(points.p3,"D")
+        drawLine(points.p0,points.p1)
+        drawLine(points.p2,points.p3)
+        function end(){
+            clearInterval(inter)
+        }
+       
+       
+        var cb=new $.CubicBezier({
+            points:points
+        });
+        var p;
+        var getRandomColor = function() { if(document.all) return "#fff"; else return '#' + (Math.random() * 0xffffff << 0).toString(16) }
+        var inter=setInterval(function(){
+            t+=0.01;
+            if(t>1){
+                end()
+            }
+            p=cb.get(t)
+            var ele=document.createElement("div")
+            $.mix(ele.style,{
+                width:"3px",
+                height:"3px",
+                lineHeight:"0",
+                fontSize:"0",
+                background:getRandomColor(),
+                position:"absolute",
+                left:p.x+"px",
+                top:p.y+"px",
+                WebkitBoxShadow:"0px 0px 3px 1px "+getRandomColor()
+            })
+            document.body.appendChild(ele)
+        },10)
+       
+    })
+    
+</script>

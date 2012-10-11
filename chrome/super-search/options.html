@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+
+            html, body, div, span, applet, object, iframe,
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+            a, abbr, acronym, address, big, cite, code,
+            del, dfn, em, font, img, ins, kbd, q, s, samp,
+            small, strike, strong, sub, sup, tt, var,
+            b, u, i, center,
+            dl, dt, dd, ol, ul, li,
+            fieldset, form, label, legend,
+            table, caption, tbody, tfoot, thead, tr, th, td {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                font-size: 100%;
+                font-size:12px;
+                line-height: 18px;
+                vertical-align: baseline;
+                background: transparent;
+                font-family: Simsun,'Courier New',Courier,monospace;
+            }
+            body {
+                line-height: 1;
+            }
+            ol, ul {
+                list-style: none;
+            }
+            blockquote, q {
+                quotes: none;
+            }
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+                content: none;
+            }
+
+            :focus {
+                outline: 0;
+            }
+
+            ins {
+                text-decoration: none;
+            }
+            del {
+                text-decoration: line-through;
+            }
+            a:link,a:visited{
+                color:#21BAEC;
+                text-decoration: none;
+            }
+            a:hover{
+                color:#ff6700;
+                text-decoration: underline;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+            .hide{
+                display: none;
+            }
+            .float-clear{
+                clear: both;
+                font-size: 0;
+                height:0;
+            }
+
+            input {
+                background:url(img/input-bg.gif) no-repeat -1px -1px;
+                border:1px solid #A4BAEC;
+                height:24px;
+                padding:0;
+            }
+            textarea{
+                background:url(img/input-bg.gif) no-repeat -1px -1px;
+                border:1px solid #A4BAEC;
+                height:24px;
+                padding:0;
+            }
+            html,body{
+                margin:0;
+                padding:0;
+            }
+            html,body{
+                padding:0;margin:0;
+            }
+            body{
+                background:#eee;
+                font-size:12px;
+            }
+            .box{
+                margin:10px;
+                border:1px solid  #aaa;
+                background: #fff;
+                border-radius:5px;
+                padding:10px;
+            }
+
+            .selectEngine .item{
+                float:left;
+                width:137px;
+                height:300px;
+                border:1px solid #ddd;
+                margin-right:20px;
+            }
+            .clear{
+                clear:both;
+            }
+            input[type="checkbox"]{
+                vertical-align:-8px;
+                margin-right:10px;
+            }
+            #content{
+                margin:0 auto;
+                width:990px;
+            }
+            .selectEngine .item li{
+                height:25px;
+                border-bottom:1px  solid #ddd;
+            }
+        </style>
+        <script src="core.js"></script>
+        <script src="base.js"></script>
+    </head>
+    <body>
+        <div id="content">
+
+            <fieldset class="box selectEngine">
+                <legend>选择搜索引擎</legend>
+                <fieldset class="box item">
+                    <legend>综合</legend>
+                    <ul id="normal">
+
+                    </ul>
+                </fieldset>
+                <fieldset class="box item">
+                    <legend>音乐</legend>
+                    <ul id="music">
+
+                    </ul>
+                </fieldset>
+                <fieldset class="box item">
+                    <legend>图书</legend>
+                    <ul id="book">
+
+                    </ul>
+                </fieldset>
+                <fieldset class="box item">
+                    <legend>软件</legend>
+                    <ul id="soft">
+
+                    </ul>
+                </fieldset>
+                <fieldset class="box item">
+                    <legend>知识</legend>
+                    <ul id="knowledge">
+
+                    </ul>
+                </fieldset>
+                <div class="clear"></div>
+            </fieldset>
+        </div>
+    </body>
+</html>
+<script>
+    var evalString="var searchSites=["+
+"        {"+
+"            name:\"百度\","+
+"            url:\"http://www.baidu.com/s?wd=$!keyword&bs=$!keyword&ie=utf-8\""+
+"        },"+
+"        {"+
+"            name:\"google\","+
+"            \"url\":\"http://www.google.com.hk/search?hl=zh-CN&q=$!keyword\""+
+"        },"+
+"        {"+
+"            name:\"淘宝网\","+
+"            \"url\":\"http://s.taobao.com/search?q=$!keyword&commend=all&ssid=s5-e&search_type=item&ie=utf-8\""+
+"        },"+
+"        {"+
+"            name:\"淘宝商城\","+
+"            \"url\":\"http://list.tmall.com/search_product.htm?&q=$!keyword&_input_charset=utf-8\""+
+"        },"+
+"        {"+
+"            name:\"搜狗\","+
+"            \"url\":\"http://www.sogou.com/sogou?query=$!keyword\""+
+"        },"+
+"        {"+
+"            name:\"bing\","+
+"            \"url\":\"http://www.bing.com/search?q=$!keyword\""+
+"        },"+
+"        {"+
+"            name:\"搜搜\","+
+"            \"url\":\"http://www.soso.com/q?sc=web&bs=a&ch=w.uf&num=10&w=$!keyword\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"有道\","+
+"            \"url\":\"http://www.youdao.com/search?q=$!keyword\""+
+"        },"+
+"        {"+
+"            name:\"迅雷狗狗\","+
+"            \"url\":\"http://www.gougou.com/search?search=$!keyword\""+
+"        }"+
+"    ];"+
+"    var ruanjianSites=["+
+"        {"+
+"            name:\"华军软件\","+
+"            url:\"http://search.newhua.com/search_list.php?searchname=$!keyword\""+
+"        },"+
+"        {"+
+"            name:\"太平洋软件\","+
+"            url:\"http://ks.pconline.com.cn/download.jsp?forumName=%C8%AB%B2%BF%C0%E0%D0%CD&qx=%C8%AB%B2%BF%C0%E0%D0%CD&forumValue=&forumOrgID=&forumOrgName=&q=$!keyword\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"新浪软件\","+
+"            url:\"http://down.tech.sina.com.cn/download/search.php?f_name=$!keyword&x=30&y=10\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"狗狗软件\","+
+"            url:\"http://soft.gougou.com/search?search=$!keyword&restype=2&id=1\""+
+"        }"+
+"    ];"+
+"    var zhishiSites=["+
+"        {"+
+"            name:\"百度知道\","+
+"            \"url\":\"http://zhidao.baidu.com/q?word=$!keyword&ct=17&pn=0&tn=ikaslist&rn=10&lm=0&fr=search\""+
+"        },"+
+"        {"+
+"            name:\"新浪知识人\","+
+"            url:\"http://iask.sina.com.cn/search_engine/search_knowledge_engine.php?key=$!keyword&classid=0&title=$!keyword&x=0&y=0&tag=0&gjss=0\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"问问\","+
+"            url:\"http://wenwen.soso.com/z/Search.e?sp=S$!keyword&ch=w.search.sb&w=$!keyword&search=%E6%90%9C%E7%B4%A2%E7%AD%94%E6%A1%88\""+
+"        },"+
+"        {"+
+"            name:\"百度百科\","+
+"            url:\"http://baike.baidu.com/searchword/$!keyword\","+
+"            isGB:true"+
+"        }"+
+"    ];"+
+"    var musicSites=["+
+"        {"+
+"            name:\"百度音乐\","+
+"            url:\"http://mp3.baidu.com/m?f=ms&rf=idx&tn=baidump3&ct=134217728&lf=&rn=&word=$!keyword&lm=-1\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"有道音乐\","+
+"            url:\"http://mp3.youdao.com/search?q=$!keyword&t=ALL\""+
+"        },"+
+"        {"+
+"            name:\"搜狗音乐\","+
+"            url:\'http://mp3.sogou.com/music.so?query=$!keyword&class=1&pf=&w=02009900&st=&ac=1&_asf=mp3.sogou.com&_ast=1294822410\',"+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"google音乐\","+
+"            url:\"http://www.google.cn/music/search?q=$!keyword\""+
+"        },"+
+"        {"+
+"            name:\"狗狗音乐\","+
+"            url:\"http://mp3.gougou.com/search?search=$!keyword&id=0\""+
+"        },"+
+"        {"+
+"            name:\"雅虎音乐\","+
+"            url:\"http://music.yahoo.cn/s?q=$!keyword&m=0\""+
+"        }"+
+"    ];"+
+"    var bookSites=["+
+"        {"+
+"            name:\"chinapub\","+
+"            url:\"http://search.china-pub.com/s/?key1=$!keyword&type=&pz=1&t=2\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"当当网\","+
+"            url:\"http://search.dangdang.com/search.php?key=$!keyword&SearchFromTop=1&catalog=\","+
+"            isGB:true"+
+"        },"+
+"        {"+
+"            name:\"卓越亚马逊\","+
+"            url:\"http://www.amazon.cn/s/ref=nb_sb_noss?__mk_zh_CN=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91%E7%AB%99&url=search-alias%3Dstripbooks&field-keywords=$!keyword&x=32&y=7\""+
+"        },"+
+"        {"+
+"            name:\"豆瓣图书\","+
+"            url:\"http://book.douban.com/subject_search?search_text=$!keyword&cat=1001\""+
+"        },"+
+"        {"+
+"            name:\"京东图书\","+
+"            url:\"http://search.360buy.com/Search?book=y&keyword=$!keyword\","+
+"            isGB:true"+
+"        }"+
+"    ];";
+eval(evalString);
+    var $=MJ;
+    function createLi(parent,sites,name){
+        for(var i =0;i<sites.length;i++){
+            var li=(document.createElement("li"))
+            li.innerHTML="<input type=\"checkbox\" id=\""+name+"_"+i+"\"/><label for=\""+name+"_"+i+"\" id=\""+name+"_label_"+i+"\">"+sites[i].name+"</label>"
+            parent.appendChild(li)
+        }
+    };
+   createLi($.Dom.get("#normal"),searchSites,"normal");
+createLi($.Dom.get("#music"),musicSites,"music");
+createLi($.Dom.get("#book"),bookSites,"book");
+createLi($.Dom.get("#soft"),ruanjianSites,"soft");
+createLi($.Dom.get("#knowledge"),zhishiSites,"knowledge");
+</script>

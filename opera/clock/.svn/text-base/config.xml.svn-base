@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets">
+  <name>micro clock</name>
+  <description>Directly in the extended bar to display a clock.</description>
+  <author href="http://www.html-js.com/"
+          email="xinyu198736@gmail.com">tianqi</author>
+  <icon src="icon.png"/>
+</widget>

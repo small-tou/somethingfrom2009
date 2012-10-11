@@ -1,0 +1,15 @@
+{
+  "name": "右键搜索增强",
+  "version": "1.3",
+  "icons": { "48": "icon.png",
+          "128": "icon.png" },
+  "description": "右键搜索增强,让你能快速搜索你选中的文字,让搜索更有效率.\n本插件只有在你选择了文本右击的情况下才会出现在右键菜单里哦",
+  "permissions": [ "tabs","http://*/","https://*/","https://*/*","http://*/*","contextMenus" ],
+  "background_page":"background.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title":"运行中",
+    "default_popup":"index.html"
+  }
+  
+}

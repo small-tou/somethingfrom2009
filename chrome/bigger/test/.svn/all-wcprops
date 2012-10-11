@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test
+END
+aa.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test/aa.txt
+END
+download.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test/download.php
+END
+list.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test/list.php
+END
+aa.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test/aa.php
+END
+readFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test/readFile.php
+END
+error_log
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/20/trunk/version1.0.3/chrome/bigger/test/error_log
+END
